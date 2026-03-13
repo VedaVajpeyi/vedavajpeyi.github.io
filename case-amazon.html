@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing for Trust in Voice Interfaces — Veda Vajpeyi</title>
+  <meta name="description" content="A thinking case on the product strategy and design principles behind voice interfaces at scale — the questions, tradeoffs, and frameworks, without the numbers that can't be shared.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Veda Vajpeyi</a>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#case-studies">Case Studies</a></li>
+      <li><a href="index.html#writing">Writing</a></li>
+      <li><a href="index.html#work-with-me">Work With Me</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main class="case-page">
+
+    <div class="case-header">
+      <a href="index.html#case-studies" class="back-link">← Back to Case Studies</a>
+      <span class="case-cat">Amazon · Voice · Product Thinking</span>
+      <h1>Designing for Trust in Voice Interfaces</h1>
+      <p class="case-sub">Alexa · Echo Devices &amp; Software · 2022–Present</p>
+      <p class="case-lead">This is a thinking case, not a delivery case. The specifics of my work at Amazon are confidential. What I can share — and what I think is more useful — are the questions, frameworks, and hard tradeoffs that voice product strategy forces you to confront. The problems are real. Only the numbers are missing.</p>
+    </div>
+
+    <div class="case-body">
+
+      <section>
+        <h2>The Context</h2>
+        <p>Voice interfaces are a fundamentally different product category from the ones most PMs learn to build. There is no visual layer to absorb friction. There is no button to AB test, no layout to iterate, no color that can guide attention. The interface is the interaction — entirely.</p>
+        <p>Working on voice products at Amazon means working inside that constraint every day. What looks like a product problem is almost always a trust problem. And what looks like an engagement problem is often a measurement problem in disguise.</p>
+        <p>The three questions I found myself returning to, again and again:</p>
+        <ul>
+          <li>What does this interaction feel like to someone who didn't choose to become a "user"?</li>
+          <li>How do we know if this is working — not by our metrics, but by what the person actually needed?</li>
+          <li>What makes people trust a device they can't see making decisions?</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>The Core Problem: Trust at Scale Is Not Additive</h2>
+        <p>In most product categories, trust accumulates. A person uses your product, it works, they come back. Over time, trust compounds. Failures are costly but survivable.</p>
+        <p>Voice interfaces break this model. Trust in voice is built slowly and lost instantly — and the loss is asymmetric. A device that mishears a medication reminder, calls the wrong person, or misunderstands a request in a high-stakes moment doesn't just cause frustration. It resets the entire trust relationship. The person doesn't just stop using that feature. They stop trusting the device.</p>
+        <p>This creates a product challenge that most standard PM frameworks aren't built for. You cannot optimize your way out of it. You cannot AB test your way to a trust floor. The product strategy has to account for the asymmetry from the beginning — which means thinking very carefully about which interactions the device should attempt and which it should gracefully decline.</p>
+        <div class="learning-block">
+          <p>"Knowing when not to respond is as important as knowing how to respond. The product question isn't just 'can the device do this?' — it's 'should it, in this moment, for this person?'"</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>The Measurement Problem</h2>
+        <p>Engagement metrics in voice products are unreliable in a particular way: they count interactions without understanding intent. A person who invokes a skill ten times and stops using it entirely is counted, in most systems, as a successful ten-interaction user. The abandonment is invisible.</p>
+        <p>The harder question — and the one that matters — is: did the interaction accomplish what the person actually needed? Did they get to the end of the task? Did they return to do it again? Did the device's response match the context they were in?</p>
+        <p>Designing better measurement for voice requires thinking carefully about what the proxy metrics are actually proxies for. Invocations measure intent to engage, not engagement quality. Session length measures presence, not value. Return rate is the most honest signal, but it's a lagging indicator that tells you what you've already lost.</p>
+        <p>The framework I kept coming back to: measure the delta between what the person tried to do and what they actually got. That gap — not the engagement number — is where product quality lives.</p>
+      </section>
+
+      <section>
+        <h2>The "Ambient" Design Assumption</h2>
+        <p>Voice products were largely designed on a premise: that people would integrate a voice-enabled device naturally into the flow of their daily life, across a broad range of tasks. The vision was ambient intelligence — a device that's always available, broadly capable, and deeply woven into how a person operates.</p>
+        <p>The reality of adoption looked different. Most people use voice interfaces for a narrow cluster of high-frequency, low-cognitive-load tasks — timers, music, weather, quick questions. The range of what people attempt is narrower than the range of what the device can do, and it stays narrow for most users even with significant product investment in discoverability.</p>
+        <p>The interesting product question isn't "why won't people use more features?" It's: what does this pattern of use tell us about what the device is actually good for? What are the conditions under which voice is the right interface, rather than a substitute for a better one?</p>
+        <p>Answering that question honestly — rather than trying to expand use cases to justify the product's capabilities — requires a kind of strategic restraint that not every PM roadmap encourages. But it's the question that unlocks genuine product strategy.</p>
+      </section>
+
+      <section>
+        <h2>What This Work Taught Me About Product Strategy</h2>
+        <div class="case-outcome">
+          <p style="font-size:0.875rem;font-weight:300;color:var(--muted);margin-bottom:1.25rem;">Not delivery metrics — strategic reframes. What working on voice products clarified about product thinking more broadly.</p>
+          <div class="outcome-grid">
+            <div class="outcome-stat">
+              <p class="stat-value">Trust first</p>
+              <p class="stat-label">Capability without trust is friction. Build trust architecture before feature surface area.</p>
+            </div>
+            <div class="outcome-stat">
+              <p class="stat-value">Audit your metrics</p>
+              <p class="stat-label">Every metric is a proxy. Ask what it's a proxy for — and whether that's what you actually care about.</p>
+            </div>
+            <div class="outcome-stat">
+              <p class="stat-value">Restraint is strategy</p>
+              <p class="stat-label">Knowing which problems not to solve with your product is a form of product leadership, not a limitation.</p>
+            </div>
+            <div class="outcome-stat">
+              <p class="stat-value">Context over capability</p>
+              <p class="stat-label">The question isn't "what can this do?" but "what is this the right tool for, in what moment, for whom?"</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>A Note on What's Not Here</h2>
+        <p>The specific work I've done at Amazon — the initiatives, the metrics, the decisions and their outcomes — is confidential, and I've kept it that way here. This case doesn't include revenue numbers, engagement data, or details about specific product features I shipped.</p>
+        <p>What I hope this document shows instead is how I think. The frameworks I return to, the questions I find worth asking, the places where standard PM toolkits run out and something more considered has to take over.</p>
+        <p>If you're evaluating me as a thinker — as a product strategist, a collaborator, or someone you're considering working with — I believe that's more useful than a set of numbers I'm not authorized to share anyway.</p>
+        <div class="learning-block">
+          <p>"The most clarifying product constraint I've ever worked under: you can't hide behind the interface. Voice forces honesty. It turns out, that's the most useful thing it taught me."</p>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Veda Vajpeyi &nbsp;·&nbsp; <a href="index.html">vedavajpeyi.com</a></p>
+    <nav class="footer-links">
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="index.html#work-with-me">Work With Me</a>
+      <a href="mailto:vajpeyiveda@gmail.com">Email</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

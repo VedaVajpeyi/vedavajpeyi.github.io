@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Metric That Was Hiding the Real Problem — Veda Vajpeyi</title>
+  <meta name="description" content="Veda Vajpeyi on the most dangerous kind of product mistake: measuring the wrong thing with great precision. A framework for auditing your metrics before they audit you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Veda Vajpeyi</a>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#case-studies">Case Studies</a></li>
+      <li><a href="index.html#writing">Writing</a></li>
+      <li><a href="index.html#work-with-me">Work With Me</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="blog-page">
+
+    <header class="blog-header">
+      <a href="index.html#writing" class="back-link">← All writing</a>
+      <span class="eyebrow">Product Strategy · Framework</span>
+      <h1>The Metric That Was Hiding the Real Problem</h1>
+      <p class="blog-byline">Veda Vajpeyi · Product Strategy</p>
+    </header>
+
+    <div class="blog-content">
+
+      <p>There is a particular kind of product failure that's harder to see than the obvious ones. It doesn't announce itself as a failure. The dashboard looks fine. The team is working hard. The roadmap has a clear north star. Experiments are running. Velocity is high.</p>
+
+      <p>The problem is that everyone is optimizing for the wrong thing — with great precision.</p>
+
+      <p>I've seen this pattern more than once. A product team inherits a metric, accepts it as the definition of success, and builds an entire strategy around it. The metric is internally consistent. It goes up and to the right. It satisfies stakeholders. And it is quietly hiding the actual problem.</p>
+
+      <p>The most dangerous metrics are not the ones that go in the wrong direction. They're the ones that go in the right direction for the wrong reasons.</p>
+
+      <h2>Why this happens</h2>
+
+      <p>Metrics feel like facts. They have the authority of numbers. When a metric exists and has a history, it carries an implicit assumption: <em>this is what we care about.</em> Challenging that assumption requires something counterintuitive — you have to step back from the urgency of improving the number and ask whether you're measuring the right thing in the first place.</p>
+
+      <p>Most product teams don't do this, not because they're bad at their jobs, but because the metric was handed to them. It came from someone's good reasoning at some prior moment in time. It made sense then. Conditions changed. The metric stayed.</p>
+
+      <p>There are three ways I've seen metrics mislead:</p>
+
+      <p><strong>The inherited metric.</strong> Someone upstream chose this metric for good reasons that no longer apply. The business has evolved. The customer has evolved. The metric hasn't. No one paused to re-examine the original assumption because the metric was already there, already being tracked, already on the exec dashboard.</p>
+
+      <p><strong>The surrogate metric.</strong> The thing you actually care about is hard to measure, so you measure a proxy that correlates with it — or used to. Over time, the proxy diverges from the real outcome. You optimize for the proxy. The real outcome doesn't move. You run more experiments. Still nothing. The problem is not your strategy. It's that you're measuring a shadow of what you care about.</p>
+
+      <p><strong>The partial metric.</strong> You're measuring one part of the user journey while ignoring a more important part. Your funnel conversion looks great. Retention looks bad. You focus on acquisition because that's where your metric lives. You miss the signal that people aren't staying because the product isn't working for them.</p>
+
+      <h2>What I learned the hard way</h2>
+
+      <p>I once worked on a product where our primary success metric was a specific kind of user engagement with an AI feature. The metric was well-defined, rigorously tracked, and deeply embedded in the team's roadmap. We built experiments. We tested features. We made incremental progress.</p>
+
+      <p>Then I started asking a different question: were the people who weren't engaging with our feature actually leaving the product entirely, or just finding another way to accomplish what they needed?</p>
+
+      <p>The answer changed everything. When I separated the engagement metric from device-level usage data, a completely different pattern emerged. Users weren't disengaging from our feature. Many of them were abandoning the device altogether. They were physically not using it anymore.</p>
+
+      <p>This proved that the root cause was not a software or engagement problem. It was a hardware problem — one that no amount of software experimentation could fix. We had spent significant time and resources optimizing for a metric that was not capable of seeing the real issue. The metric wasn't wrong, exactly. It was just pointing at the wrong layer.</p>
+
+      <p>The lesson I took from that: metrics define the problem you're allowed to solve. If you inherit the wrong metric, you inherit the wrong problem.</p>
+
+      <h2>A framework: The Metric Audit</h2>
+
+      <p>Before committing to a roadmap built around any inherited or established metric, I now run through three questions:</p>
+
+      <p><strong>1. What behavior is this metric actually measuring?</strong> Not the behavior it's supposed to measure — the behavior it's actually capturing. Engagement metrics measure clicks or sessions or time, not value. Retention metrics measure whether someone came back, not whether the product worked for them. Get precise about what the number is counting.</p>
+
+      <p><strong>2. What would have to be true for this metric to go up without the real problem getting better?</strong> If you can construct a scenario where the metric improves but the underlying situation doesn't, you have a surrogate metric on your hands. Find the scenario. Then find a way to detect it in your data.</p>
+
+      <p><strong>3. What are we not measuring that matters?</strong> Every metric has a blind spot — a part of the user experience or business outcome it doesn't see. Map the user journey end to end. Find where your metric stops tracking. Ask what's happening there. That's often where the real story lives.</p>
+
+      <h2>When the metric is the problem</h2>
+
+      <p>Changing a deeply embedded metric is hard. It's not a data problem — it's a social problem. Metrics carry organizational authority. They're on executive dashboards. They're tied to team OKRs. They shape hiring decisions and resource allocation. Saying "we've been measuring the wrong thing" can feel like an indictment of everyone who built the strategy around that metric.</p>
+
+      <p>The way through this is not to frame it as a correction, but as a discovery. You haven't found that the metric is wrong. You've found something the metric couldn't see. That's a different conversation — and it's true. The metric wasn't wrong for what it was designed to do. It just had a blind spot that matters now.</p>
+
+      <p>In my experience, the teams that handle this best are the ones where leadership has normalized the question: "Is this the right thing to measure?" Not once, at the beginning of a product's life, but repeatedly, as conditions change and the product evolves.</p>
+
+      <p>The measure of a good product team is not how well they optimize their metric. It's whether they have the rigor and the courage to question it.</p>
+
+      <blockquote>Before you optimize, audit. The problem you're solving is defined by what you're measuring — and you may be measuring a shadow of what you actually care about.</blockquote>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Veda Vajpeyi &nbsp;·&nbsp; <a href="index.html">vedavajpeyi.com</a></p>
+    <nav class="footer-links">
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="index.html#work-with-me">Work With Me</a>
+      <a href="mailto:vajpeyiveda@gmail.com">Email</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
