@@ -1,698 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veda Vajpeyi</title>
-  <meta name="description" content="Veda Vajpeyi — Product strategist, founder, and writer. Former Amazon PM. Chicago Booth MBA. Building at the intersection of data and human behavior.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #f9f8f6;
-      --surface:   #ffffff;
-      --text:      #1a1a1a;
-      --muted:     #6b6b6b;
-      --accent:    #b5865a;
-      --border:    #e6e2dc;
-      --max:       700px;
-      --font-d:    'Playfair Display', Georgia, serif;
-      --font-b:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veda Vajpeyi — Product Leader, Strategist & Founder</title>
+    <meta name="description" content="Veda Vajpeyi is a Senior Product Manager at Amazon, founder, and product strategist. Product strategy rooted in sociology. UChicago Booth MBA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Veda Vajpeyi",
+        "url": "https://vedavajpeyi.com",
+        "jobTitle": "Senior Product Manager",
+        "sameAs": [
+            "https://linkedin.com/in/vvajpeyi",
+            "https://instagram.com/vvajpeyi",
+            "https://medium.com/@vvajpeyi"
+        ]
     }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-b);
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(249, 248, 246, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-    .nav-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 1.1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-name {
-      font-family: var(--font-d);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text);
-      text-decoration: none;
-    }
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav ul a {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    nav ul a:hover { color: var(--text); }
-
-    /* ── Layout ── */
-    main {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* ── Hero ── */
-    #hero {
-      padding: 10rem 0 6rem;
-      border-top: none;
-    }
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.4rem;
-    }
-    h1 {
-      font-family: var(--font-d);
-      font-size: clamp(2.6rem, 6vw, 4rem);
-      font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.015em;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-    .tagline {
-      font-size: 1.075rem;
-      font-weight: 300;
-      color: var(--muted);
-      max-width: 500px;
-      line-height: 1.8;
-    }
-    .hero-links {
-      margin-top: 2.5rem;
-      display: flex;
-      gap: 1.75rem;
-      flex-wrap: wrap;
-    }
-    .hero-links a {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .hero-links a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: 5rem 0;
-      border-top: 1px solid var(--border);
-    }
-    .label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2.25rem;
-    }
-
-    /* ── About ── */
-    .about-body {
-      font-size: 1.025rem;
-      font-weight: 300;
-      color: var(--text);
-      line-height: 1.9;
-    }
-    .about-body p + p { margin-top: 1.2em; }
-    .about-body strong { font-weight: 500; }
-
-    /* ── Impact Strip ── */
-    .impact-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      margin-bottom: 3rem;
-    }
-    .impact-item {
-      padding: 1.5rem 1.25rem;
-      border-right: 1px solid var(--border);
-      text-align: center;
-    }
-    .impact-item:last-child { border-right: none; }
-    .impact-val {
-      font-family: var(--font-d);
-      font-size: 1.75rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.1;
-      margin-bottom: 0.35rem;
-    }
-    .impact-lbl {
-      font-size: 0.7rem;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* ── Case Studies ── */
-    .case-cat {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.7rem;
-      display: block;
-    }
-
-    /* Featured card */
-    .case-featured {
-      display: block;
-      border: 1px solid var(--border);
-      padding: 2.25rem;
-      margin-bottom: 1.5rem;
-      background: var(--surface);
-      text-decoration: none;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .case-featured:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(26,26,26,0.07);
-    }
-    .case-featured-visual {
-      height: 3px;
-      background: linear-gradient(90deg, #9e3a2a, #c85a3e);
-      margin-bottom: 1.5rem;
-      margin-top: 0;
-      margin-left: -2.25rem;
-      margin-right: -2.25rem;
-    }
-    .case-featured-meta { padding-top: 0.1rem; }
-    .case-featured-title {
-      font-family: var(--font-d);
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.25;
-      margin-bottom: 0.4rem;
-    }
-    .case-featured-org {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .case-featured-quote {
-      border-left: 2px solid var(--accent);
-      padding-left: 1.1rem;
-      margin: 1.25rem 0;
-      font-style: italic;
-      font-size: 0.9375rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .case-featured-desc {
-      font-size: 0.925rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-    }
-    .case-featured-cta {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-
-    /* Per-card gradient bar */
-    .card-visual {
-      height: 3px;
-      margin-bottom: 1.25rem;
-      margin-top: -1.75rem;
-      margin-left: -1.75rem;
-      margin-right: -1.75rem;
-    }
-
-    /* Smaller cards grid */
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .case-card {
-      border: 1px solid var(--border);
-      padding: 1.75rem;
-      text-decoration: none;
-      display: block;
-      background: var(--surface);
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .case-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(26,26,26,0.07);
-    }
-    .case-card-title {
-      font-family: var(--font-d);
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.35;
-      margin-bottom: 0.4rem;
-    }
-    .case-org {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-      text-transform: uppercase;
-    }
-    .case-excerpt {
-      font-size: 0.875rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-    }
-    .case-cta {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-
-    /* ── Writing ── */
-    .writing-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 2rem;
-      padding: 1.3rem 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .writing-item:first-child { padding-top: 0; }
-    .writing-item:hover { opacity: 0.55; }
-    .writing-title {
-      font-size: 0.9375rem;
-      font-weight: 400;
-      color: var(--text);
-    }
-    .writing-pub {
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    /* ── Projects ── */
-    .project-list { display: flex; flex-direction: column; }
-    .project-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 2.5rem;
-      padding: 2.25rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .project-item:first-child { padding-top: 0; }
-    .project-item:last-child { border-bottom: none; }
-    .project-co {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
-    }
-    .project-role {
-      font-family: var(--font-d);
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 0.925rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-    .project-link {
-      display: inline-block;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .project-link:hover { opacity: 0.7; }
-
-    /* ── Work With Me ── */
-    .wfm-intro {
-      font-size: 1.025rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-      max-width: 480px;
-    }
-    .wfm-list { display: flex; flex-direction: column; }
-    .wfm-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      font-family: var(--font-d);
-      font-size: 1.05rem;
-      transition: color 0.2s, padding-left 0.2s;
-    }
-    .wfm-item:first-child { padding-top: 0; }
-    .wfm-item:hover { color: var(--accent); padding-left: 0.4rem; }
-    .wfm-item::after { content: '→'; color: var(--muted); font-family: var(--font-b); font-size: 0.85rem; }
-
-    /* ── Contact ── */
-    #contact { padding-bottom: 8rem; }
-    .contact-intro {
-      font-size: 1.025rem;
-      font-weight: 300;
-      color: var(--muted);
-      max-width: 420px;
-      line-height: 1.8;
-      margin-bottom: 2.25rem;
-    }
-    .contact-rows { display: flex; flex-direction: column; gap: 0.9rem; }
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.9375rem;
-      width: fit-content;
-      transition: color 0.2s;
-    }
-    .contact-row:hover { color: var(--accent); }
-    .contact-row-tag {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      width: 76px;
-      flex-shrink: 0;
-    }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-    }
-    footer p {
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: var(--muted);
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 560px) {
-      nav ul { display: none; }
-      #hero { padding: 7.5rem 0 4rem; }
-      .case-featured div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 1rem; }
-      .case-featured-visual { margin-top: 0; margin-left: -2.25rem; margin-right: -2.25rem; }
-      .case-grid { grid-template-columns: 1fr; }
-      .project-item { grid-template-columns: 1fr; gap: 0.75rem; }
-      .impact-strip { grid-template-columns: repeat(2, 1fr); }
-      .impact-item:nth-child(2) { border-right: none; }
-      .impact-item:nth-child(3),
-      .impact-item:nth-child(4) { border-top: 1px solid var(--border); }
-      .writing-item { flex-direction: column; gap: 0.2rem; }
-    }
-  </style>
+    </script>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-name">Veda Vajpeyi</a>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#case-studies">Work</a></li>
-        <li><a href="#writing">Writing</a></li>
-        <li><a href="#work-with-me">Hire</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Veda Vajpeyi</a>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#work-with-me">Work With Me</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <main>
+<main class="home-main">
 
     <!-- Hero -->
-    <section id="hero" style="border-top:none;">
-      <span class="eyebrow">Product Strategy · Founder · Writer</span>
-      <h1>Veda Vajpeyi</h1>
-      <p class="tagline">I build products at the intersection of what data says and what humans actually feel. Former Amazon PM. Chicago Booth MBA. Founder. Based in Bangalore.</p>
-      <div class="hero-links">
-        <a href="https://www.linkedin.com/in/vvajpeyi/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="#writing">Writing</a>
-        <a href="#work-with-me">Work with me →</a>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <p class="label">About</p>
-      <div class="about-body">
-        <p>I'm a product leader and strategist who spent a decade building at scale — most recently as a Senior PM at Amazon, working on Alexa across voice AI, subscription, and hardware adoption. Before that, I founded <strong>No Desk Project</strong>, a platform for location-independent professionals that grew into a global community across six countries.</p>
-        <p>I approach product from a sociologist's instinct: I'm drawn to the gap between what metrics say and what humans actually experience. My best work has come from finding that gap and building into it — whether that was reaching 50 million users in 13 days for India's contact-tracing app, or turning a regulatory crisis into a $2M opportunity.</p>
-        <p>I hold an MBA from the <strong>University of Chicago Booth School of Business</strong> and was selected to attend the <strong>World Economic Forum</strong> in Davos as part of a delegation of global young leaders. I'm currently building <strong>Books &amp; Beds</strong> in Bangalore — a literary café and bed &amp; breakfast for curious travelers.</p>
-      </div>
+    <section id="hero">
+        <div class="hero-text">
+            <h1 class="page-title">Veda Vajpeyi</h1>
+            <p class="tagline">Product strategy rooted in sociology.</p>
+            <p class="hero-bio">I work at the intersection of what data says and what humans actually feel. Senior PM at Amazon · Chicago Booth MBA · Founder · Building Books &amp; Beds in Bangalore.</p>
+            <div class="hero-links">
+                <a href="about.html">About →</a>
+                <a href="#case-studies">Case Studies →</a>
+                <a href="contact.html">Get in touch →</a>
+            </div>
+        </div>
     </section>
 
     <!-- Case Studies -->
     <section id="case-studies">
-      <p class="label">Case Studies</p>
+        <div class="label">Case Studies</div>
 
-      <div class="impact-strip">
-        <div class="impact-item">
-          <p class="impact-val">50M</p>
-          <p class="impact-lbl">Users reached in 13 days</p>
+        <div class="impact-strip">
+            <div class="impact-item">
+                <div class="impact-val">50M</div>
+                <div class="impact-lbl">Users reached in 13 days</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-val">$2M+</div>
+                <div class="impact-lbl">Pipeline from regulatory insight</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-val">2,000+</div>
+                <div class="impact-lbl">Professionals served globally</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-val">6</div>
+                <div class="impact-lbl">Countries · Remote programs</div>
+            </div>
         </div>
-        <div class="impact-item">
-          <p class="impact-val">$2M+</p>
-          <p class="impact-lbl">Pipeline from regulatory insight</p>
-        </div>
-        <div class="impact-item">
-          <p class="impact-val">2,000+</p>
-          <p class="impact-lbl">Professionals served globally</p>
-        </div>
-        <div class="impact-item">
-          <p class="impact-val">6</p>
-          <p class="impact-lbl">Countries · Remote programs</p>
-        </div>
-      </div>
 
-      <!-- Featured case study -->
-      <a class="case-featured" href="case-aarogya-setu.html" style="display:block; padding-top: 0;">
-        <div class="case-featured-visual"></div>
-        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 2.5rem; padding-top: 1.5rem;">
-        <div class="case-featured-meta">
-          <div class="case-cat">GTM · Growth · Government</div>
-          <h2 class="case-featured-title">Crisis GTM: 50M Users in 13 Days</h2>
-          <div class="case-featured-org">Aarogya Setu · India · 2020</div>
-        </div>
-        <div class="case-featured-content">
-          <blockquote class="case-featured-quote">"Authority creates velocity — but legitimacy sustains adoption. Both must be built in parallel from day one."</blockquote>
-          <p class="case-featured-desc">The launch strategy for India's national COVID contact-tracing app. Reaching 50 million users faster than any app in history required more than reach — it required a mid-launch pivot to address a trust crisis that threatened to unravel everything.</p>
-          <div class="case-featured-cta">Read case study →</div>
-        </div>
-        </div>
-      </a>
-
-      <!-- Smaller cards -->
-      <div class="case-grid">
-
-        <a class="case-card" href="case-metric-problem.html">
-          <div class="card-visual" style="background: linear-gradient(135deg, #2a3040 0%, #4a5060 100%);"></div>
-          <div class="case-cat">Product Strategy · Consumer</div>
-          <h3 class="case-card-title">When the Metric Is the Problem</h3>
-          <div class="case-org">Consumer Hardware · Voice · 2022</div>
-          <p class="case-excerpt">A hardware product with a voice engagement problem that turned out to be a device abandonment problem. On separating what a metric measures from what it's supposed to measure.</p>
-          <div class="case-cta">Read case study →</div>
+        <!-- Featured Case Study -->
+        <a href="case-aarogya-setu.html" class="case-featured">
+            <div class="case-featured-meta">
+                <div class="case-cat">GTM · GROWTH · GOVERNMENT</div>
+                <h2 class="case-featured-title">Crisis GTM: 50M Users in 13 Days</h2>
+                <div class="case-featured-org">Aarogya Setu · India · 2020</div>
+            </div>
+            <div class="case-featured-content">
+                <blockquote class="case-featured-quote">Authority creates velocity — but legitimacy sustains adoption. Both must be built in parallel from day one.</blockquote>
+                <p class="case-featured-desc">The launch strategy for India's national COVID contact-tracing app. Reaching 50 million users faster than any app in history required more than reach — it required a mid-launch pivot to address a trust crisis that threatened to unravel everything.</p>
+                <div class="case-featured-cta">Read case study →</div>
+            </div>
         </a>
 
-        <a class="case-card" href="case-value-unmistakable.html">
-          <div class="card-visual" style="background: linear-gradient(135deg, #4a3a1a 0%, #7a6040 100%);"></div>
-          <div class="case-cat">Product Strategy · Retention</div>
-          <h3 class="case-card-title">Making Existing Value Unmistakable</h3>
-          <div class="case-org">Consumer Hardware · Subscription · 2022</div>
-          <p class="case-excerpt">Leadership wanted a new feature to drive adoption. The research said the features already exist — customers just don't know. On the difference between discoverability and unmistakability.</p>
-          <div class="case-cta">Read case study →</div>
-        </a>
+        <!-- Case Grid -->
+        <div class="case-grid">
+            <a href="case-metric-problem.html" class="case-card">
+                <div class="case-card-content">
+                    <div class="case-cat">PRODUCT STRATEGY · CONSUMER HARDWARE</div>
+                    <h3 class="case-card-title">When the Metric Is the Problem</h3>
+                    <div class="case-org">Consumer Hardware · Voice Software · 2022</div>
+                    <p class="case-excerpt">A hardware product with a voice engagement problem that turned out to be a device abandonment problem. On the discipline of separating what a metric measures from what it's supposed to measure.</p>
+                </div>
+            </a>
 
-        <a class="case-card" href="case-ndp.html">
-          <div class="card-visual" style="background: linear-gradient(135deg, #8a6040 0%, #b5865a 55%, #c9a078 100%);"></div>
-          <div class="case-cat">Founder · Market Creation</div>
-          <h3 class="case-card-title">Building a Market From Nothing</h3>
-          <div class="case-org">No Desk Project · 2017–2022</div>
-          <p class="case-excerpt">How No Desk Project grew from an idea to a 2,000-person global community across six countries — and what it took to build category awareness from scratch.</p>
-          <div class="case-cta">Read case study →</div>
-        </a>
+            <a href="case-value-unmistakable.html" class="case-card">
+                <div class="case-card-content">
+                    <div class="case-cat">PRODUCT STRATEGY · POSITIONING · RETENTION</div>
+                    <h3 class="case-card-title">Making Existing Value Unmistakable</h3>
+                    <div class="case-org">Consumer Hardware · Subscription · 2022</div>
+                    <p class="case-excerpt">Leadership wanted a silver bullet feature to drive adoption. The research said: the features already exist, customers just don't know. On the difference between discoverability and unmistakability.</p>
+                </div>
+            </a>
 
-        <a class="case-card" href="case-fact-malaysia.html">
-          <div class="card-visual" style="background: linear-gradient(135deg, #2a5a5a 0%, #4a8585 55%, #6aaba8 100%);"></div>
-          <div class="case-cat">Strategy · B2B SaaS</div>
-          <h3 class="case-card-title">Turning Regulatory Disruption Into a $2M Opportunity</h3>
-          <div class="case-org">FACT Software · Malaysia · 2018</div>
-          <p class="case-excerpt">When a sudden regulatory change threatened to wipe out a client's revenue, the response became a model for how strategic positioning turns crises into competitive advantage.</p>
-          <div class="case-cta">Read case study →</div>
-        </a>
+            <a href="case-amazon.html" class="case-card">
+                <div class="case-card-content">
+                    <div class="case-cat">PRODUCT STRATEGY · VOICE AI</div>
+                    <h3 class="case-card-title">Designing for Trust in Voice Interfaces</h3>
+                    <div class="case-org">Alexa · Echo · 2022–Present</div>
+                    <p class="case-excerpt">What do you actually measure when a person speaks to a device at 6am in their kitchen — and you can't hide friction behind a UI? On the asymmetry of trust in voice products.</p>
+                </div>
+            </a>
 
-      </div>
+            <a href="case-fact-malaysia.html" class="case-card">
+                <div class="case-card-content">
+                    <div class="case-cat">STRATEGY · GTM · REGULATORY</div>
+                    <h3 class="case-card-title">Turning Regulatory Disruption Into a $2M Opportunity</h3>
+                    <div class="case-org">FACT Software · 2018</div>
+                    <p class="case-excerpt">When Malaysia replaced GST with SST overnight, 100,000+ businesses needed new infrastructure. I built the strategy that captured 20% regional market share before competitors saw the window.</p>
+                </div>
+            </a>
+        </div>
     </section>
 
     <!-- Writing -->
     <section id="writing">
-      <p class="label">Writing</p>
-      <div>
-        <a class="writing-item" href="blog-lead-facilitator.html">
-          <span class="writing-title">The PM as Lead Facilitator</span>
-          <span class="writing-pub">Essay</span>
-        </a>
-        <a class="writing-item" href="blog-product-thinking.html">
-          <span class="writing-title">Product Thinking Is a Muscle</span>
-          <span class="writing-pub">Essay</span>
-        </a>
-        <a class="writing-item" href="blog-voice-interfaces.html">
-          <span class="writing-title">Designing for Trust in Voice Interfaces</span>
-          <span class="writing-pub">Essay</span>
-        </a>
-        <a class="writing-item" href="blog-wef.html">
-          <span class="writing-title">What I Learned at Davos</span>
-          <span class="writing-pub">Essay</span>
-        </a>
-        <a class="writing-item" href="https://medium.com/no-desk-project/the-remote-generation-582e6cd2568c" target="_blank" rel="noopener">
-          <span class="writing-title">The Remote Generation</span>
-          <span class="writing-pub">Medium · No Desk Project</span>
-        </a>
-      </div>
+        <div class="label">Writing</div>
+        <div class="writing-grid">
+            <a href="blog-product-thinking.html" class="blog-item">
+                <div class="blog-card-body">
+                    <h3 class="blog-title">The Metric That Was Hiding the Real Problem</h3>
+                    <div class="blog-meta">PRODUCT STRATEGY · ANALYTICS</div>
+                    <p class="blog-excerpt">On the most dangerous kind of product mistake: measuring the wrong thing with great precision.</p>
+                </div>
+            </a>
+            <a href="blog-voice-interfaces.html" class="blog-item">
+                <div class="blog-card-body">
+                    <h3 class="blog-title">What Voice Interfaces Teach Us About Bad Product Thinking</h3>
+                    <div class="blog-meta">PRODUCT STRATEGY · VOICE AI</div>
+                    <p class="blog-excerpt">Designing for voice forces a reckoning most product teams avoid: you cannot hide friction behind a UI.</p>
+                </div>
+            </a>
+            <a href="blog-lead-facilitator.html" class="blog-item">
+                <div class="blog-card-body">
+                    <h3 class="blog-title">Teaching Leadership: What 120 First-Years Taught Me</h3>
+                    <div class="blog-meta">LEADERSHIP</div>
+                    <p class="blog-excerpt">I was selected to design and teach a full-credit leadership course to 120 first-year MBA students. I thought I was there to teach. I wasn't.</p>
+                </div>
+            </a>
+            <a href="blog-wef.html" class="blog-item">
+                <div class="blog-card-body">
+                    <h3 class="blog-title">On Education, Transformation, and What Davos Got Right</h3>
+                    <div class="blog-meta">EDUCATION · POLICY</div>
+                    <p class="blog-excerpt">In 2020, I was invited to Davos to discuss Education for Transformation. What I found there surprised me.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="email-box">
+            <div class="email-box-copy">
+                <h3>One essay a month</h3>
+                <p>On product thinking, decision-making, and what I'm building. Written for people who want to think more clearly, not consume more content.</p>
+            </div>
+            <div class="email-box-action">
+                <a href="mailto:vajpeyiveda@gmail.com?subject=Subscribe">Subscribe →</a>
+            </div>
+        </div>
     </section>
 
     <!-- Active Projects -->
-    <section id="projects">
-      <p class="label">Active Projects</p>
-      <div class="project-list">
+    <section id="active-projects">
+        <div class="label">Active Projects</div>
+        <a href="books-and-beds.html" class="project-card">
+            <div class="project-card-content">
+                <div class="project-card-tag">In Development</div>
+                <h2 class="project-card-title">Books &amp; Beds</h2>
+                <div class="project-card-sub">Boutique Hotel · Bangalore, India</div>
+                <p class="project-card-desc">A hotel built around a single conviction: that a room full of books changes how a person feels about where they are. Floor-to-ceiling arched bookshelves, rolling library ladders, and the particular quiet of a room that takes reading seriously. A live experiment in what product thinking looks like when the medium is physical space.</p>
+                <div class="project-card-cta">Learn more →</div>
+            </div>
+        </a>
+    </section>
 
-        <div class="project-item">
-          <div>
-            <p class="project-co">Books &amp; Beds</p>
-            <p class="project-role">Founder</p>
-          </div>
-          <div>
-            <p class="project-desc">A literary café and bed &amp; breakfast for curious travelers, opening in Bangalore. A space where books and overnight stays intersect — part bookshop, part gathering place, part hospitality.</p>
-            <a class="project-link" href="books-and-beds.html">Learn more →</a>
-          </div>
+    <!-- Clients -->
+    <section id="clients">
+        <div class="label">Selected Clients &amp; Collaborators</div>
+        <div class="logo-panel-grid">
+            <span class="logo-panel-item">Government of India</span>
+            <span class="logo-panel-item">Coursera</span>
+            <span class="logo-panel-item">Early Autism Services</span>
+            <span class="logo-panel-item">Chicago Public Schools</span>
+            <span class="logo-panel-item">YWCA</span>
         </div>
-
-        <div class="project-item">
-          <div>
-            <p class="project-co">No Desk Project</p>
-            <p class="project-role">Founder &amp; CEO</p>
-          </div>
-          <div>
-            <p class="project-desc">A platform and community for location-independent professionals. Curated work retreats in handpicked destinations across six countries, serving 2,000+ remote professionals globally.</p>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div>
-            <p class="project-co">Nomadize</p>
-            <p class="project-role">CEO</p>
-          </div>
-          <div>
-            <p class="project-desc">A community platform helping digital nomads find co-working space, community, and practical infrastructure wherever they choose to be.</p>
-            <a class="project-link" href="https://www.nomadize.com" target="_blank" rel="noopener">Visit Nomadize ↗</a>
-          </div>
-        </div>
-
-      </div>
     </section>
 
     <!-- Work With Me -->
     <section id="work-with-me">
-      <p class="label">Work With Me</p>
-      <p class="wfm-intro">I work with founders, operators, and teams on hard product and strategy problems. A few ways to engage:</p>
-      <div class="wfm-list">
-        <a class="wfm-item" href="work-with-me-advising.html">Product &amp; Strategy Advising</a>
-        <a class="wfm-item" href="work-with-me-coaching.html">1:1 PM Coaching</a>
-        <a class="wfm-item" href="work-with-me-speaking.html">Speaking &amp; Facilitation</a>
-        <a class="wfm-item" href="work-with-me-mba.html">MBA Applications</a>
-      </div>
+        <div class="label">Work With Me</div>
+        <p class="wfm-intro">I work with a small number of people each year — usually when the stakes are high and the path forward isn't obvious.</p>
+        <div class="wfm-services">
+            <a href="work-with-me-coaching.html" class="wfm-service-item">Career Coaching</a>
+            <a href="work-with-me-mba.html" class="wfm-service-item">MBA Positioning</a>
+            <a href="work-with-me-advising.html" class="wfm-service-item">Product Strategy Advising</a>
+            <a href="work-with-me-speaking.html" class="wfm-service-item">Speaking</a>
+        </div>
+        <a href="contact.html" class="read-more-link">Let's talk →</a>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <p class="label">Contact</p>
-      <p class="contact-intro">Open to connecting — whether it's about product, strategy, building something, or just a good conversation.</p>
-      <div class="contact-rows">
-        <a class="contact-row" href="https://www.linkedin.com/in/vvajpeyi/" target="_blank" rel="noopener">
-          <span class="contact-row-tag">LinkedIn</span>
-          linkedin.com/in/vvajpeyi
-        </a>
-        <a class="contact-row" href="mailto:veda@vedavajpeyi.com">
-          <span class="contact-row-tag">Email</span>
-          veda@vedavajpeyi.com
-        </a>
-        <a class="contact-row" href="https://www.instagram.com/vedavajpeyi/" target="_blank" rel="noopener">
-          <span class="contact-row-tag">Instagram</span>
-          @vedavajpeyi
-        </a>
-      </div>
-    </section>
+</main>
 
-  </main>
-
-  <footer>
-    <p>© 2026 Veda Vajpeyi</p>
-  </footer>
+<footer class="footer">
+    <p>© 2026 Veda Vajpeyi &nbsp;·&nbsp; vedavajpeyi.com</p>
+    <nav class="footer-links">
+        <a href="#case-studies">Case Studies</a>
+        <a href="#writing">Writing</a>
+        <a href="#work-with-me">Work With Me</a>
+        <a href="mailto:vajpeyiveda@gmail.com">Email</a>
+    </nav>
+</footer>
 
 </body>
 </html>
