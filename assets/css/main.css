@@ -34,7 +34,7 @@ body {
 
 /* ========== TYPOGRAPHY ========== */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     line-height: 1.2;
     letter-spacing: -0.02em;
 }
@@ -220,7 +220,7 @@ nav .nav-links a.active {
 }
 
 .hero .hero-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(0.85rem, 1.2vw, 1rem);
     font-weight: 500;
     letter-spacing: 0.2em;
@@ -446,7 +446,7 @@ main {
 }
 
 .cs-featured-left h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     font-weight: 500;
     line-height: 1.2;
@@ -471,7 +471,7 @@ main {
 }
 
 .cs-featured-quote {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     font-style: italic;
     font-weight: 400;
@@ -613,7 +613,7 @@ main {
     margin-bottom: 0.5rem;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 500;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
 }
 
 .card-image .card-meta {
@@ -769,7 +769,7 @@ main {
 /* ========== PULL QUOTES ========== */
 .pull-quote,
 .page-quote {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: clamp(1.4rem, 2.5vw, 1.85rem);
     font-weight: 300;
@@ -970,7 +970,7 @@ main {
 }
 
 .logo-panel-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1rem;
     color: var(--accent);
     margin-bottom: 2.5rem;
@@ -1200,7 +1200,7 @@ footer a {
 }
 
 .wm-accordion-header h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.35rem;
     font-weight: 500;
     margin: 0;
@@ -1287,7 +1287,7 @@ footer a {
 }
 
 .editorial-item-content h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(1.3rem, 2.5vw, 1.75rem);
     font-weight: 500;
     margin: 0 0 0.5rem 0;
@@ -1365,7 +1365,7 @@ footer a {
 }
 
 .writing-item h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.25rem;
     font-weight: 500;
     margin: 0;
