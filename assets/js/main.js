@@ -23,6 +23,8 @@ const pageTitles = {
     'contact': 'Contact — Veda Vajpeyi'
 };
 
+let currentPage = 'home';
+
 function navigate(page) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(p => p.classList.remove('active'));
@@ -34,7 +36,9 @@ function navigate(page) {
         document.title = pageTitles[page] || pageTitles['home'];
         updateNavLinks(page);
         document.getElementById('nav').classList.remove('mobile-open');
+        currentPage = page || 'home';
         window.scrollTo(0, 0);
+        updateScrollNav();
         triggerScrollAnimations();
     }
 }
@@ -69,7 +73,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 function updateScrollNav() {
     const nav = document.getElementById('nav');
-    if (window.scrollY > 100) {
+    if (currentPage !== 'home' || window.scrollY > 100) {
         nav.classList.add('scrolled');
     } else {
         nav.classList.remove('scrolled');
