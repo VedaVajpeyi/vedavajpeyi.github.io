@@ -1129,6 +1129,46 @@ footer a {
     font-size: var(--text-body);
 }
 
+.contact-card .contact-desc {
+    font-size: var(--text-caption);
+    color: var(--muted);
+    margin-top: 0.35rem;
+}
+
+/* ========== CONTACT PAGE — REACH OUT ========== */
+.contact-reach-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 3rem 0 1rem;
+}
+
+.contact-reasons {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem;
+}
+
+.contact-reasons li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-body);
+    color: var(--text);
+}
+
+.contact-reasons li:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.contact-closing {
+    font-size: var(--text-caption);
+    color: var(--muted);
+    line-height: var(--leading-body);
+    max-width: 540px;
+}
+
 /* ========== WRITING PAGE INTRO ========== */
 .page-intro {
     font-weight: var(--weight-regular);
