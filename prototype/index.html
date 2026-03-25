@@ -190,7 +190,13 @@ nav[data-t="light"] {
    REVEAL ANIMATIONS
 ═══════════════════════════════════════════════════════ */
 /* Line-wipe — hero headline only */
-.lw { display: block; overflow: hidden; }
+.lw {
+  display: block;
+  overflow: hidden;
+  /* Extra bottom room for descenders (g, y, p) — without this scrollH > clientH by ~11px */
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
 .lw-inner {
   display: block;
   transform: translateY(110%);
@@ -937,7 +943,7 @@ footer {
 /* Rotating text — JS-driven, glitch-free */
 .footer-rotating {
   overflow: hidden;
-  height: 1.05em;
+  height: 1.35em; /* sized to fully contain descenders at all clamp() sizes */
   margin-bottom: 5rem;
   font-family: var(--serif);
   font-size: clamp(2.5rem, 6.5vw, 6rem);
