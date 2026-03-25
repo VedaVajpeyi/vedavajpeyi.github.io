@@ -869,7 +869,6 @@ main {
     padding-left: 2.5rem;
     padding-bottom: 1.75rem;
     margin-bottom: 0;
-    border-left: 1px solid var(--border);
     position: relative;
 }
 
@@ -877,6 +876,7 @@ main {
     padding-bottom: 0;
 }
 
+/* Dot — centered at left:0 (padding edge) */
 .timeline-item::before {
     content: '';
     position: absolute;
@@ -886,6 +886,17 @@ main {
     height: 10px;
     border-radius: 50%;
     background-color: var(--accent);
+}
+
+/* Line — starts at dot bottom, ends exactly at next dot top */
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    bottom: -5px;
+    width: 1px;
+    background-color: var(--border);
 }
 
 .timeline-title {
