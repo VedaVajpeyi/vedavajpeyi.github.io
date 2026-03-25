@@ -209,7 +209,7 @@ nav .nav-links a.active {
     width: 24px;
     height: 2px;
     background-color: white;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* ========== HERO SECTION ========== */
@@ -318,7 +318,7 @@ nav .nav-links a.active {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -354,7 +354,7 @@ nav .nav-links a.active {
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    animation: bounce 2s infinite;
+    animation: bounce 2s ease-in-out infinite;
 }
 
 .scroll-indicator svg {
@@ -394,7 +394,7 @@ main {
 
 .page {
     display: none;
-    animation: fadeInUp 0.5s ease-in-out;
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .page.active {
@@ -459,12 +459,13 @@ main {
     border: 1px solid var(--border);
     border-top: 3px solid var(--accent);
     cursor: pointer;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     margin-bottom: 2rem;
 }
 
 .cs-featured:hover {
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
 }
 
 .cs-featured-left {
@@ -626,9 +627,6 @@ main {
     z-index: 1;
 }
 
-.card-image:hover::before {
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%);
-}
 
 .card-image:hover {
     transform: translateY(-3px);
@@ -850,6 +848,7 @@ main {
     object-fit: cover;
     border-radius: 4px;
     transition: transform 0.4s ease;
+    cursor: pointer;
 }
 
 .project-gallery img:hover {
@@ -1107,7 +1106,7 @@ footer a {
     border: 1px solid var(--border);
     border-radius: 2px;
     margin-bottom: 1rem;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     border-left: 3px solid var(--accent);
 }
 
@@ -1297,7 +1296,7 @@ footer a {
     padding: 2rem 0;
     border-bottom: 1px solid var(--border);
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
 }
 
@@ -1364,7 +1363,7 @@ footer a {
     display: inline-block;
     font-size: 1.1rem;
     color: var(--muted);
-    transition: all 0.3s ease;
+    transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
     margin-left: 0.5rem;
     opacity: 0;
     transform: translateX(-8px);
@@ -1385,7 +1384,7 @@ footer a {
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--border);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: padding 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .writing-item .item-desc {
@@ -1695,15 +1694,9 @@ footer a {
 @media (hover: none) {
     .nav-button:active,
     .back-link:active,
-    .view-all-link:active {
-        opacity: 0.65;
-    }
-
+    .view-all-link:active,
     .card:active,
-    .card-image:active {
-        opacity: 0.85;
-    }
-
+    .card-image:active,
     .writing-item:active,
     .editorial-item:active {
         opacity: 0.75;
