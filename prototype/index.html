@@ -206,18 +206,17 @@ nav[data-t="light"] {
 .lw-inner.d2 { transition-delay: 0.30s; }
 body.ready .lw-inner { transform: translateY(0); }
 
-/* Fade-up + blur-clear — scroll reveals */
+/* Fade-up — scroll reveals (no filter:blur — bleeds outside bounds and creates artifacts) */
 .fu {
   opacity: 0;
-  transform: translateY(28px);
-  filter: blur(6px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
+  transform: translateY(26px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
 }
 .fu.d1 { transition-delay: 0.10s; }
 .fu.d2 { transition-delay: 0.20s; }
 .fu.d3 { transition-delay: 0.30s; }
 .fu.d4 { transition-delay: 0.40s; }
-.fu.in  { opacity: 1; transform: none; filter: blur(0px); }
+.fu.in  { opacity: 1; transform: none; }
 
 /* Wipe-up — image placeholder reveal */
 .wu { overflow: hidden; }
@@ -1006,7 +1005,8 @@ footer {
 ═══════════════════════════════════════════════════════ */
 .spy {
   position: fixed;
-  right: 2rem;
+  /* Use left instead of right — avoids CSS over-constraint that pins element to left:0 */
+  left: calc(100vw - 2rem - 5px);
   top: 50%;
   transform: translateY(-50%);
   z-index: 400;
