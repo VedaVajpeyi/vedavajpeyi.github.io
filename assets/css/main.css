@@ -862,18 +862,30 @@ main {
 
 /* ========== TIMELINE ========== */
 .timeline {
-    margin: 2rem 0;
+    margin: 3rem 0;
 }
 
 .timeline-item {
-    padding: 2rem 0;
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--border);
+    padding-left: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-left: 1px solid var(--border);
     position: relative;
 }
 
-.timeline-item:first-child {
-    border-top: 1px solid var(--border);
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--bg);
+    border: 2px solid var(--accent);
+}
+
+.timeline-item:last-child {
+    border-left: 1px solid transparent;
 }
 
 .timeline-title {
