@@ -1142,6 +1142,7 @@ footer a {
 .section-header h2 {
     margin: 0;
     font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
 }
 
 .section-header .section-link {
