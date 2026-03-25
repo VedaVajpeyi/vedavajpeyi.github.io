@@ -401,6 +401,11 @@ main {
     display: block;
 }
 
+/* Compensate for removed back buttons — restore breathing room above page titles */
+.page > .container-wide {
+    padding-top: 7rem;
+}
+
 .container {
     max-width: 60ch;
     margin: 0 auto;
@@ -1702,6 +1707,10 @@ footer a {
     .container,
     .container-wide {
         padding: 2rem 1.25rem;
+    }
+
+    .page > .container-wide {
+        padding-top: 4rem;
     }
 
     h1 {
