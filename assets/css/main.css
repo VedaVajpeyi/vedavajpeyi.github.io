@@ -1235,6 +1235,53 @@ footer a {
     color: #fff;
 }
 
+/* ========== WORK WITH ME — SERVICE HIERARCHY ========== */
+.wm-section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 3rem 0 0;
+}
+
+.service-list {
+    margin-top: 1rem;
+}
+
+.service-list-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: padding 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-list-item:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.service-list-item:hover {
+    padding-left: 0.75rem;
+}
+
+.service-list-item h3 {
+    font-size: var(--text-body);
+    font-weight: var(--weight-medium);
+    margin: 0 0 0.35rem;
+}
+
+.service-list-item .service-desc {
+    font-size: var(--text-caption);
+    color: var(--muted);
+    line-height: var(--leading-body);
+    max-width: 500px;
+    margin: 0;
+}
+
 /* ========== WORK WITH ME SPLIT LAYOUT ========== */
 .wm-split {
     display: grid;
