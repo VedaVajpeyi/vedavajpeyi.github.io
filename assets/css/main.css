@@ -1470,6 +1470,24 @@ footer a {
 }
 
 /* ========== WRITING LIST ========== */
+.writing-item:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.writing-item--featured {
+    padding: 2.5rem 0;
+}
+
+.writing-item--featured h3 {
+    font-size: 1.625rem;
+    font-weight: 600;
+}
+
+.writing-item--featured .item-desc {
+    font-size: var(--text-body);
+    max-width: 560px;
+}
+
 .writing-item {
     display: flex;
     justify-content: space-between;
