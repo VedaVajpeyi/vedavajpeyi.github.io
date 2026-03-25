@@ -881,7 +881,7 @@ main {
     content: '';
     position: absolute;
     left: -5px;
-    top: 2px;
+    top: 5px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
