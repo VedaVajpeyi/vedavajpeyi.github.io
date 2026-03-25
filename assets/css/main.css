@@ -1129,6 +1129,58 @@ footer a {
     font-size: var(--text-body);
 }
 
+.contact-card .contact-desc {
+    font-size: var(--text-caption);
+    color: var(--muted);
+    margin-top: 0.4rem;
+}
+
+/* ========== CONTACT PAGE — LAYOUT + REACH OUT BLOCK ========== */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-bottom: 4rem;
+}
+
+.contact-layout .page-subtitle {
+    margin-bottom: 0;
+}
+.contact-section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.contact-reasons {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem 0;
+}
+
+.contact-reasons li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-body);
+    color: var(--text);
+}
+
+.contact-reasons li:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.contact-note {
+    margin-top: 3rem;
+    font-size: var(--text-caption);
+    color: var(--muted);
+    max-width: 520px;
+    line-height: var(--leading-body);
+}
+
 /* ========== WRITING PAGE INTRO ========== */
 .page-intro {
     font-weight: var(--weight-regular);
@@ -1619,6 +1671,11 @@ footer a {
 
     .hero-transition {
         height: 3rem;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .contact-card {
