@@ -811,6 +811,10 @@ main {
     margin: 4rem 0;
 }
 
+.about-hero h2 {
+    font-weight: 900;
+}
+
 .about-hero-image {
     border-radius: 4px;
     overflow: hidden;
@@ -1189,7 +1193,7 @@ footer a {
 .wm-left h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-weight: 900;
     line-height: 1.15;
     margin: 0 0 1.5rem;
 }
