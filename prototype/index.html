@@ -34,7 +34,7 @@
    RESET
 ═══════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; } /* Lenis handles smoothing */
 body {
   font-family: var(--sans);
   background: var(--dark);
@@ -200,17 +200,18 @@ nav[data-t="light"] {
 .lw-inner.d2 { transition-delay: 0.30s; }
 body.ready .lw-inner { transform: translateY(0); }
 
-/* Fade-up — general scroll reveals */
+/* Fade-up + blur-clear — scroll reveals */
 .fu {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
 }
-.fu.d1 { transition-delay: 0.12s; }
-.fu.d2 { transition-delay: 0.24s; }
-.fu.d3 { transition-delay: 0.36s; }
-.fu.d4 { transition-delay: 0.48s; }
-.fu.in  { opacity: 1; transform: none; }
+.fu.d1 { transition-delay: 0.10s; }
+.fu.d2 { transition-delay: 0.20s; }
+.fu.d3 { transition-delay: 0.30s; }
+.fu.d4 { transition-delay: 0.40s; }
+.fu.in  { opacity: 1; transform: none; filter: blur(0px); }
 
 /* Wipe-up — image placeholder reveal */
 .wu { overflow: hidden; }
@@ -1077,6 +1078,8 @@ footer {
 }
 
   </style>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 </head>
 <body>
 
@@ -1545,6 +1548,34 @@ footer {
 
 <script>
 /* ─────────────────────────────────────────────────────
+   LENIS SMOOTH SCROLL
+───────────────────────────────────────────────────── */
+const lenis = new Lenis({
+  lerp: 0.085,           // inertia weight — lower = more butter
+  smoothWheel: true,
+  wheelMultiplier: 1.0,
+  touchMultiplier: 1.8,
+  infinite: false,
+});
+
+// Pipe Lenis into rAF loop (also used by preloader below)
+let lenisRafId;
+function lenisRaf(time) {
+  lenis.raf(time);
+  lenisRafId = requestAnimationFrame(lenisRaf);
+}
+requestAnimationFrame(lenisRaf);
+
+// Smooth anchor-link scrolling
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -62, duration: 1.4 }); }
+  });
+});
+
+/* ─────────────────────────────────────────────────────
    PRELOADER — smooth eased count to 100
 ───────────────────────────────────────────────────── */
 const preloader = document.getElementById('preloader');
@@ -1600,8 +1631,8 @@ document.querySelectorAll(hoverEls).forEach(el => {
 const nav = document.getElementById('nav');
 const lightSections = ['about', 'project', 'services'];
 
-function updateNav() {
-  const y = window.scrollY + 80;
+function updateNav(scrollY) {
+  const y = (scrollY !== undefined ? scrollY : window.scrollY) + 80;
   let isLight = false;
   lightSections.forEach(id => {
     const el = document.getElementById(id);
@@ -1609,12 +1640,12 @@ function updateNav() {
     if (y >= el.offsetTop && y < el.offsetTop + el.offsetHeight) isLight = true;
   });
   nav.setAttribute('data-t', isLight ? 'light' : 'dark');
-  // cursor color
   const wasLarge = cursor.classList.contains('large');
   cursor.className = 'cursor' + (isLight ? ' on-light' : '');
   if (wasLarge) cursor.classList.add('large');
 }
-window.addEventListener('scroll', updateNav, { passive: true });
+// Use Lenis scroll event for accurate smooth position
+lenis.on('scroll', ({ scroll }) => { updateNav(scroll); updateSpyPos(scroll); });
 updateNav();
 
 /* ─────────────────────────────────────────────────────
@@ -1628,7 +1659,9 @@ function initReveal() {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.04, rootMargin: '0px 0px 40px 0px' });
+  // positive rootMargin fires reveal 40px BEFORE element enters viewport
+  // threshold 0.04 = trigger when just 4% visible (handles tall elements)
 
   document.querySelectorAll('.fu, .wu').forEach(el => obs.observe(el));
 }
@@ -1694,27 +1727,25 @@ function initReveal() {
   const dots = Array.from(spy.querySelectorAll('.spy-dot'));
   const sectionIds = dots.map(d => d.dataset.target);
 
-  function updateSpy() {
-    const y = window.scrollY + window.innerHeight * 0.5;
-    // show after scrolling past hero
-    if (window.scrollY > 200) spy.classList.add('visible');
+  // Called by lenis.on('scroll') above
+  window.updateSpyPos = function(scrollY) {
+    const y = (scrollY !== undefined ? scrollY : window.scrollY) + window.innerHeight * 0.5;
+    if ((scrollY !== undefined ? scrollY : window.scrollY) > 200) spy.classList.add('visible');
     else spy.classList.remove('visible');
-
     let active = sectionIds[0];
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
       if (el && y >= el.offsetTop) active = id;
     });
     dots.forEach(d => d.classList.toggle('active', d.dataset.target === active));
-  }
-  window.addEventListener('scroll', updateSpy, { passive: true });
-  updateSpy();
+  };
+  window.updateSpyPos();
 
-  // click to jump
+  // click to jump via Lenis
   dots.forEach(d => {
     d.addEventListener('click', () => {
       const el = document.getElementById(d.dataset.target);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) lenis.scrollTo(el, { offset: -62, duration: 1.4 });
     });
   });
 })();
