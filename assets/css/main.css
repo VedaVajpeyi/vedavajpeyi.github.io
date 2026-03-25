@@ -1135,38 +1135,45 @@ footer a {
     margin-top: 0.35rem;
 }
 
-/* ========== CONTACT PAGE — REACH OUT ========== */
-.contact-reach-label {
+/* ========== CONTACT PAGE — EDITORIAL ROWS ========== */
+.contact-rows {
+    margin: 0 0 3rem;
+}
+
+.contact-row {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-rows .contact-row:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.contact-row .contact-label {
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
-    margin: 3rem 0 1rem;
+    margin-bottom: 0.4rem;
 }
 
-.contact-reasons {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 3rem;
-}
-
-.contact-reasons li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
+.contact-row .contact-value a {
+    font-weight: var(--weight-medium);
     font-size: var(--text-body);
-    color: var(--text);
 }
 
-.contact-reasons li:first-child {
-    border-top: 1px solid var(--border);
+.contact-row .contact-desc {
+    font-size: var(--text-caption);
+    color: var(--muted);
+    margin-top: 0.35rem;
 }
 
 .contact-closing {
     font-size: var(--text-caption);
     color: var(--muted);
     line-height: var(--leading-body);
-    max-width: 540px;
+    max-width: 560px;
 }
 
 /* ========== WRITING PAGE INTRO ========== */
