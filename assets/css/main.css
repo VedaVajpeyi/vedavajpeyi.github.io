@@ -867,7 +867,7 @@ main {
 
 .timeline-item {
     padding-left: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
     margin-bottom: 0;
     border-left: 1px solid var(--border);
     position: relative;
@@ -880,10 +880,10 @@ main {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -3px;
+    left: -5px;
     top: 2px;
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: var(--accent);
 }
