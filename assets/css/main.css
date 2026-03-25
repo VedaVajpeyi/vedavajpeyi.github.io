@@ -337,6 +337,13 @@ nav .nav-links a.active {
     color: var(--accent-hover);
 }
 
+/* ========== FOCUS VISIBLE (accessibility) ========== */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
 .external-link::after {
     content: ' ↗' !important;
 }
@@ -1260,7 +1267,7 @@ footer a {
 }
 
 .wm-accordion-item.open .wm-accordion-body {
-    max-height: 300px;
+    max-height: 600px;
     padding-bottom: 1.5rem;
 }
 
@@ -1670,5 +1677,35 @@ footer a {
 
     .credibility-strip span:not(:last-child)::after {
         right: -0.75rem;
+    }
+
+    /* Tap targets — minimum 44px height on interactive elements */
+    .nav-button,
+    .back-link,
+    .view-all-link {
+        min-height: 44px;
+    }
+
+    nav.mobile-open .nav-links a {
+        padding: 0.625rem 0;
+    }
+}
+
+/* Touch-only: active state feedback (no hover on these devices) */
+@media (hover: none) {
+    .nav-button:active,
+    .back-link:active,
+    .view-all-link:active {
+        opacity: 0.65;
+    }
+
+    .card:active,
+    .card-image:active {
+        opacity: 0.85;
+    }
+
+    .writing-item:active,
+    .editorial-item:active {
+        opacity: 0.75;
     }
 }
