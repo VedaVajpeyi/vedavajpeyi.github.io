@@ -403,7 +403,7 @@ main {
 
 /* Compensate for removed back buttons — restore breathing room above page titles */
 .page > .container-wide {
-    padding-top: 7rem;
+    padding-top: 9rem;
 }
 
 .container {
@@ -1710,7 +1710,7 @@ footer a {
     }
 
     .page > .container-wide {
-        padding-top: 4rem;
+        padding-top: 5rem;
     }
 
     h1 {
