@@ -1,5 +1,4 @@
 :root {
-    /* ── COLOUR ── */
     --bg: #f9f8f6;
     --surface: #ffffff;
     --text: #1a1a1a;
@@ -8,34 +7,9 @@
     --accent-hover: #9a7049;
     --accent-soft: rgba(181,134,90,0.10);
     --border: #e6e2dc;
+    /* Amber hero */
     --hero-bg: #a07347;
     --hero-text: #ffffff;
-
-    /* ── TYPE SCALE ── */
-    --text-xs:      0.6875rem;  /* 11px – credibility strip              */
-    --text-sm:      0.75rem;    /* 12px – card-meta, labels, tags         */
-    --text-ui:      0.8125rem;  /* 13px – nav links, card-link, UI text   */
-    --text-caption: 0.875rem;   /* 14px – descriptions, secondary text    */
-    --text-body:    1rem;       /* 16px – body copy                       */
-    --text-lead:    1.125rem;   /* 18px – lead paragraphs, featured text  */
-    --text-title:   1.375rem;   /* 22px – card titles, accordion headers  */
-    --text-callout: 1.75rem;    /* 28px – callout / section headings      */
-
-    /* ── WEIGHTS ── */
-    --weight-regular:  400;
-    --weight-medium:   500;
-    --weight-semibold: 600;
-    --weight-bold:     700;
-    --weight-black:    900;
-
-    /* ── LINE HEIGHTS ── */
-    --leading-tight:   1.1;
-    --leading-heading: 1.25;
-    --leading-body:    1.75;
-
-    /* ── LETTER SPACING ── */
-    --tracking-tight:  -0.03em;
-    --tracking-caps:   0.1em;
 }
 
 /* Spacing scale: 1rem, 2rem, 3rem, 4rem, 6rem, 8rem */
@@ -54,41 +28,41 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    line-height: var(--leading-body);
-    font-size: var(--text-body);
-    font-weight: var(--weight-regular);
+    line-height: 1.7;
+    font-size: 16px;
 }
 
 /* ========== TYPOGRAPHY ========== */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    line-height: var(--leading-heading);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.2;
     letter-spacing: -0.02em;
 }
 
 h1 {
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: var(--weight-black);
-    letter-spacing: var(--tracking-tight);
-    line-height: var(--leading-tight);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
     margin-bottom: 2rem;
 }
 
 h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: var(--weight-semibold);
+    font-weight: 400;
     margin: 2.5rem 0 1.5rem 0;
 }
 
 h3 {
-    font-size: var(--text-title);
-    font-weight: var(--weight-medium);
+    font-size: 1.5rem;
+    font-weight: 500;
     margin: 1.5rem 0 1rem 0;
 }
 
 p {
     margin-bottom: 1.25rem;
-    line-height: var(--leading-body);
+    line-height: 1.75;
 }
 
 a {
@@ -209,7 +183,7 @@ nav .nav-links a.active {
     width: 24px;
     height: 2px;
     background-color: white;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 /* ========== HERO SECTION ========== */
@@ -246,7 +220,7 @@ nav .nav-links a.active {
 }
 
 .hero .hero-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(0.85rem, 1.2vw, 1rem);
     font-weight: 500;
     letter-spacing: 0.2em;
@@ -259,7 +233,7 @@ nav .nav-links a.active {
 .hero .hero-headline {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4.5vw, 3.8rem);
-    font-weight: 900;
+    font-weight: 700;
     color: white;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -312,13 +286,13 @@ nav .nav-links a.active {
 
 .nav-button {
     color: var(--accent);
-    font-weight: var(--weight-medium);
-    font-size: var(--text-ui);
+    font-weight: 500;
+    font-size: 0.95rem;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -337,13 +311,6 @@ nav .nav-links a.active {
     color: var(--accent-hover);
 }
 
-/* ========== FOCUS VISIBLE (accessibility) ========== */
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 2px;
-}
-
 .external-link::after {
     content: ' ↗' !important;
 }
@@ -354,7 +321,7 @@ nav .nav-links a.active {
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    animation: bounce 2s ease-in-out infinite;
+    animation: bounce 2s infinite;
 }
 
 .scroll-indicator svg {
@@ -394,16 +361,11 @@ main {
 
 .page {
     display: none;
-    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fadeInUp 0.5s ease-in-out;
 }
 
 .page.active {
     display: block;
-}
-
-/* Compensate for removed back buttons — restore breathing room above page titles */
-.page > .container-wide {
-    padding-top: 9rem;
 }
 
 .container {
@@ -464,13 +426,12 @@ main {
     border: 1px solid var(--border);
     border-top: 3px solid var(--accent);
     cursor: pointer;
-    transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: box-shadow 0.3s ease;
     margin-bottom: 2rem;
 }
 
 .cs-featured:hover {
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    transform: translateY(-2px);
 }
 
 .cs-featured-left {
@@ -485,7 +446,7 @@ main {
 }
 
 .cs-featured-left h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     font-weight: 500;
     line-height: 1.2;
@@ -510,21 +471,21 @@ main {
 }
 
 .cs-featured-quote {
-    font-family: 'Playfair Display', serif;
-    font-size: var(--text-lead);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
     font-style: italic;
-    font-weight: var(--weight-regular);
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.55;
     color: var(--text);
     padding-left: 1.25rem;
     border-left: 3px solid var(--accent);
 }
 
 .cs-featured-right .card-description {
-    font-size: var(--text-caption);
+    font-size: 0.88rem;
     color: var(--muted);
-    line-height: var(--leading-body);
-    font-weight: var(--weight-regular);
+    line-height: 1.6;
+    font-weight: 300;
 }
 
 .cs-featured-right .card-link {
@@ -580,9 +541,9 @@ main {
 .card-description {
     color: var(--muted);
     margin-bottom: 1.25rem;
-    font-size: var(--text-caption);
-    font-weight: var(--weight-regular);
-    line-height: var(--leading-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 .card-link {
@@ -632,6 +593,9 @@ main {
     z-index: 1;
 }
 
+.card-image:hover::before {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%);
+}
 
 .card-image:hover {
     transform: translateY(-3px);
@@ -649,25 +613,25 @@ main {
     margin-bottom: 0.5rem;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 500;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .card-image .card-meta {
     color: rgba(255,255,255,0.75);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-regular);
+    font-size: 0.85rem;
+    font-weight: 300;
     margin-bottom: 0.75rem;
 }
 
 .card-image .card-description {
     color: rgba(255,255,255,0.85);
-    font-weight: var(--weight-regular);
+    font-weight: 300;
     margin-bottom: 1rem;
 }
 
 .card-image .card-link {
     color: var(--accent);
-    font-weight: var(--weight-medium);
+    font-weight: 600;
 }
 
 .card-featured {
@@ -755,7 +719,7 @@ main {
 
 .case-hero-content .page-meta {
     color: rgba(255,255,255,0.75);
-    font-weight: var(--weight-regular);
+    font-weight: 300;
 }
 
 .case-hero .tags {
@@ -771,7 +735,7 @@ main {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin: 2rem 0 2.5rem;
+    margin: 2rem 0 0.5rem;
 }
 
 .stat-card {
@@ -805,10 +769,10 @@ main {
 /* ========== PULL QUOTES ========== */
 .pull-quote,
 .page-quote {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-    font-weight: var(--weight-regular);
+    font-weight: 300;
     color: var(--accent);
     border-left: 3px solid var(--accent);
     padding-left: 2rem;
@@ -819,10 +783,6 @@ main {
 /* ========== ABOUT SECTION ========== */
 .about-hero {
     margin: 4rem 0;
-}
-
-.about-hero h2 {
-    font-weight: 900;
 }
 
 .about-hero-image {
@@ -853,7 +813,6 @@ main {
     object-fit: cover;
     border-radius: 4px;
     transition: transform 0.4s ease;
-    cursor: pointer;
 }
 
 .project-gallery img:hover {
@@ -872,57 +831,47 @@ main {
 
 .timeline-item {
     padding-left: 2.5rem;
-    padding-bottom: 1.75rem;
-    margin-bottom: 0;
+    margin-bottom: 3rem;
+    border-left: 2px solid var(--border);
+    padding-bottom: 2rem;
     position: relative;
 }
 
-.timeline-item:last-child {
-    padding-bottom: 0;
-}
-
-/* Dot — centered at left:0 (padding edge) */
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -5px;
-    top: 5px;
-    width: 10px;
-    height: 10px;
+    left: -8px;
+    top: 0;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: var(--accent);
+    border: 3px solid white;
 }
 
-/* Line — starts at dot bottom, ends exactly at next dot top */
-.timeline-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 15px;
-    bottom: -5px;
-    width: 1px;
-    background-color: var(--border);
+.timeline-item:last-child {
+    border-left: 2px solid transparent;
 }
 
 .timeline-title {
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-body);
+    font-weight: 600;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
     color: var(--text);
 }
 
 .timeline-meta {
     color: var(--muted);
-    font-size: var(--text-caption);
+    font-size: 0.85rem;
     margin-bottom: 0.75rem;
-    font-weight: var(--weight-regular);
+    font-weight: 300;
 }
 
 .timeline-description {
     color: var(--muted);
-    font-size: var(--text-caption);
-    font-weight: var(--weight-regular);
-    line-height: var(--leading-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 /* ========== BACK LINK ========== */
@@ -969,12 +918,12 @@ main {
 
 .newsletter-cta h3 {
     color: var(--text);
-    font-size: var(--text-callout);
+    font-size: 1.75rem;
 }
 
 .newsletter-cta p {
     color: var(--muted);
-    font-weight: var(--weight-regular);
+    font-weight: 300;
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -1021,13 +970,13 @@ main {
 }
 
 .logo-panel-title {
-    font-family: 'Playfair Display', serif;
-    font-size: var(--text-body);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
     color: var(--accent);
     margin-bottom: 2.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-weight: var(--weight-regular);
+    letter-spacing: 2px;
+    font-weight: 400;
 }
 
 .logo-panel-logos {
@@ -1036,9 +985,9 @@ main {
     align-items: center;
     flex-wrap: wrap;
     gap: 3rem;
-    font-weight: var(--weight-regular);
+    font-weight: 300;
     color: var(--muted);
-    font-size: var(--text-body);
+    font-size: 1rem;
     line-height: 1.8;
 }
 
@@ -1047,8 +996,8 @@ footer {
     text-align: center;
     padding: 4rem 2rem;
     color: var(--muted);
-    font-size: var(--text-caption);
-    font-weight: var(--weight-regular);
+    font-size: 0.9rem;
+    font-weight: 300;
     background-color: var(--bg);
     border-top: 1px solid var(--border);
     margin-top: 5rem;
@@ -1099,9 +1048,7 @@ footer a {
 /* ========== PAGE SUBTITLE ========== */
 .page-subtitle {
     color: var(--muted);
-    font-weight: var(--weight-regular);
-    font-size: var(--text-lead);
-    line-height: var(--leading-body);
+    font-weight: 300;
     margin-bottom: 3rem;
 }
 
@@ -1121,7 +1068,7 @@ footer a {
     border: 1px solid var(--border);
     border-radius: 2px;
     margin-bottom: 1rem;
-    transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
     border-left: 3px solid var(--accent);
 }
 
@@ -1140,63 +1087,16 @@ footer a {
 }
 
 .contact-card .contact-value a {
-    font-weight: var(--weight-medium);
-    font-size: var(--text-body);
-}
-
-.contact-card .contact-desc {
-    font-size: var(--text-caption);
-    color: var(--muted);
-    margin-top: 0.35rem;
-}
-
-/* ========== CONTACT PAGE — EDITORIAL ROWS ========== */
-.contact-rows {
-    margin: 0 0 3rem;
-}
-
-.contact-row {
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.contact-rows .contact-row:first-child {
-    border-top: 1px solid var(--border);
-}
-
-.contact-row .contact-label {
-    font-size: 0.75rem;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 0.4rem;
-}
-
-.contact-row .contact-value a {
-    font-weight: var(--weight-medium);
-    font-size: var(--text-lead);
-}
-
-.contact-row .contact-desc {
-    font-size: var(--text-caption);
-    color: var(--muted);
-    margin-top: 0.35rem;
-}
-
-.contact-closing {
-    font-size: var(--text-caption);
-    color: var(--muted);
-    line-height: var(--leading-body);
-    max-width: 560px;
+    font-size: 1.05rem;
 }
 
 /* ========== WRITING PAGE INTRO ========== */
 .page-intro {
-    font-weight: var(--weight-regular);
+    font-weight: 300;
     color: var(--muted);
-    font-size: var(--text-lead);
-    line-height: var(--leading-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
     margin-bottom: 3rem;
     max-width: 72ch;
 }
@@ -1214,7 +1114,6 @@ footer a {
 .section-header h2 {
     margin: 0;
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
 }
 
 .section-header .section-link {
@@ -1250,53 +1149,6 @@ footer a {
     color: #fff;
 }
 
-/* ========== WORK WITH ME — SERVICE HIERARCHY ========== */
-.wm-section-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin: 3rem 0 0;
-}
-
-.service-list {
-    margin-top: 1rem;
-}
-
-.service-list-item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 3rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    transition: padding 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.service-list-item:first-child {
-    border-top: 1px solid var(--border);
-}
-
-.service-list-item:hover {
-    padding-left: 0.75rem;
-}
-
-.service-list-item h3 {
-    font-size: var(--text-body);
-    font-weight: var(--weight-medium);
-    margin: 0 0 0.35rem;
-}
-
-.service-list-item .service-desc {
-    font-size: var(--text-caption);
-    color: var(--muted);
-    line-height: var(--leading-body);
-    max-width: 500px;
-    margin: 0;
-}
-
 /* ========== WORK WITH ME SPLIT LAYOUT ========== */
 .wm-split {
     display: grid;
@@ -1308,16 +1160,16 @@ footer a {
 .wm-left h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.15;
     margin: 0 0 1.5rem;
 }
 
 .wm-left p {
     color: var(--muted);
-    font-weight: var(--weight-regular);
-    font-size: var(--text-body);
-    line-height: var(--leading-body);
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.7;
     margin-bottom: 2rem;
 }
 
@@ -1348,15 +1200,15 @@ footer a {
 }
 
 .wm-accordion-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: var(--text-title);
-    font-weight: var(--weight-medium);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
     margin: 0;
 }
 
 .wm-accordion-icon {
-    font-size: var(--text-title);
-    font-weight: var(--weight-regular);
+    font-size: 1.4rem;
+    font-weight: 300;
     line-height: 1;
     transition: transform 0.3s ease;
     color: var(--muted);
@@ -1375,15 +1227,15 @@ footer a {
 }
 
 .wm-accordion-item.open .wm-accordion-body {
-    max-height: 600px;
+    max-height: 300px;
     padding-bottom: 1.5rem;
 }
 
 .wm-accordion-body p {
-    font-size: var(--text-caption);
+    font-size: 0.85rem;
     color: var(--muted);
-    line-height: var(--leading-body);
-    font-weight: var(--weight-regular);
+    line-height: 1.65;
+    font-weight: 300;
     margin: 0 0 0.75rem;
 }
 
@@ -1405,7 +1257,7 @@ footer a {
     padding: 2rem 0;
     border-bottom: 1px solid var(--border);
     cursor: pointer;
-    transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s ease;
     position: relative;
 }
 
@@ -1435,7 +1287,7 @@ footer a {
 }
 
 .editorial-item-content h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.3rem, 2.5vw, 1.75rem);
     font-weight: 500;
     margin: 0 0 0.5rem 0;
@@ -1448,9 +1300,9 @@ footer a {
 
 .editorial-item-content .item-desc {
     color: var(--muted);
-    font-size: var(--text-caption);
-    font-weight: var(--weight-regular);
-    line-height: var(--leading-body);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.6;
     max-width: 550px;
 }
 
@@ -1458,9 +1310,9 @@ footer a {
     text-align: right;
     white-space: nowrap;
     color: var(--muted);
-    font-size: var(--text-ui);
-    font-weight: var(--weight-regular);
-    line-height: var(--leading-body);
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 .editorial-item-meta .item-org {
@@ -1472,7 +1324,7 @@ footer a {
     display: inline-block;
     font-size: 1.1rem;
     color: var(--muted);
-    transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+    transition: all 0.3s ease;
     margin-left: 0.5rem;
     opacity: 0;
     transform: translateX(-8px);
@@ -1485,24 +1337,6 @@ footer a {
 }
 
 /* ========== WRITING LIST ========== */
-.writing-item:first-child {
-    border-top: 1px solid var(--border);
-}
-
-.writing-item--featured {
-    padding: 2.5rem 0;
-}
-
-.writing-item--featured h3 {
-    font-size: 1.625rem;
-    font-weight: 600;
-}
-
-.writing-item--featured .item-desc {
-    font-size: var(--text-body);
-    max-width: 560px;
-}
-
 .writing-item {
     display: flex;
     justify-content: space-between;
@@ -1511,15 +1345,15 @@ footer a {
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--border);
     cursor: pointer;
-    transition: padding 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
 }
 
 .writing-item .item-desc {
-    font-size: var(--text-caption);
+    font-size: 0.85rem;
     color: var(--muted);
     margin: 0.35rem 0 0;
-    line-height: var(--leading-body);
-    font-weight: var(--weight-regular);
+    line-height: 1.5;
+    font-weight: 300;
 }
 
 .section-header + .stagger-children .writing-item:first-child {
@@ -1531,7 +1365,7 @@ footer a {
 }
 
 .writing-item h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.25rem;
     font-weight: 500;
     margin: 0;
@@ -1709,10 +1543,6 @@ footer a {
         padding: 2rem 1.25rem;
     }
 
-    .page > .container-wide {
-        padding-top: 5rem;
-    }
-
     h1 {
         font-size: 2rem;
     }
@@ -1807,29 +1637,5 @@ footer a {
 
     .credibility-strip span:not(:last-child)::after {
         right: -0.75rem;
-    }
-
-    /* Tap targets — minimum 44px height on interactive elements */
-    .nav-button,
-    .back-link,
-    .view-all-link {
-        min-height: 44px;
-    }
-
-    nav.mobile-open .nav-links a {
-        padding: 0.625rem 0;
-    }
-}
-
-/* Touch-only: active state feedback (no hover on these devices) */
-@media (hover: none) {
-    .nav-button:active,
-    .back-link:active,
-    .view-all-link:active,
-    .card:active,
-    .card-image:active,
-    .writing-item:active,
-    .editorial-item:active {
-        opacity: 0.75;
     }
 }
