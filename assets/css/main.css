@@ -761,7 +761,7 @@ main {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin: 2rem 0 0.5rem;
+    margin: 2rem 0 2.5rem;
 }
 
 .stat-card {
