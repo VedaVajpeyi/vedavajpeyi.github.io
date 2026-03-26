@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Veda Vajpeyi</title>
+  <meta name="description" content="Get in touch with Veda Vajpeyi. Available for product strategy advising, career coaching, speaking, and MBA admissions consulting.">
+  <meta name="author" content="Veda Vajpeyi">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vedavajpeyi.com/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact — Veda Vajpeyi">
+  <meta property="og:description" content="Get in touch with Veda Vajpeyi. Available for product strategy advising, career coaching, speaking, and MBA admissions consulting.">
+  <meta property="og:url" content="https://vedavajpeyi.com/contact.html">
+  <meta property="og:site_name" content="Veda Vajpeyi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Veda Vajpeyi">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/design.css">
+  <style>
+    /* Contact-specific styles */
+    .contact-hero {
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: calc(var(--nav-h) + 6rem) 3.5rem 7rem;
+    }
+    .contact-hero-inner { max-width: 1180px; margin: 0 auto; width: 100%; }
+    .contact-display {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--text-d);
+      margin-bottom: 3rem;
+    }
+    .contact-display em { font-style: italic; color: var(--accent); }
+    .contact-sub {
+      font-size: 1rem;
+      color: var(--muted-d);
+      max-width: 480px;
+      line-height: 1.75;
+    }
+
+    /* Contact cards section */
+    .contact-cards-section {
+      background: var(--dark);
+      padding: 0 3.5rem 8rem;
+      border-top: 1px solid var(--border-d);
+    }
+    .contact-cards-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-top: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    .contact-col {}
+    .contact-col-label {
+      font-family: var(--mono);
+      font-size: 0.57rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-link-item {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-d);
+      text-decoration: none;
+      color: inherit;
+      transition: padding-left 0.4s var(--ease-out);
+    }
+    .contact-link-item:first-of-type { border-top: 1px solid var(--border-d); }
+    .contact-link-item:hover { padding-left: 1rem; }
+    .contact-link-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-d);
+      margin-bottom: 0.4rem;
+    }
+    .contact-link-value {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-d);
+      transition: color 0.3s;
+    }
+    .contact-link-item:hover .contact-link-value { color: var(--accent); }
+
+    .contact-services { margin-top: 0.5rem; }
+    .contact-service-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-d);
+      text-decoration: none;
+      transition: padding-left 0.4s var(--ease-out);
+    }
+    .contact-service-item:first-child { border-top: 1px solid var(--border-d); }
+    .contact-service-item:hover { padding-left: 1rem; }
+    .contact-service-name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-d);
+      transition: color 0.3s;
+    }
+    .contact-service-item:hover .contact-service-name { color: var(--accent); }
+    .contact-service-arrow {
+      font-size: 0.85rem;
+      color: var(--muted-d);
+      transition: color 0.3s, transform 0.3s;
+    }
+    .contact-service-item:hover .contact-service-arrow { color: var(--accent); transform: translateX(4px); }
+
+    .contact-note {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 3.5rem 8rem;
+      background: var(--dark);
+    }
+    .contact-note p {
+      font-size: 0.9rem;
+      color: var(--muted-d);
+      line-height: 1.85;
+      max-width: 520px;
+    }
+    .contact-note-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 960px) {
+      .contact-hero { padding: calc(var(--nav-h) + 3rem) 1.75rem 5rem; }
+      .contact-cards-section { padding: 0 1.75rem 6rem; }
+      .contact-cards-inner { grid-template-columns: 1fr; gap: 4rem; }
+      .contact-note { padding: 0 1.75rem 6rem; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-kicker">Navigation</div>
+  <a href="case-studies.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="writing.html">Writing</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav id="nav" data-t="dark">
+  <a href="index.html" class="nav-logo">Veda Vajpeyi</a>
+  <ul class="nav-links">
+    <li><a href="case-studies.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="work-with-me.html">Work With Me</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="contact-hero">
+  <div class="contact-hero-inner">
+    <h1 class="contact-display">Let's<br><em>Talk.</em></h1>
+    <p class="contact-sub">I'm always glad to connect — whether it's about a specific project, a question about something you read here, or just a conversation worth having.</p>
+  </div>
+</div>
+
+<!-- CONTACT LINKS + SERVICES -->
+<div class="contact-cards-section">
+  <div class="contact-cards-inner">
+    <div class="contact-col fu">
+      <div class="contact-col-label">Find me at</div>
+      <a href="mailto:vajpeyiveda@gmail.com" class="contact-link-item">
+        <div class="contact-link-label">Email</div>
+        <div class="contact-link-value">vajpeyiveda@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/vvajpeyi" target="_blank" rel="noopener" class="contact-link-item">
+        <div class="contact-link-label">LinkedIn</div>
+        <div class="contact-link-value">linkedin.com/in/vvajpeyi</div>
+      </a>
+    </div>
+    <div class="contact-col fu">
+      <div class="contact-col-label">What I can help with</div>
+      <div class="contact-services">
+        <a href="product-advising.html" class="contact-service-item">
+          <span class="contact-service-name">Product Strategy Advising</span>
+          <span class="contact-service-arrow">→</span>
+        </a>
+        <a href="career-coaching.html" class="contact-service-item">
+          <span class="contact-service-name">Career Coaching</span>
+          <span class="contact-service-arrow">→</span>
+        </a>
+        <a href="mba-positioning.html" class="contact-service-item">
+          <span class="contact-service-name">MBA Applications</span>
+          <span class="contact-service-arrow">→</span>
+        </a>
+        <a href="college-admissions.html" class="contact-service-item">
+          <span class="contact-service-name">College Admissions</span>
+          <span class="contact-service-arrow">→</span>
+        </a>
+        <a href="speaking.html" class="contact-service-item">
+          <span class="contact-service-name">Speaking &amp; Facilitation</span>
+          <span class="contact-service-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTE -->
+<div class="contact-note fu">
+  <div class="contact-note-label">What happens next</div>
+  <p>Send me an email with what you're thinking through. The more specific you can be about the problem, the more useful I can be. I respond to every thoughtful inquiry, usually within 48 hours.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-rotating" id="footer-rot">
+      <div class="rot-slide" id="rot-current">Product Strategy <em>·</em></div>
+      <div class="rot-slide" id="rot-next" style="transform:translateY(100%);opacity:0">Career Coaching <em>·</em></div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-name">Veda Vajpeyi</div>
+      <ul class="footer-nav">
+        <li><a href="case-studies.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="work-with-me.html">Work With Me</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-yr">© 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/page.js"></script>
+</body>
+</html>
