@@ -633,6 +633,12 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .list-item p { font-size: 0.87rem; color: var(--muted-d); line-height: 1.7; max-width: 560px; }
 .list-item-meta { font-family: var(--mono); font-size: 0.54rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-d); white-space: nowrap; padding-top: 0.35rem; text-align: right; line-height: 1.6; }
 
+/* Thumbnail in case study list items */
+.list-thumb { float: right; margin: 0 0 1rem 2rem; width: 180px; height: 120px; overflow: hidden; border-radius: 2px; flex-shrink: 0; }
+.list-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-out); filter: grayscale(20%); }
+.list-item:hover .list-thumb img { transform: scale(1.04); filter: grayscale(0%); }
+@media (max-width: 600px) { .list-thumb { display: none; } }
+
 /* Tags in list */
 .list-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem; }
 .list-tag { font-family: var(--mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(181,146,90,0.7); border: 1px solid rgba(181,146,90,0.2); padding: 0.15rem 0.5rem; border-radius: 1px; }
