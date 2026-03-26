@@ -13,17 +13,17 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/case-studies.html</loc>
+    <loc>https://vedavajpeyi.com/work/</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/writing.html</loc>
+    <loc>https://vedavajpeyi.com/writing/</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/work-with-me.html</loc>
+    <loc>https://vedavajpeyi.com/services/</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -35,83 +35,83 @@
 
   <!-- Case studies -->
   <url>
-    <loc>https://vedavajpeyi.com/case-study-1.html</loc>
+    <loc>https://vedavajpeyi.com/work/case-study-1.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/case-study-2.html</loc>
+    <loc>https://vedavajpeyi.com/work/case-study-2.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/case-study-3.html</loc>
+    <loc>https://vedavajpeyi.com/work/case-study-3.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/case-study-4.html</loc>
+    <loc>https://vedavajpeyi.com/work/case-study-4.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/case-study-5.html</loc>
+    <loc>https://vedavajpeyi.com/work/case-study-5.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
 
   <!-- Essays -->
   <url>
-    <loc>https://vedavajpeyi.com/essay-1.html</loc>
+    <loc>https://vedavajpeyi.com/writing/essay-1.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/essay-2.html</loc>
+    <loc>https://vedavajpeyi.com/writing/essay-2.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/essay-3.html</loc>
+    <loc>https://vedavajpeyi.com/writing/essay-3.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/essay-4.html</loc>
+    <loc>https://vedavajpeyi.com/writing/essay-4.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
 
   <!-- Service pages -->
   <url>
-    <loc>https://vedavajpeyi.com/product-advising.html</loc>
+    <loc>https://vedavajpeyi.com/services/product-advising.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/career-coaching.html</loc>
+    <loc>https://vedavajpeyi.com/services/career-coaching.html</loc>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/mba-positioning.html</loc>
+    <loc>https://vedavajpeyi.com/services/mba-positioning.html</loc>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/college-admissions.html</loc>
+    <loc>https://vedavajpeyi.com/services/college-admissions.html</loc>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://vedavajpeyi.com/speaking.html</loc>
+    <loc>https://vedavajpeyi.com/services/speaking.html</loc>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
   </url>
 
   <!-- Project -->
   <url>
-    <loc>https://vedavajpeyi.com/books-beds.html</loc>
+    <loc>https://vedavajpeyi.com/projects/books-beds.html</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
