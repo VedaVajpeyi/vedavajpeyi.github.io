@@ -6,7 +6,7 @@
   <title>Veda Vajpeyi — Product Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
 
 /* ═══════════════════════════════════════════════════════
@@ -26,8 +26,16 @@
   --border-l: rgba(0,0,0,0.10);
   --serif: 'Playfair Display', Georgia, serif;
   --sans:  'Inter', system-ui, sans-serif;
-  --ease:  cubic-bezier(0.16, 1, 0.3, 1);
+  --mono:  'Roboto Mono', 'Courier New', monospace;
+  --ease:  cubic-bezier(0.65, 0.05, 0.01, 0.9);   /* Ekwonye signature snap */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* gentle out, for hovers */
   --nav-h: 62px;
+  /* Per-case-study hover bg tones */
+  --ci-1: #1a0c04;   /* 01 Crisis GTM — burnt amber */
+  --ci-2: #04101a;   /* 02 Alexa metrics — deep navy */
+  --ci-3: #06140a;   /* 03 Discoverability — dark forest */
+  --ci-4: #110a1a;   /* 04 Voice trust — deep plum */
+  --ci-5: #1a1404;   /* 05 Enterprise GTM — dark bronze */
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -160,7 +168,7 @@ nav[data-t="light"] {
   position: absolute; left: 0; bottom: -3px;
   width: 0; height: 1px;
   background: var(--accent);
-  transition: width 0.3s var(--ease);
+  transition: width 0.4s var(--ease-out);
 }
 .nav-links a:hover { opacity: 1; }
 .nav-links a:hover::after { width: 100%; }
@@ -169,10 +177,11 @@ nav[data-t="light"] {
    SECTION CHROME
 ═══════════════════════════════════════════════════════ */
 .s-label {
+  font-family: var(--mono);
   font-size: 0.58rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -218,13 +227,14 @@ body.ready .lw-inner { transform: translateY(0); }
 .fu.d4 { transition-delay: 0.40s; }
 .fu.in  { opacity: 1; transform: none; }
 
-/* Wipe-up — image placeholder reveal */
+/* Wipe-up + descale — cinematic image reveal (Ekwonye-style) */
 .wu { overflow: hidden; }
 .wu .wp {
-  transform: translateY(100%);
-  transition: transform 1.1s var(--ease);
+  transform: translateY(100%) scale(1.12);
+  transition: transform 1.25s var(--ease);
+  transform-origin: center bottom;
 }
-.wu.in .wp { transform: translateY(0); }
+.wu.in .wp { transform: translateY(0) scale(1); }
 
 /* ═══════════════════════════════════════════════════════
    IMAGE PLACEHOLDERS
@@ -255,9 +265,10 @@ body.ready .lw-inner { transform: translateY(0); }
 .ph.lt { background: var(--light-2); border: 1px solid var(--border-l); }
 .ph-tag {
   position: relative; z-index: 1;
-  font-size: 0.58rem;
+  font-family: var(--mono);
+  font-size: 0.56rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 .ph.dk .ph-tag { color: var(--muted-d); }
 .ph.lt .ph-tag { color: var(--muted-l); }
@@ -280,9 +291,10 @@ body.ready .lw-inner { transform: translateY(0); }
   width: max-content;
 }
 .marquee-track span {
-  font-size: 0.62rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--muted-d);
 }
 .marquee-track .dot {
@@ -308,9 +320,10 @@ body.ready .lw-inner { transform: translateY(0); }
   position: relative;
 }
 .hero-kicker {
-  font-size: 0.62rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: var(--muted-d);
   margin-bottom: 2.5rem;
   opacity: 0;
@@ -441,9 +454,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
   display: block;
 }
 .astat-lbl {
-  font-size: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.56rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--muted-l);
   display: block;
   margin-top: 0.25rem;
@@ -469,7 +483,7 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 }
 .mti:first-child { border-top: 1px solid var(--border-l); }
 .mti-name { font-weight: 600; color: var(--text-l); }
-.mti-role { font-size: 0.7rem; color: var(--muted-l); text-align: right; max-width: 50%; }
+.mti-role { font-family: var(--mono); font-size: 0.62rem; color: var(--muted-l); text-align: right; max-width: 50%; letter-spacing: 0.04em; }
 
 /* ═══════════════════════════════════════════════════════
    CASE STUDIES
@@ -527,21 +541,23 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .ci-a .ci-content { padding-right: 4.5rem; }
 
 .ci-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.82rem;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.65rem;
   color: var(--accent);
   margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
 }
 .ci-tags {
   display: flex; gap: 0.5rem; flex-wrap: wrap;
   margin-bottom: 1.1rem;
 }
 .ci-tag {
-  font-size: 0.56rem;
+  font-family: var(--mono);
+  font-size: 0.54rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--accent);
   border: 1px solid rgba(181,146,90,0.28);
   padding: 0.2rem 0.65rem;
@@ -577,13 +593,14 @@ body.ready .hero-grid { opacity: 1; transform: none; }
   align-items: center;
   gap: 0.5rem;
   margin-top: 2rem;
-  font-size: 0.62rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--accent);
   opacity: 0;
   transform: translateX(-8px);
-  transition: opacity 0.3s, transform 0.4s var(--ease);
+  transition: opacity 0.35s var(--ease-out), transform 0.5s var(--ease-out);
 }
 .ci:hover .ci-link { opacity: 1; transform: none; }
 
@@ -591,7 +608,7 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .ci-img-wrap {
   width: 100%;
   aspect-ratio: 4/3;
-  transition: transform 0.6s var(--ease);
+  transition: transform 0.7s var(--ease-out);
 }
 .ci:hover .ci-img-wrap { transform: scale(1.015); }
 .ci-img-wrap .ph { height: 100%; }
@@ -697,9 +714,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .essay-feat-img { aspect-ratio: 16/10; }
 .essay-feat-img .ph { height: 100%; }
 .essay-feat-kicker {
-  font-size: 0.56rem;
+  font-family: var(--mono);
+  font-size: 0.54rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--accent);
   margin-bottom: 1.1rem;
 }
@@ -719,9 +737,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
   margin-bottom: 1.5rem;
 }
 .read-link {
-  font-size: 0.62rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--accent);
 }
 
@@ -737,6 +756,7 @@ body.ready .hero-grid { opacity: 1; transform: none; }
   cursor: none;
   transition: padding-left 0.4s var(--ease);
 }
+.ei { transition: padding-left 0.5s var(--ease-out); }
 .ei:hover { padding-left: 1.5rem; }
 .ei h3 {
   font-family: var(--serif);
@@ -753,9 +773,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
   line-height: 1.65;
 }
 .ei-tag {
-  font-size: 0.56rem;
+  font-family: var(--mono);
+  font-size: 0.54rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--muted-d);
   white-space: nowrap;
   padding-top: 0.25rem;
@@ -807,9 +828,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .srv:last-child { border-right: none; padding: 3rem 0 3rem 3.5rem; }
 .srv:hover { background: var(--light-2); }
 .srv-flag {
-  font-size: 0.56rem;
+  font-family: var(--mono);
+  font-size: 0.54rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--accent);
   margin-bottom: 1.5rem;
 }
@@ -842,9 +864,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .srv-s:last-child { border-right: none; }
 .srv-s:hover { background: var(--light-2); }
 .srv-s-flag {
+  font-family: var(--mono);
   font-size: 0.52rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--muted-l);
   margin-bottom: 0.75rem;
 }
@@ -906,9 +929,10 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 }
 .cm:first-child { border-top: 1px solid var(--border-d); }
 .cm-label {
-  font-size: 0.56rem;
+  font-family: var(--mono);
+  font-size: 0.54rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--muted-d);
   margin-bottom: 0.6rem;
 }
@@ -985,18 +1009,20 @@ footer {
   list-style: none;
 }
 .footer-nav a {
-  font-size: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--muted-d);
   transition: color 0.2s;
   cursor: none;
 }
 .footer-nav a:hover { color: var(--text-d); }
 .footer-yr {
-  font-size: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--muted-d);
 }
 
@@ -1082,6 +1108,15 @@ footer {
   .hero-h1 { font-size: clamp(3rem, 13vw, 4.5rem); }
   .spy { display: none; }
 }
+
+/* ── Hero character stagger ── */
+.hero-h1 .ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
 
   </style>
   <!-- Lenis smooth scroll -->
@@ -1260,7 +1295,7 @@ footer {
     <div class="s-label fu">02 · Selected Work</div>
 
     <!-- 01 -->
-    <div class="ci ci-a fu">
+    <div class="ci ci-a fu" data-ci="1">
       <div class="ci-content">
         <div class="ci-num">01</div>
         <div class="ci-tags">
@@ -1281,7 +1316,7 @@ footer {
     </div>
 
     <!-- 02 -->
-    <div class="ci ci-b fu d1">
+    <div class="ci ci-b fu d1" data-ci="2">
       <div class="ci-image">
         <div class="ci-img-wrap wu">
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
@@ -1301,7 +1336,7 @@ footer {
     </div>
 
     <!-- 03 -->
-    <div class="ci ci-a fu d2">
+    <div class="ci ci-a fu d2" data-ci="3">
       <div class="ci-content">
         <div class="ci-num">03</div>
         <div class="ci-tags">
@@ -1321,7 +1356,7 @@ footer {
     </div>
 
     <!-- 04 -->
-    <div class="ci ci-b fu d3">
+    <div class="ci ci-b fu d3" data-ci="4">
       <div class="ci-image">
         <div class="ci-img-wrap wu">
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
@@ -1341,7 +1376,7 @@ footer {
     </div>
 
     <!-- 05 -->
-    <div class="ci ci-a fu d4">
+    <div class="ci ci-a fu d4" data-ci="5">
       <div class="ci-content">
         <div class="ci-num">05</div>
         <div class="ci-tags">
@@ -1582,6 +1617,47 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ─────────────────────────────────────────────────────
+   HERO CHAR STAGGER — split lines into per-char spans
+   Each .lw-inner gets its chars wrapped; delay staggers
+   across chars and across lines.
+───────────────────────────────────────────────────── */
+(function() {
+  const lines = document.querySelectorAll('.hero-h1 .lw-inner');
+  lines.forEach((line, lineIdx) => {
+    const lineDelay = lineIdx * 0.13; // 130ms between lines
+    // Walk child nodes to preserve <em> etc.
+    const nodes = Array.from(line.childNodes);
+    line.innerHTML = '';
+    let charCount = 0;
+    nodes.forEach(node => {
+      if (node.nodeType === 3) { // text
+        node.textContent.split('').forEach(ch => {
+          const sp = document.createElement('span');
+          sp.className = 'ch';
+          sp.style.transitionDelay = (lineDelay + charCount * 0.022) + 's';
+          sp.textContent = ch === ' ' ? '\u00a0' : ch;
+          line.appendChild(sp);
+          charCount++;
+        });
+      } else { // element (em, strong, etc.)
+        const tag = node.tagName.toLowerCase();
+        node.textContent.split('').forEach(ch => {
+          const outer = document.createElement(tag);
+          outer.className = node.className;
+          const sp = document.createElement('span');
+          sp.className = 'ch';
+          sp.style.transitionDelay = (lineDelay + charCount * 0.022) + 's';
+          sp.textContent = ch === ' ' ? '\u00a0' : ch;
+          outer.appendChild(sp);
+          line.appendChild(outer);
+          charCount++;
+        });
+      }
+    });
+  });
+})();
+
+/* ─────────────────────────────────────────────────────
    PRELOADER — smooth eased count to 100
 ───────────────────────────────────────────────────── */
 const preloader = document.getElementById('preloader');
@@ -1757,21 +1833,23 @@ function initReveal() {
 })();
 
 /* ─────────────────────────────────────────────────────
-   FROMLUKE-STYLE: Case study hover → subtle bg shift
+   FROMLUKE-STYLE: Per-case-study bg color on hover
 ───────────────────────────────────────────────────── */
 (function() {
   const workSection = document.getElementById('work');
   if (!workSection) return;
-  const defaultBg = getComputedStyle(document.documentElement)
-    .getPropertyValue('--dark').trim();
+  const root = document.documentElement;
+  const defaultBg = '#0d0b09';
 
-  document.querySelectorAll('.ci').forEach(ci => {
+  document.querySelectorAll('.ci[data-ci]').forEach(ci => {
+    const idx = ci.dataset.ci;
     ci.addEventListener('mouseenter', () => {
-      workSection.style.transition = 'background 0.4s ease';
-      workSection.style.background = '#13100d'; // slightly warmer dark on hover
+      const color = getComputedStyle(root).getPropertyValue(`--ci-${idx}`).trim();
+      workSection.style.transition = 'background-color 0.7s var(--ease-out)';
+      workSection.style.backgroundColor = color;
     });
     ci.addEventListener('mouseleave', () => {
-      workSection.style.background = '#0d0b09';
+      workSection.style.backgroundColor = defaultBg;
     });
   });
 })();
