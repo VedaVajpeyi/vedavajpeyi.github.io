@@ -5,9 +5,12 @@
 ───────────────────────────────────────────────────── */
 
 /* Lenis */
-const lenis = new Lenis({ lerp: 0.085, smoothWheel: true, wheelMultiplier: 1.0, touchMultiplier: 1.8 });
-function lenisRaf(t) { lenis.raf(t); requestAnimationFrame(lenisRaf); }
-requestAnimationFrame(lenisRaf);
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lenis = new Lenis({ lerp: prefersReduced ? 1 : 0.085, smoothWheel: !prefersReduced, wheelMultiplier: 1.0, touchMultiplier: 1.8 });
+if (!prefersReduced) {
+  function lenisRaf(t) { lenis.raf(t); requestAnimationFrame(lenisRaf); }
+  requestAnimationFrame(lenisRaf);
+}
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
