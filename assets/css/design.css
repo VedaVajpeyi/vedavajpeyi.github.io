@@ -263,6 +263,7 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .work-h2 { font-family: var(--serif); font-size: clamp(2.8rem, 5.5vw, 6rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
 .work-sub { font-size: 0.78rem; font-weight: 300; color: var(--muted-d); text-align: right; line-height: 1.75; max-width: 260px; flex-shrink: 0; }
 .ci { display: grid; gap: 0; border-top: 1px solid var(--border-d); padding: 4rem 0; cursor: none; position: relative; }
+a.ci { text-decoration: none; color: inherit; }
 @media (hover: none) { .ci { cursor: pointer; } }
 .ci:last-child { border-bottom: 1px solid var(--border-d); }
 .ci-a { grid-template-columns: 1fr 440px; grid-template-areas: "content image"; }
@@ -405,7 +406,8 @@ footer { background: var(--dark-2); border-top: 1px solid var(--border-d); paddi
 ═══════════════════════════════════════════════════════ */
 .spy { position: fixed; left: calc(100vw - 2rem - 5px); top: 50%; transform: translateY(-50%); z-index: 400; display: flex; flex-direction: column; gap: 0.75rem; opacity: 0; transition: opacity 0.5s; }
 .spy.visible { opacity: 1; }
-.spy-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(181,146,90,0.3); transition: background 0.3s, transform 0.3s; cursor: none; }
+.spy-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(181,146,90,0.3); transition: background 0.3s, transform 0.3s; cursor: none; border: none; padding: 0; outline: none; }
+.spy-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 @media (hover: none) { .spy-dot { cursor: pointer; } }
 .spy-dot.active { background: var(--accent); transform: scale(1.4); }
 
@@ -862,4 +864,33 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .bb-gallery { grid-template-columns: 1fr; }
   .bb-gallery-main { aspect-ratio: 16/9; }
   .bb-gallery-sub { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   REDUCED MOTION — remove all transitions/transforms for
+   users who prefer reduced motion. Content becomes visible
+   immediately; no sliding, fading, or staggering.
+═══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  /* Preloader: instant dismiss */
+  .preloader { transition: none; }
+
+  /* Hero line wipe & char stagger: appear immediately */
+  .lw-inner { transform: none; transition: none; }
+  .hero-h1 .ch { opacity: 1; transform: none; transition: none; }
+
+  /* Scroll reveals: visible from the start, no slide-in */
+  .fu { opacity: 1; transform: none; transition: none; }
+  .wu .wp { transform: none; transition: none; }
+
+  /* Case study image zoom */
+  .ci-img-wrap { transition: none; }
+  .ci:hover .ci-img-wrap { transform: none; }
+
+  /* Spy dot scale pop */
+  .spy-dot { transition: none; }
+  .spy-dot.active { transform: none; }
+
+  /* Nav fade / footer rotator */
+  .spy { transition: none; }
 }

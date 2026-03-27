@@ -68,14 +68,14 @@
 <div class="cursor" id="cursor"></div>
 
 <!-- SPY DOTS -->
-<nav class="spy" id="spy" aria-hidden="true">
-  <div class="spy-dot" data-target="hero"></div>
-  <div class="spy-dot" data-target="about"></div>
-  <div class="spy-dot" data-target="work"></div>
-  <div class="spy-dot" data-target="project"></div>
-  <div class="spy-dot" data-target="writing"></div>
-  <div class="spy-dot" data-target="services"></div>
-  <div class="spy-dot" data-target="contact"></div>
+<nav class="spy" id="spy" aria-label="Page sections">
+  <button class="spy-dot" data-target="hero"     aria-label="Go to Intro"></button>
+  <button class="spy-dot" data-target="about"    aria-label="Go to About"></button>
+  <button class="spy-dot" data-target="work"     aria-label="Go to Work"></button>
+  <button class="spy-dot" data-target="project"  aria-label="Go to Projects"></button>
+  <button class="spy-dot" data-target="writing"  aria-label="Go to Writing"></button>
+  <button class="spy-dot" data-target="services" aria-label="Go to Services"></button>
+  <button class="spy-dot" data-target="contact"  aria-label="Go to Contact"></button>
 </nav>
 
 <!-- MOBILE MENU -->
@@ -252,7 +252,7 @@
     <div class="s-label fu">02 · Selected Work</div>
 
     <!-- 01 -->
-    <div class="ci ci-a fu" data-ci="1" onclick="window.location='case-study-1.html'">
+    <a class="ci ci-a fu" data-ci="1" href="case-study-1.html">
       <div class="ci-content">
         <div class="ci-num">01</div>
         <div class="ci-tags">
@@ -270,10 +270,10 @@
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- 02 -->
-    <div class="ci ci-b fu d1" data-ci="2" onclick="window.location='case-study-2.html'">
+    <a class="ci ci-b fu d1" data-ci="2" href="case-study-2.html">
       <div class="ci-image">
         <div class="ci-img-wrap wu">
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
@@ -290,10 +290,10 @@
         <p class="ci-desc">A voice engagement problem that turned out to be a device abandonment problem. On separating what a metric measures from what it's supposed to measure.</p>
         <div class="ci-link">Amazon Alexa · 2022 →</div>
       </div>
-    </div>
+    </a>
 
     <!-- 03 -->
-    <div class="ci ci-a fu d2" data-ci="3" onclick="window.location='case-study-3.html'">
+    <a class="ci ci-a fu d2" data-ci="3" href="case-study-3.html">
       <div class="ci-content">
         <div class="ci-num">03</div>
         <div class="ci-tags">
@@ -310,10 +310,10 @@
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- 04 -->
-    <div class="ci ci-b fu d3" data-ci="4" onclick="window.location='case-study-4.html'">
+    <a class="ci ci-b fu d3" data-ci="4" href="case-study-4.html">
       <div class="ci-image">
         <div class="ci-img-wrap wu">
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
@@ -330,10 +330,10 @@
         <p class="ci-desc">What do you actually measure when someone speaks to a device at 6am — and you can't hide friction behind a UI? On the asymmetry of trust in voice products.</p>
         <div class="ci-link">Alexa · Echo · 2022 →</div>
       </div>
-    </div>
+    </a>
 
     <!-- 05 -->
-    <div class="ci ci-a fu d4" data-ci="5" onclick="window.location='case-study-5.html'">
+    <a class="ci ci-a fu d4" data-ci="5" href="case-study-5.html">
       <div class="ci-content">
         <div class="ci-num">05</div>
         <div class="ci-tags">
@@ -350,7 +350,7 @@
           <div class="ph dk wp"><span class="ph-tag">↗ Case Study</span></div>
         </div>
       </div>
-    </div>
+    </a>
 
   </div>
 </section>

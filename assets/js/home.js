@@ -5,50 +5,68 @@
    (preloader, hero char stagger, spy dots, work bg hover)
 ───────────────────────────────────────────────────── */
 
-/* Hero char stagger — wraps each character in an animated span */
-(function() {
-  const lines = document.querySelectorAll('.hero-h1 .lw-inner');
-  lines.forEach((line, lineIdx) => {
-    const lineDelay = lineIdx * 0.13;
-    const nodes = Array.from(line.childNodes);
-    line.innerHTML = '';
-    let charCount = 0;
-    nodes.forEach(node => {
-      if (node.nodeType === 3) {
-        node.textContent.split('').forEach(ch => {
-          const sp = document.createElement('span');
-          sp.className = 'ch';
-          sp.style.transitionDelay = (lineDelay + charCount * 0.022) + 's';
-          sp.textContent = ch === ' ' ? '\u00a0' : ch;
-          line.appendChild(sp);
-          charCount++;
-        });
-      } else {
-        const tag = node.tagName.toLowerCase();
-        node.textContent.split('').forEach(ch => {
-          const outer = document.createElement(tag);
-          outer.className = node.className || '';
-          const sp = document.createElement('span');
-          sp.className = 'ch';
-          sp.style.transitionDelay = (lineDelay + charCount * 0.022) + 's';
-          sp.textContent = ch === ' ' ? '\u00a0' : ch;
-          outer.appendChild(sp);
-          line.appendChild(outer);
-          charCount++;
-        });
-      }
-    });
-  });
-})();
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Preloader — counts to 100, then dismisses and starts reveals */
+/* Hero char stagger — wraps each character in an animated span.
+   Skipped entirely for reduced-motion; text becomes visible via body.ready CSS. */
+if (!prefersReduced) {
+  (function() {
+    const lines = document.querySelectorAll('.hero-h1 .lw-inner');
+    lines.forEach((line, lineIdx) => {
+      const lineDelay = lineIdx * 0.13;
+      const nodes = Array.from(line.childNodes);
+      line.innerHTML = '';
+      let charCount = 0;
+      nodes.forEach(node => {
+        if (node.nodeType === 3) {
+          node.textContent.split('').forEach(ch => {
+            const sp = document.createElement('span');
+            sp.className = 'ch';
+            sp.style.transitionDelay = (lineDelay + charCount * 0.022) + 's';
+            sp.textContent = ch === ' ' ? '\u00a0' : ch;
+            line.appendChild(sp);
+            charCount++;
+          });
+        } else {
+          const tag = node.tagName.toLowerCase();
+          node.textContent.split('').forEach(ch => {
+            const outer = document.createElement(tag);
+            outer.className = node.className || '';
+            const sp = document.createElement('span');
+            sp.className = 'ch';
+            sp.style.transitionDelay = (lineDelay + charCount * 0.022) + 's';
+            sp.textContent = ch === ' ' ? '\u00a0' : ch;
+            outer.appendChild(sp);
+            line.appendChild(outer);
+            charCount++;
+          });
+        }
+      });
+    });
+  })();
+}
+
+/* Preloader — counts to 100, then dismisses and starts reveals.
+   Reduced-motion: skip counter entirely, dismiss immediately. */
 (function() {
   const preloader = document.getElementById('preloader');
   const loaderNum = document.getElementById('loader-num');
   if (!preloader || !loaderNum) return;
 
+  function dismiss() {
+    preloader.classList.add('done');
+    document.body.classList.add('ready');
+    if (typeof window.initReveal === 'function') window.initReveal();
+  }
+
+  if (prefersReduced) {
+    loaderNum.textContent = '100';
+    dismiss();
+    return;
+  }
+
   let start = null;
-  const duration = 1400;
+  const duration = 700;
   function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 
   function animateLoader(ts) {
@@ -58,11 +76,7 @@
     if (progress < 1) {
       requestAnimationFrame(animateLoader);
     } else {
-      setTimeout(() => {
-        preloader.classList.add('done');
-        document.body.classList.add('ready');
-        if (typeof window.initReveal === 'function') window.initReveal();
-      }, 300);
+      setTimeout(dismiss, 200);
     }
   }
   requestAnimationFrame(animateLoader);
@@ -96,21 +110,23 @@
   });
 })();
 
-/* Per-case-study background color on hover */
-(function() {
-  const workSection = document.getElementById('work');
-  if (!workSection) return;
-  const root = document.documentElement;
-  const defaultBg = '#0d0b09';
-  document.querySelectorAll('.ci[data-ci]').forEach(ci => {
-    const idx = ci.dataset.ci;
-    ci.addEventListener('mouseenter', () => {
-      const color = getComputedStyle(root).getPropertyValue(`--ci-${idx}`).trim();
-      workSection.style.transition = 'background-color 0.7s var(--ease-out)';
-      workSection.style.backgroundColor = color;
+/* Per-case-study background color on hover — skipped for reduced-motion */
+if (!prefersReduced) {
+  (function() {
+    const workSection = document.getElementById('work');
+    if (!workSection) return;
+    const root = document.documentElement;
+    const defaultBg = '#0d0b09';
+    document.querySelectorAll('.ci[data-ci]').forEach(ci => {
+      const idx = ci.dataset.ci;
+      ci.addEventListener('mouseenter', () => {
+        const color = getComputedStyle(root).getPropertyValue(`--ci-${idx}`).trim();
+        workSection.style.transition = 'background-color 0.7s var(--ease-out)';
+        workSection.style.backgroundColor = color;
+      });
+      ci.addEventListener('mouseleave', () => {
+        workSection.style.backgroundColor = defaultBg;
+      });
     });
-    ci.addEventListener('mouseleave', () => {
-      workSection.style.backgroundColor = defaultBg;
-    });
-  });
-})();
+  })();
+}
