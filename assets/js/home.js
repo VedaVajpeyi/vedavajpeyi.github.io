@@ -5,11 +5,11 @@
    (preloader, hero char stagger, spy dots, work bg hover)
 ───────────────────────────────────────────────────── */
 
-const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const homePrefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* Hero char stagger — wraps each character in an animated span.
    Skipped entirely for reduced-motion; text becomes visible via body.ready CSS. */
-if (!prefersReduced) {
+if (!homePrefersReduced) {
   (function() {
     const lines = document.querySelectorAll('.hero-h1 .lw-inner');
     lines.forEach((line, lineIdx) => {
@@ -59,7 +59,7 @@ if (!prefersReduced) {
     if (typeof window.initReveal === 'function') window.initReveal();
   }
 
-  if (prefersReduced) {
+  if (homePrefersReduced) {
     loaderNum.textContent = '100';
     dismiss();
     return;
@@ -111,7 +111,7 @@ if (!prefersReduced) {
 })();
 
 /* Per-case-study background color on hover — skipped for reduced-motion */
-if (!prefersReduced) {
+if (!homePrefersReduced) {
   (function() {
     const workSection = document.getElementById('work');
     if (!workSection) return;
