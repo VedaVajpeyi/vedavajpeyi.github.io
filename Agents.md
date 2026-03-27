@@ -1,47 +1,56 @@
 # Agents.md
 
-This file provides guidance for coding agents working in this repository.
+Guidance for coding agents working in this repository.
 
 ## Edit Policy
 
-Agents are allowed to edit this `Agents.md` file whenever website changes make the guidance outdated or incomplete.
+Keep this file current whenever architecture or workflow changes.
 
-## Repository Purpose
+## Real live architecture
 
-This repository contains the Veda website and archived versions/pages.
+The site is static HTML served by GitHub Pages. There is **no template engine, no `content/pages/` directory, no `sync-pages.mjs`, no `index.template.html`, and no `main.css`/`main.js`**. Any docs referencing those are stale.
 
-## Current Website Structure
+| File / Path | Role |
+|---|---|
+| `index.html` | Homepage — full static HTML |
+| `about.html`, `contact.html` | Root-level interior pages |
+| `work/index.html`, `work/case-study-[1-5].html` | Work section |
+| `writing/index.html`, `writing/essay-[1-4].html` | Writing section |
+| `services/index.html`, `services/*.html` | Services section |
+| `projects/books-beds.html` | Projects section |
+| `assets/css/design.css` | Single shared stylesheet — used by every page |
+| `assets/js/page.js` | Shared JS — Lenis, cursor, nav, reveals, footer rotator |
+| `assets/js/home.js` | Homepage-only JS — preloader, char stagger, spy dots, bg hover |
+| `scripts/sync-chrome.mjs` | Verifies/syncs nav + footer across all pages |
+| `archive/` | Old versions — do not edit |
 
-The live site is still served from `index.html`, but content is now organized for easier editing:
+## Shared chrome: nav, mobile menu, footer
 
-- `index.html`: generated output file to serve.
-- `index.template.html`: template with page placeholders.
-- `content/pages/*.html`: source content blocks (one file per page/section).
-- `assets/css/main.css`: site styles.
-- `assets/js/main.js`: site JavaScript.
-- `scripts/sync-pages.mjs`: script to rebuild/sync `index.html`.
+All pages duplicate the same nav, mobile-menu, and footer HTML. **`index.html` is the canonical source.**
 
-## Content Editing Workflow
+Whenever nav or footer is changed in `index.html`:
+```bash
+node scripts/sync-chrome.mjs --write
+```
 
-1. Edit content in `content/pages/<page>.html`.
-2. Rebuild `index.html`:
-   - `node scripts/sync-pages.mjs build`
-3. Validate that navigation, styling, and behavior are unchanged.
+Dry-run to verify consistency without writing:
+```bash
+node scripts/sync-chrome.mjs
+```
 
-## Agent Working Rules
+## Agent working rules
 
-1. Keep edits focused on the requested change.
-2. Preserve existing page style and structure unless a redesign is requested.
-3. Avoid breaking links between current and archived pages.
-4. Prefer minimal, reviewable diffs.
-5. Do not delete historical archive files unless explicitly requested.
-6. For content changes, edit `content/pages/*` and rebuild `index.html` instead of manually editing large inlined blocks.
+1. Keep diffs minimal and reviewable.
+2. Preserve existing brand voice, copy quality, and visual language.
+3. Edit HTML files directly — there is no build step for content.
+4. When changing shared chrome (nav/footer/mobile-menu): edit `index.html` first, then run `sync-chrome.mjs --write` to propagate.
+5. All asset paths must be root-relative (e.g. `/assets/css/design.css`, `/assets/js/page.js`).
+6. Do not delete files in `archive/`.
+7. Do not reference `main.css`, `main.js`, `index.template.html`, `content/pages/`, or `sync-pages.mjs` — those do not exist.
 
-## Validation Checklist
+## Validation before finishing
 
-Before finishing, agents should:
-
-1. Confirm changed pages still load with valid HTML structure.
-2. Verify navigation and internal links affected by the change.
-3. Keep formatting consistent with nearby files.
-4. If page content changed, run `node scripts/sync-pages.mjs build` before finalizing.
+1. Confirm all changed pages have valid HTML structure.
+2. Check that internal links still work.
+3. Run `node scripts/sync-chrome.mjs` to verify chrome consistency.
+4. If nav/footer changed, run with `--write`.
