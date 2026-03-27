@@ -120,6 +120,9 @@ nav#nav[data-t="light"] { background: rgba(244,239,232,0.92); border-bottom: 1px
 }
 .nav-links a:hover { opacity: 1; }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a[aria-current="page"] { opacity: 1; }
+.nav-links a[aria-current="page"]::after { width: 100%; }
+.mobile-menu a[aria-current="page"] { color: var(--accent); }
 
 /* Hamburger */
 .nav-burger {

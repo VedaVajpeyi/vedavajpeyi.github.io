@@ -1,37 +1,52 @@
-# personal_website
+# vedavajpeyi.github.io
 
-Personal website for Veda.
+Personal portfolio site for Veda Vajpeyi — product strategist, writer, advisor.
 
-## Project structure
+## Live architecture
 
-- `index.html`: generated site file served to browsers.
-- `index.template.html`: base template used to rebuild `index.html`.
-- `content/pages/*.html`: one file per page/section content block.
-- `assets/css/main.css`: global styles.
-- `assets/js/main.js`: client-side behavior.
-- `scripts/sync-pages.mjs`: content sync/build utility.
+Static HTML served directly by GitHub Pages. No framework, no build step for content.
 
-## Editing workflow
-
-1. Edit the page content file you want in `content/pages/`.
-2. Rebuild:
-
-```bash
-node scripts/sync-pages.mjs build
+```
+index.html                  homepage (full static page)
+about.html                  about page
+contact.html                contact page
+work/
+  index.html                case studies index
+  case-study-[1-5].html     individual case studies
+writing/
+  index.html                essays index
+  essay-[1-4].html          individual essays
+services/
+  index.html                services overview
+  product-advising.html
+  career-coaching.html
+  mba-positioning.html
+  college-admissions.html
+  speaking.html
+projects/
+  books-beds.html
+assets/
+  css/design.css            single shared stylesheet (all pages)
+  js/page.js                shared JS (all pages)
+  js/home.js                homepage-only JS
+scripts/
+  sync-chrome.mjs           chrome consistency tool (see below)
 ```
 
-3. Open `index.html` as usual.
+## Editing
 
-## Sync commands
+Edit HTML files directly. For nav, mobile menu, or footer changes see **Chrome sync** below.
 
-- Initialize/split from current `index.html`:
+## Chrome sync
 
+Nav, mobile menu, and footer are identical across all pages. `index.html` is the canonical source.
+
+**After changing nav or footer in `index.html`:**
 ```bash
-node scripts/sync-pages.mjs init
+node scripts/sync-chrome.mjs --write
 ```
 
-- Rebuild `index.html` from template + content files:
-
+Dry-run (verify only, no writes):
 ```bash
-node scripts/sync-pages.mjs build
+node scripts/sync-chrome.mjs
 ```

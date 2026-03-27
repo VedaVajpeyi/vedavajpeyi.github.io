@@ -90,6 +90,18 @@ if (!document.getElementById('preloader')) {
   document.body.classList.add('pg-ready');
 }
 
+/* Current-page nav indicator — sets aria-current="page" on the active link */
+(function() {
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    // Exact match, or prefix match for section pages (e.g. /work/ matches /work/case-study-1.html)
+    const active = href === path || (href !== '/' && path.startsWith(href));
+    if (active) a.setAttribute('aria-current', 'page');
+  });
+})();
+
 /* Footer rotator */
 (function() {
   const labels = ['Product Strategy <em>·</em>', 'Career Coaching <em>·</em>', 'Behavioral Thinking <em>·</em>', 'Writing + Advising <em>·</em>'];
