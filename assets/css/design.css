@@ -361,6 +361,11 @@ a.ci { text-decoration: none; color: inherit; }
 .srv p { font-size: 0.87rem; color: var(--muted-l); line-height: 1.8; }
 .srv-arrow { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-top: 1.5rem; display: block; opacity: 0; transform: translateX(-6px); transition: opacity 0.3s, transform 0.4s var(--ease-out); }
 .srv:hover .srv-arrow { opacity: 1; transform: none; }
+.srv-section-label {
+  font-family: var(--mono); font-size: 0.55rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--muted-l); margin-top: 3rem;
+  margin-bottom: 1.1rem;
+}
 .srv-secondary { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--border-l); }
 .srv-s { padding: 2.25rem 2rem 2.25rem 0; border-right: 1px solid var(--border-l); transition: background 0.35s; cursor: none; text-decoration: none; color: inherit; display: block; }
 @media (hover: none) { .srv-s { cursor: pointer; } }
@@ -764,6 +769,10 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .contact-link-value {
   font-family: var(--serif); font-size: 1.15rem; font-weight: 700;
   color: var(--text-d); transition: color 0.3s;
+}
+.contact-link-desc {
+  font-size: 0.78rem; font-weight: 300; color: var(--muted-d);
+  line-height: 1.7; margin-top: 0.85rem; max-width: 26rem;
 }
 .contact-link-item:hover .contact-link-value { color: var(--accent); }
 .contact-service-item {
