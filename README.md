@@ -31,6 +31,7 @@ assets/
   js/home.js                homepage-only JS
 scripts/
   sync-chrome.mjs           chrome consistency tool (see below)
+  bump-asset-version.mjs    cache-bust shared CSS/JS URLs
 ```
 
 ## Editing
@@ -50,3 +51,14 @@ Dry-run (verify only, no writes):
 ```bash
 node scripts/sync-chrome.mjs
 ```
+
+## Asset cache busting
+
+Shared assets use a `?v=` query string so browsers fetch updated CSS/JS after deploys.
+
+When `assets/css/design.css`, `assets/js/page.js`, or `assets/js/home.js` change:
+```bash
+node scripts/bump-asset-version.mjs 20260327-1
+```
+
+Use a new version string whenever shared assets change.
