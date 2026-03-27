@@ -22,6 +22,7 @@ The site is static HTML served by GitHub Pages. There is **no template engine, n
 | `assets/js/page.js` | Shared JS — Lenis, cursor, nav, reveals, footer rotator |
 | `assets/js/home.js` | Homepage-only JS — preloader, char stagger, spy dots, bg hover |
 | `scripts/sync-chrome.mjs` | Verifies/syncs nav + footer across all pages |
+| `scripts/bump-asset-version.mjs` | Stamps a new `?v=` suffix onto shared asset URLs |
 | `archive/` | Old versions — do not edit |
 
 ## Shared chrome: nav, mobile menu, footer
@@ -38,6 +39,17 @@ Dry-run to verify consistency without writing:
 node scripts/sync-chrome.mjs
 ```
 
+## Asset versioning
+
+Shared CSS/JS URLs use a `?v=` suffix for cache busting.
+
+Whenever `assets/css/design.css`, `assets/js/page.js`, or `assets/js/home.js` change:
+```bash
+node scripts/bump-asset-version.mjs 20260327-1
+```
+
+Pick a new version string for each shared-asset deploy.
+
 ## Agent working rules
 
 1. Keep diffs minimal and reviewable.
@@ -45,8 +57,9 @@ node scripts/sync-chrome.mjs
 3. Edit HTML files directly — there is no build step for content.
 4. When changing shared chrome (nav/footer/mobile-menu): edit `index.html` first, then run `sync-chrome.mjs --write` to propagate.
 5. All asset paths must be root-relative (e.g. `/assets/css/design.css`, `/assets/js/page.js`).
-6. Do not delete files in `archive/`.
-7. Do not reference `main.css`, `main.js`, `index.template.html`, `content/pages/`, or `sync-pages.mjs` — those do not exist.
+6. When shared CSS/JS changes, bump the shared `?v=` asset suffix across live HTML pages.
+7. Do not delete files in `archive/`.
+8. Do not reference `main.css`, `main.js`, `index.template.html`, `content/pages/`, or `sync-pages.mjs` — those do not exist.
 
 ## Validation before finishing
 
@@ -54,3 +67,4 @@ node scripts/sync-chrome.mjs
 2. Check that internal links still work.
 3. Run `node scripts/sync-chrome.mjs` to verify chrome consistency.
 4. If nav/footer changed, run with `--write`.
+5. If shared CSS/JS changed, verify the asset version suffix is current.
