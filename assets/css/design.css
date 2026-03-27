@@ -281,9 +281,10 @@ a.ci { text-decoration: none; color: inherit; }
 .ci-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); opacity: 0; transform: translateX(-8px); transition: opacity 0.35s var(--ease-out), transform 0.5s var(--ease-out); }
 .ci:hover .ci-link { opacity: 1; transform: none; }
 .ci-image { grid-area: image; }
-.ci-img-wrap { width: 100%; aspect-ratio: 4/3; transition: transform 0.7s var(--ease-out); }
+.ci-img-wrap { width: 100%; aspect-ratio: 4/3; overflow: hidden; transition: transform 0.7s var(--ease-out); }
 .ci:hover .ci-img-wrap { transform: scale(1.015); }
 .ci-img-wrap .ph { height: 100%; }
+.ci-img { width: 100%; height: 100%; background-size: cover; background-position: center; }
 .ci-soon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--border-d); }
 .ci-soon { padding: 3rem 3rem 3rem 0; border-right: 1px solid var(--border-d); opacity: 0.4; }
 .ci-soon:last-child { border-right: none; padding: 3rem 0 3rem 3rem; }
@@ -318,8 +319,9 @@ a.ci { text-decoration: none; color: inherit; }
 .writing-intro { font-size: 0.93rem; font-weight: 300; color: var(--muted-d); line-height: 1.8; }
 .essay-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; border-top: 1px solid var(--border-d); padding: 4rem 0; cursor: none; text-decoration: none; color: inherit; }
 @media (hover: none) { .essay-feat { cursor: pointer; } }
-.essay-feat-img { aspect-ratio: 16/10; }
+.essay-feat-img { aspect-ratio: 16/10; overflow: hidden; }
 .essay-feat-img .ph { height: 100%; }
+.essay-feat-bg { width: 100%; height: 100%; background-size: cover; background-position: center; }
 .essay-feat-kicker { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.1rem; }
 .essay-feat h3 { font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 700; line-height: 1.18; margin-bottom: 1.1rem; transition: color 0.3s; }
 .essay-feat:hover h3 { color: var(--accent); }
