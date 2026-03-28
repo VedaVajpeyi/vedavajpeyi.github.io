@@ -223,7 +223,7 @@ body.ready .hero-grid { opacity: 1; transform: none; }
 .hero-aside { text-align: right; }
 .hero-aside p { font-size: 0.82rem; font-weight: 300; color: var(--muted-d); line-height: 1.9; }
 .hero-aside strong { color: var(--text-d); font-weight: 500; }
-.hero-aside .personal-line { margin-top: 1.75rem; font-size: 0.75rem; font-style: italic; color: var(--muted-d); border-top: 1px solid var(--border-d); padding-top: 1.5rem; line-height: 1.75; }
+.hero-aside .personal-line { margin-top: 1rem; font-size: 0.75rem; font-style: italic; color: var(--muted-d); line-height: 1.75; }
 
 /* ═══════════════════════════════════════════════════════
    HOME ABOUT SECTION
