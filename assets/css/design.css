@@ -528,8 +528,19 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .pg-quote-band blockquote::after { content: '\201D'; color: var(--accent); }
 .pg-hero + .pg-quote-band {
   background: var(--dark);
-  border-top: none;
+  padding-top: 7rem;
   padding-bottom: 8rem;
+  border-top: none;
+  border-bottom: none;
+  position: relative;
+}
+.pg-hero + .pg-quote-band::before {
+  content: '';
+  position: absolute;
+  top: 7rem;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--border-d);
 }
 
 /* ═══════════════════════════════════════════════════════
