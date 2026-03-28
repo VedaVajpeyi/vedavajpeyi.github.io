@@ -529,7 +529,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .pg-hero + .pg-quote-band {
   background: var(--dark);
   padding-top: 7rem;
-  padding-bottom: 8rem;
+  padding-bottom: 4rem;
   border-top: none;
   border-bottom: none;
   position: relative;
