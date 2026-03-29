@@ -743,7 +743,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
    CONTACT PAGE
 ═══════════════════════════════════════════════════════ */
 .contact-hero {
-  background: var(--dark); min-height: 100vh;
+  background: var(--dark); min-height: calc(60vh + 7rem);
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: calc(var(--nav-h) + 6rem) 3.5rem 7rem;
 }
@@ -887,7 +887,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .list-item { grid-template-columns: 1fr; gap: 0.75rem; }
   .list-item-meta { text-align: left; }
   .pg-nav { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-  .contact-hero { padding: calc(var(--nav-h) + 3rem) 1.75rem 5rem; }
+  .contact-hero { min-height: calc(60vh + 5rem); padding: calc(var(--nav-h) + 3rem) 1.75rem 5rem; }
   .contact-cards-section { padding: 0 1.75rem 6rem; }
   .contact-cards-inner { grid-template-columns: 1fr; gap: 4rem; }
   .contact-note { padding: 0 1.75rem 6rem; }
