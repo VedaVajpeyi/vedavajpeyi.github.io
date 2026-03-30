@@ -326,8 +326,7 @@ a.ci { text-decoration: none; color: inherit; }
 .ci:hover .ci-h3 { color: var(--accent); }
 .ci-desc { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.75; max-width: 440px; }
 .ci-quote { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: rgba(181,146,90,0.7); line-height: 1.65; margin-top: 1.25rem; padding-left: 1rem; border-left: 2px solid rgba(181,146,90,0.25); }
-.ci-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); opacity: 0; transform: translateX(-8px); transition: opacity 0.35s var(--ease-out), transform 0.5s var(--ease-out); }
-.ci:hover .ci-link { opacity: 1; transform: none; }
+.ci-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-d); opacity: 0.8; }
 .ci-image { grid-area: image; }
 .ci-img-wrap { width: 100%; aspect-ratio: 4/3; overflow: hidden; transition: transform 0.7s var(--ease-out); }
 .ci:hover .ci-img-wrap { transform: scale(1.015); }
@@ -893,6 +892,8 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   display: inline-flex; align-items: center; gap: 0.4rem;
 }
 .pg-nav a:hover { color: var(--accent); }
+.pg-nav-cta-soft { color: var(--muted-l); opacity: 0.72; }
+.pg-nav-cta-soft:hover { color: var(--accent); opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
    CTA BUTTON
