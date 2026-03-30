@@ -171,8 +171,8 @@ body.nav-open .mobile-menu a:nth-child(5) { transition-delay: 0.26s; }
 ═══════════════════════════════════════════════════════ */
 .s-label,
 .pg-hero-kicker {
-  font-family: var(--mono); font-size: var(--type-meta); font-weight: 400;
-  text-transform: uppercase; letter-spacing: 0.12em;
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.1em;
   display: flex; align-items: center; gap: 1rem;
 }
 .s-label { color: var(--accent); margin-bottom: 3.5rem; }
