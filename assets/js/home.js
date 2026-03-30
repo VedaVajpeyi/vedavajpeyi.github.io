@@ -130,3 +130,29 @@ if (!homePrefersReduced) {
     });
   })();
 }
+
+/* Work With Me accordion */
+(function() {
+  const items = Array.from(document.querySelectorAll('.services-item'));
+  if (!items.length) return;
+
+  items.forEach(item => {
+    const trigger = item.querySelector('.services-row');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      items.forEach(other => {
+        other.classList.remove('open');
+        const otherTrigger = other.querySelector('.services-row');
+        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();

@@ -384,34 +384,47 @@ a.ci { text-decoration: none; color: inherit; }
   margin-top: 2.5rem;
   padding-bottom: 0.9rem;
 }
+.services-item { border-bottom: 1px solid var(--border-l); }
 .services-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
+  width: 100%;
   padding: 2rem 0;
-  border-bottom: 1px solid var(--border-l);
-  text-decoration: none;
+  border: 0;
+  background: transparent;
+  text-align: left;
   color: inherit;
   transition: padding-left 0.35s var(--ease-out), color 0.25s;
   cursor: none;
 }
 @media (hover: none) { .services-row { cursor: pointer; } }
 .services-row:hover { padding-left: 1rem; }
-.services-row-copy h3,
-.services-row-copy h4 {
+.services-row-title {
   font-family: var(--serif);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  margin-bottom: 0.65rem;
   transition: color 0.25s;
+  display: block;
 }
-.services-row-copy h3 { font-size: clamp(1.8rem, 3vw, 3rem); }
-.services-row-copy h4 { font-size: clamp(1.45rem, 2vw, 2rem); }
-.services-row:hover .services-row-copy h3,
-.services-row:hover .services-row-copy h4 { color: var(--accent); }
-.services-row-copy p {
+.services-item-primary .services-row-title { font-size: clamp(1.8rem, 3vw, 3rem); }
+.services-item-secondary .services-row-title { font-size: clamp(1.45rem, 2vw, 2rem); }
+.services-row:hover .services-row-title,
+.services-item.open .services-row-title { color: var(--accent); }
+.services-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s var(--ease-out), opacity 0.25s ease, padding-bottom 0.35s var(--ease-out);
+}
+.services-item.open .services-body {
+  max-height: 18rem;
+  opacity: 1;
+  padding-bottom: 1.8rem;
+}
+.services-body p {
   max-width: 46rem;
   font-size: var(--type-body-sm);
   color: var(--muted-l);
@@ -430,12 +443,29 @@ a.ci { text-decoration: none; color: inherit; }
   font-size: clamp(2rem, 3vw, 2.6rem);
   line-height: 1;
   color: var(--muted-l);
-  margin-top: 0.15rem;
   transition: color 0.25s, transform 0.35s var(--ease-out);
 }
-.services-row:hover .services-row-icon {
+.services-row:hover .services-row-icon,
+.services-item.open .services-row-icon {
   color: var(--accent);
-  transform: rotate(90deg);
+  transform: rotate(45deg);
+}
+.services-readmore {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-family: var(--mono);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  transition: color 0.25s, transform 0.25s var(--ease-out);
+  cursor: none;
+}
+@media (hover: none) { .services-readmore { cursor: pointer; } }
+.services-readmore:hover { color: var(--text-l); transform: translateX(4px); }
+.services-row:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 8px;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -913,8 +943,9 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .services-cta { margin-top: 2rem; }
   .services-row { gap: 1.25rem; padding: 1.6rem 0; }
   .services-row:hover { padding-left: 0.5rem; }
-  .services-row-copy h3 { font-size: clamp(1.6rem, 8vw, 2.5rem); }
-  .services-row-copy h4 { font-size: clamp(1.25rem, 6vw, 1.7rem); }
+  .services-item-primary .services-row-title { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+  .services-item-secondary .services-row-title { font-size: clamp(1.25rem, 6vw, 1.7rem); }
+  .services-item.open .services-body { max-height: 22rem; }
   .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
   .contact-h2 { font-size: clamp(3.5rem, 14vw, 5.5rem); }
   .footer-rotating { font-size: clamp(2rem, 9vw, 4rem); }
