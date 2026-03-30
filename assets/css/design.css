@@ -369,7 +369,7 @@ a.ci { text-decoration: none; color: inherit; }
 .essay-feat-img { aspect-ratio: 16/10; overflow: hidden; }
 .essay-feat-img .ph { height: 100%; }
 .essay-feat-bg { width: 100%; height: 100%; background-size: cover; background-position: center; }
-.essay-feat-kicker { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: rgba(181,146,90,0.78); margin-bottom: 1.1rem; }
+.essay-feat-kicker { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.1rem; }
 .essay-feat h3 { margin-bottom: 1.1rem; transition: color 0.3s; } /* H3 exception: featured essay card */
 .essay-feat:hover h3 { color: var(--accent); }
 .essay-feat p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.75; margin-bottom: 1.5rem; }
