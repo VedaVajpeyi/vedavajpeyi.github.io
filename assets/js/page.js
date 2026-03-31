@@ -108,7 +108,7 @@ if (!document.getElementById('preloader')) {
   let idx = 0;
   const cur = document.getElementById('rot-current');
   const nxt = document.getElementById('rot-next');
-  if (!cur || !nxt) return;
+  if (!cur || !nxt || prefersReduced) return;
   const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
   function rotateTo(ni) {
     nxt.innerHTML = labels[ni];
@@ -126,5 +126,5 @@ if (!document.getElementById('preloader')) {
       }, 750);
     }));
   }
-  setInterval(() => rotateTo((idx + 1) % labels.length), 2800);
+  setInterval(() => rotateTo((idx + 1) % labels.length), 4400);
 })();

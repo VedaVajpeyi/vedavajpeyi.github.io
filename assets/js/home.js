@@ -66,7 +66,7 @@ if (!homePrefersReduced) {
   }
 
   let start = null;
-  const duration = 700;
+  const duration = 420;
   function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 
   function animateLoader(ts) {
@@ -76,7 +76,7 @@ if (!homePrefersReduced) {
     if (progress < 1) {
       requestAnimationFrame(animateLoader);
     } else {
-      setTimeout(dismiss, 200);
+      setTimeout(dismiss, 80);
     }
   }
   requestAnimationFrame(animateLoader);
