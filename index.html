@@ -532,6 +532,12 @@
           <div class="contact-rail-label">Elsewhere</div>
           <div class="contact-link-row">
             <a class="contact-inline-link" href="https://linkedin.com/in/vvajpeyi" target="_blank" rel="noopener">LinkedIn</a>
+            <span class="contact-inline-sep contact-inline-extra" aria-hidden="true">/</span>
+            <span class="contact-inline-text contact-inline-extra" aria-hidden="true">Instagram</span>
+            <span class="contact-inline-sep contact-inline-extra" aria-hidden="true">/</span>
+            <span class="contact-inline-text contact-inline-extra" aria-hidden="true">X</span>
+            <span class="contact-inline-sep contact-inline-extra" aria-hidden="true">/</span>
+            <span class="contact-inline-text contact-inline-extra" aria-hidden="true">Substack</span>
           </div>
         </div>
       </div>
@@ -963,6 +969,19 @@
     letter-spacing: 0.12em;
     color: rgba(233, 227, 218, 0.9);
     transition: color 0.25s;
+  }
+
+  body.homepage-refined .contact-inline-text {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(233, 227, 218, 0.9);
+  }
+
+  body.homepage-refined .contact-inline-extra {
+    display: none;
   }
 
   body.homepage-refined .contact-inline-link:hover {
@@ -1654,10 +1673,13 @@
 
     body.homepage-refined .contact-email {
       margin-top: 0;
-      max-width: 15.5rem;
-      font-size: clamp(1.78rem, 8.8vw, 2.24rem);
-      line-height: 0.98;
+      max-width: none;
+      width: auto;
+      font-size: clamp(1.38rem, 7vw, 1.98rem);
+      line-height: 0.96;
+      white-space: nowrap;
       overflow-wrap: normal;
+      word-break: normal;
     }
 
     body.homepage-refined .contact-rail-label {
@@ -1674,33 +1696,40 @@
 
     body.homepage-refined .contact-link-row {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       align-items: center;
       gap: 0;
       width: auto;
-      margin-top: -0.05rem;
+      margin-top: 0.08rem;
+      max-width: 100%;
+      white-space: nowrap;
     }
 
-    body.homepage-refined .contact-inline-link {
+    body.homepage-refined .contact-inline-link,
+    body.homepage-refined .contact-inline-text {
       display: inline-flex;
       align-items: center;
       justify-content: flex-start;
-      min-height: 44px;
-      padding: 0.18rem 0;
+      min-height: auto;
+      padding: 0;
       border: 0;
       background: transparent;
-      font-size: 0.74rem;
+      font-size: clamp(0.61rem, 2.55vw, 0.72rem);
       font-weight: 500;
       letter-spacing: 0.11em;
       color: rgba(233, 227, 218, 0.76);
+    }
+
+    body.homepage-refined .contact-inline-extra {
+      display: inline-flex;
     }
 
     body.homepage-refined .contact-inline-sep {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 0 0.38rem;
+      min-height: auto;
+      padding: 0 0.34rem;
       color: rgba(181, 146, 90, 0.48);
     }
 
@@ -1831,6 +1860,7 @@
 
     body.homepage-refined .contact-link-row {
       grid-template-columns: 1fr;
+      max-width: 100%;
     }
   }
 
@@ -1894,8 +1924,8 @@
     }
 
     body.homepage-refined .contact-email {
-      max-width: 100%;
-      font-size: clamp(1.44rem, 7.5vw, 1.78rem);
+      max-width: none;
+      font-size: clamp(1.28rem, 7vw, 1.6rem);
     }
   }
 </style>
@@ -2053,11 +2083,66 @@
       rotator.style.fontSize = best.toFixed(2) + 'px';
     }
 
+    function fitMobileContactEmail() {
+      const email = document.querySelector('body.homepage-refined .contact-email');
+      if (!email) return;
+
+      if (!mq.matches) {
+        email.style.removeProperty('font-size');
+        return;
+      }
+
+      const container = email.closest('.contact-primary');
+      if (!container) return;
+
+      const styles = window.getComputedStyle(email);
+      const availableWidth = Math.max(0, container.clientWidth);
+      if (!availableWidth) return;
+
+      const measure = document.createElement('span');
+      measure.textContent = 'vajpeyiveda@gmail.com';
+      measure.setAttribute('aria-hidden', 'true');
+      measure.style.position = 'absolute';
+      measure.style.left = '-9999px';
+      measure.style.top = '0';
+      measure.style.visibility = 'hidden';
+      measure.style.pointerEvents = 'none';
+      measure.style.whiteSpace = 'nowrap';
+      measure.style.fontFamily = styles.fontFamily;
+      measure.style.fontWeight = styles.fontWeight;
+      measure.style.fontStyle = styles.fontStyle;
+      measure.style.letterSpacing = styles.letterSpacing;
+      measure.style.lineHeight = styles.lineHeight;
+      document.body.appendChild(measure);
+
+      let low = 18;
+      let high = 52;
+      let best = low;
+      const targetWidth = availableWidth * 0.995;
+
+      for (let i = 0; i < 22; i++) {
+        const mid = (low + high) / 2;
+        measure.style.fontSize = mid + 'px';
+        const width = measure.getBoundingClientRect().width;
+
+        if (width <= targetWidth) {
+          best = mid;
+          low = mid;
+        } else {
+          high = mid;
+        }
+      }
+
+      measure.remove();
+      email.style.fontSize = best.toFixed(2) + 'px';
+    }
+
     function scheduleFit() {
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         fitMobileHero();
         fitMobileFooterRotator();
+        fitMobileContactEmail();
       });
     }
 
