@@ -26,6 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/design.css?v=20260331-1">
+  <link rel="stylesheet" href="/assets/css/sxp-essays.css?v=20260404-1">
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script type="application/ld+json">
 {
@@ -83,7 +84,7 @@
     <div class="pg-hero-kicker">12 · Essay</div>
     <h1 class="pg-h1">Weak Ties Are a Growth Strategy</h1>
     <p class="pg-subtitle">On bridging connections, network structure, and why growth often comes from people who are not especially close · Sociology x Product</p>
-    <p class="pg-meta-date">April 2026 &nbsp;·&nbsp; 4 min read</p>
+    <p class="pg-meta-date">April 2026 &nbsp;·&nbsp; 8 min read</p>
   </div>
 </div>
 
@@ -101,10 +102,61 @@
       <p>You can see this in products that depend on recommendation, discovery, or mobility. A platform that only reinforces the existing social graph may produce comfort and retention, but it can also trap users inside familiar circles. A platform that helps information and opportunity jump between clusters creates more novelty and, often, more growth.</p>
       <p>The distinction Robert Putnam later sharpened as bonding versus bridging social capital is useful here. Bonding deepens the inside of a group. Bridging creates movement across groups. Great products usually need some of both. The mistake is treating them as interchangeable.</p>
 
+      <figure class="sxp-figure">
+        <div class="sxp-figure-title">Framework · Bonding vs. Bridging</div>
+        <div class="sxp-network-grid">
+          <div class="sxp-network-card">
+            <div class="sxp-kicker">Bonding</div>
+            <h3>Dense inside the cluster</h3>
+            <svg viewBox="0 0 220 160" aria-hidden="true">
+              <line x1="46" y1="48" x2="84" y2="34" stroke="#b5925a" stroke-width="2"/>
+              <line x1="46" y1="48" x2="73" y2="84" stroke="#b5925a" stroke-width="2"/>
+              <line x1="84" y1="34" x2="73" y2="84" stroke="#b5925a" stroke-width="2"/>
+              <line x1="145" y1="56" x2="177" y2="42" stroke="#b5925a" stroke-width="2"/>
+              <line x1="145" y1="56" x2="165" y2="92" stroke="#b5925a" stroke-width="2"/>
+              <line x1="177" y1="42" x2="165" y2="92" stroke="#b5925a" stroke-width="2"/>
+              <circle cx="46" cy="48" r="10" fill="#0d0b09"/>
+              <circle cx="84" cy="34" r="10" fill="#0d0b09"/>
+              <circle cx="73" cy="84" r="10" fill="#0d0b09"/>
+              <circle cx="145" cy="56" r="10" fill="#0d0b09"/>
+              <circle cx="177" cy="42" r="10" fill="#0d0b09"/>
+              <circle cx="165" cy="92" r="10" fill="#0d0b09"/>
+            </svg>
+            <p class="sxp-network-note">Stronger trust, denser belonging, slower movement across the boundary.</p>
+          </div>
+          <div class="sxp-network-card">
+            <div class="sxp-kicker">Bridging</div>
+            <h3>Movement across clusters</h3>
+            <svg viewBox="0 0 220 160" aria-hidden="true">
+              <line x1="42" y1="50" x2="82" y2="34" stroke="#b5925a" stroke-width="2"/>
+              <line x1="42" y1="50" x2="74" y2="86" stroke="#b5925a" stroke-width="2"/>
+              <line x1="82" y1="34" x2="74" y2="86" stroke="#b5925a" stroke-width="2"/>
+              <line x1="142" y1="58" x2="178" y2="44" stroke="#b5925a" stroke-width="2"/>
+              <line x1="142" y1="58" x2="166" y2="94" stroke="#b5925a" stroke-width="2"/>
+              <line x1="178" y1="44" x2="166" y2="94" stroke="#b5925a" stroke-width="2"/>
+              <line x1="82" y1="34" x2="142" y2="58" stroke="#0d0b09" stroke-width="2.5" stroke-dasharray="6 4"/>
+              <line x1="74" y1="86" x2="166" y2="94" stroke="#0d0b09" stroke-width="2.5" stroke-dasharray="6 4"/>
+              <circle cx="42" cy="50" r="10" fill="#0d0b09"/>
+              <circle cx="82" cy="34" r="10" fill="#0d0b09"/>
+              <circle cx="74" cy="86" r="10" fill="#0d0b09"/>
+              <circle cx="142" cy="58" r="10" fill="#0d0b09"/>
+              <circle cx="178" cy="44" r="10" fill="#0d0b09"/>
+              <circle cx="166" cy="94" r="10" fill="#0d0b09"/>
+            </svg>
+            <p class="sxp-network-note">Weaker ties, more novelty, better diffusion of information and opportunity.</p>
+          </div>
+        </div>
+        <figcaption>Most growth systems under-build the dotted lines because they keep optimizing for the familiar cluster.</figcaption>
+      </figure>
+
       <h2>Why LinkedIn and TikTok Both Matter Here</h2>
       <p><a href="https://news.mit.edu/2022/weak-ties-linkedin-employment-0915">LinkedIn's large-scale weak-ties experiment</a> made the point directly: connections that were not especially close often produced better job mobility outcomes than stronger ones. That matters because it is one of the clearest empirical demonstrations of a sociological theory inside a modern product.</p>
       <p>TikTok arrived at a related advantage through a different route. Instead of organizing discovery primarily through who you know, it organized discovery through behavioral similarity and interest signals. That let content travel across clusters without being gated by existing social capital. Part of its power was technical, but part of it was deeply sociological: it made weak-tie discovery the default rather than the exception.</p>
       <p>That does not mean every product should become an interest graph. It means teams should be much more explicit about what kind of network they are building and what kind of growth that network structure makes possible.</p>
+
+      <h2>What Growth Teams Commonly Overbuild</h2>
+      <p>Growth teams often over-invest in invites, contact imports, and already-dense sharing loops because these are legible and measurable. Those tools are useful, especially early. But they mostly deepen the existing graph. They do not automatically create movement across it.</p>
+      <p>If the product never helps users cross social boundaries, then growth eventually starts to look like repeated harvesting of the same cluster. The product may feel socially rich and still have a limited growth surface.</p>
 
       <div class="prose-quote">Strong ties deepen trust. Weak ties move opportunity.</div>
 
@@ -113,9 +165,20 @@
       <p>This has implications for recommendation, search, group design, creator discovery, marketplace exposure, and job matching. Systems that only reward already-dense networks tend to reproduce advantage. Systems that introduce users to adjacent but not identical social worlds create more possibility. That is one reason pure follower logic often entrenches power while recommendation systems with careful bridging logic can produce fresh discovery.</p>
       <p>The challenge, of course, is that bridging can feel less intimate than bonding. Products optimized for weak-tie movement may grow faster while feeling less cozy. Products optimized for strong ties may feel great inside clusters while struggling to expand beyond them. That is not a bug. It is the strategic trade-off.</p>
 
+      <h2>How to Design for Bridging Without Chaos</h2>
+      <p>The answer is not to maximize randomness. Bridging works best when it introduces adjacent difference, not complete social noise. Good recommendation systems, search surfaces, and discovery loops often succeed because they connect users to people or content just outside their usual cluster, not because they erase all structure.</p>
+      <p>That is why bridging strategy is also a curation strategy. Too little bridging and the product stagnates inside known circles. Too much undifferentiated exposure and the product loses trust. The job is to create movement that still feels interpretable.</p>
+
       <h2>The Larger Lesson</h2>
       <p>Growth teams often talk about virality and network effects as if those were self-explanatory. Sociology adds a more useful question: what kind of ties is the product strengthening, and what kinds of movement does that network structure permit?</p>
       <p>That question sits naturally beside <a href="/writing/essay-6.html">The Product Funnel Starts Too Late</a> and <a href="/writing/essay-9.html">Why A/B Testing Breaks on Social Products</a>. All three are reminders that on connected products, the unit of analysis cannot stay purely individual for very long.</p>
+
+      <h2>Further Reading</h2>
+      <ul>
+        <li><a href="https://news.mit.edu/2022/weak-ties-linkedin-employment-0915">MIT News on LinkedIn's Weak-Ties Experiment</a></li>
+        <li><a href="https://sociology.stanford.edu/people/mark-granovetter">Mark Granovetter at Stanford Sociology</a></li>
+        <li><a href="/writing/essay-22.html">Bonding vs. Bridging Is a Product Strategy Choice</a></li>
+      </ul>
     </div>
     <div class="pg-nav">
       <a href="/writing/"><span class="link-arrow link-arrow-left" aria-hidden="true">←</span> All writing</a>
