@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why A/B Testing Breaks on Social Products — Veda Vajpeyi</title>
+  <meta name="description" content="On connected users, network interference, and why experiments fail when people affect one another instead of behaving like isolated units.">
+  <meta name="author" content="Veda Vajpeyi">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://vedavajpeyi.com/writing/essay-9.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why A/B Testing Breaks on Social Products — Veda Vajpeyi">
+  <meta property="og:description" content="On connected users, network interference, and why experiments fail when people affect one another.">
+  <meta property="og:url" content="https://vedavajpeyi.com/writing/essay-9.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&h=630&fit=crop&q=80">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Notebook and pen representing experimentation and network effects">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&h=630&fit=crop&q=80">
+  <meta property="og:site_name" content="Veda Vajpeyi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why A/B Testing Breaks on Social Products — Veda Vajpeyi">
+  <meta name="twitter:description" content="On connected users, network interference, and why experiments fail when people affect one another.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/design.css?v=20260331-1">
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why A/B Testing Breaks on Social Products",
+  "description": "On connected users, network interference, and why experiments fail when people affect one another.",
+  "author": {
+    "@type": "Person",
+    "name": "Veda Vajpeyi",
+    "url": "https://vedavajpeyi.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Veda Vajpeyi",
+    "url": "https://vedavajpeyi.com"
+  },
+  "datePublished": "2026-04-04",
+  "dateModified": "2026-04-04",
+  "url": "https://vedavajpeyi.com/writing/essay-9.html",
+  "keywords": "sociology x product, ab testing, experimentation, network effects, product strategy",
+  "inLanguage": "en-US"
+}
+</script>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-kicker">Navigation</div>
+  <a href="/work/">Work</a>
+  <a href="/about.html">About</a>
+  <a href="/writing/">Writing</a>
+  <a href="/services/">Work With Me</a>
+  <a href="/contact.html">Contact</a>
+</div>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav" data-t="dark">
+  <a href="/" class="nav-logo">Veda Vajpeyi</a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/services/">Work With Me</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="pg-hero">
+  <div class="pg-hero-inner">
+    <div class="pg-hero-kicker">09 · Essay</div>
+    <h1 class="pg-h1">Why A/B Testing Breaks on Social Products</h1>
+    <p class="pg-subtitle">On connected users, network interference, and why experiments fail when people affect one another · Sociology x Product</p>
+    <p class="pg-meta-date">April 2026 &nbsp;·&nbsp; 4 min read</p>
+  </div>
+</div>
+
+<div class="pg-content" data-nav-light>
+  <div class="pg-inner">
+    <a href="/writing/" class="pg-back">All writing</a>
+    <div class="prose">
+      <h2>The Hidden Assumption Inside the Test</h2>
+      <p>A/B testing is one of the most trusted tools in product management. That trust comes from a simple promise: show two groups different versions, isolate the difference, and let behavior tell you what works.</p>
+      <p>The method is powerful. It is also built on a strong assumption that often goes unstated: users are independent of one another. One person's treatment is not supposed to change another person's behavior. On many products, that assumption is shaky. On social products, marketplaces, creator platforms, collaboration tools, and networked systems, it is frequently false.</p>
+      <p>That is where a lot of experimentation confidence becomes overconfidence. If users affect each other, then the test is not only measuring a variant. It is measuring a changing social environment.</p>
+
+      <h2>What Interference Actually Looks Like</h2>
+      <p>Imagine testing a recommendation system on a professional network. If one group sees more weak-tie recommendations, the effect does not end with the users who got the treatment. The new connections they make can alter opportunity, information flow, and engagement for other people in the network too. The unit of analysis may look individual. The mechanism is not.</p>
+      <p>The same thing happens in messaging products when one group gets a sharing feature before another. It happens in marketplaces when one side of the market gets better ranking logic. It happens in social feeds when creators in one condition change what audiences in another condition end up seeing and responding to. Even something that looks isolated, like a new badge or social proof treatment, can spill over once people compare notes or react to the changed behavior of others.</p>
+      <p>Once interference exists, clean causal claims get harder. A statistically significant result may still be telling you the wrong story about why behavior moved.</p>
+
+      <h2>Why This Matters More Than It Sounds</h2>
+      <p>The danger is not just technical purity. It is product misdiagnosis. If a team believes a variant worked because of button copy when the real effect came from network spillover, they will scale the wrong lesson. If they think a social feature failed because users did not like it, when in reality it never reached enough density to create the intended network effect, they may kill a promising idea too early.</p>
+      <p>LinkedIn researchers and experimentation scholars have been explicit about this problem: connected customers do not behave like independent lab subjects. On social products, the behavior of one user can change the treatment context of another. Sociology would describe this less as noise and more as the normal condition of social life.</p>
+      <p>That is why experimentation often looks most decisive precisely where the underlying model is too simple. The spreadsheet is clean. The social world is not.</p>
+
+      <div class="prose-quote">If users can affect one another, the experiment is not only testing a feature. It is testing a relationship.</div>
+
+      <h2>What Better Experimentation Looks Like</h2>
+      <p>The answer is not to stop testing. It is to test with the right unit in mind. Sometimes that means randomizing at the level of groups, networks, teams, regions, or communities rather than individuals. Sometimes it means explicitly measuring spillover rather than pretending it is contamination. Sometimes it means running smaller social experiments alongside qualitative work so you can understand the mechanism rather than only the lift.</p>
+      <p>It also means being honest about when experimentation cannot carry the whole burden of judgment. Norm shifts, community interventions, trust features, and social discovery systems may need longer horizons and more interpretive methods than a typical product dashboard likes to allow.</p>
+      <p>The core question I would ask is simple: if one user's experience can change another user's behavior, why are we still acting like the test is happening in isolation? Once the product is social, the experiment has to become more social too.</p>
+
+      <h2>What This Changes for PMs</h2>
+      <p>The practical shift is to stop treating experimentation as automatically neutral. Every method sees some things clearly and misses others by design. A/B testing is great at measuring isolated response. It is much weaker when the phenomenon itself is relational.</p>
+      <p>That is why this essay belongs next to <a href="/writing/essay-6.html">The Product Funnel Starts Too Late</a>. Both are really about the same problem: product teams often inherit tools built for individuals and then apply them to systems shaped by interaction. The result is not just imperfect measurement. It is a narrower theory of the product than the product actually deserves.</p>
+    </div>
+    <div class="pg-nav">
+      <a href="/writing/"><span class="link-arrow link-arrow-left" aria-hidden="true">←</span> All writing</a>
+      <a href="/contact.html" class="pg-nav-cta">Let's talk <span class="link-arrow link-arrow-right" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-rotating" id="footer-rot">
+      <div class="rot-slide" id="rot-current">Product Strategy <em>·</em></div>
+      <div class="rot-slide" id="rot-next">Career Coaching <em>·</em></div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-name">Veda Vajpeyi</div>
+      <ul class="footer-nav">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/services/">Work With Me</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-yr">© 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/page.js?v=20260331-1"></script>
+</body>
+</html>
