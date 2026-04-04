@@ -27,6 +27,83 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/design.css?v=20260331-1">
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+.writing-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2.25rem;
+  align-items: end;
+  padding: 0 0 2.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-d);
+}
+
+.writing-feature-copy {
+  max-width: 44rem;
+}
+
+.writing-feature-label {
+  font-family: var(--mono);
+  font-size: var(--type-meta);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+}
+
+.writing-feature h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--text-d);
+  margin-bottom: 0.65rem;
+}
+
+.writing-feature p {
+  max-width: 40rem;
+  font-size: var(--type-body-sm);
+  line-height: 1.8;
+  color: rgba(240,235,227,0.72);
+}
+
+.writing-feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.writing-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color 0.2s, transform 0.2s var(--ease-out);
+}
+
+.writing-feature-link:hover {
+  color: var(--text-d);
+  transform: translateX(4px);
+}
+
+@media (max-width: 800px) {
+  .writing-feature {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .writing-feature-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -78,6 +155,18 @@
 
 <section class="listing-section">
   <div class="listing-inner">
+
+    <div class="writing-feature">
+      <div class="writing-feature-copy">
+        <div class="writing-feature-label">Sociology x Product</div>
+        <h2>A body of work on product problems that are really social-system problems in disguise.</h2>
+        <p>The essays below are part of a larger lens. Start with the anchor page for the worldview, or open the field guide for the meeting-ready version.</p>
+      </div>
+      <div class="writing-feature-actions">
+        <a href="/sociology-product.html" class="writing-feature-link">Open the lens <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+        <a href="/sociology-product-field-guide.html" class="writing-feature-link">Open the field guide <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+      </div>
+    </div>
 
     <a href="/writing/essay-1.html" class="list-item">
       <div class="list-item-num">01</div>
