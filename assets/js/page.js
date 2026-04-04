@@ -97,7 +97,10 @@ if (!document.getElementById('preloader')) {
     const href = a.getAttribute('href');
     if (!href) return;
     // Exact match, or prefix match for section pages (e.g. /work/ matches /work/case-study-1.html)
-    const active = href === path || (href !== '/' && path.startsWith(href));
+    const active =
+      href === path ||
+      (href !== '/' && path.startsWith(href)) ||
+      (href === '/sociology-product.html' && path.startsWith('/sociology-product'));
     if (active) a.setAttribute('aria-current', 'page');
   });
 })();
