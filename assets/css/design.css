@@ -1051,6 +1051,11 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .list-item:hover h2 { color: var(--accent); }
 .list-item p { font-size: var(--type-body-sm); color: var(--muted-d); line-height: 1.8; max-width: 560px; }
 .list-item-meta { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: rgba(110,100,88,0.82); white-space: nowrap; padding-top: 0.35rem; text-align: right; line-height: 1.6; }
+.work-listing .list-item-meta {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  color: rgba(176, 164, 149, 0.72);
+}
 
 /* Thumbnail in case study list items */
 .list-thumb { float: right; margin: 0 0 1rem 2rem; width: 180px; height: 120px; overflow: hidden; border-radius: 2px; flex-shrink: 0; }
