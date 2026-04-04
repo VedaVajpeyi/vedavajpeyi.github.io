@@ -163,7 +163,6 @@ body.nav-open .mobile-menu a:nth-of-type(2) { transition-delay: 0.11s; }
 body.nav-open .mobile-menu a:nth-of-type(3) { transition-delay: 0.16s; }
 body.nav-open .mobile-menu a:nth-of-type(4) { transition-delay: 0.21s; }
 body.nav-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.26s; }
-body.nav-open .mobile-menu a:nth-of-type(6) { transition-delay: 0.31s; }
 .mobile-menu a:hover { color: var(--accent); }
 .mobile-menu-kicker { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-d); margin-bottom: 2.5rem; }
 
