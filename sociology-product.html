@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sociology x Product — Veda Vajpeyi</title>
+  <meta name="description" content="A longform guide to the social mechanisms standard PM frameworks miss: adoption before the click, behavior as person plus culture plus system, structure before motivation, metrics as social claims, and value flow.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vedavajpeyi.com/sociology-product.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/design.css?v=20260331-1">
+  <link rel="stylesheet" href="/assets/css/sxp-essays.css?v=20260404-1">
+  <link rel="stylesheet" href="/assets/css/sociology-product.css?v=20260404-1">
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+</head>
+<body class="socx-main-page">
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-kicker">Navigation</div>
+  <a href="/work/">Work</a>
+  <a href="/about.html">About</a>
+  <a href="/writing/">Writing</a>
+  <a href="/services/">Work With Me</a>
+  <a href="/contact.html">Contact</a>
+</div>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav" data-t="dark">
+  <a href="/" class="nav-logo">Veda Vajpeyi</a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/services/">Work With Me</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <section class="pg-hero socx-pg-hero">
+    <div class="pg-hero-inner">
+      <div class="pg-hero-kicker">Sociology x Product</div>
+      <h1 class="pg-h1">Product problems are social problems<em> in technical clothes.</em></h1>
+      <p class="pg-deck">A longform guide to the social mechanisms standard PM frameworks miss: norms, identity, structure, network position, and value flow. Built for product leaders who keep finding human problems underneath clean dashboards.</p>
+      <p class="pg-subtitle">This is the anchor page for the lens itself. Start here for the conceptual frame, then move to the essays for depth or the field guide for a meeting-ready tool.</p>
+      <div class="pg-tags">
+        <span class="pg-tag">Anchor page</span>
+        <span class="pg-tag">Five models</span>
+        <span class="pg-tag">For product leaders</span>
+      </div>
+      <div class="socx-hero-links">
+        <a href="/writing/essay-5.html" class="socx-hero-link">Read the flagship essay <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+        <a href="/sociology-product-field-guide.html" class="socx-hero-link">Open the field guide <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="socx-signal-band">
+    <div class="socx-signal-inner">
+      <div class="socx-signal-kicker">Use This When</div>
+      <div class="socx-signal-list">
+        <div class="socx-signal-item">a clearly useful feature still will not spread</div>
+        <div class="socx-signal-item">the metric moves but trust or quality gets worse</div>
+        <div class="socx-signal-item">the team keeps solving the right problem at the wrong layer</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pg-content" data-nav-light>
+    <div class="pg-inner-wide socx-resource-shell">
+      <aside class="socx-resource-rail">
+        <div class="socx-rail-box">
+          <div class="socx-rail-kicker">On This Page</div>
+          <nav class="socx-rail-nav">
+            <a href="#blind-spot">The blind spot</a>
+            <a href="#misread">The recurring misread</a>
+            <a href="#models">Five models</a>
+            <a href="#proof">What it predicts</a>
+            <a href="#use">How to use it</a>
+          </nav>
+          <p class="socx-rail-note">Best for adoption reviews, growth strategy, postmortems, roadmap critique, and any decision where the product logic looks clean but the behavior does not.</p>
+        </div>
+      </aside>
+
+      <div class="socx-resource-main">
+        <section id="blind-spot" class="socx-reading-block prose">
+          <h2>The blind spot in product management</h2>
+          <p>Product management inherited its strongest tools from engineering, economics, and psychology. Those traditions are useful, but they share a bias: they tend to explain behavior at the level of the individual actor. The user wants something. The user understands or does not. The user is motivated or not. The user converts or drops.</p>
+          <p>That framing is often too thin for the problems product teams are actually facing. Products do not live inside isolated decisions. They live inside social systems. People act in front of audiences. They compare themselves to peers. They read signals about status, safety, legitimacy, and risk. They move through institutions and constraints they did not choose. They create value for companies while absorbing costs that rarely show up on dashboards.</p>
+          <p>Once you change the unit of analysis from the isolated user to the social system around the user, different questions become obvious. Those questions do not just enrich the diagnosis. They often reverse it.</p>
+
+          <figure class="sxp-figure">
+            <div class="sxp-figure-title">Framework · Default PM vs Sociology x Product</div>
+            <div class="sxp-compare">
+              <div class="sxp-compare-card">
+                <div class="sxp-kicker">Default PM model</div>
+                <h3>User as individual</h3>
+                <ul class="sxp-list">
+                  <li>Behavior is a decision.</li>
+                  <li>Friction lives in the interface.</li>
+                  <li>Growth lives in the funnel.</li>
+                  <li>Value is what the company can measure.</li>
+                </ul>
+              </div>
+              <div class="sxp-compare-card sxp-compare-card-strong">
+                <div class="sxp-kicker">Sociology x Product</div>
+                <h3>User in a social world</h3>
+                <ul class="sxp-list">
+                  <li>Behavior is shaped by norms and audiences.</li>
+                  <li>Failure can live in exposure, structure, or power.</li>
+                  <li>Growth is diffusion through networks.</li>
+                  <li>Value is distributed and often externalized.</li>
+                </ul>
+              </div>
+            </div>
+            <figcaption>The product can stay the same while the diagnosis changes completely. The first question you ask determines which solution you are allowed to see.</figcaption>
+          </figure>
+        </section>
+
+        <section id="misread" class="socx-reading-block prose prose-top-gap">
+          <h2>The recurring misread</h2>
+          <p>The same category errors show up repeatedly in product work. Teams call something a UX problem when it is a stage problem. They call it low motivation when it is structural constraint. They call it noisy data when the metric itself encodes the wrong theory of value.</p>
+          <p>These are not semantic mistakes. They decide what the team does next. And once the wrong diagnosis takes hold, even good execution compounds the mistake.</p>
+        </section>
+
+        <div class="socx-misdiagnoses">
+          <div class="socx-misdiag-item">
+            <span class="socx-misdiag-wrong">They call it an onboarding problem.</span>
+            <span class="socx-misdiag-real">The barrier is social risk before the click.</span>
+          </div>
+          <div class="socx-misdiag-item">
+            <span class="socx-misdiag-wrong">They call it low motivation.</span>
+            <span class="socx-misdiag-real">The behavior is structurally unavailable.</span>
+          </div>
+          <div class="socx-misdiag-item">
+            <span class="socx-misdiag-wrong">They call it noisy data.</span>
+            <span class="socx-misdiag-real">The metric is hiding the wrong theory of value.</span>
+          </div>
+          <div class="socx-misdiag-item">
+            <span class="socx-misdiag-wrong">They call it product-market fit.</span>
+            <span class="socx-misdiag-real">The product may have authority without legitimacy.</span>
+          </div>
+          <div class="socx-misdiag-item">
+            <span class="socx-misdiag-wrong">They call it engagement decline.</span>
+            <span class="socx-misdiag-real">The social cost of the system is becoming visible.</span>
+          </div>
+        </div>
+
+        <section id="models" class="socx-reading-block prose prose-top-gap">
+          <h2>Five models to reach for before you reach for a fix</h2>
+          <p>These are the models I would want in the room before choosing an intervention. They are not comprehensive sociology. They are compact diagnostic tools for product work. The job is not to sound theoretical. The job is to stop solving the wrong thing.</p>
+        </section>
+
+        <article class="socx-model-chapter" id="model-funnel">
+          <div class="socx-model-header">
+            <span class="socx-model-label">01 / The social adoption funnel</span>
+            <h3>The dashboard starts too late.</h3>
+          </div>
+          <div class="socx-model-grid">
+            <div class="prose socx-model-body">
+              <p>Most funnels begin at action. They count the click, the signup, the post, the invite, the conversion. But for any visible behavior, the decisive questions usually happen earlier: what does this make me look like, who is watching, do people like me do this, and what if I get it wrong?</p>
+              <p>That is why clearly useful products can stall even when the interface is good. The product is ready. The user is not yet socially ready. The act feels too exposing, too presumptuous, or too identity-threatening to become normal.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> adoption stalls on a public or identity-laden act such as profile creation, contribution, sharing, disclosure, or collaboration.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> reduce friction. <strong>This model asks:</strong> what happens before the user ever reaches the button?</p>
+            </div>
+            <figure class="socx-notebook-figure">
+              <img src="/assets/img/about-v21/notebook-notes/subverted-funnel.png" alt="Notebook sketch showing the social stages that precede action in an adoption funnel.">
+              <figcaption>Adoption is often decided during interpretation, comparison, and risk assessment, long before the funnel logs a drop-off.</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="socx-model-chapter" id="model-system">
+          <div class="socx-model-header">
+            <span class="socx-model-label">02 / The behavior system</span>
+            <h3>Behavior sits at the overlap of person, culture, and system.</h3>
+          </div>
+          <div class="socx-model-grid is-reverse">
+            <figure class="socx-notebook-figure">
+              <img src="/assets/img/about-v21/notebook-notes/person-culture-system-v2.png" alt="Notebook sketch showing behavior as the overlap of person, culture, and system.">
+              <figcaption>Most teams over-index on system because that is what they can ship. But behavior often breaks because culture and status are doing more work than the interface.</figcaption>
+            </figure>
+            <div class="prose socx-model-body">
+              <p>When a behavior does not happen, teams often jump between two stories: users do not want it, or the product made it too hard. Both can be true. Both can also be wrong. A more useful starting point is to ask which part of the behavior system is broken: person, culture, or system.</p>
+              <p>Person is motivation, confidence, and ability. Culture is norms, identity, and what feels socially allowed. System is the product itself: the interface, incentives, and constraints the team actually controls. A good diagnosis names all three before deciding which one matters most.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> the team keeps toggling between "users do not want it" and "the flow is confusing" without explaining the social context in between.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> fix motivation or UX. <strong>This model asks:</strong> which layer is actually blocking the behavior?</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="socx-model-chapter" id="model-structure">
+          <div class="socx-model-header">
+            <span class="socx-model-label">03 / Structure before motivation</span>
+            <h3>Before you call it low motivation, ask whether the choice is real.</h3>
+          </div>
+          <div class="socx-model-grid">
+            <div class="prose socx-model-body">
+              <p>A great deal of product work quietly assumes that users can do the thing if they want it badly enough. Sociology asks the harder question first: can they actually do it? Time, money, social permission, network position, institutional rules, and risk outside the product all shape what is available before preference enters the picture.</p>
+              <p>This matters because product teams have many motivation tools and far fewer structural tools. It is easier to rewrite copy than to acknowledge that the behavior is expensive, risky, or impossible in the user’s actual life. So teams keep trying to motivate behavior that is structurally blocked.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> the desired behavior depends on disposable time, public vulnerability, economic slack, trust, or institutional permission that users may not have.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> users are not motivated. <strong>This model asks:</strong> is the user unwilling, or simply unable under current conditions?</p>
+            </div>
+            <figure class="socx-notebook-figure">
+              <img src="/assets/img/about-v21/notebook-notes/preference-vs-conditioned.png" alt="Notebook sketch contrasting genuine preference with behavior shaped by conditioning or constraint.">
+              <figcaption>What looks like preference is often a record of what was available, affordable, safe, or socially permitted.</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="socx-model-chapter" id="model-metric">
+          <div class="socx-model-header">
+            <span class="socx-model-label">04 / The metric is a social claim</span>
+            <h3>Every metric hides a theory of what counts.</h3>
+          </div>
+          <div class="socx-model-grid is-reverse">
+            <figure class="socx-notebook-figure">
+              <img src="/assets/img/about-v21/notebook-notes/surface-vs-governing.png" alt="Notebook sketch contrasting surface signals with the governing forces that sit underneath them.">
+              <figcaption>Metrics sit on the surface. The governing logic underneath them is where misdiagnosis begins.</figcaption>
+            </figure>
+            <div class="prose socx-model-body">
+              <p>Goodhart’s Law is only part of the problem. Long before a measure gets gamed, it already carries a theory of value. It says what matters, whose behavior counts, which experience is visible, and which trade-offs can be safely ignored.</p>
+              <p>That is why teams can optimize a metric with real rigor and still move away from the thing they actually care about. The number was never neutral. It was already an argument about the product and the social world around it.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> a number is moving while trust, quality, fairness, or usefulness seem to be moving in the opposite direction.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> make the metric healthier. <strong>This model asks:</strong> what theory of value is the metric enforcing, and what does it make invisible?</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="socx-model-chapter" id="model-value">
+          <div class="socx-model-header">
+            <span class="socx-model-label">05 / Value flow</span>
+            <h3>Every product decides who creates value, who captures it, and who absorbs the cost.</h3>
+          </div>
+          <div class="socx-model-grid">
+            <div class="prose socx-model-body">
+              <p>Value creation is only part of the story. Products also route value, extract it, and push costs somewhere. Sometimes those costs land on workers. Sometimes they land on users in the form of privacy loss, emotional labor, or cognitive load. Sometimes they land on communities that were never represented in the strategy review at all.</p>
+              <p>Once you map value this way, “ethics” stops looking like a late-stage overlay. It becomes a strategy question from the beginning. A product can look elegant precisely because somebody else is holding the mess.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> convenience, scale, or growth appears to depend on invisible labor, hidden harm, or off-platform cost bearing.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> the product is working because the dashboard is healthy. <strong>This model asks:</strong> who is doing the work, who is taking the upside, and who is carrying the cost?</p>
+            </div>
+            <figure class="sxp-figure">
+              <div class="sxp-figure-title">Framework · Create value / Capture value / Absorb cost</div>
+              <div class="sxp-flow">
+                <div class="sxp-flow-card">
+                  <div class="sxp-kicker">1 · Create value</div>
+                  <h3>Users, workers, creators</h3>
+                  <p>Labor, attention, data, content, trust, and coordination.</p>
+                </div>
+                <div class="sxp-flow-arrow">→</div>
+                <div class="sxp-flow-card">
+                  <div class="sxp-kicker">2 · Route value</div>
+                  <h3>Platform logic</h3>
+                  <p>Ranking, matching, pricing, policy, defaults, and workflow decisions.</p>
+                </div>
+                <div class="sxp-flow-arrow">→</div>
+                <div class="sxp-flow-card">
+                  <div class="sxp-kicker">3 · Capture value</div>
+                  <h3>Company and buyers</h3>
+                  <p>Revenue, convenience, efficiency, and market power.</p>
+                </div>
+              </div>
+              <div class="sxp-chip-row">
+                <span class="sxp-chip">Hidden labor</span>
+                <span class="sxp-chip">Moderator trauma</span>
+                <span class="sxp-chip">Gig-worker precarity</span>
+                <span class="sxp-chip">Privacy loss</span>
+                <span class="sxp-chip">Civic cost</span>
+              </div>
+              <figcaption>The missing question in many strategy reviews is simple: who absorbs the cost when the dashboard looks clean?</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <section id="proof" class="socx-reading-block prose prose-top-gap">
+          <h2>What this lens predicts before the dashboard does</h2>
+          <p>Once you start looking at products as social systems, certain failures stop being surprising. What looked like random turbulence begins to read like a pattern.</p>
+        </section>
+
+        <div class="socx-proof-list">
+          <article class="socx-proof-item">
+            <span class="socx-proof-kicker">Social adoption funnel</span>
+            <h3>Facebook’s sharing problem was not just feed ranking. It was stage exposure.</h3>
+            <p>As family, coworkers, old classmates, and close friends collapsed into one audience, posting became harder to perform. The product looked functional. The social cost of using it changed underneath the interface.</p>
+            <a class="socx-proof-link" href="/writing/essay-11.html">Read the essay <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+          </article>
+
+          <article class="socx-proof-item">
+            <span class="socx-proof-kicker">Behavior system</span>
+            <h3>Nextdoor reduced racial profiling reports by 75% by changing the conditions of the act.</h3>
+            <p>The intervention did not simply add moderation after the fact. It reintroduced friction and specificity into the behavior itself, changing what the system made easy and socially invisible.</p>
+            <a class="socx-proof-link" href="https://www.wired.com/2016/08/nextdoor-breaks-sacred-design-rule-end-racial-profiling" target="_blank" rel="noopener noreferrer">Read the case <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+          </article>
+
+          <article class="socx-proof-item">
+            <span class="socx-proof-kicker">Value flow</span>
+            <h3>Ghost work explains why AI products can feel magical while labor remains invisible.</h3>
+            <p>The clean user experience is often made possible by hidden human effort elsewhere in the system. Once you map value flow, that invisibility stops looking incidental and starts looking strategic.</p>
+            <a class="socx-proof-link" href="/writing/essay-7.html">Read the essay <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+          </article>
+
+          <article class="socx-proof-item">
+            <span class="socx-proof-kicker">Authority and legitimacy</span>
+            <h3>A product can reach millions through authority and still be socially fragile.</h3>
+            <p>Aarogya Setu scaled with extraordinary speed, but trust still had to be earned. Velocity is not the same as legitimacy. Distribution can create adoption before social durability exists.</p>
+            <a class="socx-proof-link" href="/work/case-study-1.html">Read the case study <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+          </article>
+        </div>
+
+        <section id="use" class="socx-use-block">
+          <div class="socx-use-intro">
+            <span class="socx-use-kicker">How to use this work</span>
+            <h2>Start here. Then take it into the room.</h2>
+            <p>This page gives you the lens. The essay series gives you the arguments in depth. The field guide turns the models into a practical tool for reviews, postmortems, and strategy sessions.</p>
+          </div>
+          <div class="socx-use-links">
+            <a href="/writing/" class="socx-path-card">
+              <span class="socx-path-label">Essay series</span>
+              <h3>Read the applied essays</h3>
+              <p>Use the essays when you want one mechanism, one product problem, and a sharper argument.</p>
+            </a>
+            <a href="/sociology-product-field-guide.html" class="socx-path-card">
+              <span class="socx-path-label">Field guide</span>
+              <h3>Use the printable version</h3>
+              <p>Use the guide when the page needs to become a meeting tool instead of a reading experience.</p>
+            </a>
+          </div>
+        </section>
+
+        <div class="socx-reading-block prose prose-top-gap">
+          <h2>Why this exists</h2>
+          <p>Product management already has a language for prioritization, experimentation, and execution. It does not yet have a strong enough language for the social systems products enter and create. That gap becomes more costly as products become infrastructure.</p>
+          <p>This page is meant to be that missing bridge: rigorous enough to change the diagnosis, practical enough to use in the room, and opinionated enough to be worth passing around.</p>
+        </div>
+
+        <div class="pg-nav">
+          <a href="/writing/essay-5.html" class="pg-nav-forward">Read the flagship essay <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+          <a href="/sociology-product-field-guide.html" class="pg-nav-cta">Open the field guide <span class="link-arrow link-arrow-right" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-rotating" id="footer-rot">
+      <div class="rot-slide" id="rot-current">Product Strategy <em>·</em></div>
+      <div class="rot-slide" id="rot-next">Career Coaching <em>·</em></div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-name">Veda Vajpeyi</div>
+      <ul class="footer-nav">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/services/">Work With Me</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-yr">&copy; 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/page.js?v=20260331-1"></script>
+</body>
+</html>
