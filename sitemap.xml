@@ -214,6 +214,53 @@
     <changefreq>yearly</changefreq>
   </url>
 
+  <!-- Topic pages -->
+  <url>
+    <loc>https://vedavajpeyi.com/topics/growth-strategy</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/network-effects</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/product-analytics</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/product-management</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/product-strategy</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/public-policy</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/trust-safety</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/user-behavior</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://vedavajpeyi.com/topics/voice-ai</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
   <!-- Project -->
   <url>
     <loc>https://vedavajpeyi.com/projects/books-beds.html</loc>

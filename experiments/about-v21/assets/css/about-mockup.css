@@ -1,0 +1,609 @@
+.about-redesign-page {
+  background: var(--dark);
+}
+
+.about-redesign-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.about-redesign-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 4rem) 3.5rem 7rem;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(181,146,90,0.18), transparent 24%),
+    linear-gradient(180deg, #0d0b09 0%, #17120d 100%);
+}
+
+.about-redesign-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 36vw);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 42rem;
+}
+
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: var(--type-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+}
+
+.hero-title .wp,
+.story-title .wp,
+.work-title .wp,
+.principles-title .wp,
+.close-title .wp {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.hero-title .wp {
+  max-width: 9.5em;
+  font-size: clamp(3.8rem, 8.8vw, 8.2rem);
+  color: var(--text-d);
+}
+
+.hero-deck,
+.story-body p,
+.close-text {
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.hero-deck {
+  max-width: 38rem;
+  margin-top: 2rem;
+  color: rgba(240,235,227,0.76);
+}
+
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+}
+
+.hero-portrait-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(9.5rem, 12.5rem);
+  gap: 1rem;
+  align-items: end;
+  width: min(100%, 31rem);
+  justify-self: end;
+}
+
+.hero-portrait {
+  position: relative;
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.34);
+}
+
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero-fact {
+  position: relative;
+  max-width: 14rem;
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.24);
+  backdrop-filter: blur(12px);
+  z-index: 2;
+}
+
+.hero-fact span,
+.resume-label,
+.work-card-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: var(--type-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hero-fact span {
+  margin-bottom: 0.45rem;
+}
+
+.hero-fact strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.34;
+  font-weight: 600;
+}
+
+.fact-a {
+  grid-column: 1;
+  justify-self: start;
+  margin-top: -4.5rem;
+  background: rgba(244,239,232,0.94);
+  color: var(--text-l);
+}
+
+.fact-a span {
+  color: var(--muted-l);
+}
+
+.fact-b {
+  grid-column: 2;
+  justify-self: end;
+  margin-top: -2rem;
+  background: rgba(143, 136, 106, 0.18);
+  color: var(--text-d);
+}
+
+.fact-b span {
+  color: rgba(240,235,227,0.56);
+}
+
+.about-redesign-band {
+  padding: 4.8rem 3.5rem;
+  background: #15110d;
+  border-top: 1px solid var(--border-d);
+  border-bottom: 1px solid var(--border-d);
+}
+
+.about-redesign-band blockquote {
+  max-width: 18em;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: rgba(240,235,227,0.9);
+}
+
+.about-redesign-story,
+.about-redesign-media,
+.about-redesign-principles,
+.about-redesign-close {
+  background: var(--light);
+  color: var(--text-l);
+}
+
+.about-redesign-story {
+  padding: 6.5rem 3.5rem 4.25rem;
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 4rem;
+}
+
+.story-intro {
+  display: grid;
+  align-content: start;
+  gap: 2rem;
+}
+
+.story-title .wp,
+.work-title .wp,
+.principles-title .wp,
+.close-title .wp {
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  color: var(--text-l);
+}
+
+.story-body p {
+  color: var(--body-l);
+}
+
+.story-body p + p {
+  margin-top: 1.15rem;
+}
+
+.story-thesis {
+  max-width: 26rem;
+  padding: 1.45rem 1.55rem 1.55rem;
+  border-top: 1px solid var(--border-l);
+  border-bottom: 1px solid var(--border-l);
+  background:
+    linear-gradient(180deg, rgba(205,190,167,0.1) 0%, rgba(205,190,167,0) 100%);
+}
+
+.story-thesis-label {
+  margin-bottom: 1rem;
+  font-family: var(--mono);
+  font-size: var(--type-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-l);
+}
+
+.story-thesis p {
+  font-family: var(--serif);
+  font-size: clamp(1.12rem, 1.7vw, 1.45rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text-l);
+}
+
+.story-thesis p + p {
+  margin-top: 0.5rem;
+}
+
+.story-thesis p:last-child {
+  color: var(--body-l);
+}
+
+.field-note {
+  margin: 1.55rem 0 0;
+  max-width: 23.5rem;
+  padding: 0.55rem;
+  border: 1px solid rgba(17, 13, 10, 0.08);
+  background: #f8f3ec;
+  box-shadow: 0 10px 28px rgba(28, 21, 16, 0.06);
+  transform: none;
+}
+
+.field-note img {
+  width: 100%;
+  display: block;
+}
+
+.field-note figcaption {
+  padding: 0.75rem 0.1rem 0.05rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted-l);
+  font-style: normal;
+}
+
+.field-note-story {
+  margin-left: 0;
+}
+
+.about-redesign-media {
+  padding: 0.5rem 3.5rem 6.5rem;
+}
+
+.media-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+}
+
+.media-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-l);
+  background: #ddd4c8;
+}
+
+.media-card img,
+.media-card video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.media-card-large {
+  aspect-ratio: 16 / 10;
+}
+
+.media-card-video {
+  aspect-ratio: 4 / 5;
+}
+
+.media-card-video img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.media-card figcaption {
+  padding: 0.95rem 1rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted-l);
+  background: rgba(255,255,255,0.4);
+}
+
+.about-redesign-work {
+  padding: 6.5rem 3.5rem 7.25rem;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(181,146,90,0.14), transparent 18%),
+    linear-gradient(180deg, #0d0b09 0%, #15110d 100%);
+}
+
+.work-top {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 3rem;
+  align-items: end;
+}
+
+.work-title .wp {
+  color: var(--text-d);
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.work-card {
+  min-height: 21rem;
+  padding: 1.6rem;
+  border: 1px solid var(--border-d);
+  background: rgba(255,255,255,0.04);
+}
+
+.work-card-label {
+  color: rgba(181,146,90,0.82);
+  margin-bottom: 0.95rem;
+}
+
+.work-card h3,
+.principle-row h3 {
+  font-family: var(--serif);
+  letter-spacing: -0.015em;
+}
+
+.work-card h3 {
+  font-size: 1.55rem;
+  line-height: 1.12;
+  color: var(--text-d);
+}
+
+.work-card p {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.82;
+  color: rgba(240,235,227,0.72);
+}
+
+.work-card-figure {
+  margin: 1.25rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  aspect-ratio: 16 / 9;
+  background: rgba(255,255,255,0.04);
+}
+
+.work-card-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-redesign-principles {
+  padding: 6.5rem 3.5rem;
+}
+
+.principles-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 4rem;
+}
+
+.principles-list {
+  border-top: 1px solid var(--border-l);
+}
+
+.principle-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border-l);
+}
+
+.principle-row h3 {
+  font-size: 1.22rem;
+  line-height: 1.15;
+  color: var(--text-l);
+}
+
+.principle-row p,
+.resume-role {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.principle-row p {
+  color: var(--body-l);
+}
+
+.about-redesign-resume {
+  padding: 5.5rem 3.5rem 6rem;
+  background: #15110d;
+  border-top: 1px solid var(--border-d);
+  border-bottom: 1px solid var(--border-d);
+}
+
+.resume-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4rem;
+}
+
+.resume-label {
+  color: rgba(181,146,90,0.82);
+  margin-bottom: 1rem;
+}
+
+.resume-item {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--border-d);
+}
+
+.resume-item:last-child {
+  border-bottom: 1px solid var(--border-d);
+}
+
+.resume-org {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-d);
+  font-weight: 700;
+}
+
+.resume-role {
+  margin-top: 0.4rem;
+  color: rgba(240,235,227,0.68);
+}
+
+.about-redesign-close {
+  padding: 6.5rem 3.5rem 7rem;
+}
+
+.close-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-end;
+}
+
+.close-copy {
+  max-width: 48rem;
+}
+
+.close-text {
+  margin-top: 1.45rem;
+  color: var(--body-l);
+}
+
+.close-actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.45rem;
+}
+
+.about-redesign-page .project-link:hover .link-arrow {
+  color: var(--text-l);
+}
+
+@media (max-width: 1100px) {
+  .hero-layout,
+  .story-layout,
+  .work-top,
+  .principles-layout,
+  .resume-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .media-layout,
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-portrait-wrap {
+    width: min(100%, 34rem);
+    justify-self: start;
+  }
+
+  .close-layout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 960px) {
+  .about-redesign-hero,
+  .about-redesign-band,
+  .about-redesign-story,
+  .about-redesign-media,
+  .about-redesign-work,
+  .about-redesign-principles,
+  .about-redesign-resume,
+  .about-redesign-close {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .principle-row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .about-redesign-hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 3rem);
+    padding-bottom: 5rem;
+  }
+
+  .hero-title .wp {
+    font-size: clamp(3rem, 13vw, 4.8rem);
+  }
+
+  .hero-portrait-wrap {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .hero-portrait {
+    grid-column: 1;
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero-fact {
+    max-width: 12.5rem;
+    padding: 0.8rem 0.85rem 0.9rem;
+  }
+
+  .fact-a,
+  .fact-b {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .fact-a {
+    justify-self: start;
+  }
+
+  .fact-b {
+    justify-self: end;
+    margin-top: -4.25rem;
+  }
+
+  .work-card {
+    min-height: auto;
+  }
+}
