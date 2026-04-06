@@ -26,19 +26,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/design.css?v=20260404-5">
+  <link rel="stylesheet" href="/assets/css/work-scroll-morph-mockup.css?v=20260406-3">
+  <style>
+    body.work-home-baseline #work {
+      padding-top: 2rem;
+    }
+
+    body.work-home-baseline .work-close-strip {
+      padding-top: 4.5rem;
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-grid {
+      align-items: center;
+      padding-top: 4rem;
+      border-top: 1px solid var(--border-d);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-kicker {
+      margin-bottom: 1.15rem;
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-title .wp {
+      max-width: 9em;
+      font-size: clamp(2.3rem, 4.8vw, 4rem);
+      line-height: 1.02;
+      color: var(--text-d);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-deck {
+      max-width: 31rem;
+      color: var(--muted-d);
+    }
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 </head>
-<body>
+<body class="work-scroll-morph-page work-home-baseline">
 
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-kicker">Navigation</div>
-  <a href="/about.html">About</a>
-  <a href="/sociology-product.html">Sociology x Product</a>
-  <a href="/work/">Work</a>
-  <a href="/writing/">Writing</a>
-  <a href="/services/">Work With Me</a>
+  <a href="/about.html" class="mobile-nav-link">About</a>
+  <a href="/sociology-product.html" class="mobile-nav-link">Sociology x Product</a>
+  <a href="/work/" class="mobile-nav-link">Work</a>
+  <a href="/writing/" class="mobile-nav-link">Writing</a>
+  <a href="/services/" class="mobile-nav-link">Work With Me</a>
 </div>
+
 <div class="cursor" id="cursor"></div>
+
 <nav id="nav" data-t="dark">
   <a href="/" class="nav-logo">Veda Vajpeyi</a>
   <ul class="nav-links">
@@ -53,106 +87,177 @@
   </button>
 </nav>
 
-<section class="pg-hero">
-  <div class="pg-hero-inner">
-    <div class="pg-hero-kicker">02 · Selected Work</div>
-    <h1 class="pg-h1">Case Studies</h1>
-    <p class="pg-deck">Strategy work across consumer hardware, voice AI, enterprise software, and crisis GTM.</p>
-  </div>
-</section>
-
-<section class="listing-section work-listing">
-  <div class="listing-inner">
-
-        <article class="list-item">
-      <div class="list-item-num">01</div>
-      <div class="list-item-body">
-        <a href="/work/case-study-1.html" class="list-item-link">
-          <div class="list-thumb"><img src="/assets/img/aarogya-setu.jpg" alt="Crisis GTM: 50M Users in 13 Days" loading="lazy" style="object-position: center 38%;"></div>
-
-          <h2>Crisis GTM: 50M Users in 13 Days</h2>
-          <p>The launch strategy for India's national COVID contact-tracing app — and the mid-launch pivot to address a trust crisis that threatened to unravel everything.</p>
-        </a>
-        <div class="list-tags">
-          <a class="list-tag" href="/topics/public-policy">Public Policy</a>
-          <a class="list-tag" href="/topics/trust-safety">Trust &amp; Safety</a>
+<main class="morph-main">
+  <section class="morph-hero">
+    <div class="morph-shell morph-hero-grid">
+      <div class="morph-hero-copy">
+        <div class="morph-kicker fu">02 &middot; Selected Work</div>
+        <h1 class="morph-title wu"><span class="wp">Case studies in trust, growth, and <em>human behavior.</em></span></h1>
+        <p class="morph-deck fu d1">Selected work across consumer hardware, voice AI, enterprise software, and crisis response: the moments where what people do matters as much as the strategy itself.</p>
+        <div class="morph-actions fu d2">
+          <a href="#work" class="cta-btn">View case studies</a>
         </div>
-        <div class="list-item-meta">Government of India · Aarogya Setu · 2020</div>
       </div>
-    </article>
 
-        <article class="list-item">
-      <div class="list-item-num">02</div>
-      <div class="list-item-body">
-        <a href="/work/case-study-2.html" class="list-item-link">
-          <div class="list-thumb"><img src="/assets/img/echo-buds.jpg" alt="When the Metric Is the Problem" loading="lazy" style="object-position: center 46%;"></div>
+      <aside class="morph-hero-note fu d2">
+        <div class="morph-note-label">Selected contexts</div>
+        <ul class="morph-note-list">
+          <li>Government systems at population scale</li>
+          <li>Voice products in the unguarded moments of a day</li>
+          <li>Market windows created by structural change</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-          <h2>When the Metric Is the Problem</h2>
-          <p>A voice engagement problem that turned out to be a device abandonment problem. On separating what a metric measures from what it's supposed to measure.</p>
-        </a>
-        <div class="list-tags">
-          <a class="list-tag" href="/topics/product-analytics">Product Analytics</a>
-          <a class="list-tag" href="/topics/voice-ai">Voice AI</a>
+  <section id="work">
+    <div class="work-inner">
+      <article class="ci ci-a fu d2" data-ci="1">
+        <div class="ci-content">
+          <div class="ci-num">01</div>
+          <div class="ci-tags">
+            <a class="ci-tag" href="/topics/public-policy">Public Policy</a>
+            <a class="ci-tag" href="/topics/trust-safety">Trust &amp; Safety</a>
+          </div>
+          <a class="ci-main" href="/work/case-study-1.html">
+            <h2 class="ci-h3">Crisis GTM: 50M Users in 13 Days</h2>
+            <p class="ci-desc">The launch strategy for India's national COVID contact-tracing app, and the mid-launch pivot needed to address a trust crisis before it unraveled adoption.</p>
+            <div class="ci-quote">"Authority creates velocity. Legitimacy sustains adoption. Both have to be built from day one."</div>
+            <div class="ci-link meta-inline-split">
+              <span>Government of India</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>Aarogya Setu</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>2020</span>
+            </div>
+          </a>
         </div>
-        <div class="list-item-meta">Amazon · Alexa Software &amp; Devices · 2022</div>
-      </div>
-    </article>
-
-        <article class="list-item">
-      <div class="list-item-num">03</div>
-      <div class="list-item-body">
-        <a href="/work/case-study-3.html" class="list-item-link">
-          <div class="list-thumb"><img src="/assets/img/echo-show-5.webp" alt="Making Existing Value Unmistakable" loading="lazy" style="object-position: center 50%;"></div>
-
-          <h2>Making Existing Value Unmistakable</h2>
-          <p>Leadership wanted a silver bullet feature. The research said: the features already exist, customers just don't know. On the difference between discoverability and unmistakability.</p>
+        <a class="ci-image" href="/work/case-study-1.html">
+          <div class="ci-img-wrap wu">
+            <div class="ci-img wp ci-img-aarogya" style="background-image: url('/assets/img/aarogya-setu.jpg'); background-position: center 38%;"></div>
+          </div>
         </a>
-        <div class="list-tags">
-          <a class="list-tag" href="/topics/product-strategy">Product Strategy</a>
-          <a class="list-tag" href="/topics/growth-strategy">Growth Strategy</a>
-        </div>
-        <div class="list-item-meta">Amazon · Alexa x Prime · 2022</div>
-      </div>
-    </article>
+      </article>
 
-        <article class="list-item">
-      <div class="list-item-num">04</div>
-      <div class="list-item-body">
-        <a href="/work/case-study-4.html" class="list-item-link">
-          <div class="list-thumb"><img src="/assets/img/echo-dot.jpeg" alt="Designing for Trust in Voice Interfaces" loading="lazy" style="object-position: center 44%;"></div>
-
-          <h2>Designing for Trust in Voice Interfaces</h2>
-          <p>What do you actually measure when someone speaks to a device at 6am — and you can't hide friction behind a UI? On the asymmetry of trust in voice products.</p>
+      <article class="ci ci-b fu d1" data-ci="2">
+        <a class="ci-image" href="/work/case-study-2.html">
+          <div class="ci-img-wrap wu">
+            <div class="ci-img wp" style="background-image: url('/assets/img/echo-buds.jpg'); background-position: center 46%;"></div>
+          </div>
         </a>
-        <div class="list-tags">
-          <a class="list-tag" href="/topics/product-strategy">Product Strategy</a>
-          <a class="list-tag" href="/topics/voice-ai">Voice AI</a>
+        <div class="ci-content">
+          <div class="ci-num">02</div>
+          <div class="ci-tags">
+            <a class="ci-tag" href="/topics/product-analytics">Product Analytics</a>
+            <a class="ci-tag" href="/topics/voice-ai">Voice AI</a>
+          </div>
+          <a class="ci-main" href="/work/case-study-2.html">
+            <h2 class="ci-h3">When the Metric Is the Problem</h2>
+            <p class="ci-desc">A voice engagement problem that turned out to be a device abandonment problem. On separating what a metric measures from what it's supposed to measure.</p>
+            <div class="ci-link meta-inline-split">
+              <span>Amazon</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>Alexa Software &amp; Devices</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>2022</span>
+            </div>
+          </a>
         </div>
-        <div class="list-item-meta">Amazon · Alexa Software &amp; Devices · 2022</div>
-      </div>
-    </article>
+      </article>
 
-        <article class="list-item">
-      <div class="list-item-num">05</div>
-      <div class="list-item-body">
-        <a href="/work/case-study-5.html" class="list-item-link">
-          <div class="list-thumb"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Pasar_Seni_%28Central_Market%29_interior%2C_Kuala_Lumpur_20231114_103640.jpg" alt="Turning Regulatory Disruption Into a $2M Opportunity" loading="lazy" style="object-position: center 48%;"></div>
-
-          <h2>Turning Regulatory Disruption Into a $2M Opportunity</h2>
-          <p>When Malaysia replaced GST with SST overnight, 100,000+ businesses needed new infrastructure. The strategy that captured 20% market share before competitors saw the window.</p>
+      <article class="ci ci-a fu d2" data-ci="3">
+        <div class="ci-content">
+          <div class="ci-num">03</div>
+          <div class="ci-tags">
+            <a class="ci-tag" href="/topics/product-strategy">Product Strategy</a>
+            <a class="ci-tag" href="/topics/growth-strategy">Growth Strategy</a>
+          </div>
+          <a class="ci-main" href="/work/case-study-3.html">
+            <h2 class="ci-h3">Making Existing Value Unmistakable</h2>
+            <p class="ci-desc">Leadership wanted a silver bullet feature. The research said the value already existed, customers just couldn't see it. On the difference between discoverability and unmistakability.</p>
+            <div class="ci-link meta-inline-split">
+              <span>Amazon</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>Alexa x Prime</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>2022</span>
+            </div>
+          </a>
+        </div>
+        <a class="ci-image" href="/work/case-study-3.html">
+          <div class="ci-img-wrap wu">
+            <div class="ci-img wp" style="background-image: url('/assets/img/echo-show-5.webp'); background-position: center 50%;"></div>
+          </div>
         </a>
-        <div class="list-tags">
-          <a class="list-tag" href="/topics/growth-strategy">Growth Strategy</a>
-          <a class="list-tag" href="/topics/public-policy">Public Policy</a>
+      </article>
+
+      <article class="ci ci-b fu d3" data-ci="4">
+        <a class="ci-image" href="/work/case-study-4.html">
+          <div class="ci-img-wrap wu">
+            <div class="ci-img wp" style="background-image: url('/assets/img/echo-dot.jpeg'); background-position: center 44%;"></div>
+          </div>
+        </a>
+        <div class="ci-content">
+          <div class="ci-num">04</div>
+          <div class="ci-tags">
+            <a class="ci-tag" href="/topics/product-strategy">Product Strategy</a>
+            <a class="ci-tag" href="/topics/voice-ai">Voice AI</a>
+          </div>
+          <a class="ci-main" href="/work/case-study-4.html">
+            <h2 class="ci-h3">Designing for Trust in Voice Interfaces</h2>
+            <p class="ci-desc">What do you measure when someone speaks to a device at 6am and you can't hide friction behind a UI? On the asymmetry of trust in voice products.</p>
+            <div class="ci-link meta-inline-split">
+              <span>Amazon</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>Alexa Software &amp; Devices</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>2022</span>
+            </div>
+          </a>
         </div>
-        <div class="list-item-meta">FACT Software · 2018</div>
+      </article>
+
+      <article class="ci ci-a fu d4" data-ci="5">
+        <div class="ci-content">
+          <div class="ci-num">05</div>
+          <div class="ci-tags">
+            <a class="ci-tag" href="/topics/growth-strategy">Growth Strategy</a>
+            <a class="ci-tag" href="/topics/public-policy">Public Policy</a>
+          </div>
+          <a class="ci-main" href="/work/case-study-5.html">
+            <h2 class="ci-h3">Turning Regulatory Disruption Into a $2M Opportunity</h2>
+            <p class="ci-desc">When Malaysia replaced GST with SST overnight, 100,000+ businesses needed new infrastructure. The strategy captured 20% market share before competitors saw the window.</p>
+            <div class="ci-link meta-inline-split">
+              <span>FACT Software</span>
+              <span class="meta-inline-dot" aria-hidden="true">·</span>
+              <span>2018</span>
+            </div>
+          </a>
+        </div>
+        <a class="ci-image" href="/work/case-study-5.html">
+          <div class="ci-img-wrap wu">
+            <div class="ci-img wp" style="background-image: url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Pasar_Seni_%28Central_Market%29_interior%2C_Kuala_Lumpur_20231114_103640.jpg'); background-position: center 48%;"></div>
+          </div>
+        </a>
+      </article>
+
+      <div class="work-close-strip">
+        <div class="morph-close-grid">
+          <div class="morph-close-copy">
+            <div class="morph-kicker fu">The next problem</div>
+            <h2 class="morph-close-title wu"><span class="wp">I work on product questions where trust, behavior, and growth are tightly coupled.</span></h2>
+            <p class="morph-close-deck fu d1">If you are navigating adoption, positioning, or product strategy in a high-stakes environment, I would love to hear what you are building.</p>
+          </div>
+
+          <div class="morph-close-actions fu d2">
+            <a href="/contact.html" class="cta-btn">Start a conversation</a>
+            <a href="/services/" class="cta-btn-outline">See how I work</a>
+          </div>
+        </div>
       </div>
-    </article>
-
-  </div>
-
-
-</section>
+    </div>
+  </section>
+</main>
 
 <footer>
   <div class="footer-inner">
@@ -174,7 +279,30 @@
     </div>
   </div>
 </footer>
+
 <script src="/assets/js/page.js?v=20260404-1"></script>
+<script>
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const workSection = document.getElementById('work');
+    if (!workSection) return;
+
+    const root = document.documentElement;
+    const defaultBg = getComputedStyle(workSection).backgroundColor;
+
+    document.querySelectorAll('.ci[data-ci]').forEach(ci => {
+      ci.addEventListener('mouseenter', () => {
+        const color = getComputedStyle(root).getPropertyValue(`--ci-${ci.dataset.ci}`).trim();
+        if (color) workSection.style.backgroundColor = color;
+      });
+
+      ci.addEventListener('mouseleave', () => {
+        workSection.style.backgroundColor = defaultBg;
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>

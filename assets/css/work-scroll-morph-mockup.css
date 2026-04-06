@@ -1,0 +1,957 @@
+.work-scroll-morph-page {
+  --morph-accent: 181, 146, 90;
+  background: var(--dark);
+  transition: background-color 0.7s var(--ease-out);
+}
+
+.morph-main {
+  position: relative;
+}
+
+.morph-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.morph-hero,
+.morph-chapter,
+.morph-close {
+  position: relative;
+  overflow: clip;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.morph-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav-h) + 3rem);
+  padding-bottom: 3rem;
+  background: transparent;
+}
+
+.morph-state::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.morph-hero::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 84px 84px;
+  opacity: 0.12;
+}
+
+.morph-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.14) 100%),
+    radial-gradient(circle at 18% 14%, rgba(0,0,0,0.24), transparent 26%);
+}
+
+.morph-hero-grid,
+.morph-close-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 24rem);
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.morph-hero-copy {
+  max-width: 46rem;
+}
+
+.morph-kicker,
+.morph-note-label,
+.morph-chapter-num,
+.morph-chapter-strand,
+.morph-case-kicker,
+.morph-meta,
+.morph-poster-kicker,
+.morph-poster-chip {
+  font-family: var(--mono);
+  font-size: var(--type-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.morph-kicker {
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+}
+
+.morph-title .wp,
+.morph-close-title .wp {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.morph-title .wp {
+  max-width: 9.2em;
+  font-size: clamp(3.5rem, 6.5vw, 6rem);
+  color: var(--text-d);
+}
+
+.morph-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.morph-deck,
+.morph-hero-note p,
+.morph-summary,
+.morph-close-note p {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.morph-deck {
+  max-width: 40rem;
+  margin-top: 1.4rem;
+  color: rgba(240,235,227,0.8);
+}
+
+.morph-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+
+.morph-actions .cta-btn {
+  min-width: 16rem;
+  justify-content: center;
+}
+
+.morph-hero-note {
+  align-self: end;
+  padding: 1.45rem 1.55rem 1.6rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(244,239,232,0.06);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+}
+
+.morph-note-label {
+  color: rgba(240,235,227,0.56);
+  margin-bottom: 0.85rem;
+}
+
+.morph-hero-note p {
+  color: rgba(240,235,227,0.8);
+}
+
+.morph-note-list {
+  list-style: none;
+}
+
+.morph-note-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: rgba(240,235,227,0.78);
+  line-height: 1.75;
+}
+
+.morph-note-list li + li {
+  margin-top: 0.55rem;
+}
+
+.morph-note-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.78rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.morph-progress {
+  position: sticky;
+  top: calc(var(--nav-h) + 0.75rem);
+  z-index: 30;
+  margin-top: -1.4rem;
+  padding: 0 3.5rem;
+}
+
+.morph-progress-inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  background: rgba(13,11,9,0.38);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  scrollbar-width: none;
+}
+
+.morph-progress-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.morph-progress-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.35rem 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(240,235,227,0.54);
+}
+
+.morph-progress a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(240,235,227,0.72);
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+
+.morph-progress a:hover,
+.morph-progress a.active,
+.morph-progress a[aria-current="true"] {
+  color: var(--text-d);
+  border-color: rgba(var(--morph-accent), 0.38);
+  background: rgba(var(--morph-accent), 0.14);
+}
+
+.morph-chapter {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: transparent;
+}
+
+.morph-chapter::before {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+    radial-gradient(circle at 82% 18%, rgba(255,255,255,0.06), transparent 18%);
+  opacity: 0.45;
+}
+
+.morph-chapter-top,
+.morph-card {
+  position: relative;
+  z-index: 1;
+}
+
+.morph-chapter-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.morph-chapter-num {
+  color: var(--panel-accent);
+}
+
+.morph-chapter-strand {
+  color: var(--panel-muted);
+  text-align: right;
+}
+
+.morph-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding: clamp(1.2rem, 2.6vw, 2rem);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  color: var(--panel-text);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.16);
+}
+
+.morph-card-reverse {
+  grid-template-columns: minmax(320px, 1.05fr) minmax(0, 0.95fr);
+}
+
+.morph-copy {
+  max-width: 34rem;
+}
+
+.morph-case-kicker {
+  color: var(--panel-accent);
+  margin-bottom: 1rem;
+}
+
+.morph-copy h2,
+.morph-close-note h3 {
+  font-family: var(--serif);
+  letter-spacing: -0.02em;
+}
+
+.morph-copy h2 {
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  line-height: 1.02;
+}
+
+.morph-summary {
+  margin-top: 1.2rem;
+  color: var(--panel-text);
+  max-width: 35rem;
+}
+
+.morph-proof-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+}
+
+.morph-proof {
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--panel-border);
+}
+
+.morph-proof-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--panel-accent);
+}
+
+.morph-proof-label {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--mono);
+  font-size: var(--type-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--panel-muted);
+  line-height: 1.55;
+}
+
+.morph-meta {
+  margin-top: 1.45rem;
+  color: var(--panel-muted);
+}
+
+.morph-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.morph-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--panel-accent);
+  border: 1px solid var(--panel-border);
+  background: rgba(255,255,255,0.08);
+}
+
+.morph-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--panel-accent);
+  transition: color 0.25s, transform 0.25s var(--ease-out);
+}
+
+.morph-link:hover {
+  color: var(--panel-text);
+  transform: translateX(4px);
+}
+
+.morph-media {
+  position: relative;
+  display: block;
+  min-height: 29rem;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--panel-border);
+}
+
+.morph-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+}
+
+.morph-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.46) 100%);
+}
+
+.morph-media:hover img {
+  transform: scale(1.05);
+}
+
+.morph-media-art::before {
+  content: '';
+  position: absolute;
+  inset: 1rem;
+  z-index: 1;
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.morph-media-art::after {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.58) 100%),
+    radial-gradient(circle at 18% 16%, rgba(var(--morph-accent), 0.18), transparent 28%);
+}
+
+.morph-media-topline,
+.morph-media-statement,
+.morph-media-chip,
+.morph-media-note {
+  position: absolute;
+  z-index: 2;
+}
+
+.morph-media-topline {
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.morph-media-topline-minimal {
+  right: auto;
+}
+
+.morph-media-kicker,
+.morph-media-serial,
+.morph-media-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(12px);
+}
+
+.morph-media-kicker {
+  color: rgba(240,235,227,0.9);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(13,11,9,0.28);
+}
+
+.morph-media-serial {
+  color: rgba(240,235,227,0.74);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(13,11,9,0.22);
+}
+
+.morph-media-statement {
+  left: 1.15rem;
+  top: 4.05rem;
+  max-width: 13rem;
+  font-family: var(--serif);
+  font-size: clamp(1.85rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: rgba(240,235,227,0.96);
+  text-shadow: 0 10px 28px rgba(0,0,0,0.32);
+}
+
+.morph-media-chip {
+  left: 1rem;
+  bottom: 1rem;
+  color: rgba(240,235,227,0.82);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(13,11,9,0.32);
+}
+
+.morph-media-art-a img {
+  object-position: center 38%;
+  filter: saturate(0.88) contrast(1.04);
+}
+
+.morph-media-art-b img {
+  object-position: 50% 46%;
+  filter: saturate(0.86) contrast(1.06);
+}
+
+.morph-media-art-b::after {
+  background:
+    linear-gradient(180deg, rgba(3,10,16,0.1) 0%, rgba(3,10,16,0.56) 100%),
+    radial-gradient(circle at 78% 20%, rgba(111,147,160,0.14), transparent 28%);
+}
+
+#morph-case-2 .morph-card {
+  gap: clamp(1.4rem, 3vw, 3.1rem);
+}
+
+#morph-case-2 .morph-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 31rem;
+}
+
+#morph-case-2 .morph-summary {
+  max-width: 31rem;
+}
+
+#morph-case-2 .morph-proof-row {
+  display: block;
+  max-width: 17.5rem;
+  margin-top: 2.15rem;
+}
+
+#morph-case-2 .morph-proof {
+  padding-top: 0.8rem;
+}
+
+#morph-case-2 .morph-proof-num {
+  font-size: clamp(1.16rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+#morph-case-2 .morph-proof-label {
+  margin-top: 0.28rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+#morph-case-2 .morph-meta {
+  margin-top: 1.1rem;
+}
+
+#morph-case-2 .morph-link {
+  margin-top: 0.55rem;
+}
+
+#morph-case-2 .morph-media {
+  min-height: 24.5rem;
+}
+
+#morph-case-2 .morph-media img {
+  transform: scale(1);
+}
+
+#morph-case-2 .morph-media:hover img {
+  transform: scale(1.02);
+}
+
+#morph-case-2 .morph-media-art-b::after {
+  background:
+    linear-gradient(180deg, rgba(3,10,16,0.14) 0%, rgba(3,10,16,0.68) 100%),
+    radial-gradient(circle at 78% 20%, rgba(111,147,160,0.1), transparent 28%);
+}
+
+.morph-media-art-c img {
+  object-position: center 50%;
+  filter: saturate(0.84) contrast(1.04);
+}
+
+.morph-media-art-a::after {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.6) 100%),
+    radial-gradient(circle at 20% 18%, rgba(181,146,90,0.26), transparent 28%);
+}
+
+.morph-media-art-c::after {
+  background:
+    linear-gradient(180deg, rgba(12,14,10,0.08) 0%, rgba(12,14,10,0.58) 100%),
+    radial-gradient(circle at 20% 78%, rgba(112,131,86,0.2), transparent 24%);
+}
+
+.morph-media-note {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  bottom: 1rem;
+  max-width: 16rem;
+  padding: 0.8rem 0.9rem;
+  background: rgba(13,11,9,0.72);
+  color: rgba(240,235,227,0.92);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  line-height: 1.65;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.morph-poster {
+  padding: 1.35rem;
+  background:
+    linear-gradient(135deg, rgba(145,101,65,0.18) 0%, rgba(61,41,28,0.18) 50%, rgba(255,248,239,0.45) 100%);
+}
+
+.morph-poster-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(24,18,14,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24,18,14,0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.5;
+}
+
+.morph-poster-kicker,
+.morph-poster-value,
+.morph-poster-text,
+.morph-poster-chip {
+  position: relative;
+  z-index: 1;
+}
+
+.morph-poster-kicker {
+  color: rgba(24,18,14,0.56);
+}
+
+.morph-poster-value {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  color: #15100d;
+}
+
+.morph-poster-text {
+  max-width: 18rem;
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(24,18,14,0.78);
+}
+
+.morph-poster-chip {
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(24,18,14,0.14);
+  border-radius: 999px;
+  color: rgba(24,18,14,0.68);
+  background: rgba(255,255,255,0.38);
+}
+
+.morph-poster-dark {
+  background:
+    linear-gradient(150deg, rgba(158,164,110,0.14) 0%, rgba(21,25,21,0.52) 55%, rgba(9,14,9,0.72) 100%);
+}
+
+.morph-poster-dark .morph-poster-grid {
+  background-image:
+    linear-gradient(rgba(210,220,200,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(210,220,200,0.06) 1px, transparent 1px);
+}
+
+.morph-poster-dark .morph-poster-kicker {
+  color: rgba(238,240,231,0.52);
+}
+
+.morph-poster-dark .morph-poster-value {
+  color: #d2c388;
+}
+
+.morph-poster-dark .morph-poster-text {
+  color: rgba(238,240,231,0.76);
+}
+
+.morph-poster-dark .morph-poster-chip {
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(238,240,231,0.68);
+  background: rgba(0,0,0,0.28);
+}
+
+.chapter-a {
+  --section-bg: linear-gradient(180deg, #eadfce 0%, #f4ebe1 100%);
+  --panel-bg: rgba(248, 242, 233, 0.82);
+  --panel-border: rgba(24,18,14,0.14);
+  --panel-text: #17110d;
+  --panel-muted: rgba(24,18,14,0.72);
+  --panel-accent: #94683a;
+}
+
+.chapter-b {
+  --section-bg: linear-gradient(180deg, #101a22 0%, #17242f 100%);
+  --panel-bg: rgba(9, 18, 26, 0.76);
+  --panel-border: rgba(255,255,255,0.14);
+  --panel-text: #eef2ef;
+  --panel-muted: rgba(238,242,239,0.74);
+  --panel-accent: #c8b07d;
+}
+
+.chapter-c {
+  --section-bg: linear-gradient(180deg, #edf0e5 0%, #dde4d3 100%);
+  --panel-bg: rgba(245, 248, 239, 0.82);
+  --panel-border: rgba(23,21,15,0.14);
+  --panel-text: #17150f;
+  --panel-muted: rgba(23,21,15,0.72);
+  --panel-accent: #6f8150;
+}
+
+.chapter-d {
+  --section-bg: linear-gradient(180deg, #151915 0%, #1d231c 100%);
+  --panel-bg: rgba(16, 22, 16, 0.76);
+  --panel-border: rgba(255,255,255,0.14);
+  --panel-text: #eef0e7;
+  --panel-muted: rgba(238,240,231,0.74);
+  --panel-accent: #d2c388;
+}
+
+.chapter-e {
+  --section-bg: linear-gradient(180deg, #e4d7ca 0%, #d8c6b7 100%);
+  --panel-bg: rgba(248, 240, 232, 0.82);
+  --panel-border: rgba(24,18,14,0.14);
+  --panel-text: #18120e;
+  --panel-muted: rgba(24,18,14,0.72);
+  --panel-accent: #8e6341;
+}
+
+.morph-close {
+  padding-top: 6rem;
+  padding-bottom: 8rem;
+  background: transparent;
+}
+
+.morph-close-copy {
+  max-width: 30rem;
+}
+
+.morph-close-title .wp {
+  font-size: clamp(2.4rem, 5vw, 4.9rem);
+  color: var(--text-l);
+}
+
+.morph-close-deck {
+  max-width: 30rem;
+  margin-top: 1.4rem;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--body-l);
+}
+
+.morph-close-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.morph-close-actions .cta-btn,
+.morph-close-actions .cta-btn-outline {
+  min-width: 15rem;
+  justify-content: center;
+}
+
+@media (max-width: 1080px) {
+  .morph-hero-grid,
+  .morph-close-grid,
+  .morph-card,
+  .morph-card-reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .morph-copy {
+    max-width: none;
+  }
+
+  .morph-card-reverse .morph-copy {
+    order: -1;
+  }
+
+  .morph-card-reverse .morph-media {
+    order: 1;
+  }
+
+  .morph-close-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 900px) {
+  .morph-hero,
+  .morph-progress,
+  .morph-chapter,
+  .morph-close {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .morph-chapter-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .morph-chapter-strand {
+    text-align: left;
+  }
+
+  .morph-proof-row {
+    grid-template-columns: 1fr;
+  }
+
+  .morph-progress {
+    margin-top: -0.8rem;
+  }
+
+  .morph-progress-inner {
+    border-radius: 1.2rem;
+  }
+
+  .morph-progress-label {
+    width: auto;
+    padding-right: 0.35rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .morph-hero {
+    padding-top: calc(var(--nav-h) + 2.2rem);
+    padding-bottom: 3rem;
+  }
+
+  .morph-chapter,
+  .morph-close {
+    padding-top: 4.75rem;
+    padding-bottom: 5rem;
+  }
+
+  .morph-title .wp {
+    font-size: clamp(3rem, 13vw, 4.5rem);
+  }
+
+  .morph-copy h2 {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+  }
+
+  .morph-media {
+    min-height: 24rem;
+  }
+
+  .morph-progress {
+    margin-top: -0.55rem;
+  }
+
+  .morph-progress-inner {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.85rem;
+  }
+
+  .morph-progress-label {
+    display: none;
+  }
+
+  .morph-close-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .morph-close-actions .cta-btn,
+  .morph-close-actions .cta-btn-outline {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .morph-media-note {
+    left: 0.75rem;
+    right: 0.75rem;
+    max-width: none;
+  }
+
+  .morph-media-serial {
+    display: none;
+  }
+
+  .morph-media-chip {
+    top: 0.9rem;
+    right: 0.9rem;
+    bottom: auto;
+    left: auto;
+  }
+
+  .morph-media-topline {
+    right: 8.25rem;
+  }
+
+  .morph-media-statement {
+    top: 4.8rem;
+    max-width: 12rem;
+  }
+
+  .morph-poster-value {
+    font-size: clamp(3.6rem, 20vw, 5rem);
+  }
+
+  .morph-poster-chip {
+    right: 0.9rem;
+    bottom: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .morph-media img,
+  .morph-link,
+  .morph-progress a {
+    transition: none;
+  }
+}
