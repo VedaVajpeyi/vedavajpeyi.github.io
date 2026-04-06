@@ -30,32 +30,138 @@
   <style>
     body.work-home-baseline #work {
       padding-top: 2rem;
+      padding-bottom: 0;
     }
 
     body.work-home-baseline .work-close-strip {
-      padding-top: 4.5rem;
+      position: relative;
+      margin-top: clamp(3.25rem, 6vw, 5rem);
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding: clamp(2.3rem, 4vw, 3.2rem) 3.5rem clamp(2.7rem, 4.5vw, 3.9rem);
+      background: linear-gradient(135deg, #e7dacb 0%, #f2eadf 46%, #dfcdbb 100%);
+      border-top: 1px solid rgba(24,18,14,0.12);
+      border-bottom: 1px solid rgba(24,18,14,0.12);
     }
 
     body.work-home-baseline .work-close-strip .morph-close-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      grid-template-columns: minmax(0, 1.08fr) minmax(15.5rem, 18rem);
       align-items: center;
-      padding-top: 4rem;
-      border-top: 1px solid var(--border-d);
+      gap: clamp(1.75rem, 4vw, 4rem);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-copy {
+      max-width: 39rem;
     }
 
     body.work-home-baseline .work-close-strip .morph-kicker {
-      margin-bottom: 1.15rem;
+      margin-bottom: 0.95rem;
+      color: rgba(143,104,52,0.95);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-title.wu {
+      overflow: visible;
     }
 
     body.work-home-baseline .work-close-strip .morph-close-title .wp {
-      max-width: 9em;
-      font-size: clamp(2.3rem, 4.8vw, 4rem);
-      line-height: 1.02;
-      color: var(--text-d);
+      font-size: clamp(2rem, 3.45vw, 3.25rem);
+      line-height: 1.06;
+      letter-spacing: -0.028em;
+      color: var(--text-l);
+      hyphens: none;
+      padding-bottom: 0.16em;
+      margin-bottom: -0.16em;
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-line {
+      display: block;
     }
 
     body.work-home-baseline .work-close-strip .morph-close-deck {
-      max-width: 31rem;
-      color: var(--muted-d);
+      max-width: 29rem;
+      margin-top: 1rem;
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: rgba(24,18,14,0.72);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-actions {
+      width: min(100%, 18rem);
+      justify-self: end;
+      align-self: center;
+      gap: 0.85rem;
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-actions .cta-btn {
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+      background: var(--text-l);
+      color: var(--text-d);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-actions .cta-btn:hover {
+      background: #211912;
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-actions .cta-btn-outline {
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+      color: rgba(24,18,14,0.74);
+      border-color: rgba(24,18,14,0.16);
+    }
+
+    body.work-home-baseline .work-close-strip .morph-close-actions .cta-btn-outline:hover {
+      background: rgba(143,104,52,0.12);
+      color: var(--text-l);
+    }
+
+    @media (max-width: 1200px) {
+      body.work-home-baseline .work-close-strip .morph-close-title .wp {
+        font-size: clamp(1.95rem, 3.8vw, 3rem);
+      }
+    }
+
+    @media (max-width: 960px) {
+      body.work-home-baseline .work-close-strip {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      body.work-home-baseline .work-close-strip .morph-close-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+
+      body.work-home-baseline .work-close-strip .morph-close-copy,
+      body.work-home-baseline .work-close-strip .morph-close-deck {
+        max-width: none;
+      }
+
+      body.work-home-baseline .work-close-strip .morph-close-actions {
+        width: 100%;
+        justify-self: stretch;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body.work-home-baseline .work-close-strip {
+        margin-top: 2.4rem;
+        padding: 1.85rem 1.15rem 2.15rem;
+      }
+
+      body.work-home-baseline .work-close-strip .morph-close-title .wp {
+        font-size: clamp(1.8rem, 8.8vw, 2.55rem);
+      }
+
+      body.work-home-baseline .work-close-strip .morph-close-deck {
+        font-size: 0.92rem;
+      }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
@@ -245,7 +351,7 @@
         <div class="morph-close-grid">
           <div class="morph-close-copy">
             <div class="morph-kicker fu">The next problem</div>
-            <h2 class="morph-close-title wu"><span class="wp">I work on product questions where trust, behavior, and growth are tightly coupled.</span></h2>
+            <h2 class="morph-close-title wu"><span class="wp"><span class="morph-close-line">I work on product</span><span class="morph-close-line">questions where trust,</span><span class="morph-close-line">behavior, and growth</span><span class="morph-close-line">are tightly coupled.</span></span></h2>
             <p class="morph-close-deck fu d1">If you are navigating adoption, positioning, or product strategy in a high-stakes environment, I would love to hear what you are building.</p>
           </div>
 
