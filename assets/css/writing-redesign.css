@@ -637,6 +637,11 @@ body.wr-v1 footer {
   margin-top: 0;
 }
 
+body.wr-v1 .footer-rotating,
+body.wr-v1 .rot-slide {
+  color: var(--text-d);
+}
+
 @media (max-width: 1100px) {
   .wr-hero-inner,
   .wr-year-block {
