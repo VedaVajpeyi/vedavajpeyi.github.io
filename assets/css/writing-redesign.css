@@ -21,16 +21,6 @@ body.wr-v1 .cursor {
   mix-blend-mode: normal;
 }
 
-body.wr-v1 .nav-logo,
-body.wr-v1 .nav-links a,
-body.wr-v1 .mobile-menu a,
-body.wr-v1 .mobile-menu-kicker,
-body.wr-v1 .footer-nav a,
-body.wr-v1 .footer-name,
-body.wr-v1 .footer-yr {
-  font-family: "IBM Plex Mono", monospace;
-}
-
 .wr-hero {
   position: relative;
   overflow: hidden;
