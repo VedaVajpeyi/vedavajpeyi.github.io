@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sociology x Product — Veda Vajpeyi</title>
-  <meta name="description" content="A longform guide to the social mechanisms standard PM frameworks miss: adoption before the click, behavior as person plus culture plus system, structure before motivation, metrics as social claims, and value flow.">
+  <meta name="description" content="A longform guide to the social mechanisms standard PM frameworks miss: adoption before the click, social risk versus functional value, behavior as person plus culture plus system, structure before motivation, metrics as social claims, the trust stack, and value flow.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://vedavajpeyi.com/sociology-product.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/design.css?v=20260404-3">
-  <link rel="stylesheet" href="/assets/css/sxp-essays.css?v=20260711-2">
+  <link rel="stylesheet" href="/assets/css/sxp-essays.css?v=20260711-3">
   <link rel="stylesheet" href="/assets/css/sociology-product.css?v=20260711-2">
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 </head>
@@ -48,11 +48,11 @@
     <div class="pg-hero-inner">
       <div class="pg-hero-kicker">Sociology x Product</div>
       <h1 class="pg-h1">Product problems are social problems<em> in technical clothes.</em></h1>
-      <p class="pg-deck">A longform guide to the social mechanisms standard PM frameworks miss: norms, identity, structure, network position, and value flow. Built for product leaders who keep finding human problems underneath clean dashboards.</p>
+      <p class="pg-deck">A longform guide to the social mechanisms standard PM frameworks miss: norms, identity, structure, trust, and value flow. Built for product leaders who keep finding human problems underneath clean dashboards.</p>
       <p class="pg-subtitle">This is the anchor page for the lens itself. Start here for the conceptual frame, then move to the essays for depth or the field guide for a meeting-ready tool.</p>
       <div class="pg-tags">
         <span class="pg-tag">Anchor page</span>
-        <span class="pg-tag">Five models</span>
+        <span class="pg-tag">Seven models</span>
         <span class="pg-tag">For product leaders</span>
       </div>
       <div class="socx-hero-links">
@@ -81,7 +81,7 @@
           <nav class="socx-rail-nav">
             <a href="#blind-spot">The blind spot</a>
             <a href="#misread">The recurring misread</a>
-            <a href="#models">Five models</a>
+            <a href="#models">Seven models</a>
             <a href="#proof">What it predicts</a>
             <a href="#use">How to use it</a>
           </nav>
@@ -154,7 +154,7 @@
         </div>
 
         <section id="models" class="socx-reading-block prose prose-top-gap">
-          <h2>Five models to reach for before you reach for a fix</h2>
+          <h2>Seven models to reach for before you reach for a fix</h2>
           <p>These are the models I would want in the room before choosing an intervention. They are not comprehensive sociology. They are compact diagnostic tools for product work. The job is not to sound theoretical. The job is to stop solving the wrong thing.</p>
         </section>
 
@@ -177,9 +177,48 @@
           </div>
         </article>
 
+        <article class="socx-model-chapter" id="model-social-risk">
+          <div class="socx-model-header">
+            <span class="socx-model-label">02 / Social risk vs. functional value</span>
+            <h3>Useful is not the same as adoptable.</h3>
+          </div>
+          <div class="socx-model-grid is-reverse">
+            <figure class="sxp-figure">
+              <div class="sxp-figure-title">Framework · What the feature does vs what using it signals</div>
+              <div class="sxp-compare">
+                <div class="sxp-compare-card">
+                  <div class="sxp-kicker">Functional value</div>
+                  <h3>What the feature does</h3>
+                  <ul class="sxp-list">
+                    <li>Solves a real, named problem.</li>
+                    <li>Saves time, money, or effort.</li>
+                    <li>Tests well in a private demo.</li>
+                  </ul>
+                </div>
+                <div class="sxp-compare-card sxp-compare-card-strong">
+                  <div class="sxp-kicker">Social cost</div>
+                  <h3>What using it signals</h3>
+                  <ul class="sxp-list">
+                    <li>Exposes a need the user would rather not admit to.</li>
+                    <li>Invites judgment from a specific, imagined audience.</li>
+                    <li>Requires explaining yourself if someone asks why.</li>
+                  </ul>
+                </div>
+              </div>
+              <figcaption>A feature can win on every functional axis and still lose, because functional value and social cost are settled by two different questions.</figcaption>
+            </figure>
+            <div class="prose socx-model-body">
+              <p>Some acts create enough exposure, awkwardness, or status risk that functional value alone cannot carry them across the line. The product can be obviously useful and still stall, because "useful" answers a private question and "adoptable" answers a public one: what does doing this, in front of the people who matter to me, say about me?</p>
+              <p>Teams tend to respond to slow adoption by adding more value: another feature, a clearer benefit, a better onboarding flow. If the real barrier is social, that only makes the gap more obvious. The fix is not more value. It is less exposure, or a better answer to who is watching.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> the problem is real and the value is clear, and adoption still stalls because using the product says something socially costly.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> the value proposition is not landing. <strong>This model asks:</strong> is the value the problem, or is the exposure?</p>
+            </div>
+          </div>
+        </article>
+
         <article class="socx-model-chapter" id="model-system">
           <div class="socx-model-header">
-            <span class="socx-model-label">02 / The behavior system</span>
+            <span class="socx-model-label">03 / The behavior system</span>
             <h3>Behavior sits at the overlap of person, culture, and system.</h3>
           </div>
           <div class="socx-model-grid is-reverse">
@@ -198,7 +237,7 @@
 
         <article class="socx-model-chapter" id="model-structure">
           <div class="socx-model-header">
-            <span class="socx-model-label">03 / Structure before motivation</span>
+            <span class="socx-model-label">04 / Structure before motivation</span>
             <h3>Before you call it low motivation, ask whether the choice is real.</h3>
           </div>
           <div class="socx-model-grid">
@@ -217,7 +256,7 @@
 
         <article class="socx-model-chapter" id="model-metric">
           <div class="socx-model-header">
-            <span class="socx-model-label">04 / The metric is a social claim</span>
+            <span class="socx-model-label">05 / The metric is a social claim</span>
             <h3>Every metric hides a theory of what counts.</h3>
           </div>
           <div class="socx-model-grid is-reverse">
@@ -234,9 +273,34 @@
           </div>
         </article>
 
+        <article class="socx-model-chapter" id="model-trust">
+          <div class="socx-model-header">
+            <span class="socx-model-label">06 / The trust stack</span>
+            <h3>Trust breaks in layers, not all at once.</h3>
+          </div>
+          <div class="socx-model-grid">
+            <div class="prose socx-model-body">
+              <p>Functional polish is only the top layer of trust. Underneath it sits social proof (do people like me already vouch for this), reputation (has this specific actor earned trust over time), rules (are there credible consequences for bad behavior), and legitimacy (does this institution have the standing to ask this of me at all). A product can be flawless at the top layer and still fail, because the layer that is actually broken sits further down.</p>
+              <p>Aarogya Setu is the clean version of this: government mandate created velocity in days, but legitimacy is not something authority can manufacture on its own, and the product had to earn the layer underneath the mandate in public, under pressure, after launch.</p>
+              <div class="socx-model-callout"><strong>Use it when:</strong> the interface is clear and the value proposition is reasonable, but users still hesitate, over-verify, or quietly back away.</div>
+              <p class="socx-model-note"><strong>Standard PM says:</strong> add more proof points. <strong>This model asks:</strong> which layer is actually broken, functional, social, reputational, or legitimacy?</p>
+            </div>
+            <figure class="sxp-figure">
+              <div class="sxp-figure-title">Framework · The trust stack, top to bottom</div>
+              <div class="sxp-stack">
+                <div class="sxp-stack-row"><span class="sxp-stack-label">Functional</span><p>It works as described, every time.</p></div>
+                <div class="sxp-stack-row"><span class="sxp-stack-label">Social proof</span><p>People like me already vouch for it.</p></div>
+                <div class="sxp-stack-row"><span class="sxp-stack-label">Reputation</span><p>This specific actor has earned trust over time.</p></div>
+                <div class="sxp-stack-row"><span class="sxp-stack-label">Legitimacy</span><p>This institution has standing to ask this of me.</p></div>
+              </div>
+              <figcaption>Most trust failures are diagnosed at the top layer and actually live near the bottom. <a href="/work/case-study-1.html">See it happen in the Aarogya Setu launch.</a></figcaption>
+            </figure>
+          </div>
+        </article>
+
         <article class="socx-model-chapter" id="model-value">
           <div class="socx-model-header">
-            <span class="socx-model-label">05 / Value flow</span>
+            <span class="socx-model-label">07 / Value flow</span>
             <h3>Every product decides who creates value, who captures it, and who absorbs the cost.</h3>
           </div>
           <div class="socx-model-grid">
