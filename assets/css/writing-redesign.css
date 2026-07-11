@@ -24,10 +24,10 @@ body.wr-v1 .cursor {
 .wr-hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - var(--nav-h));
-  padding: calc(var(--nav-h) + 2.55rem) 0 2.35rem;
+  min-height: 60vh;
+  padding: calc(var(--nav-h) + 5rem) 0 6rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   background: var(--dark);
 }
 
@@ -606,7 +606,7 @@ body.wr-v1 .rot-slide {
 @media (max-width: 820px) {
   .wr-hero {
     min-height: auto;
-    padding: 7.4rem 0 3.8rem;
+    padding: calc(var(--nav-h) + 3.5rem) 0 5rem;
     align-items: flex-end;
   }
 
