@@ -181,7 +181,7 @@
 .socx-guide-command-tags span {
   padding: 0.28rem 0.7rem;
   border: 1px solid rgba(181, 146, 90, 0.32);
-  border-radius: 1px;
+  border-radius: 0;
   font-family: var(--mono);
   font-size: 0.64rem;
   letter-spacing: 0.1em;
@@ -257,7 +257,7 @@
   top: calc(var(--nav-h) + 2rem);
   padding: 1.35rem 1.25rem;
   border: 1px solid var(--border-l);
-  border-radius: 1rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.55);
 }
 
@@ -294,7 +294,7 @@
 .socx-guide-sheet {
   padding: 2.4rem;
   border: 1px solid var(--border-l);
-  border-radius: 1.15rem;
+  border-radius: 0;
   background: linear-gradient(180deg, rgba(181, 146, 90, 0.04) 0%, rgba(181, 146, 90, 0.015) 100%), #fffdf9;
   box-shadow: 0 18px 40px rgba(13, 11, 9, 0.04);
 }
@@ -388,7 +388,7 @@
   margin-bottom: 0.2rem;
   padding: 0.85rem 1rem;
   border: 1px solid rgba(181, 146, 90, 0.2);
-  border-radius: 0.8rem;
+  border-radius: 0;
   background: linear-gradient(180deg, rgba(181, 146, 90, 0.08) 0%, rgba(255,255,255,0.68) 100%);
   color: var(--body-l);
 }
@@ -428,7 +428,7 @@
   position: relative;
   padding: 0.95rem;
   border: 1px solid var(--border-l);
-  border-radius: 0.9rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.62);
   overflow: hidden;
 }
@@ -528,7 +528,7 @@
 .socx-guide-case {
   padding: 1.2rem;
   border: 1px solid var(--border-l);
-  border-radius: 1rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.62);
   box-shadow: 0 12px 24px rgba(13, 11, 9, 0.03);
 }
@@ -724,7 +724,7 @@
 .socx-guide-cta-card {
   padding: 1.2rem 1.25rem;
   border: 1px solid var(--border-l);
-  border-radius: 1rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.68);
 }
 

@@ -95,7 +95,7 @@
   top: calc(var(--nav-h) + 2rem);
   padding: 1.35rem 1.25rem;
   border: 1px solid var(--border-l);
-  border-radius: 1rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.55);
 }
 
@@ -225,7 +225,7 @@
   width: 100%;
   height: auto;
   border: 1px solid var(--border-l);
-  border-radius: 1rem;
+  border-radius: 0;
   background: #fffdf9;
   padding: 0.75rem;
 }
@@ -287,7 +287,7 @@
   margin-top: 4rem;
   padding: 2.5rem;
   border: 1px solid var(--border-l);
-  border-radius: 1.2rem;
+  border-radius: 0;
   background: linear-gradient(180deg, rgba(181, 146, 90, 0.08) 0%, rgba(181, 146, 90, 0.02) 100%), var(--light);
 }
 
@@ -322,7 +322,7 @@
   display: block;
   padding: 1.3rem;
   border: 1px solid var(--border-l);
-  border-radius: 1rem;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.62);
   transition: transform 0.25s var(--ease-out), border-color 0.25s;
 }
