@@ -61,16 +61,16 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 24rem);
   gap: clamp(2rem, 5vw, 5rem);
 }
+.morph-hero-grid { grid-template-columns: minmax(0, 1fr); }
+.morph-close-grid { grid-template-columns: minmax(0, 1fr) minmax(300px, 24rem); }
 
 .morph-hero-copy {
   max-width: 46rem;
 }
 
 .morph-kicker,
-.morph-note-label,
 .morph-chapter-num,
 .morph-chapter-strand,
 .morph-case-kicker,
@@ -110,7 +110,6 @@
 }
 
 .morph-deck,
-.morph-hero-note p,
 .morph-summary,
 .morph-close-note p {
   font-size: 1rem;
@@ -133,50 +132,6 @@
 .morph-actions .cta-btn {
   min-width: 16rem;
   justify-content: center;
-}
-
-.morph-hero-note {
-  align-self: end;
-  padding: 1.45rem 1.55rem 1.6rem;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(244,239,232,0.06);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.28);
-}
-
-.morph-note-label {
-  color: rgba(240,235,227,0.56);
-  margin-bottom: 0.85rem;
-}
-
-.morph-hero-note p {
-  color: rgba(240,235,227,0.8);
-}
-
-.morph-note-list {
-  list-style: none;
-}
-
-.morph-note-list li {
-  position: relative;
-  padding-left: 1rem;
-  color: rgba(240,235,227,0.78);
-  line-height: 1.75;
-}
-
-.morph-note-list li + li {
-  margin-top: 0.55rem;
-}
-
-.morph-note-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.78rem;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 50%;
-  background: var(--accent);
 }
 
 .morph-progress {

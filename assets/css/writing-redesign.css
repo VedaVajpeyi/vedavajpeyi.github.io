@@ -63,7 +63,7 @@ body.wr-v1 .cursor {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 24rem);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1.7rem, 4vw, 4.25rem);
   align-items: end;
 }
@@ -73,7 +73,6 @@ body.wr-v1 .cursor {
 }
 
 .wr-kicker,
-.wr-note-label,
 .wr-section-kicker,
 .wr-path-num,
 .wr-lens-kicker,
@@ -165,64 +164,6 @@ body.wr-v1 .cursor {
 .wr-archive-card:hover,
 .wr-path-list a:hover {
   transform: translateY(-2px);
-}
-
-.wr-hero-aside {
-  display: grid;
-  gap: 0.95rem;
-}
-
-.wr-note {
-  padding: 1.35rem 1.45rem 1.4rem;
-  border-radius: 1.7rem;
-  background: linear-gradient(180deg, rgba(113,141,129,0.18), rgba(113,141,129,0.1));
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 16px 38px rgba(0,0,0,0.18);
-}
-
-.wr-note-label {
-  color: rgba(249, 243, 234, 0.66);
-  margin-bottom: 0.82rem;
-}
-
-.wr-note p {
-  font-family: "Manrope", sans-serif;
-  font-size: clamp(1rem, 1.1vw, 1.16rem);
-  font-weight: 400;
-  color: rgba(249, 243, 234, 0.88);
-  line-height: 1.55;
-}
-
-.wr-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.85rem;
-}
-
-.wr-stats div {
-  padding: 1rem 1rem 0.95rem;
-  border-radius: 1.55rem;
-  background: linear-gradient(180deg, rgba(113,141,129,0.18), rgba(113,141,129,0.1));
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 16px 38px rgba(0,0,0,0.15);
-}
-
-.wr-stats dt {
-  font-family: "Newsreader", serif;
-  font-size: clamp(2rem, 2.45vw, 2.6rem);
-  line-height: 1;
-  color: #fffaf2;
-}
-
-.wr-stats dd {
-  margin-top: 0.35rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.74rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(249, 243, 234, 0.72);
 }
 
 .wr-main {
@@ -676,10 +617,6 @@ body.wr-v1 .rot-slide {
     grid-template-columns: 1fr;
   }
 
-  .wr-stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .wr-path-list li {
     flex-direction: column;
     align-items: flex-start;
@@ -694,10 +631,6 @@ body.wr-v1 .rot-slide {
     max-width: 100%;
     font-size: clamp(1.05rem, 3.95vw, 1.16rem);
     line-height: 1.64;
-  }
-
-  .wr-note p {
-    font-size: 1rem;
   }
 
   .wr-archive-card {
@@ -752,10 +685,6 @@ body.wr-v1 .rot-slide {
   .wr-primary,
   .wr-secondary {
     justify-content: center;
-  }
-
-  .wr-stats {
-    grid-template-columns: 1fr;
   }
 
   .wr-section {
