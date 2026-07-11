@@ -245,7 +245,7 @@
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr);
   gap: 4rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .socx-guide-rail {
