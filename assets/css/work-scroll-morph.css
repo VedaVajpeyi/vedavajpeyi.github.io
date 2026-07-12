@@ -769,7 +769,7 @@
   justify-content: center;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1100px) {
   .morph-hero-grid,
   .morph-close-grid,
   .morph-card,

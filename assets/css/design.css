@@ -1041,6 +1041,46 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .cta-btn-outline:hover { background: var(--accent); color: var(--dark); }
 
 /* ═══════════════════════════════════════════════════════
+   STICKY RAIL (on-page nav sidebar — Sociology x Product,
+   Sociology x Product field guide)
+═══════════════════════════════════════════════════════ */
+.socx-rail-box {
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+  padding: 1.35rem 1.25rem;
+  border: 1px solid var(--border-l);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.socx-rail-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.1rem;
+}
+
+.socx-rail-nav a {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-l);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--body-l);
+  transition: color 0.2s, padding-left 0.25s var(--ease-out);
+}
+
+.socx-rail-nav a:hover {
+  color: var(--accent);
+  padding-left: 0.35rem;
+}
+
+.socx-rail-note {
+  font-size: var(--type-body-sm);
+  line-height: 1.75;
+  color: var(--muted-l);
+}
+
+/* ═══════════════════════════════════════════════════════
    SUB-PAGE: LISTING PAGES (case-studies index, writing)
 ═══════════════════════════════════════════════════════ */
 .listing-section {
