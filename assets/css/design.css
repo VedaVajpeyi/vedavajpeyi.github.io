@@ -833,7 +833,7 @@ body.pg-ready .pg-hero-kicker { opacity: 1; }
 body.pg-ready .pg-meta { opacity: 1; transform: none; }
 .pg-deck {
   font-size: var(--type-body);
-  color: var(--muted-d);
+  color: rgba(240, 235, 227, 0.8);
   margin-top: 2rem;
   opacity: 0; transform: translateY(10px);
   transition: opacity 0.5s ease 0.5s, transform 0.5s var(--ease) 0.5s;
