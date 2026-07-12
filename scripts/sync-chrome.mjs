@@ -30,6 +30,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const WRITE = process.argv.includes('--write');
 
+// Exact root-relative paths to skip (not suffixes — 'index.html' alone would
+// also match work/index.html, services/index.html, topics/*/index.html, etc.)
 const SKIP = ['index.html', 'googlef400f4a67116809c.html'];
 
 /**
@@ -78,7 +80,7 @@ if (!canonicalNav || !canonicalMobile || !canonicalFooter) {
 }
 
 // --- Compare against all interior pages ---
-const pages = findHtml(ROOT).filter(f => !SKIP.some(s => f.endsWith(s)));
+const pages = findHtml(ROOT).filter(f => !SKIP.includes(relative(ROOT, f)));
 let issues = 0;
 
 for (const page of pages) {

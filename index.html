@@ -54,12 +54,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
-  <link rel="stylesheet" href="/assets/css/design.css?v=20260712-2">
+  <link rel="stylesheet" href="/assets/css/design.css?v=20260712-3">
 </head>
 <body class="homepage-refined">
 
 <!-- PRELOADER -->
-<div class="preloader" id="preloader">
+<div class="preloader" id="preloader" aria-hidden="true">
   <div class="loader-label">Loading</div>
   <div class="loader-num" id="loader-num">0</div>
 </div>
@@ -98,7 +98,7 @@
     <li><a href="/writing/">Writing</a></li>
     <li><a href="/services/">Work With Me</a></li>
   </ul>
-  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -269,7 +269,7 @@
       </div>
       <a class="ci-image" href="/work/case-study-1.html">
         <div class="ci-img-wrap wu">
-          <div class="ci-img wp ci-img-aarogya" style="background-image: url('/assets/img/aarogya-setu.jpg'); background-position: center 38%;"></div>
+          <div class="ci-img wp ci-img-aarogya" style="background-image: url('/assets/img/aarogya-setu.jpg'); background-position: center 38%;" role="img" aria-label="Screenshot of the Aarogya Setu COVID-19 contact-tracing app"></div>
         </div>
       </a>
     </article>
@@ -278,7 +278,7 @@
     <article class="ci ci-b fu d1" data-ci="2">
       <a class="ci-image" href="/work/case-study-2.html">
         <div class="ci-img-wrap wu">
-          <div class="ci-img wp" style="background-image: url('/assets/img/echo-buds.jpg'); background-position: center 46%;"></div>
+          <div class="ci-img wp" style="background-image: url('/assets/img/echo-buds.jpg'); background-position: center 46%;" role="img" aria-label="Amazon Echo Buds wireless earbuds"></div>
         </div>
       </a>
       <div class="ci-content">
@@ -323,7 +323,7 @@
       </div>
       <a class="ci-image" href="/work/case-study-3.html">
         <div class="ci-img-wrap wu">
-          <div class="ci-img wp" style="background-image: url('/assets/img/echo-show-5.webp'); background-position: center 50%;"></div>
+          <div class="ci-img wp" style="background-image: url('/assets/img/echo-show-5.webp'); background-position: center 50%;" role="img" aria-label="Amazon Echo Show 5 smart display"></div>
         </div>
       </a>
     </article>
@@ -332,7 +332,7 @@
     <article class="ci ci-b fu d3" data-ci="4">
       <a class="ci-image" href="/work/case-study-4.html">
         <div class="ci-img-wrap wu">
-          <div class="ci-img wp" style="background-image: url('/assets/img/echo-dot.jpeg'); background-position: center 44%;"></div>
+          <div class="ci-img wp" style="background-image: url('/assets/img/echo-dot.jpeg'); background-position: center 44%;" role="img" aria-label="Amazon Echo Dot smart speaker"></div>
         </div>
       </a>
       <div class="ci-content">
@@ -375,7 +375,7 @@
       </div>
       <a class="ci-image" href="/work/case-study-5.html">
         <div class="ci-img-wrap wu">
-          <div class="ci-img wp" style="background-image: url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Pasar_Seni_%28Central_Market%29_interior%2C_Kuala_Lumpur_20231114_103640.jpg'); background-position: center 48%;"></div>
+          <div class="ci-img wp" style="background-image: url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Pasar_Seni_%28Central_Market%29_interior%2C_Kuala_Lumpur_20231114_103640.jpg'); background-position: center 48%;" role="img" aria-label="Interior of Pasar Seni Central Market in Kuala Lumpur"></div>
         </div>
       </a>
     </article>
@@ -433,8 +433,8 @@
     <div class="s-label fu">04 · Essays</div>
 
     <article class="essay-feat fu">
-      <a href="/writing/essay-1.html" class="essay-feat-img wu">
-        <div class="essay-feat-bg wp" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80&fit=crop&auto=format');"></div>
+      <a href="/writing/essay-1.html" class="essay-feat-img wu" aria-label="The Metric That Was Hiding the Real Problem">
+        <div class="essay-feat-bg wp" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80&fit=crop&auto=format');" aria-hidden="true"></div>
       </a>
       <div>
         <div class="essay-feat-kicker meta-inline-split">
@@ -604,8 +604,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/page.js?v=20260404-1"></script>
-<script src="/assets/js/home.js?v=20260331-1"></script>
+<script src="/assets/js/page.js?v=20260712-3"></script>
+<script src="/assets/js/home.js?v=20260712-3"></script>
 <style>
   body.homepage-refined #hero {
     min-height: auto;

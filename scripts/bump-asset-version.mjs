@@ -23,6 +23,11 @@ if (!version) {
 const SKIP_DIRS = new Set(['.git', '.claude', 'archive', 'scripts']);
 const ASSETS = [
   '/assets/css/design.css',
+  '/assets/css/sociology-product.css',
+  '/assets/css/sociology-product-system.css',
+  '/assets/css/sxp-essays.css',
+  '/assets/css/writing-redesign.css',
+  '/assets/css/work-scroll-morph.css',
   '/assets/js/page.js',
   '/assets/js/home.js',
 ];
