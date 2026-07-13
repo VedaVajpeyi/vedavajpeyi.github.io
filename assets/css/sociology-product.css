@@ -4,10 +4,6 @@
   background: var(--dark);
 }
 
-.socx-pg-hero .pg-h1 {
-  max-width: 11ch;
-}
-
 .socx-pg-hero .pg-deck,
 .socx-pg-hero .pg-subtitle {
   max-width: 48rem;

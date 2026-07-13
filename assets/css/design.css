@@ -820,7 +820,7 @@ body.pg-ready .pg-hero-kicker { opacity: 1; }
   font-family: var(--serif);
   font-size: clamp(2.8rem, 7vw, 7rem);
   font-weight: 900; line-height: 1.0; letter-spacing: -0.03em;
-  max-width: 900px;
+  max-width: 1080px;
 }
 .pg-h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .pg-meta {

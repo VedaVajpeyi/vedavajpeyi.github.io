@@ -69,7 +69,7 @@ body.wr-v1 .cursor {
 }
 
 .wr-hero-copy {
-  max-width: 46rem;
+  max-width: 1080px;
 }
 
 .wr-kicker,
@@ -122,7 +122,10 @@ body.wr-v1 .cursor {
   font-size: var(--type-body);
   line-height: 1.8;
   color: rgba(240, 235, 227, 0.8);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.5s ease 0.5s, transform 0.5s var(--ease) 0.5s;
 }
+body.pg-ready .wr-lede { opacity: 1; transform: none; }
 
 .wr-actions {
   display: flex;
