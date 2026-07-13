@@ -676,12 +676,6 @@ a.essay-feat-img { display: block; }
   color: var(--body-l);
   max-width: 34rem;
 }
-.srv-num-note {
-  margin-top: 0.6rem;
-  font-style: italic;
-  color: var(--muted-l) !important;
-  font-size: 0.85rem !important;
-}
 .srv-num-aside {
   display: flex;
   flex-direction: column;
