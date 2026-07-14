@@ -115,22 +115,38 @@ if (!homePrefersReduced) {
   const items = Array.from(document.querySelectorAll('.services-item'));
   if (!items.length) return;
 
+  function setOpen(item, isOpen) {
+    item.classList.toggle('open', isOpen);
+    const trigger = item.querySelector('.services-row');
+    const body = item.querySelector('.services-body');
+    if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
+    if (body) {
+      body.setAttribute('aria-hidden', String(!isOpen));
+      /* Keep the collapsed panel's link out of tab order — aria-hidden
+         alone doesn't stop keyboard focus from landing on hidden content. */
+      body.querySelectorAll('a, button').forEach(el => {
+        if (isOpen) el.removeAttribute('tabindex');
+        else el.setAttribute('tabindex', '-1');
+      });
+    }
+  }
+
   items.forEach(item => {
     const trigger = item.querySelector('.services-row');
     if (!trigger) return;
 
+    setOpen(item, false);
+
     trigger.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
+      const willOpen = !item.classList.contains('open');
+      items.forEach(other => setOpen(other, false));
+      if (willOpen) setOpen(item, true);
+    });
 
-      items.forEach(other => {
-        other.classList.remove('open');
-        const otherTrigger = other.querySelector('.services-row');
-        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        trigger.setAttribute('aria-expanded', 'true');
+    trigger.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && item.classList.contains('open')) {
+        setOpen(item, false);
+        trigger.focus();
       }
     });
   });
