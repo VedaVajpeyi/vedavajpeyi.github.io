@@ -220,18 +220,6 @@ body.ready .lw-inner { transform: translateY(0); }
 .wu.in .wp { transform: translateY(0) scale(1); }
 
 /* ═══════════════════════════════════════════════════════
-   IMAGE PLACEHOLDERS
-═══════════════════════════════════════════════════════ */
-.ph { width: 100%; height: 100%; position: relative; display: flex; align-items: flex-end; padding: 1.25rem 1.5rem; overflow: hidden; }
-.ph::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, transparent 0, transparent 20px, rgba(181,146,90,0.05) 20px, rgba(181,146,90,0.05) 21px); }
-.ph::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 25%, rgba(181,146,90,0.08) 0%, transparent 60%); }
-.ph.dk { background: var(--dark-2); border: 1px solid var(--border-d); }
-.ph.lt { background: var(--light-2); border: 1px solid var(--border-l); }
-.ph-tag { position: relative; z-index: 1; font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; }
-.ph.dk .ph-tag { color: var(--muted-d); }
-.ph.lt .ph-tag { color: var(--muted-l); }
-
-/* ═══════════════════════════════════════════════════════
    MARQUEE (home)
 ═══════════════════════════════════════════════════════ */
 .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border-d); padding: 1.1rem 0; position: absolute; bottom: 0; left: 0; right: 0; }
@@ -330,8 +318,6 @@ body.ready .hero-kicker { opacity: 1; }
 .work-stats .astat { border-right-color: var(--border-d); }
 .work-stats .astat-lbl { color: var(--muted-d); }
 .about-photo { width: 100%; aspect-ratio: 3/4; margin-bottom: 2rem; }
-.about-photo .ph { height: 100%; }
-.mini-timeline {}
 .mti { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--border-l); font-size: var(--type-body-sm); }
 .mti:first-child { border-top: 1px solid var(--border-l); }
 .mti-name { font-weight: 600; color: var(--text-l); }
@@ -395,7 +381,6 @@ a.essay-feat-img { display: block; }
 .ci-image { grid-area: image; }
 .ci-img-wrap { width: 100%; aspect-ratio: 4/3; overflow: hidden; transition: transform 0.7s var(--ease-out); }
 .ci:hover .ci-img-wrap { transform: scale(1.015); }
-.ci-img-wrap .ph { height: 100%; }
 .ci-img { width: 100%; height: 100%; background-size: cover; background-position: center; }
 
 /* ═══════════════════════════════════════════════════════
@@ -422,7 +407,6 @@ a.essay-feat-img { display: block; }
 .essay-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; border-top: 1px solid var(--border-d); padding: 4rem 0; text-decoration: none; color: inherit; }
 @media (hover: none) { .essay-feat { cursor: pointer; } }
 .essay-feat-img { aspect-ratio: 16/10; overflow: hidden; }
-.essay-feat-img .ph { height: 100%; }
 .essay-feat-bg { width: 100%; height: 100%; background-size: cover; background-position: center; }
 .essay-feat-kicker { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.1rem; }
 .essay-feat-tag { color: inherit; text-decoration: none; }
