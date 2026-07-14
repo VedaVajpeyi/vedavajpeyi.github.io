@@ -38,6 +38,26 @@
 }
 
 /* ═══════════════════════════════════════════════════════
+   CLASS PREFIX LEGEND
+   Abbreviated prefixes used throughout this file, decoded once
+   here instead of left for every reader to reverse-engineer:
+
+   .ci-*     case item        — homepage/work-listing case study row
+   .ei-*     essay item       — homepage featured/list essay row
+   .srv-*    services         — "Work With Me" services section
+   .pg-*     page             — shared sub-page hero/content chrome
+   .socx-*   sociology x      — Sociology x Product sticky rail nav
+   .bb-*     Books & Beds     — the Books & Beds project page
+   .tl-*     timeline         — About page career timeline
+   .mti      mini-timeline item — About page compact timeline row
+   .astat    about-stat       — About section stat number
+   .fu       fade up          — scroll-reveal: fade + translateY
+   .wu       wipe up          — scroll-reveal: image scale/reveal wipe
+   .lw       line wipe        — hero heading line-reveal animation
+   .rot-*    rotator          — footer rotating tagline
+═══════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════
    RESET
 ═══════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
