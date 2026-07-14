@@ -246,7 +246,7 @@ Scope deliberately narrowed from the original design-system audit: only categori
 
 ---
 
-### Task 5.3
+### Task 5.3 ✅ COMPLETE
 - **Objective:** Fix `scripts/bump-asset-version.mjs` so its own file walk skips `experiments/` and `references/`, matching `sync-chrome.mjs`'s existing `SKIP_DIRS`.
 - **Why this exists:** New finding, logged per the Definition of Done rather than folded into whatever task was running when it was found. Hit this twice in Phase 3.1 alone — every version bump silently touches non-production mockup files, requiring a manual `git checkout -- experiments/` after every single run. Cheap, mechanical, safe fix.
 - **Dependencies:** None.
@@ -256,7 +256,8 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Success criteria:** `bump-asset-version.mjs` only ever touches the live production surface.
 - **Rollback plan:** Single-line revert.
 - **Estimated risk:** None.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `1644b4c`. Verified via a throwaway `99999999-throwaway` version bump: all 52 live pages updated, zero `experiments/` files touched; reverted the throwaway HTML changes, kept the script fix.
+  - **Noted but out of scope:** `sync-chrome.mjs` also lacks an explicit `experiments/`/`references/` skip, but hasn't caused observed harm (those mockups' chrome apparently still matches canonical, so it silently passes rather than silently rewriting). Not fixing pre-emptively — no evidence of a real problem, unlike `bump-asset-version.mjs`.
 
 ---
 
