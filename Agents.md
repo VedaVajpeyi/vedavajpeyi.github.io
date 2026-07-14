@@ -37,7 +37,6 @@ The site is static HTML served by GitHub Pages. There is **no template engine, n
 - `assets/` is the live production asset surface.
 - `experiments/` is for non-live mockups and explorations.
 - `references/` is for non-deployable source/reference material.
-- `prototype/` exists in the repo today but is ambiguous/local in intent; do not treat it as live production.
 - There is currently no `topics/index.html` landing page; topic pages live at `topics/<topic>/index.html`.
 
 ## Shared chrome: nav, mobile menu, footer
@@ -76,9 +75,9 @@ Pick a new version string for each shared-asset deploy.
 4. When changing shared chrome (nav/footer/mobile-menu): edit `index.html` first, then run `sync-chrome.mjs --write` to propagate.
 5. All asset paths in live pages must be root-relative (for example `/assets/css/design.css` and `/assets/js/page.js`).
 6. When shared CSS/JS changes, bump the shared `?v=` asset suffix across live HTML pages.
-7. Do not treat `experiments/`, `references/`, or `prototype/` as live production unless the task explicitly says so.
+7. Do not treat `experiments/` or `references/` as live production unless the task explicitly says so.
 8. The path `assets/img/about-v21/notebook-notes/` is legacy-named but currently live; do not move or rename it casually.
-9. Do not reference `main.css`, `main.js`, `index.template.html`, `content/pages/`, or `sync-pages.mjs` — those do not exist.
+9. Do not reference `main.css`, `main.js`, `index.template.html`, `content/pages/`, `sync-pages.mjs`, or `prototype/` — those do not exist (`prototype/` was removed in `0191cb4`).
 
 ## Validation before finishing
 

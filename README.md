@@ -10,7 +10,6 @@ This repo is a static site served directly by GitHub Pages. There is no framewor
 - `assets/` is the production asset surface for the live site.
 - `experiments/` contains mockups, variants, and design explorations that are not part of the live site.
 - `references/` contains non-deployable source/reference material.
-- `prototype/` currently exists as an intentionally preserved local/ambiguous scratch folder. Treat it as non-production unless explicitly asked to use or remove it.
 
 ## Live production surface
 
@@ -77,9 +76,6 @@ experiments/
 references/
   about-v21/
   books-and-beds/
-
-prototype/
-  # preserved local/ambiguous scratch folder
 ```
 
 ## Editing
