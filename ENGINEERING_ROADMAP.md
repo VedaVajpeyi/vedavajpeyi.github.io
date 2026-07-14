@@ -171,7 +171,7 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 
 Scope deliberately narrowed from the original design-system audit: only categories where existing values already converge tightly (a pure rename, no new canonical value being invented). Spacing/shadow/measure tokenization is **Deferred**, not here — see below for why.
 
-### Task 4.1
+### Task 4.1 ✅ COMPLETE
 - **Objective:** Add `--accent-rgb`, `--muted-d-rgb`, `--text-d-rgb`, `--muted-l-rgb` custom properties; replace the 26 hardcoded RGB-triplet `rgba(...)` literals across `design.css` with `rgba(var(--x-rgb), alpha)`.
 - **Why this exists:** Each literal is a hand re-derivation of a token that already exists; changing the accent color today requires updating 15 places by hand.
 - **Dependencies:** None.
@@ -181,9 +181,12 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Success criteria:** Zero literal `rgba(181,146,90` / `rgba(240,235,227` / `rgba(110,100,88` / `rgba(122,111,98` remain in `design.css`; visually identical.
 - **Rollback plan:** Single-file revert.
 - **Estimated risk:** Low-medium — 26 call sites, each needs the alpha value read correctly; do it in one careful pass, not rushed.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `d666cc8`.
+  - **Revalidation caught a stale number again:** 24 occurrences, not 26 — Phase 1's dead-code removal had already eliminated 4 of the original candidates.
+  - Used a scripted substitution rather than manual edits specifically to eliminate transcription risk on the alpha values; diffed every line afterward to confirm.
+  - **Metrics:** 4 new tokens, 24 call sites converted, 0 remaining literal occurrences of the 4 target triplets.
 
-### Task 4.2
+### Task 4.2 ✅ COMPLETE
 - **Objective:** Add `--duration-fast: 0.2s`, `--duration-base: 0.25s`, `--duration-slow: 0.5s` (values chosen from actual frequency: 0.25s ×51, 0.2s ×35, 0.5s ×29 uses). Point *new* transition declarations at them; do **not** retroactively replace all ~150 existing literals in this task (see Future Considerations for why a full sweep is separate).
 - **Why this exists:** A real de facto scale already exists by habit; naming it stops relying on the next contributor coincidentally reaching for the same three numbers.
 - **Dependencies:** None.
@@ -193,9 +196,9 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Success criteria:** Tokens exist and are documented as the standard to use going forward (note in the comment near `--ease`).
 - **Rollback plan:** N/A.
 - **Estimated risk:** None.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `c9443b1`. Revalidated frequency ranking held (0.25s/0.2s/0.3s/0.5s still dominant) despite Phase 1/3 edits shifting exact counts.
 
-### Task 4.3
+### Task 4.3 ✅ COMPLETE
 - **Objective:** Add `--z-base: 1`, `--z-sticky: 400`, `--z-nav: 500`, `--z-overlay: 490`, `--z-cursor: 9998`, `--z-preloader: 9999` and replace the corresponding literal `z-index` values across `design.css` and `work-scroll-morph.css` with the tokens (values unchanged — pure rename).
 - **Why this exists:** Nine magic numbers with undocumented gaps; the next overlay added has nothing to consult for correct stacking order.
 - **Dependencies:** None.
@@ -205,7 +208,13 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Success criteria:** Zero raw z-index integer literals remain outside the `:root` token definitions.
 - **Rollback plan:** Single-file revert per file.
 - **Estimated risk:** Low — values don't change, only how they're expressed.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `6f13bb8`.
+  - **Scope materially changed since the roadmap was written — adjusted rather than executed blindly (per principle 9):** `work-scroll-morph.css`'s `z-index` landscape is almost entirely gone (Phase 1 removed the dead scrollytelling system that held most of it); its one survivor (`z-index: 2`) turned out to be a local component-stacking value, not part of the global chrome hierarchy, so left as a literal. `--z-base: 1` accordingly dropped — nothing left to attach it to. Added `--z-skip-link: 10000` instead, a value that didn't exist when the roadmap was written (introduced by this session's own Task 3.1).
+  - **Metrics:** 6 tokens added, 6 call sites converted in `design.css`, 0 changed in `work-scroll-morph.css` (intentionally). All 6 computed values verified identical to their pre-token literals.
+
+**Phase 4 status: ✅ COMPLETE — all 3 tasks done.**
+
+---
 
 ---
 
