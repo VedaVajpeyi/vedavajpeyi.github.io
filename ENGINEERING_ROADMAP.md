@@ -137,7 +137,7 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
   - **Follow-on finding, fixed in the same commit (not scope creep — it's what makes the skip link actually work):** the shared `a[href^="#"]` click handler in `page.js` only did a Lenis smooth-scroll, never moved keyboard focus. A keyboard user activating the skip link would visually jump but their next Tab press wouldn't resume inside the content. Fixed by adding `el.focus({preventScroll:true})` to that handler plus `tabindex="-1"` on `<main>`. This also silently improves every other in-page hash anchor site-wide (the sociology-product sticky-rail nav, the writing-page section jumps) — verified it's a no-op on their non-focusable targets, not a regression.
   - **Metrics:** LOC — 442 insertions / 119 deletions across 54 files. Pages with `<main>`: 4 → 52. Pages with a skip link: 0 → 52.
 
-### Task 3.2
+### Task 3.2 ✅ COMPLETE
 - **Objective:** Apply `loading="lazy"` consistently to below-the-fold `<img>` tags (currently 19 of 22 lack it).
 - **Why this exists:** Inconsistent — looks like a convention adopted partway through and never backfilled.
 - **Dependencies:** None.
@@ -147,9 +147,11 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 - **Success criteria:** Every below-fold `<img>` has `loading="lazy"`; no above-fold image does.
 - **Rollback plan:** Trivial single-attribute revert.
 - **Estimated risk:** Low.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `82ff4c4`.
+  - **Revalidation caught a stale number:** the original audit's "22 tags, 19 missing" no longer matched current code — actual count was 9 total `<img>` tags, only 5 missing `loading=`. Acted on the re-verified number, not the audit snapshot, per the working agreement.
+  - **Metrics:** 5 `<img>` tags changed across 2 files (`index.html`, `sociology-product.html`). 9/9 `<img>` tags site-wide now have `loading="lazy"`.
 
-### Task 3.3
+### Task 3.3 ✅ COMPLETE
 - **Objective:** Add a short legend comment to `design.css` documenting cryptic class abbreviations (`.ci`, `.mti`, `.tl-`, `.srv`, `.ei`, etc.).
 - **Why this exists:** Cheap insurance against an agent (or future human) guessing wrong about what an abbreviated class means before editing it.
 - **Dependencies:** None.
@@ -159,7 +161,9 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 - **Success criteria:** A future reader can look up any 2-4 letter class prefix in one place.
 - **Rollback plan:** N/A.
 - **Estimated risk:** None.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `98649f1`. 13 prefixes documented (`.ci`, `.ei`, `.srv`, `.pg`, `.socx`, `.bb`, `.tl`, `.mti`, `.astat`, `.fu`, `.wu`, `.lw`, `.rot`); some candidates from the original audit (`.mti`, `.srv`) were already partly self-evident from Phase 1/3 work and included anyway for completeness.
+
+**Phase 3 status: ✅ COMPLETE — all 3 tasks done.** Total across the phase: 57 files changed (52 pages + `design.css` + `page.js`, some overlapping across tasks), 0 visual regressions, 0 console errors, chrome-sync clean throughout.
 
 ---
 
