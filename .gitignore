@@ -36,3 +36,6 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# Non-deployable source material — large binaries, no version-history value
+references/books-and-beds/
