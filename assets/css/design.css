@@ -30,6 +30,16 @@
   --duration-fast: 0.2s;
   --duration-base: 0.25s;
   --duration-slow: 0.5s;
+  /* Global chrome stacking order, high to low. Values unchanged from what
+     they replace -- this is a rename, not a re-layering. Scoped to global
+     chrome only; a component's purely-local z-index (e.g. within its own
+     stacking context) isn't part of this scale and shouldn't be forced in. */
+  --z-skip-link: 10000;
+  --z-preloader: 9999;
+  --z-cursor:    9998;
+  --z-nav:       500;
+  --z-overlay:   490;
+  --z-sticky:    400;
   --nav-h: 62px;
   --ci-1: #1a0c04;
   --ci-2: #04101a;
@@ -91,7 +101,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   top: -100px;
   left: 1rem;
-  z-index: 10000;
+  z-index: var(--z-skip-link);
   padding: 0.75rem 1.25rem;
   background: var(--accent);
   color: var(--dark);
@@ -132,7 +142,7 @@ img { display: block; max-width: 100%; }
 .preloader {
   position: fixed; inset: 0;
   background: var(--dark);
-  z-index: 9999;
+  z-index: var(--z-preloader);
   display: flex; flex-direction: column;
   justify-content: space-between;
   padding: 3rem;
@@ -161,7 +171,7 @@ img { display: block; max-width: 100%; }
   position: fixed; top: 0; left: 0;
   width: 8px; height: 8px;
   background: var(--accent); border-radius: 50%;
-  pointer-events: none; z-index: 9998;
+  pointer-events: none; z-index: var(--z-cursor);
   transform: translate(-50%, -50%);
   transition: width 0.25s var(--ease), height 0.25s var(--ease),
               background 0.25s, border 0.25s, opacity 0.3s;
@@ -180,7 +190,7 @@ nav#nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-h);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 3.5rem; z-index: 500;
+  padding: 0 3.5rem; z-index: var(--z-nav);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   transition: background 0.5s, border-color 0.5s, color 0.5s;
 }
@@ -218,7 +228,7 @@ body.nav-open .nav-burger span:nth-child(3) { transform: translateY(-6.5px) rota
 
 /* Mobile menu */
 .mobile-menu {
-  position: fixed; inset: 0; background: var(--dark); z-index: 490;
+  position: fixed; inset: 0; background: var(--dark); z-index: var(--z-overlay);
   display: flex; flex-direction: column; justify-content: center; padding: 3.5rem;
   opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease);
 }
@@ -864,7 +874,7 @@ footer { background: var(--dark-2); border-top: 1px solid var(--border-d); paddi
 /* ═══════════════════════════════════════════════════════
    SPY DOTS (home)
 ═══════════════════════════════════════════════════════ */
-.spy { position: fixed; left: calc(100vw - 2rem - 5px); top: 50%; transform: translateY(-50%); z-index: 400; display: flex; flex-direction: column; gap: 0.75rem; opacity: 0; transition: opacity 0.5s; }
+.spy { position: fixed; left: calc(100vw - 2rem - 5px); top: 50%; transform: translateY(-50%); z-index: var(--z-sticky); display: flex; flex-direction: column; gap: 0.75rem; opacity: 0; transition: opacity 0.5s; }
 .spy.visible { opacity: 1; }
 .spy-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(var(--accent-rgb),0.3); transition: background 0.3s, transform 0.3s; border: none; padding: 0; outline: none; }
 .spy-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
