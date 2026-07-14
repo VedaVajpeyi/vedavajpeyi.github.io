@@ -35,6 +35,20 @@ jobs:
       - name: Verify shared chrome (nav/footer) is in sync
         run: node scripts/sync-chrome.mjs
 
+      - name: Check for broken internal links
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 &
+          SERVER_PID=$!
+          for i in $(seq 1 20); do
+            curl -sf http://127.0.0.1:8080/index.html > /dev/null && break
+            sleep 0.5
+          done
+          FILES=$(find . -name "*.html" -not -path "*/experiments/*" -not -path "*/references/*" -not -path "*/.claude/*" -not -name "googlef*" | sed 's|^\./||' | sed 's|^|http://127.0.0.1:8080/|')
+          npx --yes linkinator@6 $FILES --skip "^https?://(?!127\.0\.0\.1)"
+          EXIT_CODE=$?
+          kill $SERVER_PID
+          exit $EXIT_CODE
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
