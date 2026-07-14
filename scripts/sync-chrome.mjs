@@ -117,4 +117,5 @@ if (issues === 0) {
   console.log('✓ All pages have consistent chrome (nav, mobile menu, footer).');
 } else if (!WRITE) {
   console.log(`\n${issues} page(s) differ. Run with --write to sync.`);
+  process.exit(1);
 }
