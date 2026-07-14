@@ -26,6 +26,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       lenis.scrollTo(el, { offset: -62, duration: 1.4 });
       document.body.classList.remove('nav-open');
       document.getElementById('nav-burger')?.setAttribute('aria-expanded', 'false');
+      /* Move keyboard focus to the target, not just the viewport — matters for
+         skip links and any other in-page anchor. No-op on non-focusable targets. */
+      el.focus({ preventScroll: true });
     }
   });
 });
