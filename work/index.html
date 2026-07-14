@@ -378,28 +378,6 @@
 </footer>
 
 <script src="/assets/js/page.js?v=20260713-9"></script>
-<script>
-  (function() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const workSection = document.getElementById('work');
-    if (!workSection) return;
-
-    const root = document.documentElement;
-    const defaultBg = getComputedStyle(workSection).backgroundColor;
-
-    document.querySelectorAll('.ci[data-ci]').forEach(ci => {
-      ci.addEventListener('mouseenter', () => {
-        const color = getComputedStyle(root).getPropertyValue(`--ci-${ci.dataset.ci}`).trim();
-        if (color) workSection.style.backgroundColor = color;
-      });
-
-      ci.addEventListener('mouseleave', () => {
-        workSection.style.backgroundColor = defaultBg;
-      });
-    });
-  })();
-</script>
 
 </body>
 </html>

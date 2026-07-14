@@ -2,7 +2,7 @@
    HOME JS — homepage-specific behavior only
    Runs after page.js. Depends on window.lenis and
    window.initReveal being set by page.js.
-   (preloader, hero char stagger, spy dots, work bg hover)
+   (preloader, hero char stagger, spy dots)
 ───────────────────────────────────────────────────── */
 
 const homePrefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -109,27 +109,6 @@ if (!homePrefersReduced) {
     });
   });
 })();
-
-/* Per-case-study background color on hover — skipped for reduced-motion */
-if (!homePrefersReduced) {
-  (function() {
-    const workSection = document.getElementById('work');
-    if (!workSection) return;
-    const root = document.documentElement;
-    const defaultBg = '#0d0b09';
-    document.querySelectorAll('.ci[data-ci]').forEach(ci => {
-      const idx = ci.dataset.ci;
-      ci.addEventListener('mouseenter', () => {
-        const color = getComputedStyle(root).getPropertyValue(`--ci-${idx}`).trim();
-        workSection.style.transition = 'background-color 0.7s var(--ease-out)';
-        workSection.style.backgroundColor = color;
-      });
-      ci.addEventListener('mouseleave', () => {
-        workSection.style.backgroundColor = defaultBg;
-      });
-    });
-  })();
-}
 
 /* Work With Me accordion */
 (function() {

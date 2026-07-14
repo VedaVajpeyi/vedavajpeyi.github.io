@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────────────
    SHARED PAGE JS — used on all pages including home
    (Lenis, cursor, mobile nav, scroll reveals, nav theme,
-    footer rotator, spy hook)
+    footer rotator, spy hook, case-study hover tint)
 ───────────────────────────────────────────────────── */
 
 /* Lenis — exposed globally so home.js can reference it */
@@ -115,6 +115,23 @@ if (!document.getElementById('preloader')) {
       (href !== '/' && path.startsWith(href)) ||
       (href === '/sociology-product.html' && path.startsWith('/sociology-product'));
     if (active) a.setAttribute('aria-current', 'page');
+  });
+})();
+
+/* Case-study hover tint — runs on any page with a #work section (home, /work/) */
+(function() {
+  const workSection = document.getElementById('work');
+  if (!workSection || prefersReduced) return;
+  const defaultBg = getComputedStyle(workSection).backgroundColor;
+  document.querySelectorAll('.ci[data-ci]').forEach(ci => {
+    ci.addEventListener('mouseenter', () => {
+      const color = getComputedStyle(document.documentElement)
+        .getPropertyValue(`--ci-${ci.dataset.ci}`).trim();
+      if (color) workSection.style.backgroundColor = color;
+    });
+    ci.addEventListener('mouseleave', () => {
+      workSection.style.backgroundColor = defaultBg;
+    });
   });
 })();
 
