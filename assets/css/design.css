@@ -24,6 +24,12 @@
   --body-muted-l: rgba(10,8,6,0.65);
   --ease:     cubic-bezier(0.65, 0.05, 0.01, 0.9);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Standard transition-duration scale, named from the values that already
+     dominate by usage. Use these for any new transition; existing literals
+     are not retroactively migrated (see roadmap Deferred: full duration sweep). */
+  --duration-fast: 0.2s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.5s;
   --nav-h: 62px;
   --ci-1: #1a0c04;
   --ci-2: #04101a;
