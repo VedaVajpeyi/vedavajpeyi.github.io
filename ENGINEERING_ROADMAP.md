@@ -1,21 +1,44 @@
 # Engineering Roadmap — vedavajpeyi.github.io
 
-**Status: canonical.** This document supersedes the individual audit findings it was built from. Don't re-derive priorities from scratch — re-verify a specific task against current code immediately before executing it, then update this file. Planning is done; from here it's execution.
+**Status: draft, pending your review.** This document is meant to become canonical once you've looked it over — it shouldn't be treated as an approved contract just because it's written down. Once you sign off, it supersedes the individual audit findings it was built from, and re-planning stops: re-verify a specific task against current code immediately before executing it, then update this file. Don't re-derive priorities from scratch.
 
-**Working agreement, in effect from this point forward:**
-- Every recommendation from the three audits lives in exactly one bucket below: **Implement** (phased, task-templated), **Defer** (real, not scheduled — revisit only when touching that area anyway), or **Reject** (investigated, not worth doing — reason recorded so it isn't re-litigated).
-- To execute a task: re-verify its finding against current code first. If it no longer holds, say why and move it to Rejected instead of implementing it — don't implement on autopilot.
-- Change the minimum code necessary. Preserve behavior unless a task explicitly says otherwise. Don't expand scope mid-task — if something new turns up, log it as a new task, don't fold it in.
-- After implementing: run verification, commit, flip the task's status in this file, and stop — don't auto-chain into the next task without being asked to, except where a phase is explicitly marked "execute straight through."
-- Process is part of the deliverable: if the same verification dance repeats three times, script it once instead of hand-running it a fourth time (this is why `sync-chrome.mjs`, `strip-pg-nav-cta.mjs`-style throwaway scripts, and the exact-token dead-class check exist — reuse that method rather than re-deriving it per task).
+## Engineering principles
+
+These override individual tasks if the two ever conflict.
+
+1. Preserve user-visible behavior unless a task explicitly says otherwise.
+2. Prefer deletion over abstraction; prefer simplification over optimization.
+3. Minimize diff size. One task, one concern, one commit.
+4. Never expand scope mid-task — a new finding becomes a new task, not an addition to the current one.
+5. Revalidate every finding against current code before implementing it, not the audit snapshot.
+6. If confidence in a finding drops below roughly 95% on revalidation, stop and record the uncertainty instead of proceeding on the original assumption.
+7. Complete one task, verify it, commit it, before starting the next.
+8. This document is the single source of truth for what's planned, deferred, and rejected — don't re-litigate a Rejected item without new evidence.
+9. Engineering effort is constrained: before implementing any task, briefly confirm it's still among the highest-ROI remaining items. If inspection shows its value has materially changed since this was written, say why, update the roadmap, and don't proceed automatically on the stale assumption. This document is a plan, not a script — the moment it stops matching reality, the document loses, not reality.
+10. Process is part of the deliverable: if the same verification dance repeats three times, script it once instead of hand-running it a fourth time (this is why `sync-chrome.mjs`, `strip-pg-nav-cta.mjs`-style throwaway scripts, and the exact-token dead-class check exist — reuse that method rather than re-deriving it per task).
 
 **Repo state as of this doc (main @ `2a22d9d`):** 12 commits of audit + 7 of implementation. ~980 lines of dead CSS removed, one real bug fixed (`.pg-nav-cta`, 47 pages), one duplicate JS implementation consolidated, one accessibility gap closed (accordion), CI now enforces chrome consistency.
 
 ---
 
+## Definition of Done
+
+Applies to every task below in addition to whatever that task's own Verification checklist calls out. A task isn't Complete until all of these are true:
+
+- [ ] Finding independently revalidated against current code (not just the audit's original snapshot)
+- [ ] Implementation is the minimal diff that satisfies the objective — no scope expansion
+- [ ] Build/syntax check passes (brace balance for CSS, `node --check` for JS, or equivalent)
+- [ ] `node scripts/sync-chrome.mjs` clean
+- [ ] All live pages return 200
+- [ ] Browser verification complete on at least one representative page per template type touched
+- [ ] Console clean (no new errors/warnings)
+- [ ] Shared asset `?v=` bumped if `design.css`/`page.js`/`home.js` changed
+- [ ] This roadmap updated: task status flipped, any new findings logged as new tasks (not folded into this one)
+- [ ] Committed with a message naming the task's objective, not just its ID
+
 ## Task template
 
-Every queued task (Phases 3–6) uses this shape. Deferred/Rejected/Future items intentionally use a one-line format — they don't deserve execution-ready detail until they're actually picked up, since re-verification happens at pickup time anyway.
+Every queued task (Phases 3–6) uses this shape. The per-task **Verification checklist** below is what's specific to that task; the Definition of Done above applies universally on top of it. Deferred/Rejected/Future items intentionally use a one-line format — they don't deserve execution-ready detail until they're actually picked up, since re-verification happens at pickup time anyway.
 
 ```
 Task ID:
@@ -98,9 +121,9 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 
 ---
 
-## Phase 3 — Correctness & accessibility (queued, execute next)
+## Phase 3 — Correctness & accessibility (in progress)
 
-### Task 3.1
+### Task 3.1 ✅ COMPLETE
 - **Objective:** Add a skip-to-content link and wrap primary content in `<main>` across all 49 pages currently missing it (4/53 already have `<main>`).
 - **Why this exists:** Zero pages have a skip link; keyboard/screen-reader users must tab through the full nav every page load. `<main>` gives assistive tech a real landmark to jump to.
 - **Dependencies:** None.
@@ -110,7 +133,9 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 - **Success criteria:** Every live page has exactly one `<main>` and one skip link; zero visual change for mouse users.
 - **Rollback plan:** Single revert per commit; changes are additive (new elements + CSS), not destructive.
 - **Estimated risk:** Low — additive markup, but touches every page, so do the single-page proof first.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `686b14e`. Files changed: 54 (52 live HTML pages + `design.css` + `page.js`).
+  - **Follow-on finding, fixed in the same commit (not scope creep — it's what makes the skip link actually work):** the shared `a[href^="#"]` click handler in `page.js` only did a Lenis smooth-scroll, never moved keyboard focus. A keyboard user activating the skip link would visually jump but their next Tab press wouldn't resume inside the content. Fixed by adding `el.focus({preventScroll:true})` to that handler plus `tabindex="-1"` on `<main>`. This also silently improves every other in-page hash anchor site-wide (the sociology-product sticky-rail nav, the writing-page section jumps) — verified it's a no-op on their non-focusable targets, not a regression.
+  - **Metrics:** LOC — 442 insertions / 119 deletions across 54 files. Pages with `<main>`: 4 → 52. Pages with a skip link: 0 → 52.
 
 ### Task 3.2
 - **Objective:** Apply `loading="lazy"` consistently to below-the-fold `<img>` tags (currently 19 of 22 lack it).
@@ -204,6 +229,20 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Success criteria:** Same visual result, file size reduced by at least 10x.
 - **Rollback plan:** Original file recoverable from git history.
 - **Estimated risk:** Low — but do the visual side-by-side check carefully, this is the one task in this phase where a mistake would be visible.
+- **Status:** Not started.
+
+---
+
+### Task 5.3
+- **Objective:** Fix `scripts/bump-asset-version.mjs` so its own file walk skips `experiments/` and `references/`, matching `sync-chrome.mjs`'s existing `SKIP_DIRS`.
+- **Why this exists:** New finding, logged per the Definition of Done rather than folded into whatever task was running when it was found. Hit this twice in Phase 3.1 alone — every version bump silently touches non-production mockup files, requiring a manual `git checkout -- experiments/` after every single run. Cheap, mechanical, safe fix.
+- **Dependencies:** None.
+- **Files expected to change:** `scripts/bump-asset-version.mjs` (one line — extend `SKIP_DIRS`).
+- **Implementation plan:** Add `'experiments'` and `'references'` to the existing `SKIP_DIRS` set.
+- **Verification checklist:** Run the script with a throwaway version string; confirm `experiments/` files no longer appear in the diff; revert the throwaway run.
+- **Success criteria:** `bump-asset-version.mjs` only ever touches the live production surface.
+- **Rollback plan:** Single-line revert.
+- **Estimated risk:** None.
 - **Status:** Not started.
 
 ---
