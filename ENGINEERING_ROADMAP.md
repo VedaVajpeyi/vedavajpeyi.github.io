@@ -232,7 +232,7 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Estimated risk:** Low — build-time only, never touches rendered output.
 - **Status:** Not started.
 
-### Task 5.2
+### Task 5.2 ✅ COMPLETE
 - **Objective:** Compress/convert `assets/img/veda-portrait.png` (currently 2.1MB) to a reasonably sized WebP or optimized PNG.
 - **Why this exists:** Single largest performance issue on the homepage; loaded above-the-fold.
 - **Dependencies:** None. Uses `sips` (confirmed available, no download needed) or an equivalent local tool — does not require fetching anything external, so it doesn't trigger the download-permission constraint.
@@ -242,7 +242,10 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Success criteria:** Same visual result, file size reduced by at least 10x.
 - **Rollback plan:** Original file recoverable from git history.
 - **Estimated risk:** Low — but do the visual side-by-side check carefully, this is the one task in this phase where a mistake would be visible.
-- **Status:** Not started.
+- **Status:** ✅ Complete. Commit `b06e4e6`.
+  - **WebP dropped, JPEG used instead:** this system's `sips` can't encode WebP (confirmed by attempting it — errors on the output format). JPEG is the right tool for a photograph anyway; format alone (not just resize) accounts for most of the size win.
+  - Chose 800px width specifically because it's exactly 2x the image's real rendered CSS width (a fixed 400px column in `.about-grid` on desktop), so it's neither over- nor under-provisioned for retina.
+  - **Metrics:** 2,156,147 → 163,704 bytes (13.2x reduction, exceeds the 10x success criteria). 1024×1536 → 800×1200 px.
 
 ---
 
