@@ -20,7 +20,7 @@ if (!version) {
   process.exit(1);
 }
 
-const SKIP_DIRS = new Set(['.git', '.claude', 'archive', 'scripts']);
+const SKIP_DIRS = new Set(['.git', '.claude', 'archive', 'scripts', 'experiments', 'references']);
 const ASSETS = [
   '/assets/css/design.css',
   '/assets/css/sociology-product.css',
