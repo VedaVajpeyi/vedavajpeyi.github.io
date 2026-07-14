@@ -72,7 +72,6 @@ body.wr-v1 .cursor {
   max-width: 1080px;
 }
 
-.wr-kicker,
 .wr-section-kicker,
 .wr-path-num,
 .wr-lens-kicker,
@@ -82,11 +81,6 @@ body.wr-v1 .cursor {
   font-size: var(--type-meta);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-}
-
-.wr-kicker {
-  color: var(--accent);
-  margin-bottom: 1.35rem;
 }
 
 .wr-hero h1 {
@@ -390,11 +384,6 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
-}
-
-.wr-archive-grid-single {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: none;
 }
 
 .wr-archive-card {
