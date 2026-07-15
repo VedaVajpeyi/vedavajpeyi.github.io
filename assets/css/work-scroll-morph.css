@@ -226,3 +226,8 @@ body.pg-ready .morph-deck { opacity: 1; transform: none; }
     min-width: 0;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .work-scroll-morph-page { transition: none; }
+  .morph-deck { opacity: 1; transform: none; transition: none; }
+}

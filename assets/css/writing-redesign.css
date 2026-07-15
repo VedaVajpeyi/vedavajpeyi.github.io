@@ -660,3 +660,25 @@ body.wr-v1 .rot-slide {
     border-radius: 22px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Lede reveal: appear immediately, no slide-fade */
+  .wr-lede { opacity: 1; transform: none; transition: none; }
+
+  /* Hover micro-transforms: kill the transition and neutralize the shift */
+  .wr-path-list a,
+  .wr-lens-links a,
+  .wr-mini-shelves a,
+  .wr-archive-card,
+  .wr-archive-card strong,
+  .wr-close-link {
+    transition: none;
+  }
+  .wr-path-list a:hover,
+  .wr-lens-links a:hover,
+  .wr-mini-shelves a:hover,
+  .wr-archive-card:hover,
+  .wr-close-link:hover {
+    transform: none;
+  }
+}
