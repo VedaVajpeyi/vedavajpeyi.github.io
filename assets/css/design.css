@@ -30,6 +30,20 @@
   --duration-fast: 0.2s;
   --duration-base: 0.25s;
   --duration-slow: 0.5s;
+  /* Spacing scale, named from the values that already dominate padding/margin/gap
+     usage (uniform 0.5rem steps, each individually the majority pattern at its size).
+     Use these for any new spacing declaration; existing literals are not retroactively
+     migrated (see roadmap Deferred: full spacing sweep). Other recurring-but-uneven
+     values (1.75rem, 0.5rem, 8rem, etc.) are intentionally left un-tokenized — real
+     usage, just not part of this core scale. */
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 3rem;
+  --space-3xl: 3.5rem;
+  --space-4xl: 4rem;
+  --space-5xl: 5rem;
   /* Global chrome stacking order, high to low. Values unchanged from what
      they replace -- this is a rename, not a re-layering. Scoped to global
      chrome only; a component's purely-local z-index (e.g. within its own
