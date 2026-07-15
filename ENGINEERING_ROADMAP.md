@@ -163,7 +163,19 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 - **Estimated risk:** None.
 - **Status:** ✅ Complete. Commit `98649f1`. 13 prefixes documented (`.ci`, `.ei`, `.srv`, `.pg`, `.socx`, `.bb`, `.tl`, `.mti`, `.astat`, `.fu`, `.wu`, `.lw`, `.rot`); some candidates from the original audit (`.mti`, `.srv`) were already partly self-evident from Phase 1/3 work and included anyway for completeness.
 
-**Phase 3 status: ✅ COMPLETE — all 3 tasks done.** Total across the phase: 57 files changed (52 pages + `design.css` + `page.js`, some overlapping across tasks), 0 visual regressions, 0 console errors, chrome-sync clean throughout.
+### Task 3.4 ✅ COMPLETE
+- **Objective:** Extend `prefers-reduced-motion` coverage to `writing-redesign.css` and `work-scroll-morph.css` — only `design.css` had a block; the writing and work-morph pages' `.wr-lede`/`.morph-deck` load-in reveals and hover micro-transforms (`translateY`/`translateX` on links and cards) ignored the OS-level preference entirely.
+- **Why this exists:** Surfaced by an external (DeepSeek) review of the asset files; independently re-verified against current code before acting — most of that review's other findings didn't hold up (see below) but this one did.
+- **Files expected to change:** `writing-redesign.css`, `work-scroll-morph.css`.
+- **Implementation plan:** Mirror `design.css`'s existing targeted, per-selector pattern (kill `transition`, neutralize the hover/reveal consequence) rather than a blanket `*, *::before, *::after { transition: none !important }` override — consistent with how the rest of the codebase already handles this.
+- **Verification checklist:** Brace-balance check both files; `sync-chrome.mjs` clean; confirmed via the browser's CSSOM that both new `@media (prefers-reduced-motion: reduce)` blocks parsed with the intended selectors; full 52-page 200 sweep; visual screenshot of both pages unchanged under normal motion; console clean.
+- **Success criteria:** Both files have reduced-motion coverage matching `design.css`'s existing convention; zero visual change under normal (non-reduced) motion.
+- **Rollback plan:** Both additions are new, self-contained media-query blocks appended at each file's end — trivial single-block revert.
+- **Estimated risk:** None — additive only, scoped to a media query most visitors never trigger.
+- **Status:** ✅ Complete. Commit `2fb21c9`. Shared asset `?v=` bumped to `20260714-3` (`writing-redesign.css` is in `bump-asset-version.mjs`'s tracked list; `work-scroll-morph.css` isn't in the script's `ASSETS` array but was already hand-kept in version-sync with it, so bumped to match — noted here as a small script gap, not worth fixing on its own).
+  - **On the rest of that external review, for the record:** its "already fixed" recap (cursor, accordion a11y, sticky rail, hover tint, skip link, mobile-menu focus) checked out on independent verification. But two of its "critical" findings didn't survive re-verification against actual code and weren't acted on: the claimed `aria-current` false-positive doesn't reproduce with this site's real nav structure, and its suggested replacement would have broken the intentional sociology-product field-guide nav-highlighting; the `.morph-close` "orphaned class" claim is false — it's live in `work/index.html`, and the split rule-block pattern it flagged is the exact thing already investigated and rejected in this doc's Rejected section. The writing-page container-width finding is real but folded into the pre-existing, still-open "is the Writing section's distinct look intentional or drift" question below, rather than fixed in isolation — a width/font mismatch is exactly the kind of thing that question already covers, and it's a design call, not an engineering one.
+
+**Phase 3 status: ✅ COMPLETE — all 4 tasks done.** Total across the phase: 59 files changed across all tasks (52 pages + `design.css` + `page.js` + `writing-redesign.css` + `work-scroll-morph.css`, some overlapping), 0 visual regressions, 0 console errors, chrome-sync clean throughout.
 
 ---
 
