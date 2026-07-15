@@ -373,8 +373,7 @@ body.ready .hero-kicker { opacity: 1; }
 
 /* Shared inline arrow-link component (text + .link-arrow, shifts on hover).
    Base = light-section default (rest: accent, hover: text-l).
-   .on-dark  = for links sitting on dark sections (hover: text-d instead).
-   .is-muted = for secondary/softer nav links (rest: muted, hover: accent). */
+   .on-dark = for links sitting on dark sections (hover: text-d instead). */
 .link-cta {
   display: inline-flex;
   align-items: center;
@@ -391,9 +390,6 @@ body.ready .hero-kicker { opacity: 1; }
 .link-cta:hover .link-arrow { color: var(--text-l); }
 .link-cta.on-dark:hover { color: var(--text-d); }
 .link-cta.on-dark:hover .link-arrow { color: var(--text-d); }
-.link-cta.is-muted { color: rgba(var(--muted-l-rgb), 0.82); font-weight: 400; letter-spacing: 0.12em; }
-.link-cta.is-muted:hover { color: var(--accent); }
-.link-cta.is-muted:hover .link-arrow { color: var(--accent); }
 
 .pg-nav a:hover .link-arrow { color: var(--text-l); }
 .about-stats { display: flex; gap: 0; margin-top: 3rem; border-top: 1px solid var(--border-l); border-bottom: 1px solid var(--border-l); }
@@ -1095,8 +1091,6 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   display: inline-flex; align-items: center; gap: 0.5rem;
 }
 .pg-nav a:hover { color: var(--text-l); transform: translateX(4px); }
-.pg-nav a.pg-nav-cta-soft { color: var(--muted-l); opacity: 0.72; }
-.pg-nav a.pg-nav-cta-soft:hover { color: var(--accent); opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
    CTA BUTTON
