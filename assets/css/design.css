@@ -635,8 +635,8 @@ a.essay-feat-img { display: block; }
   color: var(--accent);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  transition: color 0.25s, transform 0.25s var(--ease-out);
+  gap: 0.5rem;
+  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
 }
 .srv-num-row:hover .srv-num-main h3 { color: var(--accent); }
 .srv-num-row:hover .srv-num-link { color: var(--text-l); transform: translateX(4px); }
@@ -713,7 +713,7 @@ a.essay-feat-img { display: block; }
   display: inline-flex;
   align-items: center;
   color: var(--accent);
-  transition: color 0.25s, transform 0.25s var(--ease-out);
+  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
 }
 .srv-ind-link .link-arrow { width: 1.4rem; height: 1.05rem; }
 .srv-ind-item:hover h3 { color: var(--accent); }
@@ -1091,14 +1091,12 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .pg-nav a {
   font-family: var(--mono); font-size: 0.8rem; font-weight: 500; text-transform: uppercase;
   letter-spacing: 0.1em; color: var(--accent);
-  transition: color 0.2s;
-  display: inline-flex; align-items: center; gap: 0.4rem;
+  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
+  display: inline-flex; align-items: center; gap: 0.5rem;
 }
-.pg-nav a:hover { color: var(--text-l); }
-.pg-nav a.cta-btn { color: var(--dark); font-size: var(--type-meta); }
-.pg-nav a.cta-btn:hover { color: var(--dark); }
-.pg-nav-cta-soft { color: var(--muted-l); opacity: 0.72; }
-.pg-nav-cta-soft:hover { color: var(--accent); opacity: 1; }
+.pg-nav a:hover { color: var(--text-l); transform: translateX(4px); }
+.pg-nav a.pg-nav-cta-soft { color: var(--muted-l); opacity: 0.72; }
+.pg-nav a.pg-nav-cta-soft:hover { color: var(--accent); opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
    CTA BUTTON
@@ -1293,7 +1291,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .contact-service-item:hover { padding-left: 1rem; }
 .contact-service-name { color: rgba(var(--text-d-rgb),0.84); transition: color 0.3s; }
 .contact-service-item:hover .contact-service-name { color: var(--accent); }
-.contact-service-arrow { font-size: 0.75rem; color: rgba(var(--muted-d-rgb),0.72); transition: color 0.3s, transform 0.3s; }
+.contact-service-arrow { color: rgba(var(--muted-d-rgb),0.72); transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out); }
 .contact-service-item:hover .contact-service-arrow { color: var(--accent); transform: translateX(4px); }
 .contact-note { padding: 0 3.5rem 8rem; background: var(--dark); }
 .contact-note p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.8; max-width: 520px; }
