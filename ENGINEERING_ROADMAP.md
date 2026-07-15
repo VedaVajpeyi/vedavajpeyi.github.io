@@ -264,7 +264,14 @@ Arrow-link consolidation (9+ near-identical components) and card-component conso
 - **Status:** ✅ Complete. Commit `0949ca2`. Shared asset `?v=` bumped to `20260715-6`.
   - **Process note:** the owner's own hypothesis (typography — sizing/fonts/weight) turned out not to be the root cause; the actual bugs were structural (width math, contrast). Investigated directly rather than defaulting to the suggested fix — worth remembering that "it doesn't look right" from someone without CSS specifics is a symptom report, not a diagnosis.
 
-**Phase 3 status: ✅ COMPLETE — all 11 tasks done.** Total across the phase: 83 files changed across all tasks (52 pages + `404.html` + `design.css` + `page.js` + `writing-redesign.css` + `work-scroll-morph.css` + `sitemap.xml` + `sociology-product.css` + `sociology-product-system.css`, some overlapping), 0 visual regressions, 0 console errors, chrome-sync clean throughout.
+### Task 3.12 ✅ COMPLETE
+- **Objective:** Direct visual feedback — remove the boxed panel around the Writing page's close-CTA button (background/border/padding read as visually odd) and drop the "Short notes are enough. You do not need to have it fully figured out." line. Keep just the button.
+- **Files expected to change:** `writing/index.html`, `assets/css/writing-redesign.css`.
+- **Implementation plan:** Removed the `<p>` from HTML. `.wr-close-cta` kept as a bare grid wrapper (for bottom-left positioning within `.wr-close-inner`'s column) with its box styling (padding/background/border) stripped; removed the now-dead `.wr-close-cta p` rule.
+- **Verification checklist:** Computed style confirmed single child, transparent background, no border/padding; confirmed the removed copy is gone from HTML; brace-balance; chrome-sync; console clean; full 52-page 200 sweep.
+- **Status:** ✅ Complete. Commit `fa8a910`. Shared asset `?v=` bumped to `20260715-7`.
+
+**Phase 3 status: ✅ COMPLETE — all 12 tasks done.** Total across the phase: 83 files changed across all tasks (52 pages + `404.html` + `design.css` + `page.js` + `writing-redesign.css` + `work-scroll-morph.css` + `sitemap.xml` + `sociology-product.css` + `sociology-product-system.css`, some overlapping), 0 visual regressions, 0 console errors, chrome-sync clean throughout.
 
 ---
 
