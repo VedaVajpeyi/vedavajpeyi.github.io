@@ -502,7 +502,7 @@
   background: linear-gradient(180deg, rgba(181, 146, 90, 0.06) 0%, rgba(255, 255, 255, 0.82) 100%);
 }
 
-.socx-guide-case h4 {
+.socx-guide-case h3 {
   margin: 0 0 0.55rem;
   font-family: var(--serif);
   font-size: 1.08rem;
@@ -564,7 +564,7 @@
   background: none;
 }
 
-.socx-guide-law h4 {
+.socx-guide-law h3 {
   margin: 0 0 0.3rem;
   font-family: var(--serif);
   font-size: 1.02rem;

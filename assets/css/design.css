@@ -660,7 +660,7 @@ a.essay-feat-img { display: block; }
   margin-bottom: 1.35rem;
 }
 .srv-ind-icon svg { width: 1.15rem; height: 1.15rem; }
-.srv-ind-item h4 {
+.srv-ind-item h3 {
   font-family: var(--serif);
   font-size: 1.15rem;
   font-weight: 700;
@@ -683,7 +683,7 @@ a.essay-feat-img { display: block; }
   transition: color 0.25s, transform 0.25s var(--ease-out);
 }
 .srv-ind-link .link-arrow { width: 1.4rem; height: 1.05rem; }
-.srv-ind-item:hover h4 { color: var(--accent); }
+.srv-ind-item:hover h3 { color: var(--accent); }
 .srv-ind-item:hover .srv-ind-link { color: var(--text-l); transform: translateX(3px); }
 
 .srv-close {
