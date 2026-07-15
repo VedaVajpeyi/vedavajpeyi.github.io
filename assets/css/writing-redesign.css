@@ -496,14 +496,9 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 
 .wr-close-cta {
   display: grid;
-  gap: 0.8rem;
   align-self: stretch;
   align-content: end;
   justify-items: start;
-  padding: 1.1rem 1.2rem;
-  border-radius: 1px;
-  background: rgba(21, 34, 29, 0.04);
-  border: 1px solid rgba(21, 34, 29, 0.18);
 }
 
 .wr-close-link {
@@ -521,13 +516,6 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
   white-space: nowrap;
   background: var(--wr-accent);
   transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.wr-close-cta p {
-  max-width: 17rem;
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: rgba(21, 34, 29, 0.56);
 }
 
 .wr-close-link:hover {
