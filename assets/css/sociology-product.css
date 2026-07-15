@@ -16,24 +16,6 @@
   margin-top: 2.25rem;
 }
 
-.socx-hero-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  transition: color 0.25s, transform 0.25s var(--ease-out);
-}
-
-.socx-hero-link:hover {
-  color: var(--text-d);
-  transform: translateX(4px);
-}
-
 .socx-signal-band {
   background: var(--dark-2);
   border-top: 1px solid var(--border-d);
@@ -223,24 +205,6 @@
   font-size: var(--type-body);
   line-height: 1.8;
   color: var(--body-l);
-}
-
-.socx-proof-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  transition: color 0.25s, transform 0.25s var(--ease-out);
-}
-
-.socx-proof-link:hover {
-  color: var(--text-l);
-  transform: translateX(4px);
 }
 
 .socx-use-block {

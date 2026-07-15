@@ -102,26 +102,8 @@
   margin-top: 2.25rem;
 }
 
-.socx-guide-links a,
 .socx-rail-nav a {
   transition: color 0.25s, transform 0.25s var(--ease-out);
-}
-
-.socx-guide-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.socx-guide-links a:hover {
-  color: var(--text-d);
-  transform: translateX(4px);
 }
 
 .socx-guide-command-band {
@@ -727,28 +709,7 @@
   color: rgba(240, 235, 227, 0.72) !important;
 }
 
-.socx-guide-cta-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-top: 1rem;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  transition: color 0.2s, transform 0.2s var(--ease-out);
-}
-
-.socx-guide-cta-link:hover {
-  color: var(--text-l);
-  transform: translateX(4px);
-}
-
-.socx-guide-cta-card.is-primary .socx-guide-cta-link:hover {
-  color: var(--text-d);
-}
+.socx-guide-cta-link { margin-top: 1rem; }
 
 @media (max-width: 1100px) {
   .socx-guide-hero-layout,

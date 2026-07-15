@@ -321,7 +321,7 @@ body.ready .hero-kicker { opacity: 1; }
 .about-h2 em { font-style: italic; font-weight: 400; }
 .about-body p { font-size: var(--type-body); line-height: 1.8; color: var(--body-l); margin-bottom: 1.5rem; font-weight: 400; }
 .about-body p strong { color: var(--text-l); font-weight: 600; }
-.about-read-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2.5rem; font-family: var(--mono); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); opacity: 1; transition: color 0.25s, transform 0.25s var(--ease-out), opacity 0.25s; }
+.about-read-link { margin-top: 2.5rem; }
 .link-arrow {
   display: inline-block;
   width: 1.1rem;
@@ -356,11 +356,31 @@ body.ready .hero-kicker { opacity: 1; }
 }
 .link-arrow-right,
 .link-arrow-left { transform: translateY(-0.01em); }
-.about-read-link:hover { color: var(--text-l); transform: translateX(4px); }
-.about-read-link:hover .link-arrow,
-.project-link:hover .link-arrow,
-.services-more-link:hover .link-arrow,
-.services-readmore:hover .link-arrow,
+
+/* Shared inline arrow-link component (text + .link-arrow, shifts on hover).
+   Base = light-section default (rest: accent, hover: text-l).
+   .on-dark  = for links sitting on dark sections (hover: text-d instead).
+   .is-muted = for secondary/softer nav links (rest: muted, hover: accent). */
+.link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
+}
+.link-cta:hover { color: var(--text-l); transform: translateX(4px); }
+.link-cta:hover .link-arrow { color: var(--text-l); }
+.link-cta.on-dark:hover { color: var(--text-d); }
+.link-cta.on-dark:hover .link-arrow { color: var(--text-d); }
+.link-cta.is-muted { color: rgba(var(--muted-l-rgb), 0.82); font-weight: 400; letter-spacing: 0.12em; }
+.link-cta.is-muted:hover { color: var(--accent); }
+.link-cta.is-muted:hover .link-arrow { color: var(--accent); }
+
 .pg-nav a:hover .link-arrow { color: var(--text-l); }
 .about-stats { display: flex; gap: 0; margin-top: 3rem; border-top: 1px solid var(--border-l); border-bottom: 1px solid var(--border-l); }
 .work-stats { display: flex; gap: 0; margin: 2rem 0 2.5rem; border-top: 1px solid var(--border-d); border-bottom: 1px solid var(--border-d); }
@@ -456,8 +476,7 @@ a.essay-feat-img { display: block; }
 .project-h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1.75rem; }
 .project-h2 em { font-style: italic; font-weight: 400; }
 .project-body p { font-size: var(--type-body); line-height: 1.8; color: var(--body-l); margin-bottom: 1.4rem; }
-.project-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; font-family: var(--mono); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); transition: color 0.25s, transform 0.25s var(--ease-out); }
-.project-link:hover { color: var(--text-l); transform: translateX(4px); }
+.project-link { margin-top: 2rem; }
 
 /* ═══════════════════════════════════════════════════════
    HOME WRITING
@@ -810,35 +829,7 @@ a.essay-feat-img { display: block; }
   color: rgba(var(--muted-l-rgb),0.86);
   line-height: 1.7;
 }
-.services-more-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  transition: color 0.25s, transform 0.25s var(--ease-out);
-}
-@media (hover: none) { .services-more-link { cursor: pointer; } }
-.services-more-link:hover { color: var(--text-l); transform: translateX(4px); }
-.services-readmore {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.1rem;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  transition: color 0.25s, transform 0.25s var(--ease-out);
-}
-@media (hover: none) { .services-readmore { cursor: pointer; } }
-.services-readmore:hover { color: var(--text-l); transform: translateX(4px); }
+.services-readmore { margin-top: 1.1rem; }
 .services-row:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 8px;
@@ -1092,19 +1083,6 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .pg-nav a:hover { color: var(--text-l); }
 .pg-nav a.cta-btn { color: var(--dark); font-size: var(--type-meta); }
 .pg-nav a.cta-btn:hover { color: var(--dark); }
-.pg-nav-forward {
-  font-family: var(--mono);
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(var(--muted-l-rgb),0.82);
-  transition: color 0.25s, transform 0.25s var(--ease-out);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.pg-nav-forward:hover { color: var(--accent); transform: translateX(4px); }
 .pg-nav-cta-soft { color: var(--muted-l); opacity: 0.72; }
 .pg-nav-cta-soft:hover { color: var(--accent); opacity: 1; }
 
