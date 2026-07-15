@@ -299,6 +299,30 @@ This is the single highest-leverage structural change identified across all thre
 
 ---
 
+## Phase 8 — Repository hygiene ✅ COMPLETE
+
+Findings from a deep-dive review of the repo (docs, `.git` internals, branches), not from the original three audits. Doesn't touch live site content.
+
+### Task 8.1 ✅ COMPLETE — Fix stale `prototype/` references
+- **Objective:** Remove references to `prototype/` from `Agents.md` and `README.md` — the directory was deleted in `0191cb4` (2026-03-26) but both docs still described it as existing.
+- **Status:** ✅ Complete. Commit `5e11164`.
+
+### Task 8.2 ✅ COMPLETE — Stop tracking `references/books-and-beds/` in git
+- **Objective:** Untrack the 3 source PDFs (~41MB, added once in `4bb66a5`, never revised) so they stop bloating every future clone. Files remain on disk locally; added to `.gitignore`.
+- **Status:** ✅ Complete. Commit `f3a32b2`.
+
+### Task 8.3 ✅ COMPLETE — Purge superseded large blobs from git history
+- **Why this exists:** `.git` was 99MB — 82.87MB of it loose (never packed) plus 15.45MB of `tmp_obj_*` garbage from an interrupted git operation, against a live site of ~2MB. The bulk was history-only: the 3 `books-and-beds` PDFs (post-8.2) and 5 superseded PNG originals already replaced by their JPG equivalents on disk (`assets/img/veda-portrait.png` and 4 files under `assets/img/about-v21/notebook-notes/`) — none reachable from the current tree.
+- **What was explicitly excluded:** `references/about-v21/*.png`, `experiments/about-v21/*.png`, `references/about-v21/hero-motion.mov` — still live/tracked source material, not superseded. Purging those would have deleted currently-used files, not just trimmed history.
+- **Process:** Backed up every ref (`git bundle --all`, verified, 64MB, kept outside the repo) before touching anything. Found and removed 4 stale, unmerged, worktree-backed branches (`claude/charming-shamir` — also on `origin`, deleted there too — `claude/laughing-mendeleev`, `claude/musing-curran`, `design/typography-and-layout-consistency`; all 128–205 commits behind `main`, clean worktrees under `.claude/worktrees/`, no uncommitted work, confirmed via `gh`-less GitHub API check that their associated PRs #1/#2 were both already closed — #1 merged, #2 not — so nothing live was disrupted). Also found and removed two `refs/codex/turn-diffs/checkpoints/...` refs — leftover checkpoint data from a separate tool (Codex CLI, based on naming) previously used on this repo — which `git filter-repo` correctly skipped (they point at raw trees, not commits) but which kept the target blobs reachable until deleted explicitly.
+- **Tooling:** `git-filter-repo` (`pip3 install --user`), `--invert-paths` on the exact 8-path list above, `--force` (required since this isn't a fresh clone). Followed by `git gc --prune=now --aggressive`.
+- **Gotcha hit during verification:** a post-push `git fetch origin` to confirm the result pulled a second, larger pack back down — traced to GitHub still advertising `refs/pull/1/head` / `refs/pull/2/head` (both closed PRs, head = the now-deleted `claude/charming-shamir`), which GitHub retains indefinitely regardless of branch deletion or force-push and which apparently influenced the server's pack construction. Those objects are **not reachable from any local ref** and — confirmed via an actual fresh `git clone` — do **not** appear in a normal clone (13MB, matching the cleaned local size). A second, separate gotcha: local reflog entries created *by that same verification fetch* (`refs/remotes/origin/main` recording its old→new transition) briefly re-protected the purged objects from `git gc --prune=now` until reflogs were expired again post-fetch. Documented here specifically so a future rewrite doesn't lose an afternoon re-discovering both.
+- **Result:** `.git` 99MB → 13MB (verified via fresh clone, not just local state). Commit hashes changed on `main` from `4bb66a5` (2026-04-07) onward; site content byte-identical (`git diff` against pre-rewrite state is empty for all live paths). Force-pushed with `--force-with-lease`.
+- **Known limitation, accepted:** the purged blob content is still retrievable from GitHub via `refs/pull/1/head` / `refs/pull/2/head` — GitHub does not expose a way to delete PR refs via standard git push, and the PRs themselves are closed (not deletable without deleting the PRs, which alters project history in a different, worse way). Doesn't affect normal clones or `.git` size for any future user of this repo; only matters if someone deliberately fetches those refs.
+- **Status:** ✅ Complete.
+
+---
+
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
 
 - **Arrow-link component consolidation** (9+ near-identical classes → one base + modifiers). Real, ~100 line reduction, but touches markup across every page using any of the 9 classes — do as one deliberate, fully-tested pass, not incrementally.
