@@ -1438,6 +1438,10 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .ci-img-wrap { transition: none; }
   .ci:hover .ci-img-wrap { transform: none; }
 
+  /* Essay/case-study list item: padding-left slide on hover */
+  .list-item { transition: none; }
+  .list-item:hover { padding-left: 0; }
+
   /* Spy dot scale pop */
   .spy-dot { transition: none; }
   .spy-dot.active { transform: none; }
