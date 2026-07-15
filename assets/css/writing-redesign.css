@@ -52,7 +52,7 @@ body.wr-v1 .cursor {
 }
 
 .wr-main {
-  max-width: 1180px;
+  width: min(1180px, calc(100vw - 112px));
   margin: 0 auto;
 }
 
@@ -134,7 +134,7 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 }
 
 .wr-main {
-  padding: 1.9rem 3.5rem 4.6rem;
+  padding: 1.9rem 0 4.6rem;
 }
 
 .wr-section {
@@ -184,7 +184,7 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 .wr-archive-card {
   border-radius: 1px;
   background: var(--wr-paper-alt);
-  border: 1px solid rgba(21, 34, 29, 0.08);
+  border: 1px solid rgba(21, 34, 29, 0.18);
 }
 
 .wr-path-card {
@@ -233,6 +233,7 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 
 .wr-path-list a {
   max-width: 17rem;
+  font-size: var(--type-body-sm);
   font-weight: 700;
   line-height: 1.35;
   color: var(--wr-ink);
@@ -276,6 +277,7 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 }
 
 .wr-lens-links a {
+  font-size: var(--type-body-sm);
   font-weight: 700;
   line-height: 1.4;
   color: var(--wr-ink);
@@ -437,17 +439,17 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 
 .wr-close-strip {
   position: relative;
-  padding: 4.2rem 3.5rem 2.6rem;
+  padding: 4.2rem 0 2.6rem;
   background: linear-gradient(180deg, var(--wr-paper) 0 42%, var(--dark-2) 42%, var(--dark-2) 100%);
 }
 
 .wr-close-inner {
-  max-width: 1180px;
+  width: min(1180px, calc(100vw - 112px));
   margin: 0 auto;
   position: relative;
   overflow: hidden;
   padding: 2.45rem 2.55rem 2.6rem;
-  border: 1px solid rgba(21, 34, 29, 0.08);
+  border: 1px solid rgba(21, 34, 29, 0.18);
   border-radius: 1px;
   background:
     radial-gradient(circle at top left, rgba(200, 100, 61, 0.12), transparent 28%),
@@ -501,7 +503,7 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
   padding: 1.1rem 1.2rem;
   border-radius: 1px;
   background: rgba(21, 34, 29, 0.04);
-  border: 1px solid rgba(21, 34, 29, 0.08);
+  border: 1px solid rgba(21, 34, 29, 0.18);
 }
 
 .wr-close-link {
@@ -584,8 +586,7 @@ body.wr-v1 .rot-slide {
   }
 
   .wr-main {
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
+    width: min(1180px, calc(100vw - 56px));
   }
 
   .wr-lede {
@@ -604,6 +605,7 @@ body.wr-v1 .rot-slide {
   }
 
   .wr-close-inner {
+    width: min(1180px, calc(100vw - 56px));
     grid-template-columns: 1fr;
     gap: 1.2rem;
     align-items: start;
@@ -611,7 +613,7 @@ body.wr-v1 .rot-slide {
   }
 
   .wr-close-strip {
-    padding: 3.6rem 1.75rem 2.2rem;
+    padding: 3.6rem 0 2.2rem;
     background: linear-gradient(180deg, var(--wr-paper) 0 32%, var(--dark-2) 32%, var(--dark-2) 100%);
   }
 
