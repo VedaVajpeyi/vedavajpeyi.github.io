@@ -520,9 +520,7 @@ a.essay-feat-img { display: block; }
 .newsletter-cta { margin-top: 4rem; padding: 2.5rem 3rem; border: 1px solid var(--border-d); display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: center; }
 .newsletter-cta h3 { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: rgba(var(--accent-rgb),0.78); margin-bottom: 0.75rem; }
 .newsletter-cta p { font-size: var(--type-body-sm); color: var(--muted-d); line-height: 1.8; max-width: 520px; }
-.newsletter-btn { font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); border: 1px solid rgba(var(--accent-rgb),0.4); padding: 0.85rem 1.75rem; white-space: nowrap; transition: background 0.3s, color 0.3s; }
-@media (hover: none) { .newsletter-btn { cursor: pointer; } }
-.newsletter-btn:hover { background: var(--accent); color: var(--dark); }
+.cta-btn-outline.newsletter-btn { padding: 0.85rem 1.75rem; white-space: nowrap; }
 
 /* ═══════════════════════════════════════════════════════
    HOME SERVICES
