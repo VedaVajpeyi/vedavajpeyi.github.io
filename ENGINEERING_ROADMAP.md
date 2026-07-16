@@ -520,6 +520,107 @@ Findings from a deep-dive review of the repo (docs, `.git` internals, branches),
 
 ---
 
+## Phase 9 — Typography role consolidation (in progress)
+
+Executes the remaining findings from this session's typography audit / Design System Specification v1.0 / best-practices review, now that the accessibility and duration-token pieces landed as Tasks 3.17, 3.18, and 4.5. This is the page-by-page visual-judgment pass the "Typography scale full enforcement" Deferred entry above was waiting for — not a mechanical sweep, each task below is one specific, independently-decided consolidation.
+
+**Already resolved, not reopened here:** `writing-redesign.css`'s distinct fonts/palette/accent — tried and explicitly reverted in Task 3.8/3.9 (see Rejected). The Design System Spec's "needs your decision" note on this point is superseded by that history.
+
+**Ordering:** zero-risk deletions first, then pure token renames (no visual change), then real consolidations (visual change, needs a screenshot check) — mirrors how Phase 3/4 sequenced work.
+
+### Task 9.1 — Not started
+- **Objective:** Delete 3 confirmed-duplicate declarations found during the typography audit: (a) `index.html`'s inline kicker restatements that already byte-match `design.css`'s shared uppercase-mono-label recipe (Task 3.16), (b) `--mobile-body`/`--mobile-support` in `index.html` (both `0.9375rem`, one is dead weight — re-confirmed still present at lines 1156-1157), (c) `.morph-deck` in `work-scroll-morph.css` (re-confirmed still spec-identical to `.pg-deck` under a different class name).
+- **Why this exists:** Zero-risk cleanup that shrinks the surface area for every task after it — no reason to consolidate a token onto a declaration that's about to be deleted anyway.
+- **Dependencies:** None. Do this first.
+- **Files expected to change:** `index.html`, `work-scroll-morph.css`.
+- **Implementation plan:** Re-verify each duplicate against current code immediately before deleting (per Definition of Done's revalidation step — the audit that found these predates this session's other edits to `index.html`/`work-scroll-morph.css`, if any). Delete the redundant declarations; for `.morph-deck`, either delete the class and repoint its one HTML usage at `.pg-deck`, or keep the class name but remove its duplicate property block and have it inherit `.pg-deck`'s via a shared selector — decide based on which is the smaller diff once looking at `work/index.html`'s actual markup.
+- **Verification checklist:** Brace-balance; `sync-chrome.mjs` clean; 54-page 200 sweep; visual screenshot of `work/index.html`'s close section (the one page `.morph-deck` affects) confirming zero visual change; computed-style read-back confirming the surviving declaration matches the deleted one's values exactly.
+- **Success criteria:** Zero duplicate declarations remain; no visual change anywhere.
+- **Rollback plan:** Single-file revert per file.
+- **Estimated risk:** None if re-verification confirms the duplicates still hold.
+- **Status:** Not started.
+
+### Task 9.2 — Not started
+- **Objective:** Rename `--type-h1` → `--type-display-2` (fixes the naming mismatch flagged in the canon evaluation — nothing called an H1 actually uses this token; `.pg-h1`, the real Page Title role, has its own untethered `clamp()`). Extract `.pg-h1`'s literal `clamp(2.8rem, 7vw, 7rem)` into a new `--type-h1-page` token and point `.pg-h1` at it.
+- **Why this exists:** Same class of problem as Task 4.1-4.4 — an unnamed value that already has a clear, singular canonical usage, just not expressed as a token yet. Pure rename plus one wrap-in-`var()`; the naming fix specifically prevents a future contributor from reasonably assuming `--type-h1` governs `<h1>` elements when it doesn't.
+- **Dependencies:** None.
+- **Files expected to change:** `design.css` (`:root` + the ~5 selectors currently referencing `--type-h1`: `.work-h2`, `.writing-h2`, `.services-h2`, `.footer-rotating`, plus `.pg-h1` itself for the new token).
+- **Implementation plan:** Rename the token in `:root` and all call sites (mechanical find-and-replace, verify count matches before/after). Add `--type-h1-page: clamp(2.8rem, 7vw, 7rem);` and replace `.pg-h1`'s literal clamp with the token reference.
+- **Verification checklist:** Brace-balance; `grep` confirms zero remaining `--type-h1` references (only `--type-display-2` and `--type-h1-page`); computed-style read-back on `.work-h2` and `.pg-h1` confirms both resolve to their pre-change clamp values exactly.
+- **Success criteria:** Token names match what they actually govern; zero visual change.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** Low — same pattern as Task 4.1-4.4, values unchanged, only how they're named/expressed.
+- **Status:** Not started.
+
+### Task 9.3 — Not started
+- **Objective:** Collapse the Eyebrow/kicker role to one canonical value (`0.68rem`/`500`/`0.12em`, i.e. `--type-meta`) everywhere. Per the Design System Spec's §6 cost test, the `0.8rem`/`0.1em` minority (`.s-label`, `.pg-hero-kicker`, `.link-cta`, `.srv-close-kicker`, `.srv-close-title`'s sibling kicker, `.morph-kicker`) doesn't clear the bar — a 2px difference with no reader-legible purpose, emphasis already carried by the adjacent heading.
+- **Why this exists:** The single largest inconsistency cluster found in the original audit (~20 implementations, 2 sizes × 3 letter-spacings); this is the one that actually changes rendered output, unlike Tasks 9.1-9.2.
+- **Dependencies:** None, but do after 9.1-9.2 so this is the first task in the phase that needs a visual check.
+- **Files expected to change:** `design.css` (primarily), possibly `work-scroll-morph.css` (`.morph-kicker`).
+- **Implementation plan:** Re-verify the current 0.8rem/0.1em cluster against live code (values may have shifted since the original audit). Point every instance at `--type-meta`'s size/weight/tracking. Also collapse the letter-spacing drift found separately (0.10/0.12/0.14em with no tier correlation) to 0.12em, reserving 0.14em exclusively for Navigation as the spec calls for.
+- **Verification checklist:** Screenshot comparison (before/after) on the homepage (multiple `.s-label` instances across light/dark sections) and a `.pg-hero` page; computed-style read-back confirming the converted selectors now resolve to `--type-meta`'s values; confirm Navigation's 0.14em is untouched.
+- **Success criteria:** One eyebrow definition site-wide (Navigation excepted, by design).
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** Low-medium — real visual change, but small (2px size, 0.02em tracking) and low-stakes if something's missed (would read as a minor inconsistency, not breakage).
+- **Status:** Not started.
+
+### Task 9.4 — Not started
+- **Objective:** Collapse Intro Paragraph to one canonical value. `.pg-deck` (1.05rem) and `.pg-subtitle` (0.9rem) both pair with Page Title with no pattern for which page gets which — per the spec, `.pg-deck`'s value wins (used on ~40 pages vs. a handful for `.pg-subtitle`); retire `.pg-subtitle`.
+- **Why this exists:** Real drift (same role, two unexplained sizes), not a defensible two-tier split like Card Title/Quote.
+- **Dependencies:** None.
+- **Files expected to change:** `design.css`, plus whichever HTML pages currently use `.pg-subtitle` instead of `.pg-deck` (needs a fresh `grep` at execution time to enumerate).
+- **Implementation plan:** Find every live `.pg-subtitle` usage, swap the class to `.pg-deck` (or keep the class name as an alias pointing at `.pg-deck`'s rule, if retiring the class outright touches too many files for the benefit — decide at execution time based on the actual count).
+- **Verification checklist:** Screenshot comparison on every page found using `.pg-subtitle`; confirm no page relied on `.pg-subtitle`'s smaller size for a layout reason (e.g. fitting a long deck without wrapping differently).
+- **Success criteria:** One intro-paragraph size for the Page Title context.
+- **Rollback plan:** Single-file or few-file revert.
+- **Estimated risk:** Low-medium — depends entirely on how many pages use `.pg-subtitle`; small count = low risk, needs re-checking.
+- **Status:** Not started.
+
+### Task 9.5 — Not started
+- **Objective:** Add a two-tier `--type-card` token (Featured/Compact, per the spec's kept exception) and consolidate the 7 card-title implementations (`.ci-h3`/`.essay-feat h3` → Featured; `.ei h3`/`.srv-ind-item h3`/`.tl-org`/`.value-item h3` → Compact) onto it. Fix `.list-item h2`'s token misuse (currently borrows `--type-h2`, the Section Heading token, for what's structurally a card title on a listing page) by moving it to the Featured tier.
+- **Why this exists:** Seven near-duplicate sizes for what's functionally two real hierarchy tiers (spotlight vs. compact list row) — the largest remaining "same role, unreconciled values" cluster after eyebrows.
+- **Dependencies:** None.
+- **Files expected to change:** `design.css` only (all 7 selectors live there).
+- **Implementation plan:** Re-verify each of the 7 selectors' current clamp/size values (they may have drifted since the audit). Add `--type-card-featured`/`--type-card-compact` (or a single token with the two clamp ranges, whichever keeps the diff smaller). Point each selector at the correct tier. `.list-item h2` moves from `--type-h2` to the Featured tier.
+- **Verification checklist:** Screenshot comparison across all affected templates: homepage case-study/essay cards (Featured), About page timeline and values grid (Compact), services numbered list (Compact), work/writing listing pages (Featured, via `.list-item h2`); computed-style read-back on all 7 selectors.
+- **Success criteria:** Two card-title sizes instead of seven; `.list-item h2` no longer shares a token with in-article Section Headings.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** Medium — most call sites of any task in this phase (7 selectors × several templates each), needs the most thorough visual check.
+- **Status:** Not started.
+
+### Task 9.6 — Not started
+- **Objective:** Merge `.ci-quote` (homepage case-study card quote, 0.95rem gold) into the Pull Quote — Inline spec (`.prose-quote`, 1.15rem, muted), keeping only the gold tint as a context-appropriate color choice, per the spec's kept two-tier exception (Inline/Feature) — `.ci-quote` doesn't qualify as a third tier, it's used exactly once.
+- **Why this exists:** Smallest, most contained remaining consolidation — good task to pair with 9.7 if doing a lighter session.
+- **Dependencies:** None.
+- **Files expected to change:** `design.css`.
+- **Implementation plan:** Point `.ci-quote`'s size/line-height at `.prose-quote`'s values, keep its distinct color.
+- **Verification checklist:** Screenshot of the one homepage case-study card using `.ci-quote`.
+- **Success criteria:** One inline-quote size site-wide.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** Low — one call site.
+- **Status:** Not started.
+
+### Task 9.7 — Not started
+- **Objective:** Add `--type-caption: 0.85rem` and apply it to genuine figure-caption contexts; absorb the `0.82rem`/`0.9375rem` near-miss instances found in the audit (approximations of `--type-body-sm` rather than a real second size).
+- **Why this exists:** Closes the last named gap in the Design System Spec's role table.
+- **Dependencies:** None.
+- **Files expected to change:** `design.css`, `sxp-essays.css`, `sociology-product.css`, `sociology-product-system.css` (figure/figcaption selectors across all four, re-enumerate at execution time).
+- **Implementation plan:** Re-verify which selectors are true captions (attached to a `<figure>`/image) vs. general supporting copy that happens to be a similar size — only true captions get the new token, per the spec's Caption vs. Supporting Copy distinction.
+- **Verification checklist:** Screenshot of at least one figure/caption instance per file touched.
+- **Success criteria:** Caption role has one canonical value, distinct from Supporting Copy.
+- **Rollback plan:** Per-file revert.
+- **Estimated risk:** Low — small, well-scoped selectors.
+- **Status:** Not started.
+
+**Decision checkpoints — block the listed task until answered, not scheduled as their own tasks:**
+- Is the Display Hero's 152px ceiling a deliberate brand choice? (Documentation-only if yes; doesn't block any task above.)
+- Is `.contact-h2`'s larger-than-its-siblings size (up to 7.5rem vs. 5.5rem for the rest of Display Secondary) an intentional closing bookend, or drift? No task above touches it either way pending an answer — currently rendering as-is.
+- `.contact-service-name`'s two conflicting declarations (700/1.15-1.65rem, then 600/1-1.2rem, second wins by source order) — confirm which value is correct before any cleanup deletes the shadowed rule. Not otherwise part of Task 9.5 since it's a bug-fix, not a consolidation.
+- Should all 23 essays get `sxp-essays.css`'s figure/comparison components (currently 5/23)? Content-architecture call, not scheduled as a Phase 9 task.
+- Sub-11px utility text (Eyebrow/Metadata/Navigation/Button/Form Label at 10.9px, Tag at 9.9px) and the Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — both reviewed and intentionally left out of this phase; revisit only if either causes a real, observed problem.
+
+---
+
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
 
 - **Card component consolidation** (14 near-identical row/card implementations). Same shape of problem, larger. Right trigger: the next time a new card-like component is being built, not a standalone refactor of stable, working code.
@@ -527,7 +628,7 @@ Findings from a deep-dive review of the repo (docs, `.git` internals, branches),
 - **Spacing literal sweep** (a similar count → the Task 4.4 spacing tokens; not yet re-checked against current code the way the duration side was). The duration half of this entry was picked up in Task 4.5 — `design.css`'s 50 literal `0.2s`/`0.25s`/`0.5s` occurrences are now tokenized; other CSS files and any spacing literals were not touched. Retrofitting the remaining spacing usage is a bigger, more error-prone diff for a purely cosmetic win, and (unlike duration) a mistranscribed value is visually checkable, not just numerically — do opportunistically, file by file, when already editing nearby code.
 - **Unify the three light/dark-variant mechanisms** (`.ph.dk`/`.lt`, `.cursor.on-light`, `data-t`/`data-nav-light`). Works correctly today; unifying is a coherence improvement, not a bug fix. No urgency.
 - **Legacy-named `assets/img/about-v21/notebook-notes/` folder.** `Agents.md` explicitly says don't rename casually. Only revisit as part of a broader, deliberate asset reorganization, never as a drive-by.
-- **Typography scale full enforcement** (the ~40% of `font-size` declarations bypassing `--type-*` tokens). Many are legitimate one-off heading `clamp()` curves; a real cleanup here needs page-by-page visual judgment, not a mechanical sweep.
+- **Typography scale full enforcement** (the ~40% of `font-size` declarations bypassing `--type-*` tokens). Many are legitimate one-off heading `clamp()` curves; a real cleanup here needs page-by-page visual judgment, not a mechanical sweep. **Phase 9 below is that page-by-page judgment pass** — this entry stays here until Phase 9 completes, then gets resolved into it rather than left as a stale parallel note.
 
 ## Rejected (investigated, not worth doing — don't re-propose without new evidence)
 
