@@ -543,16 +543,17 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** Realized as "would have been medium" on (a) and (c) had re-verification not caught the real differences — exactly the failure mode Definition of Done's revalidation step exists to prevent.
 - **Status:** ✅ Complete. Commit pending.
 
-### Task 9.2 — Not started
+### Task 9.2 ✅ COMPLETE
 - **Objective:** Rename `--type-h1` → `--type-display-2` (fixes the naming mismatch flagged in the canon evaluation — nothing called an H1 actually uses this token; `.pg-h1`, the real Page Title role, has its own untethered `clamp()`). Extract `.pg-h1`'s literal `clamp(2.8rem, 7vw, 7rem)` into a new `--type-h1-page` token and point `.pg-h1` at it.
 - **Why this exists:** Same class of problem as Task 4.1-4.4 — an unnamed value that already has a clear, singular canonical usage, just not expressed as a token yet. Pure rename plus one wrap-in-`var()`; the naming fix specifically prevents a future contributor from reasonably assuming `--type-h1` governs `<h1>` elements when it doesn't.
 - **Dependencies:** None.
-- **Files expected to change:** `design.css` (`:root` + the ~5 selectors currently referencing `--type-h1`: `.work-h2`, `.writing-h2`, `.services-h2`, `.footer-rotating`, plus `.pg-h1` itself for the new token).
-- **Implementation plan:** Rename the token in `:root` and all call sites (mechanical find-and-replace, verify count matches before/after). Add `--type-h1-page: clamp(2.8rem, 7vw, 7rem);` and replace `.pg-h1`'s literal clamp with the token reference.
-- **Verification checklist:** Brace-balance; `grep` confirms zero remaining `--type-h1` references (only `--type-display-2` and `--type-h1-page`); computed-style read-back on `.work-h2` and `.pg-h1` confirms both resolve to their pre-change clamp values exactly.
+- **Files changed:** `design.css` only. Re-verified before acting: 4 call sites (`.work-h2`, `.writing-h2`, `.services-h2`, `.footer-rotating`), not the ~5 estimated; no other CSS file or inline HTML block referenced `--type-h1` by name.
+- **Implementation:** Scripted substitution (not manual) of the 4 call sites, with an assertion that each target string existed exactly once before replacing and that zero `var(--type-h1)` references remained after — same transcription-risk-elimination approach as Task 4.1/4.5. Added `--type-h1-page: clamp(2.8rem, 7vw, 7rem);` and pointed `.pg-h1` at it.
+- **Verification checklist:** Brace-balance (494/494 unchanged); `sync-chrome.mjs` clean; full 54-page 200 sweep; computed-style read-back on `.work-h2`/`.writing-h2`/`.services-h2` (homepage, all three resolve identically via the renamed token) and `.pg-h1` (About page). One apparent discrepancy investigated and resolved, not left unexplained: `.pg-h1` and `.footer-rotating` computed to different px values than their base-token formula predicted at the test viewport (703px) — traced to two pre-existing, untouched `@media (max-width: 960px)` overrides (`.pg-h1 { font-size: clamp(2.5rem, 10vw, 5rem); }` and `.footer-rotating { font-size: clamp(2rem, 9vw, 4rem); }`) correctly taking precedence at that width; manually computed both override formulas and confirmed an exact match to the measured values, closing the loop rather than assuming it was fine.
 - **Success criteria:** Token names match what they actually govern; zero visual change.
 - **Rollback plan:** Single-file revert.
-- **Estimated risk:** Low — same pattern as Task 4.1-4.4, values unchanged, only how they're named/expressed.
+- **Estimated risk:** None realized — values unchanged, only their names/expression.
+- **Status:** ✅ Complete. Commit pending.
 - **Status:** Not started.
 
 ### Task 9.3 — Not started

@@ -77,9 +77,14 @@
   --ci-5: #1a1404;
 
   /* ── Typography tokens ──────────────────────────────── */
-  --type-display: clamp(4rem, 8.5vw, 9.5rem);   /* hero-h1 */
-  --type-h1:      clamp(2.4rem, 5.5vw, 5.5rem); /* section headings */
-  --type-h2:      clamp(1.4rem, 2.5vw, 2.2rem); /* content headings */
+  --type-display:  clamp(4rem, 8.5vw, 9.5rem);   /* hero-h1 */
+  /* Renamed from --type-h1: nothing called an H1 used this token --
+     .pg-h1 (the real Page Title role) had its own untethered clamp,
+     see --type-h1-page below. This one governs the homepage's repeating
+     section headers (Work/Writing/Services/footer), not any H1. */
+  --type-display-2: clamp(2.4rem, 5.5vw, 5.5rem); /* home section headings */
+  --type-h1-page:  clamp(2.8rem, 7vw, 7rem);      /* .pg-h1, the actual page-title role */
+  --type-h2:       clamp(1.4rem, 2.5vw, 2.2rem);  /* content headings */
   --type-h3:      clamp(1.15rem, 2vw, 1.55rem); /* prose h3; ci-h3/srv-h3 are documented exceptions */
   --type-body:    1.05rem;                       /* primary body copy */
   --type-body-sm: 0.9rem;                        /* supporting body copy */
@@ -498,7 +503,7 @@ body.ready .hero-kicker { opacity: 1; }
 ═══════════════════════════════════════════════════════ */
 #work { background: var(--dark); padding: 9rem 3.5rem 8rem; transition: background-color 0.7s var(--ease-out); }
 .work-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4.5rem; gap: 2rem; }
-.work-h2 { font-family: var(--serif); font-size: var(--type-h1); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
+.work-h2 { font-family: var(--serif); font-size: var(--type-display-2); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
 .work-sub { font-size: var(--type-body-sm); color: var(--muted-d); text-align: right; max-width: 240px; flex-shrink: 0; }
 .ci { display: grid; gap: 0; border-top: 1px solid var(--border-d); padding: 4rem 0; position: relative; }
 a.ci,
@@ -563,7 +568,7 @@ a.essay-feat-img { display: block; }
 ═══════════════════════════════════════════════════════ */
 #writing { background: var(--dark); padding: 9rem 3.5rem 8rem; }
 .writing-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4.5rem; align-items: end; }
-.writing-h2 { font-family: var(--serif); font-size: var(--type-h1); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
+.writing-h2 { font-family: var(--serif); font-size: var(--type-display-2); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
 .writing-intro { font-size: var(--type-body-sm); color: var(--muted-d); max-width: 34rem; }
 .essay-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; border-top: 1px solid var(--border-d); padding: 4rem 0; text-decoration: none; color: inherit; }
 @media (hover: none) { .essay-feat { cursor: pointer; } }
@@ -598,7 +603,7 @@ a.essay-feat-img { display: block; }
 #services { background: var(--light); color: var(--text-l); padding: 9rem 3.5rem 8rem; }
 .services-layout { display: grid; grid-template-columns: minmax(300px, 0.96fr) minmax(0, 1.04fr); gap: 5rem; align-items: start; }
 .services-top { max-width: 31rem; }
-.services-h2 { font-family: var(--serif); font-size: var(--type-h1); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
+.services-h2 { font-family: var(--serif); font-size: var(--type-display-2); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
 .services-intro {
   max-width: 28rem;
   font-size: 1rem;
@@ -909,7 +914,7 @@ a.essay-feat-img { display: block; }
    FOOTER
 ═══════════════════════════════════════════════════════ */
 footer { background: var(--dark-2); border-top: 1px solid var(--border-d); padding: 5rem 3.5rem 4rem; }
-.footer-rotating { overflow: hidden; height: 1.35em; margin-bottom: 5rem; font-family: var(--serif); font-size: var(--type-h1); font-weight: 900; letter-spacing: -0.025em; line-height: 1; position: relative; }
+.footer-rotating { overflow: hidden; height: 1.35em; margin-bottom: 5rem; font-family: var(--serif); font-size: var(--type-display-2); font-weight: 900; letter-spacing: -0.025em; line-height: 1; position: relative; }
 .rot-slide { position: absolute; inset: 0; display: flex; align-items: center; white-space: nowrap; will-change: transform, opacity; }
 #rot-next { transform: translateY(100%); opacity: 0; }
 .rot-slide em { font-weight: 400; font-style: italic; color: var(--accent); margin-left: 0.35em; }
@@ -959,7 +964,7 @@ body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
 body.pg-ready .pg-hero-kicker { opacity: 1; }
 .pg-h1 {
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-size: var(--type-h1-page);
   font-weight: 900; line-height: 1.0; letter-spacing: -0.03em;
   max-width: 1080px;
 }
