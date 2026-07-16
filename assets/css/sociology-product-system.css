@@ -205,8 +205,11 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
+/* .socx-guide-step span is the one selector above that sits on
+   .socx-guide-step-strip (dark), not a light sheet -- restore full --accent. */
+.socx-guide-step span { color: var(--accent); }
 
 .socx-guide-step strong {
   display: block;
@@ -311,7 +314,7 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
   background: rgba(181, 146, 90, 0.08);
 }
 
@@ -341,7 +344,7 @@
 }
 
 .socx-guide-note a {
-  color: var(--accent);
+  color: var(--accent-on-light);
   border-bottom: 1px solid rgba(181, 146, 90, 0.35);
   transition: color 0.2s, border-color 0.2s;
 }
@@ -424,7 +427,7 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .socx-tool-cell p,
@@ -512,7 +515,7 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .socx-guide-case-takeaway a {
@@ -522,8 +525,8 @@
 }
 
 .socx-guide-case-takeaway a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--accent-on-light);
+  border-color: var(--accent-on-light);
 }
 
 .socx-guide-laws {
@@ -573,7 +576,7 @@
 }
 
 .socx-guide-law-use strong {
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .socx-guide-reads {
@@ -656,7 +659,7 @@
 }
 
 .socx-guide-essay-link:hover strong {
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .socx-guide-cta-block {

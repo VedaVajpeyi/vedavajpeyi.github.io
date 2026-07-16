@@ -15,7 +15,7 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .sxp-figure figcaption {
@@ -211,7 +211,7 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .sxp-stack-row p {
@@ -260,7 +260,7 @@
   align-self: center;
   font-family: var(--serif);
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
 
 .sxp-chip-row {

@@ -9,12 +9,21 @@
   --text-d:  #f0ebe3;
   --text-l:  #0d0b09;
   --accent:  #b5925a;
-  --muted-d: #6e6458;
-  --muted-l: #7a6f62;
+  /* Text-color variant of --accent for use on light backgrounds. --accent
+     itself is 6.76:1 on dark (WCAG AA) but only 2.54:1 on light -- fails
+     even the large-text minimum. --accent-on-light is the same hue/saturation,
+     darkened until it clears 4.5:1 (AA, normal text) against --light. Only
+     applies to text color; borders/backgrounds keep using --accent-rgb. */
+  --accent-on-light: #84683b;
+  /* muted-d/muted-l were 3.39:1 and 4.29:1 against their sections -- both
+     fail WCAG AA (4.5:1) for normal text. Values below are the same hue,
+     adjusted lightness only, minimally shifted until each clears 4.5:1. */
+  --muted-d: #847869;
+  --muted-l: #766b5f;
   --text-d-rgb:  240,235,227;
   --accent-rgb:  181,146,90;
-  --muted-d-rgb: 110,100,88;
-  --muted-l-rgb: 122,111,98;
+  --muted-d-rgb: 132,120,105;
+  --muted-l-rgb: 118,107,95;
   --border-d: rgba(255,255,255,0.08);
   --border-l: rgba(0,0,0,0.10);
   --serif: 'Playfair Display', Georgia, serif;
@@ -75,6 +84,12 @@
   --type-body:    1.05rem;                       /* primary body copy */
   --type-body-sm: 0.9rem;                        /* supporting body copy */
   --type-meta:    0.68rem;                       /* mono labels, tags, kickers */
+  /* Measure (max reading-line-width) for long-form body copy. 68ch sits
+     inside the well-evidenced 45-75 character range (Bringhurst; NN/g),
+     close to the commonly-cited 66ch sweet spot. Renders ~720px at this
+     site's body size/font -- a modest tightening from the previous
+     unconstrained-to-container (~760px / ~72ch) width, not a rewrite. */
+  --measure-body: 68ch;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -300,6 +315,14 @@ body.nav-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.26s; }
   display: flex; align-items: center; gap: 1rem;
 }
 .s-label { color: var(--accent); margin-bottom: 3.5rem; }
+/* .s-label's default (var(--accent)) is correct on #work/#writing/#contact
+   (dark). #about/#project/#services are light -- same three sections
+   .astat-num scopes below, for the same reason: this class has no .on-dark-
+   style toggle of its own, so the light-context instances are overridden
+   here rather than by flipping the shared default. */
+#about .s-label,
+#project .s-label,
+#services .s-label { color: var(--accent-on-light); }
 .s-label::after,
 .pg-hero-kicker::after { content: ''; width: 32px; height: 1px; background: var(--accent); flex-shrink: 0; }
 .s-label-muted { color: var(--muted-d); }
@@ -368,7 +391,7 @@ body.ready .hero-kicker { opacity: 1; }
   width: 1.1rem;
   height: 0.85rem;
   flex: 0 0 auto;
-  color: var(--accent);
+  color: var(--accent-on-light);
   font-size: 0;
   line-height: 0;
   opacity: 1;
@@ -399,8 +422,10 @@ body.ready .hero-kicker { opacity: 1; }
 .link-arrow-left { transform: translateY(-0.01em); }
 
 /* Shared inline arrow-link component (text + .link-arrow, shifts on hover).
-   Base = light-section default (rest: accent, hover: text-l).
-   .on-dark = for links sitting on dark sections (hover: text-d instead).
+   Base = light-section default (rest: accent-on-light, hover: text-l).
+   .on-dark = for links sitting on dark sections (rest: accent, hover: text-d --
+   the plain --accent value is what clears AA against a dark background;
+   accent-on-light would be needlessly muted there).
    Grouped with .pg-nav a (page-bottom nav links) and .srv-num-link (services
    numbered list): both have identical properties, so they're one definition
    here rather than separate copies kept in sync by hand. .srv-num-link's
@@ -417,7 +442,7 @@ body.ready .hero-kicker { opacity: 1; }
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent);
+  color: var(--accent-on-light);
   transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
 }
 .link-cta:hover,
@@ -429,6 +454,8 @@ body.ready .hero-kicker { opacity: 1; }
 .pg-nav a:hover .link-arrow {
   color: var(--text-l);
 }
+.link-cta.on-dark,
+.link-cta.on-dark .link-arrow { color: var(--accent); }
 .link-cta.on-dark:hover { color: var(--text-d); }
 .link-cta.on-dark:hover .link-arrow { color: var(--text-d); }
 .about-stats { display: flex; gap: 0; margin-top: 3rem; border-top: 1px solid var(--border-l); border-bottom: 1px solid var(--border-l); }
@@ -436,6 +463,10 @@ body.ready .hero-kicker { opacity: 1; }
 .astat { flex: 1; padding: 1.5rem 0; text-align: center; border-right: 1px solid var(--border-l); }
 .astat:last-child { border-right: none; }
 .astat-num { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--accent); letter-spacing: -0.02em; display: block; }
+/* .astat-num is shared by #about's light .about-stats and #work's dark
+   .work-stats; the default (var(--accent)) is correct for #work, #about
+   needs the light-safe variant -- same split as .s-label above. */
+#about .astat-num { color: var(--accent-on-light); }
 .astat-lbl,
 .ci-num,
 .list-item-num,
@@ -468,7 +499,7 @@ body.ready .hero-kicker { opacity: 1; }
 #work { background: var(--dark); padding: 9rem 3.5rem 8rem; transition: background-color 0.7s var(--ease-out); }
 .work-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4.5rem; gap: 2rem; }
 .work-h2 { font-family: var(--serif); font-size: var(--type-h1); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
-.work-sub { font-size: var(--type-body-sm); color: rgba(var(--muted-d-rgb),0.86); text-align: right; max-width: 240px; flex-shrink: 0; }
+.work-sub { font-size: var(--type-body-sm); color: var(--muted-d); text-align: right; max-width: 240px; flex-shrink: 0; }
 .ci { display: grid; gap: 0; border-top: 1px solid var(--border-d); padding: 4rem 0; position: relative; }
 a.ci,
 .ci-main,
@@ -521,7 +552,7 @@ a.essay-feat-img { display: block; }
 .project-grid { display: grid; grid-template-columns: 1fr 420px; gap: 7rem; align-items: center; }
 .project-img { aspect-ratio: 4/3; }
 .project-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.project-kicker { color: var(--accent); margin-bottom: 1.5rem; }
+.project-kicker { color: var(--accent-on-light); margin-bottom: 1.5rem; }
 .project-h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1.75rem; }
 .project-h2 em { font-style: italic; font-weight: 400; }
 .project-body p { font-size: var(--type-body); line-height: 1.8; color: var(--body-l); margin-bottom: 1.4rem; }
@@ -533,7 +564,7 @@ a.essay-feat-img { display: block; }
 #writing { background: var(--dark); padding: 9rem 3.5rem 8rem; }
 .writing-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4.5rem; align-items: end; }
 .writing-h2 { font-family: var(--serif); font-size: var(--type-h1); font-weight: 900; letter-spacing: -0.025em; line-height: 1; }
-.writing-intro { font-size: var(--type-body-sm); color: rgba(var(--muted-d-rgb),0.82); max-width: 34rem; }
+.writing-intro { font-size: var(--type-body-sm); color: var(--muted-d); max-width: 34rem; }
 .essay-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; border-top: 1px solid var(--border-d); padding: 4rem 0; text-decoration: none; color: inherit; }
 @media (hover: none) { .essay-feat { cursor: pointer; } }
 .essay-feat-img { aspect-ratio: 16/10; overflow: hidden; }
@@ -571,7 +602,7 @@ a.essay-feat-img { display: block; }
 .services-intro {
   max-width: 28rem;
   font-size: 1rem;
-  color: var(--accent);
+  color: var(--accent-on-light);
   line-height: 1.85;
   margin-top: 2rem;
 }
@@ -583,7 +614,7 @@ a.essay-feat-img { display: block; }
   align-items: center;
   gap: 1.5rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-on-light);
   margin: 4rem 0 0.5rem;
 }
 .srv-list-label::after { content: ''; flex: 1; height: 1px; background: var(--border-l); }
@@ -604,7 +635,7 @@ a.essay-feat-img { display: block; }
   font-weight: 400;
   font-size: clamp(1.9rem, 2.6vw, 2.4rem);
   line-height: 1;
-  color: var(--accent);
+  color: var(--accent-on-light);
   opacity: 0.85;
 }
 .srv-num-main h3 {
@@ -653,9 +684,9 @@ a.essay-feat-img { display: block; }
   padding-left: 1rem;
   position: relative;
 }
-.srv-num-aside li::before { content: '·'; position: absolute; left: 0; top: -0.1rem; color: var(--accent); font-weight: 700; }
+.srv-num-aside li::before { content: '·'; position: absolute; left: 0; top: -0.1rem; color: var(--accent-on-light); font-weight: 700; }
 .srv-num-link { margin-top: auto; }
-.srv-num-row:hover .srv-num-main h3 { color: var(--accent); }
+.srv-num-row:hover .srv-num-main h3 { color: var(--accent-on-light); }
 .srv-num-row:hover .srv-num-link { color: var(--text-l); transform: translateX(var(--link-hover-shift)); }
 
 .srv-individuals {
@@ -706,7 +737,7 @@ a.essay-feat-img { display: block; }
   height: 2.75rem;
   border-radius: 50%;
   border: 1px solid rgba(var(--accent-rgb),0.4);
-  color: var(--accent);
+  color: var(--accent-on-light);
   margin-bottom: 1.35rem;
 }
 .srv-ind-icon svg { width: 1.15rem; height: 1.15rem; }
@@ -729,11 +760,11 @@ a.essay-feat-img { display: block; }
 .srv-ind-link {
   display: inline-flex;
   align-items: center;
-  color: var(--accent);
+  color: var(--accent-on-light);
   transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
 }
 .srv-ind-link .link-arrow { width: 1.4rem; height: 1.05rem; }
-.srv-ind-item:hover h3 { color: var(--accent); }
+.srv-ind-item:hover h3 { color: var(--accent-on-light); }
 .srv-ind-item:hover .srv-ind-link { color: var(--text-l); transform: translateX(var(--link-hover-shift-sm)); }
 
 .srv-close {
@@ -817,7 +848,7 @@ a.essay-feat-img { display: block; }
 }
 .services-item-primary .services-row-title { font-size: clamp(1.45rem, 2vw, 1.9rem); }
 .services-row:hover .services-row-title,
-.services-item.open .services-row-title { color: var(--accent); }
+.services-item.open .services-row-title { color: var(--accent-on-light); }
 .services-body {
   max-height: 0;
   overflow: hidden;
@@ -844,7 +875,7 @@ a.essay-feat-img { display: block; }
 }
 .services-row:hover .services-row-icon,
 .services-item.open .services-row-icon {
-  color: var(--accent);
+  color: var(--accent-on-light);
   transform: rotate(45deg);
 }
 .services-more {
@@ -857,7 +888,7 @@ a.essay-feat-img { display: block; }
 .services-more-copy {
   max-width: 28rem;
   font-size: 0.82rem;
-  color: rgba(var(--muted-l-rgb),0.86);
+  color: var(--muted-l);
   line-height: 1.7;
 }
 .services-readmore { margin-top: 1.1rem; }
@@ -1050,13 +1081,15 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .prose p {
   font-size: var(--type-body); line-height: 1.8; color: var(--body-l);
   margin-bottom: 1.5rem; font-weight: 400;
+  max-width: var(--measure-body);
 }
 .prose p strong { color: var(--text-l); font-weight: 600; }
 .prose p em { font-style: italic; }
 .prose a { color: var(--text-l); border-bottom: 1px solid var(--border-l); transition: color 0.2s, border-color 0.2s; }
-.prose a:hover { color: var(--accent); border-color: var(--accent); }
+.prose a:hover { color: var(--accent-on-light); border-color: var(--accent-on-light); }
 .prose ul, .prose ol {
   margin: 0 0 1.5rem 0; padding-left: 1.5rem; color: var(--body-l);
+  max-width: var(--measure-body);
 }
 .prose li {
   font-size: var(--type-body); line-height: 1.8; margin-bottom: 0.6rem;
@@ -1088,7 +1121,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .pg-back {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase;
-  letter-spacing: 0.12em; color: rgba(var(--muted-l-rgb),0.78);
+  letter-spacing: 0.12em; color: var(--muted-l);
   margin-bottom: 1.75rem;
   transition: color 0.2s;
 }
@@ -1161,7 +1194,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 }
 
 .socx-rail-nav a:hover {
-  color: var(--accent);
+  color: var(--accent-on-light);
   padding-left: 0.35rem;
 }
 
@@ -1194,7 +1227,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .list-item h2 { font-size: var(--type-h2); line-height: 1.15; margin-bottom: 0.6rem; transition: color 0.3s; letter-spacing: -0.02em; }
 .list-item:hover h2 { color: var(--accent); }
 .list-item p { font-size: var(--type-body-sm); color: var(--muted-d); line-height: 1.8; max-width: 560px; }
-.list-item-meta { color: rgba(var(--muted-d-rgb),0.82); white-space: nowrap; padding-top: 0.35rem; text-align: right; line-height: 1.6; }
+.list-item-meta { color: var(--muted-d); white-space: nowrap; padding-top: 0.35rem; text-align: right; line-height: 1.6; }
 
 /* ═══════════════════════════════════════════════════════
    SUB-PAGE: SERVICE PAGES
@@ -1215,7 +1248,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
-.srv-sidebar-title { color: var(--accent); margin-bottom: 1.5rem; }
+.srv-sidebar-title { color: var(--accent-on-light); margin-bottom: 1.5rem; }
 .srv-sidebar-box {
   border: 1px solid var(--border-l);
   padding: 2rem;
@@ -1241,7 +1274,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   transition: color 0.2s, padding-left 0.3s var(--ease-out);
 }
 .srv-also a:last-child { border-bottom: none; }
-.srv-also a:hover { color: var(--accent); padding-left: 0.75rem; }
+.srv-also a:hover { color: var(--accent-on-light); padding-left: 0.75rem; }
 
 /* ═══════════════════════════════════════════════════════
    SUB-PAGE: ABOUT PAGE EXTRAS
@@ -1253,13 +1286,13 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 }
 .tl-item:first-child { border-top: 1px solid var(--border-l); }
 .tl-org { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--text-l); margin-bottom: 0.3rem; }
-.tl-role { text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem; }
+.tl-role { text-transform: uppercase; color: var(--accent-on-light); margin-bottom: 0.85rem; }
 .tl-desc { font-size: var(--type-body-sm); line-height: 1.8; color: var(--body-l); }
 
 /* Values list */
 .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2.5rem; }
 .value-item { background: var(--light-2); padding: 2rem; }
-.value-num { color: var(--accent); margin-bottom: 0.75rem; }
+.value-num { color: var(--accent-on-light); margin-bottom: 0.75rem; }
 .value-item h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--text-l); margin-bottom: 0.6rem; }
 .value-item p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-l); line-height: 1.8; }
 
@@ -1280,10 +1313,10 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 }
 .contact-link-item:first-of-type { border-top: 1px solid var(--border-d); }
 .contact-link-item:hover { padding-left: 1rem; }
-.contact-link-label { text-transform: uppercase; color: rgba(var(--muted-d-rgb),0.72); margin-bottom: 0.4rem; }
+.contact-link-label { text-transform: uppercase; color: var(--muted-d); margin-bottom: 0.4rem; }
 .contact-link-value { color: var(--text-d); transition: color 0.3s; }
 .contact-link-desc {
-  font-size: var(--type-body-sm); font-weight: 300; color: rgba(var(--muted-d-rgb),0.84);
+  font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d);
   line-height: 1.75; margin-top: 0.65rem; max-width: 26rem;
 }
 .contact-link-item:hover .contact-link-value { color: var(--accent); }
@@ -1300,7 +1333,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .contact-service-item:hover { padding-left: 1rem; }
 .contact-service-name { color: rgba(var(--text-d-rgb),0.84); transition: color 0.3s; }
 .contact-service-item:hover .contact-service-name { color: var(--accent); }
-.contact-service-arrow { color: rgba(var(--muted-d-rgb),0.72); transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out); }
+.contact-service-arrow { color: var(--muted-d); transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out); }
 .contact-service-item:hover .contact-service-arrow { color: var(--accent); transform: translateX(var(--link-hover-shift)); }
 .contact-note { padding: 0 3.5rem 8rem; background: var(--dark); }
 .contact-note p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.8; max-width: 520px; }

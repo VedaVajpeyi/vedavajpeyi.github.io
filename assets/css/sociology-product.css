@@ -40,8 +40,12 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-light);
 }
+/* .socx-signal-kicker is the one selector in the group above that sits on
+   .socx-signal-band (dark), not a light section -- restore full --accent,
+   which is the one that clears AA against a dark background. */
+.socx-signal-kicker { color: var(--accent); }
 
 .socx-signal-list {
   display: grid;
