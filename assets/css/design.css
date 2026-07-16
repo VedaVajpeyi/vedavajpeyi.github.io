@@ -30,6 +30,12 @@
   --duration-fast: 0.2s;
   --duration-base: 0.25s;
   --duration-slow: 0.5s;
+  /* Hover-shift distance for the arrow-link family (.link-cta, .pg-nav a,
+     .srv-num-link, .contact-service-arrow all use the base shift). -sm is
+     used only by .srv-ind-link, whose icon is larger and sits in a tighter
+     circular context -- a deliberate difference, not drift. */
+  --link-hover-shift: 4px;
+  --link-hover-shift-sm: 3px;
   /* Spacing scale, named from the values that already dominate padding/margin/gap
      usage (uniform 0.5rem steps, each individually the majority pattern at its size).
      Use these for any new spacing declaration; existing literals are not retroactively
@@ -373,8 +379,15 @@ body.ready .hero-kicker { opacity: 1; }
 
 /* Shared inline arrow-link component (text + .link-arrow, shifts on hover).
    Base = light-section default (rest: accent, hover: text-l).
-   .on-dark = for links sitting on dark sections (hover: text-d instead). */
-.link-cta {
+   .on-dark = for links sitting on dark sections (hover: text-d instead).
+   Grouped with .pg-nav a (page-bottom nav links) and .srv-num-link (services
+   numbered list): both have identical properties, so they're one definition
+   here rather than separate copies kept in sync by hand. .srv-num-link's
+   hover is triggered by an ancestor row, not itself, so it isn't part of the
+   hover group below -- see its own rule near .srv-num-row. */
+.link-cta,
+.pg-nav a,
+.srv-num-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -386,12 +399,17 @@ body.ready .hero-kicker { opacity: 1; }
   color: var(--accent);
   transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
 }
-.link-cta:hover { color: var(--text-l); transform: translateX(4px); }
-.link-cta:hover .link-arrow { color: var(--text-l); }
+.link-cta:hover,
+.pg-nav a:hover {
+  color: var(--text-l);
+  transform: translateX(var(--link-hover-shift));
+}
+.link-cta:hover .link-arrow,
+.pg-nav a:hover .link-arrow {
+  color: var(--text-l);
+}
 .link-cta.on-dark:hover { color: var(--text-d); }
 .link-cta.on-dark:hover .link-arrow { color: var(--text-d); }
-
-.pg-nav a:hover .link-arrow { color: var(--text-l); }
 .about-stats { display: flex; gap: 0; margin-top: 3rem; border-top: 1px solid var(--border-l); border-bottom: 1px solid var(--border-l); }
 .work-stats { display: flex; gap: 0; margin: 2rem 0 2.5rem; border-top: 1px solid var(--border-d); border-bottom: 1px solid var(--border-d); }
 .astat { flex: 1; padding: 1.5rem 0; text-align: center; border-right: 1px solid var(--border-l); }
@@ -619,21 +637,9 @@ a.essay-feat-img { display: block; }
   position: relative;
 }
 .srv-num-aside li::before { content: '·'; position: absolute; left: 0; top: -0.1rem; color: var(--accent); font-weight: 700; }
-.srv-num-link {
-  margin-top: auto;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
-}
+.srv-num-link { margin-top: auto; }
 .srv-num-row:hover .srv-num-main h3 { color: var(--accent); }
-.srv-num-row:hover .srv-num-link { color: var(--text-l); transform: translateX(4px); }
+.srv-num-row:hover .srv-num-link { color: var(--text-l); transform: translateX(var(--link-hover-shift)); }
 
 .srv-individuals {
   margin-top: 4.5rem;
@@ -711,7 +717,7 @@ a.essay-feat-img { display: block; }
 }
 .srv-ind-link .link-arrow { width: 1.4rem; height: 1.05rem; }
 .srv-ind-item:hover h3 { color: var(--accent); }
-.srv-ind-item:hover .srv-ind-link { color: var(--text-l); transform: translateX(3px); }
+.srv-ind-item:hover .srv-ind-link { color: var(--text-l); transform: translateX(var(--link-hover-shift-sm)); }
 
 .srv-close {
   background: var(--dark);
@@ -1075,6 +1081,8 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 
 /* ═══════════════════════════════════════════════════════
    PAGE BOTTOM NAVIGATION
+   (.pg-nav a's link styling lives with .link-cta near the top of this
+   file -- the two are grouped into one definition, see that comment.)
 ═══════════════════════════════════════════════════════ */
 .pg-nav {
   display: flex; justify-content: space-between; align-items: center;
@@ -1082,13 +1090,6 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   border-top: 1px solid var(--border-l);
   gap: 2rem;
 }
-.pg-nav a {
-  font-family: var(--mono); font-size: 0.8rem; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--accent);
-  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
-  display: inline-flex; align-items: center; gap: 0.5rem;
-}
-.pg-nav a:hover { color: var(--text-l); transform: translateX(4px); }
 
 /* ═══════════════════════════════════════════════════════
    CTA BUTTON
@@ -1284,7 +1285,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .contact-service-name { color: rgba(var(--text-d-rgb),0.84); transition: color 0.3s; }
 .contact-service-item:hover .contact-service-name { color: var(--accent); }
 .contact-service-arrow { color: rgba(var(--muted-d-rgb),0.72); transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out); }
-.contact-service-item:hover .contact-service-arrow { color: var(--accent); transform: translateX(4px); }
+.contact-service-item:hover .contact-service-arrow { color: var(--accent); transform: translateX(var(--link-hover-shift)); }
 .contact-note { padding: 0 3.5rem 8rem; background: var(--dark); }
 .contact-note p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.8; max-width: 520px; }
 .contact-note-label {
