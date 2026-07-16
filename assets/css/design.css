@@ -1477,6 +1477,9 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   /* Nav fade / footer rotator */
   .spy { transition: none; }
 
+  /* Page-hero deck reveal (fade + slide on body.pg-ready) */
+  .pg-deck { opacity: 1; transform: none; transition: none; }
+
   /* Continuous motion should also stop */
   .marquee-track { animation: none; }
   .footer-rotating { overflow: visible; }
