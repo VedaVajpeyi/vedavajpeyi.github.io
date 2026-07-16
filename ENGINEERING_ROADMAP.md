@@ -396,7 +396,20 @@ Scope deliberately narrowed from the original design-system audit: only categori
 - **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260715-8`.
   - **Deliberately not done in this task (that's the actual remaining Deferred item):** retrofitting the ~150 existing literal spacing values to reference these tokens. Same reasoning as the duration sweep — a much larger, more error-prone diff for a cosmetic win. Do opportunistically, file by file, when already editing nearby code.
 
-**Phase 4 status: ✅ COMPLETE — all 4 tasks done.**
+### Task 4.5 ✅ COMPLETE
+- **Objective:** Owner asked for a good next item that wouldn't visibly change the site. Picked up half of the "Full transition-duration and spacing literal sweeps" Deferred item: retrofit `design.css`'s literal `0.2s`/`0.25s`/`0.5s` transition/delay values onto the `--duration-fast`/`--duration-base`/`--duration-slow` tokens added in Task 4.2. Spacing-literal retrofit deliberately left out — a mistranscribed `rem` value can visibly nudge layout, a mistranscribed timing value can't be eyeballed, so only the lower-risk half was picked up.
+- **Why this exists:** Re-checked the Deferred entry's "~150 call sites" estimate against current code before acting (per principle 5/9) — didn't hold up for the duration side specifically: 50 literal occurrences in `design.css` alone (`0.2s`×12, `0.25s`×14, `0.5s`×21, outside the `:root` token definitions themselves), not ~150. A contained, single-file, mechanical swap.
+- **Dependencies:** None.
+- **Files changed:** `design.css` only.
+- **Implementation:** Scripted substitution (not manual, per Task 4.1's precedent — eliminates transcription risk) of the three literal strings to their token equivalents, scoped to everything below the `:root` block's closing brace so the token *definitions* (`--duration-fast: 0.2s;` etc.) weren't rewritten into circular self-references. `0.25s` replaced before `0.2s` defensively, though the two don't overlap as substrings.
+- **Verification checklist:** Brace-balance (493/493 unchanged); `git diff --stat` confirmed exactly 29 lines changed, 1:1 literal-for-token with no incidental edits; `sync-chrome.mjs` clean; full 54-page 200 sweep; computed-style read-back on `.skip-link`, `.footer-nav a`, `.link-cta`, and `.spy` confirmed `transitionDuration` is byte-identical to the pre-refactor literal on all four.
+- **Success criteria:** Zero literal `0.2s`/`0.25s`/`0.5s` time values remain in `design.css` outside the token definitions; zero visual or behavioral change.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** None realized — values are mathematically identical to what they replace, confirmed via computed-style read-back rather than assumed.
+- **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260716-3`.
+  - **Deliberately not done in this task (remains the actual Deferred item):** the spacing-literal half of the sweep, and the duration sweep across any file other than `design.css` (none of the other CSS files were checked for literal `0.2s`/`0.25s`/`0.5s` occurrences in this task).
+
+**Phase 4 status: ✅ COMPLETE — all 5 tasks done.**
 
 ---
 
@@ -511,7 +524,7 @@ Findings from a deep-dive review of the repo (docs, `.git` internals, branches),
 
 - **Card component consolidation** (14 near-identical row/card implementations). Same shape of problem, larger. Right trigger: the next time a new card-like component is being built, not a standalone refactor of stable, working code.
 - **Shadow tokens, secondary max-width/measure scale.** Per the root-cause synthesis: imposing a scale where the data doesn't already cluster means inventing a canonical value, which is a design judgment call dressed as a refactor. Let tokens emerge from actually-recurring values the next few times these properties are touched. (Spacing itself got a core 8-value scale in Task 4.4 — the frequency data clustered more cleanly than originally assessed here. Reading measure specifically got one value, `--measure-body`, in Task 3.18 — not from value-frequency clustering like Task 4.4, but from external readability evidence (45–75 character range), scoped narrowly to `.prose p`/`.prose ul,ol` only. This entry now covers only shadow tokens and any *other* max-width/measure use beyond long-form body copy, neither of which have been re-checked.)
-- **Full transition-duration and spacing literal sweeps** (~150 call sites → the Task 4.2 tokens; a similar count → the Task 4.4 spacing tokens). Both token sets exist now; retrofitting every existing usage is a much bigger, more error-prone diff for a purely cosmetic win. Do opportunistically, file by file, when already editing nearby code.
+- **Spacing literal sweep** (a similar count → the Task 4.4 spacing tokens; not yet re-checked against current code the way the duration side was). The duration half of this entry was picked up in Task 4.5 — `design.css`'s 50 literal `0.2s`/`0.25s`/`0.5s` occurrences are now tokenized; other CSS files and any spacing literals were not touched. Retrofitting the remaining spacing usage is a bigger, more error-prone diff for a purely cosmetic win, and (unlike duration) a mistranscribed value is visually checkable, not just numerically — do opportunistically, file by file, when already editing nearby code.
 - **Unify the three light/dark-variant mechanisms** (`.ph.dk`/`.lt`, `.cursor.on-light`, `data-t`/`data-nav-light`). Works correctly today; unifying is a coherence improvement, not a bug fix. No urgency.
 - **Legacy-named `assets/img/about-v21/notebook-notes/` folder.** `Agents.md` explicitly says don't rename casually. Only revisit as part of a broader, deliberate asset reorganization, never as a drive-by.
 - **Typography scale full enforcement** (the ~40% of `font-size` declarations bypassing `--type-*` tokens). Many are legitimate one-off heading `clamp()` curves; a real cleanup here needs page-by-page visual judgment, not a mechanical sweep.
