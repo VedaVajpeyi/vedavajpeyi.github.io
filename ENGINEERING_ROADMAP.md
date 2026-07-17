@@ -571,15 +571,14 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** Low-medium — real visual change, but small (2px size, 0.02em tracking) and low-stakes if something's missed (would read as a minor inconsistency, not breakage).
 - **Status:** Not started.
 
-### Task 9.4 — Not started
-- **Objective:** Collapse Intro Paragraph to one canonical value. `.pg-deck` (1.05rem) and `.pg-subtitle` (0.9rem) both pair with Page Title with no pattern for which page gets which — per the spec, `.pg-deck`'s value wins (used on ~40 pages vs. a handful for `.pg-subtitle`); retire `.pg-subtitle`.
-- **Why this exists:** Real drift (same role, two unexplained sizes), not a defensible two-tier split like Card Title/Quote.
-- **Dependencies:** None.
-- **Files expected to change:** `design.css`, plus whichever HTML pages currently use `.pg-subtitle` instead of `.pg-deck` (needs a fresh `grep` at execution time to enumerate).
-- **Implementation plan:** Find every live `.pg-subtitle` usage, swap the class to `.pg-deck` (or keep the class name as an alias pointing at `.pg-deck`'s rule, if retiring the class outright touches too many files for the benefit — decide at execution time based on the actual count).
-- **Verification checklist:** Screenshot comparison on every page found using `.pg-subtitle`; confirm no page relied on `.pg-subtitle`'s smaller size for a layout reason (e.g. fitting a long deck without wrapping differently).
-- **Success criteria:** One intro-paragraph size for the Page Title context.
-- **Rollback plan:** Single-file or few-file revert.
+### Task 9.4 — ⛔ Blocked, premise was wrong on re-verification — needs a decision, not execution
+- **Original objective (do not execute as written):** Collapse Intro Paragraph to one canonical value on the claim that `.pg-deck` (1.05rem) and `.pg-subtitle` (0.9rem) "both pair with Page Title with no pattern for which page gets which," with `.pg-deck` winning on frequency.
+- **Re-verification found the premise false, before any file was touched:** actual counts are `.pg-deck` on 22 pages, `.pg-subtitle` on 24 — not "~40 vs. a handful." More importantly, the split isn't random: **all 23 essays use `.pg-subtitle` alone** as their sole intro line; **all 22 non-essay pages** (services, topics, about, contact, 404, sociology-product, work index) **use `.pg-deck` alone**. The one page that uses both (`sociology-product-field-guide.html`) stacks them deliberately — `.pg-deck` as the primary intro, `.pg-subtitle` directly beneath it as a visibly smaller secondary line (`53:<p class="pg-deck">...</p>` / `54:<p class="pg-subtitle">...</p>`). That's not two names drifting toward the same job; it's two different jobs (Intro Paragraph vs. Supporting Copy in the Design System Spec's terms) that happen to share a role-adjacent name.
+- **Why this stops here rather than getting "fixed the right way":** which of these is actually true is a content/editorial call, not something re-verification can settle on its own:
+  1. The essay/non-essay split is a deliberate, 100%-consistent pattern (essays intentionally get a quieter, smaller single-line intro; landing-style pages get a bigger one) — in which case `.pg-subtitle` should be **kept and properly named/documented** as its own role, not retired.
+  2. It's accidental convergence — 23 essays independently ended up using the "wrong" class for reasons lost to history, and a bigger unified deck was always intended — in which case the original retire-and-merge plan is still right.
+  - Both are plausible from the code alone; the 100% correlation with content type leans toward (1), but I'm not going to unilaterally decide a visible, 24-page copy/sizing change on a guess.
+- **Status:** Blocked. Moved to the decision checkpoints list below. No files changed.
 - **Estimated risk:** Low-medium — depends entirely on how many pages use `.pg-subtitle`; small count = low risk, needs re-checking.
 - **Status:** Not started.
 
@@ -626,6 +625,7 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - Should all 23 essays get `sxp-essays.css`'s figure/comparison components (currently 5/23)? Content-architecture call, not scheduled as a Phase 9 task.
 - Sub-11px utility text (Eyebrow/Metadata/Navigation/Button/Form Label at 10.9px, Tag at 9.9px) and the Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — both reviewed and intentionally left out of this phase; revisit only if either causes a real, observed problem.
 - **New, found during Task 9.3:** what role are `.link-cta`/`.pg-nav a`/`.srv-num-link` actually — inline CTA links with arrows, currently `0.8rem`/`0.1em`, not covered by the Design System Spec's role table (which has Button for filled/outline `<button>`-style elements, but not this inline-link pattern)? Left at their current size since the eyebrow cost-test reasoning doesn't apply to them, but that just means the question of what their *correct* size is remains genuinely open, not resolved.
+- **New, found during Task 9.4 (see the task's own entry above for full detail):** is `.pg-subtitle`'s 100%-consistent essay-only usage a deliberate "essays get a quieter intro" content-type pattern that should be kept and formally documented as its own role, or accidental convergence that a bigger unified `.pg-deck` treatment was always meant to replace? Blocks Task 9.4 entirely — nothing executed pending an answer.
 
 ---
 
