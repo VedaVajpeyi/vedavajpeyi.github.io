@@ -556,15 +556,18 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Status:** ✅ Complete. Commit pending.
 - **Status:** Not started.
 
-### Task 9.3 — Not started
-- **Objective:** Collapse the Eyebrow/kicker role to one canonical value (`0.68rem`/`500`/`0.12em`, i.e. `--type-meta`) everywhere. Per the Design System Spec's §6 cost test, the `0.8rem`/`0.1em` minority (`.s-label`, `.pg-hero-kicker`, `.link-cta`, `.srv-close-kicker`, `.srv-close-title`'s sibling kicker, `.morph-kicker`) doesn't clear the bar — a 2px difference with no reader-legible purpose, emphasis already carried by the adjacent heading.
-- **Why this exists:** The single largest inconsistency cluster found in the original audit (~20 implementations, 2 sizes × 3 letter-spacings); this is the one that actually changes rendered output, unlike Tasks 9.1-9.2.
-- **Dependencies:** None, but do after 9.1-9.2 so this is the first task in the phase that needs a visual check.
-- **Files expected to change:** `design.css` (primarily), possibly `work-scroll-morph.css` (`.morph-kicker`).
-- **Implementation plan:** Re-verify the current 0.8rem/0.1em cluster against live code (values may have shifted since the original audit). Point every instance at `--type-meta`'s size/weight/tracking. Also collapse the letter-spacing drift found separately (0.10/0.12/0.14em with no tier correlation) to 0.12em, reserving 0.14em exclusively for Navigation as the spec calls for.
-- **Verification checklist:** Screenshot comparison (before/after) on the homepage (multiple `.s-label` instances across light/dark sections) and a `.pg-hero` page; computed-style read-back confirming the converted selectors now resolve to `--type-meta`'s values; confirm Navigation's 0.14em is untouched.
-- **Success criteria:** One eyebrow definition site-wide (Navigation excepted, by design).
-- **Rollback plan:** Single-file revert.
+### Task 9.3 ✅ COMPLETE (scope narrowed on re-verification)
+- **Objective:** Collapse the Eyebrow/kicker role to one canonical value (`0.68rem`/`500`/`0.12em`, i.e. `--type-meta`) everywhere.
+- **Why this exists:** The single largest inconsistency cluster found in the original audit; the first task in this phase with a real, visible change.
+- **Re-verification found the original candidate list conflated two different roles — scope narrowed before executing:** `.link-cta`, `.pg-nav a`, and `.srv-num-link` do share the same `0.8rem`/`0.1em` values, but they aren't eyebrows — they're inline clickable CTA links with arrow icons, never adjacent to a heading. The spec's cost-test reasoning ("2px difference with no reader-legible purpose, emphasis already carried by the adjacent heading") only applies to something that sits next to a heading. Collapsing this link-role into Eyebrow on that reasoning would have been applying the wrong argument to get to the right-looking number by coincidence. **Left untouched**, logged as its own open question below rather than folded in here.
+- **Genuine eyebrow cluster executed:** `.s-label`/`.pg-hero-kicker` (shared rule, `design.css`), `.srv-close-kicker` (`design.css`), `.morph-kicker` (`work-scroll-morph.css`) — all now reference `var(--type-meta)`/`0.12em` instead of the literal `0.8rem`/`0.1em`.
+- **Incidental fix, not scope creep:** `.morph-kicker` turned out to be declared twice in `work-scroll-morph.css` — an unused first declaration (correctly using `var(--type-meta)`/`0.12em`, i.e. what this task was already converting toward) immediately shadowed by a second declaration with the literal `0.8rem`/`0.1em` values that was the one actually rendering. Merged into one declaration rather than leaving the dead first block in place.
+- **Files changed:** `design.css`, `work-scroll-morph.css`.
+- **Verification checklist:** Brace-balance on both files; `sync-chrome.mjs` clean; full 54-page 200 sweep; computed-style read-back confirmed `.s-label` resolves to `10.88px`/`1.3056px` letter-spacing (exactly `0.12em` of `10.88px`) and `.nav-links a` (Navigation, untouched) still resolves to its distinct `1.5232px` (`0.14em`) — confirming the two weren't accidentally conflated; screenshots of the homepage hero, the About page hero (`.pg-hero-kicker`), and `work/`'s hero (`.morph-kicker`) all render correctly and consistently with each other.
+- **Success criteria:** One eyebrow definition across the 4 genuine eyebrow selectors; Navigation's distinct tracking preserved; the link-role question isolated rather than silently resolved by accident.
+- **Rollback plan:** Single-file revert per file.
+- **Estimated risk:** Low as executed (narrower than originally scoped); would have been a real semantic error (wrong reasoning applied to a different role) if the original ~6-selector scope had gone through unexamined.
+- **Status:** ✅ Complete. Commit pending.
 - **Estimated risk:** Low-medium — real visual change, but small (2px size, 0.02em tracking) and low-stakes if something's missed (would read as a minor inconsistency, not breakage).
 - **Status:** Not started.
 
@@ -622,6 +625,7 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - `.contact-service-name`'s two conflicting declarations (700/1.15-1.65rem, then 600/1-1.2rem, second wins by source order) — confirm which value is correct before any cleanup deletes the shadowed rule. Not otherwise part of Task 9.5 since it's a bug-fix, not a consolidation.
 - Should all 23 essays get `sxp-essays.css`'s figure/comparison components (currently 5/23)? Content-architecture call, not scheduled as a Phase 9 task.
 - Sub-11px utility text (Eyebrow/Metadata/Navigation/Button/Form Label at 10.9px, Tag at 9.9px) and the Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — both reviewed and intentionally left out of this phase; revisit only if either causes a real, observed problem.
+- **New, found during Task 9.3:** what role are `.link-cta`/`.pg-nav a`/`.srv-num-link` actually — inline CTA links with arrows, currently `0.8rem`/`0.1em`, not covered by the Design System Spec's role table (which has Button for filled/outline `<button>`-style elements, but not this inline-link pattern)? Left at their current size since the eyebrow cost-test reasoning doesn't apply to them, but that just means the question of what their *correct* size is remains genuinely open, not resolved.
 
 ---
 

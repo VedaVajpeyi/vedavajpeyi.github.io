@@ -315,8 +315,8 @@ body.nav-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.26s; }
 ═══════════════════════════════════════════════════════ */
 .s-label,
 .pg-hero-kicker {
-  font-family: var(--mono); font-size: 0.8rem; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.1em;
+  font-family: var(--mono); font-size: var(--type-meta); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
   display: flex; align-items: center; gap: 1rem;
 }
 .s-label { color: var(--accent); margin-bottom: 3.5rem; }
@@ -790,10 +790,10 @@ a.essay-feat-img { display: block; }
   align-items: center;
   gap: 1rem;
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: var(--type-meta);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--accent);
   margin-bottom: 2rem;
 }

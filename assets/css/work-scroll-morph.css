@@ -69,15 +69,10 @@
 .morph-kicker {
   font-family: var(--mono);
   font-size: var(--type-meta);
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-}
-
-.morph-kicker {
   color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
   margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
