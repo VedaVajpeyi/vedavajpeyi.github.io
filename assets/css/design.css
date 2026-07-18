@@ -694,7 +694,13 @@ a.essay-feat-img { display: block; }
   padding-left: 1rem;
   position: relative;
 }
-.srv-num-aside li::before { content: '·'; position: absolute; left: 0; top: -0.1rem; color: var(--accent-on-light); font-weight: 700; }
+/* Was a literal '·' character -- unified with .sxp-list's CSS-drawn dot
+   (assets/css/sxp-essays.css), the same shape/color, same reasoning as
+   the .pg-back arrow fix: a font-dependent glyph vs. a precise, designed
+   shape for the identical job (a compact feature-list bullet in a card).
+   Can't share one selector across the two files, kept visually identical
+   instead. */
+.srv-num-aside li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 0.38rem; height: 0.38rem; border-radius: 50%; background: var(--accent-on-light); }
 .srv-num-link { margin-top: auto; }
 .srv-num-row:hover .srv-num-main h3 { color: var(--accent-on-light); }
 .srv-num-row:hover .srv-num-link { color: var(--text-l); transform: translateX(var(--link-hover-shift)); }

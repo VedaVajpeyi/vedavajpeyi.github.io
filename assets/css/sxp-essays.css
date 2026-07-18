@@ -85,7 +85,7 @@
   width: 0.38rem;
   height: 0.38rem;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-on-light);
 }
 
 .sxp-axis-note {
