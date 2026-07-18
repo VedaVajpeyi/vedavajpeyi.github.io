@@ -1489,8 +1489,18 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   /* Nav fade / footer rotator */
   .spy { transition: none; }
 
-  /* Page-hero deck reveal (fade + slide on body.pg-ready) */
+  /* Page-hero reveal-on-load elements (fade / fade+slide on body.pg-ready) */
+  .pg-hero-kicker { opacity: 1; transition: none; }
+  .pg-meta { opacity: 1; transform: none; transition: none; }
   .pg-deck { opacity: 1; transform: none; transition: none; }
+  .pg-subtitle { opacity: 1; transform: none; transition: none; }
+  /* .pg-hero-cta and .pg-tag mix their load-reveal transition with a real
+     hover-interaction transition in the same property -- only neutralizing
+     the static opacity/transform here, not touching `transition`, so the
+     hover effects on these two stay intact under reduced motion. */
+  .pg-hero-cta { opacity: 1; transform: none; }
+  .pg-tag { opacity: 1; transform: none; }
+  body.pg-ready .pg-tag:nth-child(n) { transition-delay: 0s; }
 
   /* Continuous motion should also stop */
   .marquee-track { animation: none; }

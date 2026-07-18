@@ -652,6 +652,17 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** None realized.
 - **Status:** ✅ Complete. Commit pending.
 
+### Task 9.12 ✅ COMPLETE
+- **Objective:** Close the `prefers-reduced-motion` gap found incidentally in Task 9.1 — `.pg-deck` had reduced-motion coverage, its `.pg-hero` siblings didn't.
+- **Owner decision:** picked as a "cheap, safe" item specifically because it's invisible to the vast majority of visitors, and even for the minority with the OS preference on, the fix only skips a fade-in animation — no layout or visual-at-rest change either way.
+- **Re-verification before acting corrected the original finding:** `.pg-h1` was assumed to be part of this reveal family; it isn't — it has no `opacity`/`transform`/`transition` properties at all, was never animated, needs no fix. The real list is `.pg-hero-kicker`, `.pg-meta`, `.pg-hero-cta`, `.pg-subtitle`, `.pg-tag`.
+- **Files changed:** `design.css` only. Added all 5 to the existing reduced-motion block. Two of them (`.pg-hero-cta`, `.pg-tag`) mix their load-reveal transition with a real hover-interaction transition in the same `transition` property — for those two, only `opacity`/`transform` were reset to their static revealed values, `transition` itself was left alone so the hover effects stay intact under reduced motion. Also zeroed `.pg-tag`'s five staggered `transition-delay` values via `body.pg-ready .pg-tag:nth-child(n)`.
+- **Verification checklist:** Brace-balance (500/500); `sync-chrome.mjs` clean; full 54-page 200 sweep; CSSOM read-back confirmed all 5 new selectors parsed correctly inside the `prefers-reduced-motion` media rule (catches syntax errors a visual check alone wouldn't). Live OS-level media-feature toggling wasn't available in this session's tooling; correctness argued instead from the values being an exact match for each element's own already-verified post-animation resting state (same `opacity:1`/`transform:none` every element already reaches once its normal fade-in completes) — nothing new being introduced, just arriving there without the transition.
+- **Success criteria:** Every `.pg-hero` reveal-on-load element now respects the OS-level motion preference, matching `.pg-deck`.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
+
 **Decision checkpoints — block the listed task until answered, not scheduled as their own tasks:**
 - Is the Display Hero's 152px ceiling a deliberate brand choice? (Documentation-only if yes; doesn't block any task above.)
 - Is `.contact-h2`'s larger-than-its-siblings size (up to 7.5rem vs. 5.5rem for the rest of Display Secondary) an intentional closing bookend, or drift? No task above touches it either way pending an answer — currently rendering as-is.
@@ -675,7 +686,7 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Legacy-named `assets/img/about-v21/notebook-notes/` folder.** `Agents.md` explicitly says don't rename casually. Only revisit as part of a broader, deliberate asset reorganization, never as a drive-by.
 - **Typography scale full enforcement** (the ~40% of `font-size` declarations bypassing `--type-*` tokens). Many are legitimate one-off heading `clamp()` curves; a real cleanup here needs page-by-page visual judgment, not a mechanical sweep. **Phase 9 below is that page-by-page judgment pass** — this entry stays here until Phase 9 completes, then gets resolved into it rather than left as a stale parallel note.
 - **`.services-more-copy`/`.sxp-axis-note`/`.sxp-chip`'s literal `0.82rem`.** Found while investigating Task 9.7 (Caption token, closed with no action — see that entry). None of the three are captions; the `0.82rem` just doesn't match any existing token (closest is `--type-body-sm` at `0.9rem`). Small, low-priority — three call sites, no drift between them to resolve, just an unnamed value.
-- **`.pg-hero`'s reveal-on-load elements missing `prefers-reduced-motion` coverage.** Found incidentally in Task 9.1 while merging `.morph-deck` into `.pg-deck` (which *did* have coverage, added to `design.css`'s reduced-motion block as part of that task). `.pg-h1`, `.pg-hero-kicker`, `.pg-meta`, `.pg-hero-cta`, `.pg-subtitle`, and `.pg-tag` all use the same `opacity`/`transform` fade-in-on-`body.pg-ready` pattern and none were checked beyond a `grep` confirming they're absent from the reduced-motion block. Not investigated deeply enough to know if this is 1 fix or 6 — right trigger is a dedicated small task, not a drive-by addition to whatever else is being touched.
+- ~~`.pg-hero`'s reveal-on-load elements missing `prefers-reduced-motion` coverage.~~ **Resolved in Task 9.12.** Turned out to be 5 fixes, not 6 — `.pg-h1` was never animated in the first place, no fix needed there.
 
 ## Rejected (investigated, not worth doing — don't re-propose without new evidence)
 
