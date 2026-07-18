@@ -423,7 +423,8 @@ body.ready .hero-kicker { opacity: 1; }
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M1.5 6h11M8.5 1.75L13 6l-4.5 4.25' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M1.5 6h11M8.5 1.75L13 6l-4.5 4.25' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
-.link-arrow-left::before {
+.link-arrow-left::before,
+.pg-back::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M14.5 6h-11M7.5 1.75L3 6l4.5 4.25' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M14.5 6h-11M7.5 1.75L3 6l4.5 4.25' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
@@ -1136,7 +1137,20 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   transition: color var(--duration-fast);
 }
 .pg-back:hover { color: var(--accent); }
-.pg-back::before { content: '←'; }
+/* Was a literal '←' character -- the one place on the site still using a
+   font-rendered arrow instead of the shared .link-arrow icon used ~80
+   other places. Box model matches .link-arrow; the actual arrow shape is
+   shared via .link-arrow-left::before below, not redefined here. */
+.pg-back::before {
+  content: '';
+  display: inline-block;
+  width: 1.1rem; height: 0.85rem;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+}
 
 /* ═══════════════════════════════════════════════════════
    PAGE BOTTOM NAVIGATION
