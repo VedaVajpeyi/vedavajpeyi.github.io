@@ -571,15 +571,13 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** Low-medium — real visual change, but small (2px size, 0.02em tracking) and low-stakes if something's missed (would read as a minor inconsistency, not breakage).
 - **Status:** Not started.
 
-### Task 9.4 — ⛔ Blocked, premise was wrong on re-verification — needs a decision, not execution
-- **Original objective (do not execute as written):** Collapse Intro Paragraph to one canonical value on the claim that `.pg-deck` (1.05rem) and `.pg-subtitle` (0.9rem) "both pair with Page Title with no pattern for which page gets which," with `.pg-deck` winning on frequency.
-- **Re-verification found the premise false, before any file was touched:** actual counts are `.pg-deck` on 22 pages, `.pg-subtitle` on 24 — not "~40 vs. a handful." More importantly, the split isn't random: **all 23 essays use `.pg-subtitle` alone** as their sole intro line; **all 22 non-essay pages** (services, topics, about, contact, 404, sociology-product, work index) **use `.pg-deck` alone**. The one page that uses both (`sociology-product-field-guide.html`) stacks them deliberately — `.pg-deck` as the primary intro, `.pg-subtitle` directly beneath it as a visibly smaller secondary line (`53:<p class="pg-deck">...</p>` / `54:<p class="pg-subtitle">...</p>`). That's not two names drifting toward the same job; it's two different jobs (Intro Paragraph vs. Supporting Copy in the Design System Spec's terms) that happen to share a role-adjacent name.
-- **Why this stops here rather than getting "fixed the right way":** which of these is actually true is a content/editorial call, not something re-verification can settle on its own:
-  1. The essay/non-essay split is a deliberate, 100%-consistent pattern (essays intentionally get a quieter, smaller single-line intro; landing-style pages get a bigger one) — in which case `.pg-subtitle` should be **kept and properly named/documented** as its own role, not retired.
-  2. It's accidental convergence — 23 essays independently ended up using the "wrong" class for reasons lost to history, and a bigger unified deck was always intended — in which case the original retire-and-merge plan is still right.
-  - Both are plausible from the code alone; the 100% correlation with content type leans toward (1), but I'm not going to unilaterally decide a visible, 24-page copy/sizing change on a guess.
-- **Status:** Blocked. Moved to the decision checkpoints list below. No files changed.
-- **Estimated risk:** Low-medium — depends entirely on how many pages use `.pg-subtitle`; small count = low risk, needs re-checking.
+### Task 9.4 — ✅ RESOLVED, kept as two roles (owner decision, 2026-07-18)
+- **Original objective (superseded):** Collapse Intro Paragraph to one canonical value on the claim that `.pg-deck` and `.pg-subtitle` had no pattern for which page gets which.
+- **Re-verification found the premise false, before any file was touched:** actual counts are `.pg-deck` on 22 pages, `.pg-subtitle` on 24 — not "~40 vs. a handful." The split isn't random: **all 23 essays use `.pg-subtitle` alone**; **all 22 non-essay pages use `.pg-deck` alone**; the one page using both (`sociology-product-field-guide.html`) stacks them deliberately, `.pg-deck` as the primary intro with `.pg-subtitle` beneath it as a visibly smaller secondary line.
+- **Owner decision:** keep the split. Essays intentionally get a quieter, smaller single-line intro; landing-style pages get the bigger `.pg-deck` treatment. `.pg-subtitle` is not drift-to-be-merged — it's a second, real role that happens to share a name collision with `.pg-deck`'s "subtitle-ish" naming.
+- **Follow-up not done in this task (small, optional):** `.pg-subtitle` could be documented in the Design System Spec as its own named role (e.g. "Essay Subtitle" or folded formally into "Supporting Copy") rather than left implicit. No code/visual change either way — purely a documentation nicety, not scheduled.
+- **Files changed:** None.
+- **Status:** ✅ Resolved by decision, not code. No files touched.
 - **Status:** Not started.
 
 ### Task 9.5 ✅ COMPLETE
@@ -611,18 +609,60 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **The `0.82rem` near-misses checked separately, none are captions:** `.services-more-copy` (an expandable "read more" text block), `.sxp-axis-note` (a chart-axis annotation), `.sxp-chip` (a filter-chip/tag background, closer to the Tag role than any body-text role). None are attached to a figure or image.
 - **New minor finding, not fixed here:** those same 3 selectors use a literal `0.82rem` that doesn't match any existing token (closest is `--type-body-sm` at `0.9rem`) — worth a look sometime, but as its own small finding, not as part of a Caption role that turned out not to need inventing.
 - **Files changed:** None.
-- **Status:** Closed. No code change; a role that doesn't need to exist yet isn't a gap.
 - **Estimated risk:** Low — small, well-scoped selectors.
-- **Status:** Not started.
+- **Status:** Closed. No code change; a role that doesn't need to exist yet isn't a gap.
+
+### Task 9.8 ✅ COMPLETE
+- **Objective:** Fix `.contact-service-name`'s double declaration (a 700/1.15-1.65rem shared rule immediately shadowed by a 600/1-1.2rem rule that actually wins the cascade).
+- **Owner decision:** the currently-rendering value (smaller/lighter) is correct — confirmed live: contact email/phone (`.contact-link-value`) renders at 25.6px/700, service list names at 17.28px/600, a sensible hierarchy (two prominent contact methods vs. a longer list of ~7 services). This is a code-clarity fix, not a visual change.
+- **Files changed:** `design.css` only. Removed `.contact-service-name` from the dead first shared rule (`.contact-link-value, .contact-service-name, .srv-also a { ... }` → `.contact-link-value, .srv-also a { ... }`); added the `font-family`/`line-height`/`letter-spacing` it still needs directly to the second, real rule, so it's no longer silently dependent on a group it was just removed from.
+- **Verification checklist:** Brace-balance; full 54-page 200 sweep; computed-style read-back confirmed `.contact-service-name` renders byte-identical to before (17.28px/600/Playfair Display/20.736px line-height/-0.1728px letter-spacing) — zero visual change, confirming this was purely dead-code removal.
+- **Success criteria:** One live declaration for `.contact-service-name`; the code says what it does.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
+
+### Task 9.9 ✅ COMPLETE
+- **Objective:** Load `sxp-essays.css` on all 23 essay pages (previously 5/23).
+- **Owner decision:** load everywhere now (cheap, zero visual change for essays that don't use any `.sxp-*` class); whether any specific essay's content gets restructured to use the components is a separate, later editorial call, not part of this task.
+- **Files changed:** 18 essay HTML files (`essay-1` through `essay-23`, excluding the 5 that already had it) — added one `<link>` tag each, matching the existing 5 pages' exact pattern and asset version.
+- **Verification checklist:** Scripted with an assertion that the insertion point existed exactly once per file before editing; full 54-page 200 sweep; console-clean check and a `read_network_requests` confirmation that `sxp-essays.css` actually loads with a 200 on a previously-missing page (`essay-1.html`).
+- **Success criteria:** All 23 essays can use the figure/comparison/matrix components; zero visual change on the 18 that don't currently use them.
+- **Rollback plan:** Revert the 18 files, or remove the added `<link>` line from each.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
+
+### Task 9.10 ✅ COMPLETE
+- **Objective:** Close the gap between the site's small-text floor (10.88px) and the 11px floor Material Design/Apple HIG both hold, per the best-practices review.
+- **Owner decision:** bump `--type-meta` (Eyebrow/Metadata/Navigation/Button/Form Label) to exactly 11px — a 0.12px change, essentially invisible, closes the gap for the widest-reaching text on the site at once. Also bump Tag (previously 9.92px, further from the floor) to the same 11px rather than give it a separate near-duplicate value, since after this change the two numbers converge anyway — matches the site's existing pattern of multiple distinct roles (Eyebrow, Metadata, Navigation, Button, Form Label) already sharing this one token while staying visually distinct via their own tracking/transform/color.
+- **Files changed:** `design.css` only. `--type-meta` changed from `0.68rem` to `0.6875rem`. `.ci-tag` and `.pg-tag` repointed from a literal `0.62rem` to `var(--type-meta)`.
+- **Verification checklist:** Brace-balance; full 54-page 200 sweep; computed-style read-back confirmed `--type-meta` resolves to `11px` exactly and `.nav-links a` (Navigation) renders at `11px`/`1.54px` letter-spacing (still its own distinct `0.14em` tracking, untouched); geometry check on `.pg-tag` (work/case-study-1.html) confirmed both tags render on one line, no wrapping, at the new size; screenshot confirms tags read as proportioned and legible, not oversized.
+- **Success criteria:** No text on the site sits below the 11px floor every reference system holds.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** None realized — Tag's ~11% size increase confirmed clean via both geometry and screenshot before accepting it.
+- **Status:** ✅ Complete. Commit pending.
+
+### Task 9.11 ✅ COMPLETE
+- **Objective:** Resolve what role `.link-cta`/`.pg-nav a`/`.srv-num-link` (inline CTA links with arrows) actually are, and fix any real inconsistency.
+- **Owner decision:** keep the existing size (0.8rem/12.8px) — deliberately larger than passive UI chrome (Eyebrow/Nav/Button at 11px), which makes sense for an actionable link that should read as more prominent than a quiet label, and already comfortably clears any accessibility floor. Fix the one real inconsistency: letter-spacing was `0.1em`, an outlier not matching the site's standard `0.12em` tracking used everywhere else in the mono/uppercase family.
+- **Files changed:** `design.css` only. `.link-cta, .pg-nav a, .srv-num-link`'s `letter-spacing` changed from `0.1em` to `0.12em`. Confirmed via `grep` that zero `letter-spacing: 0.1em` instances remain anywhere in the file.
+- **Verification checklist:** Brace-balance; full 54-page 200 sweep; computed-style read-back confirmed `.pg-nav a` resolves to `12.8px` (unchanged) and `1.536px` letter-spacing (exactly `0.12em` of `12.8px`, was `1.28px`/`0.1em` before).
+- **Success criteria:** This role's size is a deliberate, documented choice rather than an unexamined leftover; its one real inconsistency (tracking) resolved.
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
 
 **Decision checkpoints — block the listed task until answered, not scheduled as their own tasks:**
 - Is the Display Hero's 152px ceiling a deliberate brand choice? (Documentation-only if yes; doesn't block any task above.)
 - Is `.contact-h2`'s larger-than-its-siblings size (up to 7.5rem vs. 5.5rem for the rest of Display Secondary) an intentional closing bookend, or drift? No task above touches it either way pending an answer — currently rendering as-is.
-- `.contact-service-name`'s two conflicting declarations (700/1.15-1.65rem, then 600/1-1.2rem, second wins by source order) — confirm which value is correct before any cleanup deletes the shadowed rule. Not otherwise part of Task 9.5 since it's a bug-fix, not a consolidation.
-- Should all 23 essays get `sxp-essays.css`'s figure/comparison components (currently 5/23)? Content-architecture call, not scheduled as a Phase 9 task.
-- Sub-11px utility text (Eyebrow/Metadata/Navigation/Button/Form Label at 10.9px, Tag at 9.9px) and the Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — both reviewed and intentionally left out of this phase; revisit only if either causes a real, observed problem.
-- **New, found during Task 9.3:** what role are `.link-cta`/`.pg-nav a`/`.srv-num-link` actually — inline CTA links with arrows, currently `0.8rem`/`0.1em`, not covered by the Design System Spec's role table (which has Button for filled/outline `<button>`-style elements, but not this inline-link pattern)? Left at their current size since the eyebrow cost-test reasoning doesn't apply to them, but that just means the question of what their *correct* size is remains genuinely open, not resolved.
-- **New, found during Task 9.4 (see the task's own entry above for full detail):** is `.pg-subtitle`'s 100%-consistent essay-only usage a deliberate "essays get a quieter intro" content-type pattern that should be kept and formally documented as its own role, or accidental convergence that a bigger unified `.pg-deck` treatment was always meant to replace? Blocks Task 9.4 entirely — nothing executed pending an answer.
+- The Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — reviewed and intentionally left out of this phase; revisit only if it causes a real, observed problem.
+
+**Resolved 2026-07-18 (owner reviewed all five open items, see Tasks 9.8-9.11 and Task 9.4's updated entry for what each answer produced):**
+- `.contact-service-name`'s conflicting declarations → confirmed the smaller/lighter rendering was correct; fixed as a code-hygiene cleanup (Task 9.8), no visual change.
+- All 23 essays now load `sxp-essays.css` (Task 9.9) — makes the component toolkit available everywhere; whether any specific essay's *content* gets restructured to use it remains a separate, later editorial call, not resolved here.
+- Sub-11px utility text → bumped `--type-meta` to exactly 11px, closing the gap for Eyebrow/Metadata/Navigation/Button/Form Label at once; Tag repointed at the same token rather than given its own near-duplicate value (Task 9.10).
+- `.link-cta`/`.pg-nav a`/`.srv-num-link`'s role → kept the existing 0.8rem size (deliberately larger than passive UI chrome, appropriate for an actionable link); fixed its outlier 0.1em tracking to the site's standard 0.12em (Task 9.11).
+- `.pg-subtitle` vs. `.pg-deck` → kept the essay/non-essay split as intentional; Task 9.4 updated to reflect this rather than executing the original merge-away plan.
 
 ---
 

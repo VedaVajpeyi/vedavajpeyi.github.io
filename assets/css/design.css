@@ -92,7 +92,7 @@
   --type-card-compact:  clamp(1.15rem, 2vw, 1.65rem);
   --type-body:    1.05rem;                       /* primary body copy */
   --type-body-sm: 0.9rem;                        /* supporting body copy */
-  --type-meta:    0.68rem;                       /* mono labels, tags, kickers */
+  --type-meta:    0.6875rem;                     /* mono labels, kickers, nav, buttons -- 11px, the floor Material Design/Apple HIG both hold */
   /* Measure (max reading-line-width) for long-form body copy. 68ch sits
      inside the well-evidenced 45-75 character range (Bringhurst; NN/g),
      close to the commonly-cited 66ch sweet spot. Renders ~720px at this
@@ -450,7 +450,7 @@ body.ready .hero-kicker { opacity: 1; }
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--accent-on-light);
   transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out);
 }
@@ -535,7 +535,7 @@ a.essay-feat-img { display: block; }
 .ci-a .ci-content { padding-right: 4.5rem; }
 .ci-num { color: var(--accent); margin-bottom: 0.85rem; opacity: 0.38; }
 .ci-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
-.ci-tag { display: inline-flex; align-items: center; font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(var(--accent-rgb),0.72); border: 1px solid rgba(var(--accent-rgb),0.18); padding: 0.15rem 0.5rem; border-radius: 1px; text-decoration: none; }
+.ci-tag { display: inline-flex; align-items: center; font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.08em; color: rgba(var(--accent-rgb),0.72); border: 1px solid rgba(var(--accent-rgb),0.18); padding: 0.15rem 0.5rem; border-radius: 1px; text-decoration: none; }
 .ci-h3,
 .essay-feat h3 {
   font-family: var(--serif);
@@ -1014,7 +1014,7 @@ body.pg-ready .pg-subtitle { opacity: 1; transform: none; }
 .pg-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 2rem; }
 .pg-tag {
   display: inline-flex; align-items: center;
-  font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+  font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--accent);
   border: 1px solid rgba(var(--accent-rgb),0.28); padding: 0.2rem 0.65rem; border-radius: 1px;
   text-decoration: none;
@@ -1270,7 +1270,6 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 }
 .srv-also-label { color: var(--muted-l); margin-bottom: 1rem; }
 .contact-link-value,
-.contact-service-name,
 .srv-also a {
   font-family: var(--serif);
   font-size: clamp(1.15rem, 2vw, 1.65rem);
@@ -1331,8 +1330,11 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 }
 .contact-link-item:hover .contact-link-value { color: var(--accent); }
 .contact-service-name {
+  font-family: var(--serif);
   font-size: clamp(1rem, 1.35vw, 1.2rem);
   font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 .contact-service-item {
   display: flex; justify-content: space-between; align-items: center;
