@@ -709,6 +709,8 @@ Executes the remaining findings from this session's typography audit / Design Sy
 **Decision checkpoints — block the listed task until answered, not scheduled as their own tasks:**
 - Is the Display Hero's 152px ceiling a deliberate brand choice? (Documentation-only if yes; doesn't block any task above.)
 - Is `.contact-h2`'s larger-than-its-siblings size (up to 7.5rem vs. 5.5rem for the rest of Display Secondary) an intentional closing bookend, or drift? No task above touches it either way pending an answer — currently rendering as-is.
+- The homepage's mobile-tuned hero clamps (5 bespoke `clamp()` curves in `index.html`'s inline block, beyond the base Display Hero token) — genuine small-screen fit-and-finish, or leftover drift? Needs a visual diff against the base token's own clamp on a real narrow viewport before deciding either way. *(Re-added 2026-07-18: dropped from this list when Tasks 9.8-9.11 were logged — still genuinely open, wasn't part of that batch.)*
+- The homepage hero eyebrow's size bump (`0.84rem`/`0.17em` tracking vs. the standard 11px/`0.12em` everywhere else) — deliberate emphasis, or pre-cleanup debris? Same visual-diff-first approach as above. *(Re-added 2026-07-18, same note as above.)*
 - The Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — reviewed and intentionally left out of this phase; revisit only if it causes a real, observed problem.
 
 **Resolved 2026-07-18 (owner reviewed all five open items, see Tasks 9.8-9.11 and Task 9.4's updated entry for what each answer produced):**
