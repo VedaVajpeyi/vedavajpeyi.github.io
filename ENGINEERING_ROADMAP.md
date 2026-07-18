@@ -690,6 +690,22 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** None realized.
 - **Status:** ✅ Complete. Commit pending.
 
+### Task 9.15 ✅ COMPLETE
+- **Objective:** Owner asked to check the rest of the site for other icon inconsistencies beyond the three already found/fixed in Tasks 9.13-9.14. Full systematic sweep, not a spot-check.
+- **Method:** Cataloged every `content:` pseudo-element with non-empty content across all 5 live stylesheets (precise regex this time, excluding `justify-content`/`align-content` false positives); every inline `<svg>` in HTML; every `mask-image`/`background-image` icon definition in CSS; every `@keyframes` animation; every accordion/toggle/expand pattern.
+- **One real finding, fixed:** the three `.srv-ind-icon` SVGs on `services/index.html` (compass, book, mortarboard) are meant to be one cohesive icon set but weren't declared identically — the compass icon was missing `stroke-linecap="round"`, present on the other two. Checked whether this was actually visible before fixing: the compass's paths (`<circle>` + a closed `<path>` ending in `Z`) have no open subpath ends, so `stroke-linecap` was a no-op today — the fix is for correctness and future-proofing (if that icon's paths ever change to include an open stroke), not a visible bug. Added the missing attribute; all three SVGs now declare identical style attributes.
+- **Checked and confirmed already consistent, no fix needed:**
+  - Quote marks — `.pg-quote-band` (literal curly quotes) vs. `.prose-quote` (no quote mark, border-left treatment) differ, but consistently so within each of the two already-established Pull Quote tiers (Feature vs. Inline). Not drift.
+  - The services accordion `+`/`×` toggle, the Books & Beds pulse-dot status indicator, the hamburger menu icon, the homepage marquee's `◆` separator, and the scroll-position `.spy-dot` indicator — each is a single, unique implementation with no comparable second instance anywhere on the site, so there's no established pattern for any of them to deviate from. Not flagged as findings; there's nothing for them to be inconsistent *with*.
+  - No email/phone/social icon glyphs, no read-time/calendar/clock icons, and no checkmark/tick glyphs exist anywhere on the site.
+  - Confirmed `.link-arrow`'s two mask-image definitions (now including `.pg-back`, Task 9.13) are the *only* SVG-mask icon components in any live stylesheet — nothing else of that kind was missed.
+- **Files changed:** `services/index.html` only (one attribute, one SVG tag).
+- **Verification checklist:** Tag-balance (300/300); `sync-chrome.mjs` clean; full 54-page 200 sweep.
+- **Success criteria:** Every icon-like decorative element on the site either matches its established pattern, or is confirmed to have no pattern to match.
+- **Rollback plan:** Single-line revert.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
+
 **Decision checkpoints — block the listed task until answered, not scheduled as their own tasks:**
 - Is the Display Hero's 152px ceiling a deliberate brand choice? (Documentation-only if yes; doesn't block any task above.)
 - Is `.contact-h2`'s larger-than-its-siblings size (up to 7.5rem vs. 5.5rem for the rest of Display Secondary) an intentional closing bookend, or drift? No task above touches it either way pending an answer — currently rendering as-is.
