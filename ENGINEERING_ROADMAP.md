@@ -706,12 +706,29 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** None realized.
 - **Status:** ✅ Complete. Commit pending.
 
+### Task 9.16 ✅ COMPLETE
+- **Objective:** Resolve the 4 remaining decision-checkpoint items (Display Hero 152px, `.contact-h2` bookend size, homepage mobile hero clamps, hero eyebrow size bump). Owner asked for a side-by-side comparison with an expert recommendation on each, then approved acting on all 4 recommendations as given.
+- **Method:** Traced each item to its real siblings/ratios/computed values (not just re-stating the original audit note) before recommending. Built a side-by-side comparison artifact with real site copy at true relative scale for the owner to review.
+- **Findings and actions:**
+  - **Display Hero (152px):** Confirmed intentional, no code change. It's the site's single largest text, appears exactly once (homepage `.hero-h1`), and sits a clean 1.36× over `--type-h1-page` (112px) — a normal hierarchy step, not drift.
+  - **`.contact-h2` bookend (120px vs. its 4 siblings' 88px):** Confirmed intentional — it's the homepage's *closing* section heading ("Let's talk.") running the same 1.36× ratio the Display Hero holds over Page Title, echoing the opening hero at the other end of the homepage's single-page scroll. Promoted from a bare literal `clamp()` to a new token, `--type-display-2-close` (`design.css`), so the intent is visible in source instead of looking like an unexplained one-off. No visual change — same computed value.
+  - **Homepage mobile hero clamps (3-tier system, ≤600/≤430/≤360px, scoped to `.hero-top-mockup .hero-h1`):** Confirmed intentional — a real, coherent taper tuned for the homepage's two-part hero layout (headline + floating `.hero-sub--mockup` paragraph), consistently bigger/tighter/more negative-tracked than a generic hero would need. Found and removed one piece of dead code while investigating: `design.css`'s own `.hero-h1` rule at the `@media (max-width: 600px)` breakpoint (`clamp(3rem, 13vw, 4.5rem)`) is fully unreachable — `.hero-h1` is only ever used on the homepage, and the homepage's own more-specific `.hero-top-mockup .hero-h1` override always wins at that breakpoint. Deleted.
+  - **Hero eyebrow size bump (`0.84rem`/`0.17em` tracking, desktop only):** Not confirmed as intentional — fixed. Unlike the other 3 items, it had no internal logic: the same element's own mobile tiers already used the standard 0.12em tracking, so even the homepage didn't apply the "bump" consistently across its own breakpoints. Changed desktop `.hero-kicker` to `font-size: var(--type-meta)` / `letter-spacing: 0.12em`, matching every other eyebrow on the site.
+- **Files changed:** `assets/css/design.css` (new `--type-display-2-close` token, `.contact-h2` repointed to it, dead `.hero-h1` 600px rule removed), `index.html` (`.hero-kicker` desktop font-size/letter-spacing).
+- **Verification checklist:** Brace-balance clean (design.css 492/492, index.html inline block 217/217); `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260718-1` run (53 files stamped); full 62-page local-server 200 sweep, all pass; live computed-style check on homepage confirms `.hero-kicker` now resolves to `11px`/`1.32px` letter-spacing (was `13.44px`/`2.28px`) and `.contact-h2` still resolves to the same value as before the token swap (96px at 1280px viewport) — no unintended visual change from the refactor.
+- **Success criteria:** All 4 checkpoint items resolved with an explicit, reasoned answer rather than left open; the one real inconsistency (eyebrow bump) fixed; no visual regression on the 3 confirmed-intentional items.
+- **Rollback plan:** Single-file, few-line reverts in `design.css` and `index.html`.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
+
 **Decision checkpoints — block the listed task until answered, not scheduled as their own tasks:**
-- Is the Display Hero's 152px ceiling a deliberate brand choice? (Documentation-only if yes; doesn't block any task above.)
-- Is `.contact-h2`'s larger-than-its-siblings size (up to 7.5rem vs. 5.5rem for the rest of Display Secondary) an intentional closing bookend, or drift? No task above touches it either way pending an answer — currently rendering as-is.
-- The homepage's mobile-tuned hero clamps (5 bespoke `clamp()` curves in `index.html`'s inline block, beyond the base Display Hero token) — genuine small-screen fit-and-finish, or leftover drift? Needs a visual diff against the base token's own clamp on a real narrow viewport before deciding either way. *(Re-added 2026-07-18: dropped from this list when Tasks 9.8-9.11 were logged — still genuinely open, wasn't part of that batch.)*
-- The homepage hero eyebrow's size bump (`0.84rem`/`0.17em` tracking vs. the standard 11px/`0.12em` everywhere else) — deliberate emphasis, or pre-cleanup debris? Same visual-diff-first approach as above. *(Re-added 2026-07-18, same note as above.)*
 - The Card Title (Compact)/Subsection size gap (1.065×, empirically confirmed not colliding on any live page) — reviewed and intentionally left out of this phase; revisit only if it causes a real, observed problem.
+
+**Resolved 2026-07-18 (owner reviewed the Display Hero / `.contact-h2` / mobile hero clamps / eyebrow bump items via a side-by-side comparison, approved all 4 recommendations — see Task 9.16):**
+- Display Hero 152px → confirmed intentional, no change.
+- `.contact-h2` bookend → confirmed intentional, promoted to a named token.
+- Homepage mobile hero clamps → confirmed intentional; one unrelated dead-code line removed along the way.
+- Hero eyebrow size bump → not intentional, fixed to the standard token/tracking.
 
 **Resolved 2026-07-18 (owner reviewed all five open items, see Tasks 9.8-9.11 and Task 9.4's updated entry for what each answer produced):**
 - `.contact-service-name`'s conflicting declarations → confirmed the smaller/lighter rendering was correct; fixed as a code-hygiene cleanup (Task 9.8), no visual change.
