@@ -582,39 +582,36 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Estimated risk:** Low-medium — depends entirely on how many pages use `.pg-subtitle`; small count = low risk, needs re-checking.
 - **Status:** Not started.
 
-### Task 9.5 — Not started
-- **Objective:** Add a two-tier `--type-card` token (Featured/Compact, per the spec's kept exception) and consolidate the 7 card-title implementations (`.ci-h3`/`.essay-feat h3` → Featured; `.ei h3`/`.srv-ind-item h3`/`.tl-org`/`.value-item h3` → Compact) onto it. Fix `.list-item h2`'s token misuse (currently borrows `--type-h2`, the Section Heading token, for what's structurally a card title on a listing page) by moving it to the Featured tier.
+### Task 9.5 ✅ COMPLETE
+- **Objective:** Add a two-tier `--type-card` token (Featured/Compact) and consolidate the 7 card-title implementations onto it. Fix `.list-item h2`'s token misuse (was borrowing `--type-h2`, the Section Heading token).
 - **Why this exists:** Seven near-duplicate sizes for what's functionally two real hierarchy tiers (spotlight vs. compact list row) — the largest remaining "same role, unreconciled values" cluster after eyebrows.
-- **Dependencies:** None.
-- **Files expected to change:** `design.css` only (all 7 selectors live there).
-- **Implementation plan:** Re-verify each of the 7 selectors' current clamp/size values (they may have drifted since the audit). Add `--type-card-featured`/`--type-card-compact` (or a single token with the two clamp ranges, whichever keeps the diff smaller). Point each selector at the correct tier. `.list-item h2` moves from `--type-h2` to the Featured tier.
-- **Verification checklist:** Screenshot comparison across all affected templates: homepage case-study/essay cards (Featured), About page timeline and values grid (Compact), services numbered list (Compact), work/writing listing pages (Featured, via `.list-item h2`); computed-style read-back on all 7 selectors.
-- **Success criteria:** Two card-title sizes instead of seven; `.list-item h2` no longer shares a token with in-article Section Headings.
+- **Files changed:** `design.css` only. Re-verified all 7 selectors' current values before touching anything — all matched the audit, no drift.
+- **Design judgment call, made explicitly rather than silently:** 3 of the Compact-tier selectors (`.srv-ind-item h3`, `.tl-org`, `.value-item h3`) were previously **fixed** at 1.15rem/1.2rem/1.1rem — never responsive. `.ei h3`, the 4th Compact selector, was already fluid (`clamp(1.15rem, 2vw, 1.65rem)`). Rather than inventing a new, more conservative range to avoid changing the 3 fixed ones' behavior, used `.ei h3`'s already-production-tested clamp as the single canonical Compact value for all 4 — consistent with how Task 4.1-4.4 tokenized from values that already existed rather than inventing new ones. This does mean those 3 selectors now grow up to ~39% larger on wide screens than before (confirmed: `.srv-ind-item h3` measured 25.6px at 1280px viewport vs. its old fixed 18.4px). Checked this doesn't cause wrapping/overflow problems in any of their grid contexts (below) before accepting it.
+- **Implementation:** Added `--type-card-featured: clamp(1.5rem, 2.5vw, 2.2rem)` and `--type-card-compact: clamp(1.15rem, 2vw, 1.65rem)`. `.ci-h3`/`.essay-feat h3` (already correct value) and `.ei h3` (already correct value) tokenized in place. `.list-item h2` moved from `--type-h2` to `--type-card-featured`, with its line-height (1.15→1.2) and letter-spacing (-0.02em→-0.01em) corrected to match the tier. `.srv-ind-item h3`/`.tl-org`/`.value-item h3` moved from their fixed literals to `--type-card-compact` (all three previously lacked or had inconsistent `line-height`; standardized to `1.2` explicitly on `.srv-ind-item h3`, the one missing it).
+- **Verification checklist:** Brace-balance; `sync-chrome.mjs` clean; full 54-page 200 sweep. Screenshots were unreliable this session (browser tab visibility/viewport-reporting glitches, unrelated to this change — confirmed via `screen.width`/`height` reporting correctly while `window.innerWidth` intermittently reported 0 on the same tab) — fell back to computed-style + layout-geometry read-back instead: confirmed `.srv-ind-item h3` (services page) and `.tl-org`/`.value-item h3` (About page) all resolve to the expected clamp value at a real, healthy 1280px viewport (25.6px, matching `2vw` at that width), and — the actual thing that mattered, given the size increase — checked every affected element's rendered height against its line-height to confirm none wrapped to more lines than its container could hold: all `.srv-ind-item h3` instances (3/3) and `.value-item h3` instances (4/4) render on exactly one line at their new size; the longest `.tl-org` entry ("The University of Chicago Booth School of Business") also renders on one line within its 760px column.
+- **Success criteria:** Two card-title sizes instead of seven; `.list-item h2` no longer shares a token with in-article Section Headings; no wrapping/overflow introduced.
 - **Rollback plan:** Single-file revert.
-- **Estimated risk:** Medium — most call sites of any task in this phase (7 selectors × several templates each), needs the most thorough visual check.
+- **Estimated risk:** Medium as scoped, low as executed — the one real judgment call (letting 3 selectors become fluid) was checked against actual rendered geometry rather than assumed safe.
+- **Status:** ✅ Complete. Commit pending.
 - **Status:** Not started.
 
-### Task 9.6 — Not started
-- **Objective:** Merge `.ci-quote` (homepage case-study card quote, 0.95rem gold) into the Pull Quote — Inline spec (`.prose-quote`, 1.15rem, muted), keeping only the gold tint as a context-appropriate color choice, per the spec's kept two-tier exception (Inline/Feature) — `.ci-quote` doesn't qualify as a third tier, it's used exactly once.
-- **Why this exists:** Smallest, most contained remaining consolidation — good task to pair with 9.7 if doing a lighter session.
-- **Dependencies:** None.
-- **Files expected to change:** `design.css`.
-- **Implementation plan:** Point `.ci-quote`'s size/line-height at `.prose-quote`'s values, keep its distinct color.
-- **Verification checklist:** Screenshot of the one homepage case-study card using `.ci-quote`.
+### Task 9.6 ✅ COMPLETE
+- **Objective:** Merge `.ci-quote` (homepage case-study card quote) into the Pull Quote — Inline spec (`.prose-quote`), keeping only the gold tint as a context-appropriate color choice.
+- **Files changed:** `design.css` only. Re-verified before acting: `.ci-quote` is actually used on **2** pages, not 1 as the roadmap assumed (`index.html` and `work/index.html`, identical quote text) — doesn't change the fix, both consume the same rule.
+- **Implementation:** `.ci-quote`'s `font-size` changed from `0.95rem` to `1.15rem` (matching `.prose-quote`). `line-height` was already `1.65` on both — no change needed there. Left `.ci-quote`'s own `margin-top`/`padding-left`/`border-left`/gold color untouched (its card-specific presentation, not part of the size/line-height consolidation). Noted but did not touch: two mobile-only (`≤600px`) inline overrides on `.ci-quote` in `index.html` — one sets a third font-size, immediately followed by one that sets `display: none`, so the size override is already dead code at that breakpoint regardless of this change; out of scope for this task.
+- **Verification checklist:** Brace-balance; `sync-chrome.mjs` clean; full 54-page 200 sweep; computed-style + geometry read-back on both `index.html` and `work/index.html` confirmed `.ci-quote` renders identically on each (18.4px, wraps cleanly to 2 lines within its 656px column, no overflow).
 - **Success criteria:** One inline-quote size site-wide.
 - **Rollback plan:** Single-file revert.
-- **Estimated risk:** Low — one call site.
-- **Status:** Not started.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending.
 
-### Task 9.7 — Not started
-- **Objective:** Add `--type-caption: 0.85rem` and apply it to genuine figure-caption contexts; absorb the `0.82rem`/`0.9375rem` near-miss instances found in the audit (approximations of `--type-body-sm` rather than a real second size).
-- **Why this exists:** Closes the last named gap in the Design System Spec's role table.
-- **Dependencies:** None.
-- **Files expected to change:** `design.css`, `sxp-essays.css`, `sociology-product.css`, `sociology-product-system.css` (figure/figcaption selectors across all four, re-enumerate at execution time).
-- **Implementation plan:** Re-verify which selectors are true captions (attached to a `<figure>`/image) vs. general supporting copy that happens to be a similar size — only true captions get the new token, per the spec's Caption vs. Supporting Copy distinction.
-- **Verification checklist:** Screenshot of at least one figure/caption instance per file touched.
-- **Success criteria:** Caption role has one canonical value, distinct from Supporting Copy.
-- **Rollback plan:** Per-file revert.
+### Task 9.7 — Closed, no action (premise didn't hold on re-verification)
+- **Original objective:** Add `--type-caption: 0.85rem` and apply it to genuine figure-caption contexts; absorb `0.82rem`/`0.9375rem` near-miss instances into it.
+- **Re-verification found no actual problem to fix:** only 2 genuine `figcaption` selectors exist site-wide (`.sxp-figure figcaption`, `.socx-notebook-figure figcaption`) and both already consistently use `var(--type-body-sm)` — they don't drift from each other or from Supporting Copy. Introducing a new, smaller `--type-caption` value now would mean *inventing* a visual distinction that doesn't currently exist, not fixing one — exactly what the Design System Spec's own "exceptions are earned, not assumed" principle argues against.
+- **The `0.82rem` near-misses checked separately, none are captions:** `.services-more-copy` (an expandable "read more" text block), `.sxp-axis-note` (a chart-axis annotation), `.sxp-chip` (a filter-chip/tag background, closer to the Tag role than any body-text role). None are attached to a figure or image.
+- **New minor finding, not fixed here:** those same 3 selectors use a literal `0.82rem` that doesn't match any existing token (closest is `--type-body-sm` at `0.9rem`) — worth a look sometime, but as its own small finding, not as part of a Caption role that turned out not to need inventing.
+- **Files changed:** None.
+- **Status:** Closed. No code change; a role that doesn't need to exist yet isn't a gap.
 - **Estimated risk:** Low — small, well-scoped selectors.
 - **Status:** Not started.
 
@@ -637,6 +634,7 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Unify the three light/dark-variant mechanisms** (`.ph.dk`/`.lt`, `.cursor.on-light`, `data-t`/`data-nav-light`). Works correctly today; unifying is a coherence improvement, not a bug fix. No urgency.
 - **Legacy-named `assets/img/about-v21/notebook-notes/` folder.** `Agents.md` explicitly says don't rename casually. Only revisit as part of a broader, deliberate asset reorganization, never as a drive-by.
 - **Typography scale full enforcement** (the ~40% of `font-size` declarations bypassing `--type-*` tokens). Many are legitimate one-off heading `clamp()` curves; a real cleanup here needs page-by-page visual judgment, not a mechanical sweep. **Phase 9 below is that page-by-page judgment pass** — this entry stays here until Phase 9 completes, then gets resolved into it rather than left as a stale parallel note.
+- **`.services-more-copy`/`.sxp-axis-note`/`.sxp-chip`'s literal `0.82rem`.** Found while investigating Task 9.7 (Caption token, closed with no action — see that entry). None of the three are captions; the `0.82rem` just doesn't match any existing token (closest is `--type-body-sm` at `0.9rem`). Small, low-priority — three call sites, no drift between them to resolve, just an unnamed value.
 - **`.pg-hero`'s reveal-on-load elements missing `prefers-reduced-motion` coverage.** Found incidentally in Task 9.1 while merging `.morph-deck` into `.pg-deck` (which *did* have coverage, added to `design.css`'s reduced-motion block as part of that task). `.pg-h1`, `.pg-hero-kicker`, `.pg-meta`, `.pg-hero-cta`, `.pg-subtitle`, and `.pg-tag` all use the same `opacity`/`transform` fade-in-on-`body.pg-ready` pattern and none were checked beyond a `grep` confirming they're absent from the reduced-motion block. Not investigated deeply enough to know if this is 1 fix or 6 — right trigger is a dedicated small task, not a drive-by addition to whatever else is being touched.
 
 ## Rejected (investigated, not worth doing — don't re-propose without new evidence)
