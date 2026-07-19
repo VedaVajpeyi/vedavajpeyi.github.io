@@ -15,10 +15,6 @@ body.wr-v1 {
   font-family: "Manrope", sans-serif;
 }
 
-body.wr-v1 .cursor {
-  mix-blend-mode: normal;
-}
-
 .wr-hero {
   position: relative;
   overflow: hidden;

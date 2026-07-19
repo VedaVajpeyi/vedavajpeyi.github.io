@@ -65,7 +65,6 @@
      stacking context) isn't part of this scale and shouldn't be forced in. */
   --z-skip-link: 10000;
   --z-preloader: 9999;
-  --z-cursor:    9998;
   --z-nav:       500;
   --z-overlay:   490;
   --z-sticky:    400;
@@ -207,26 +206,6 @@ img { display: block; max-width: 100%; }
   align-self: flex-end; font-variant-numeric: tabular-nums;
 }
 .loader-label { color: var(--muted-d); }
-
-/* ═══════════════════════════════════════════════════════
-   CURSOR
-═══════════════════════════════════════════════════════ */
-.cursor {
-  display: none;
-  position: fixed; top: 0; left: 0;
-  width: 8px; height: 8px;
-  background: var(--accent); border-radius: 50%;
-  pointer-events: none; z-index: var(--z-cursor);
-  transform: translate(-50%, -50%);
-  transition: width var(--duration-base) var(--ease), height var(--duration-base) var(--ease),
-              background var(--duration-base), border var(--duration-base), opacity 0.3s;
-  will-change: left, top;
-}
-.cursor.large { width: 40px; height: 40px; background: transparent; border: 1.5px solid var(--accent); }
-.cursor.on-light { background: var(--text-l); }
-.cursor.on-light.large { background: transparent; border-color: var(--text-l); }
-.cursor.hidden { opacity: 0; }
-@media (hover: none) { .cursor { display: none; } }
 
 /* ═══════════════════════════════════════════════════════
    NAV
@@ -482,7 +461,6 @@ body.ready .hero-kicker { opacity: 1; }
    needs the light-safe variant -- same split as .s-label above. */
 #about .astat-num { color: var(--accent-on-light); }
 .astat-lbl,
-.ci-num,
 .list-item-num,
 .value-num {
   font-family: var(--mono);
@@ -538,7 +516,6 @@ a.essay-feat-img { display: block; }
 .ci-content { grid-area: content; padding: 0.5rem 0; }
 .ci-b .ci-content { padding-left: 4.5rem; }
 .ci-a .ci-content { padding-right: 4.5rem; }
-.ci-num { color: var(--accent); margin-bottom: 0.85rem; opacity: 0.38; }
 .ci-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
 .ci-tag { display: inline-flex; align-items: center; font-family: var(--mono); font-size: var(--type-meta); text-transform: uppercase; letter-spacing: 0.08em; color: rgba(var(--accent-rgb),0.72); border: 1px solid rgba(var(--accent-rgb),0.18); padding: 0.15rem 0.5rem; border-radius: 1px; text-decoration: none; }
 .ci-h3,

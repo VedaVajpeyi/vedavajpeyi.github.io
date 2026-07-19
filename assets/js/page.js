@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────────────
    SHARED PAGE JS — used on all pages including home
-   (Lenis, cursor, mobile nav, scroll reveals, nav theme,
+   (Lenis, mobile nav, scroll reveals, nav theme,
     footer rotator, spy hook, case-study hover tint)
 ───────────────────────────────────────────────────── */
 
@@ -54,21 +54,6 @@ if (burger) {
   });
 }
 
-/* Cursor */
-const cursor = document.getElementById('cursor');
-if (cursor) {
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
-    cursor.classList.remove('hidden');
-  }, { passive: true });
-  document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
-  document.querySelectorAll('a, button, .list-item, .srv, .srv-s, .cm, .cta-btn, .cta-btn-outline, .newsletter-btn').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('large'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('large'));
-  });
-}
-
 /* Nav theme (light sections use data-nav-light attribute) */
 const nav = document.getElementById('nav');
 const lightEls = document.querySelectorAll('[data-nav-light]');
@@ -80,11 +65,6 @@ function updateNav(sy) {
     if (y >= el.offsetTop && y < el.offsetTop + el.offsetHeight) light = true;
   });
   if (nav) nav.setAttribute('data-t', light ? 'light' : 'dark');
-  if (cursor) {
-    const wasLarge = cursor.classList.contains('large');
-    cursor.className = 'cursor' + (light ? ' on-light' : '');
-    if (wasLarge) cursor.classList.add('large');
-  }
 }
 lenis.on('scroll', ({ scroll }) => {
   updateNav(scroll);
