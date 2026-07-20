@@ -58,7 +58,7 @@
   border-top: 1px solid var(--border-d);
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(240, 235, 227, 0.84);
+  color: rgba(var(--text-d-rgb), 0.84);
 }
 
 .socx-resource-shell {
@@ -148,7 +148,7 @@
   margin: 1.5rem 0;
   padding: 1rem 1.05rem;
   border-left: 3px solid var(--accent);
-  background: rgba(181, 146, 90, 0.08);
+  background: rgba(var(--accent-rgb), 0.08);
   font-size: var(--type-body-sm);
   line-height: 1.75;
   color: var(--body-l);
@@ -216,7 +216,7 @@
   padding: 2.5rem;
   border: 1px solid var(--border-l);
   border-radius: 0;
-  background: linear-gradient(180deg, rgba(181, 146, 90, 0.08) 0%, rgba(181, 146, 90, 0.02) 100%), var(--light);
+  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.08) 0%, rgba(var(--accent-rgb), 0.02) 100%), var(--light);
 }
 
 .socx-use-intro {
@@ -257,7 +257,7 @@
 
 .socx-path-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(181, 146, 90, 0.35);
+  border-color: rgba(var(--accent-rgb), 0.35);
 }
 
 .socx-path-card h3 {

@@ -4,7 +4,7 @@
   border: 1px solid var(--border-l);
   border-radius: 0;
   background:
-    linear-gradient(180deg, rgba(181,146,90,0.08) 0%, rgba(181,146,90,0.03) 100%),
+    linear-gradient(180deg, rgba(var(--accent-rgb),0.08) 0%, rgba(var(--accent-rgb),0.03) 100%),
     var(--light);
 }
 
@@ -50,8 +50,8 @@
 }
 
 .sxp-compare-card-strong {
-  background: rgba(181,146,90,0.12);
-  border-color: rgba(181,146,90,0.35);
+  background: rgba(var(--accent-rgb),0.12);
+  border-color: rgba(var(--accent-rgb),0.35);
 }
 
 .sxp-compare h3,
@@ -128,8 +128,8 @@
 }
 
 .sxp-matrix-warm {
-  background: rgba(181,146,90,0.12);
-  border-color: rgba(181,146,90,0.3);
+  background: rgba(var(--accent-rgb),0.12);
+  border-color: rgba(var(--accent-rgb),0.3);
 }
 
 .sxp-matrix-good {
