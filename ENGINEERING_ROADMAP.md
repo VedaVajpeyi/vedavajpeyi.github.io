@@ -940,6 +940,18 @@ Owner decided the homepage hero should match the site's established anchor-page 
 - **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260720-9`.
   - **Resolves Task 12.2's open decision checkpoint** ("full mobile-taper alignment, left as a follow-up") — the three bespoke breakpoint tiers are gone, and `.hero-h1`/`.pg-h1`/`.contact-h2` now share one identical mobile-tier value instead of three separate ones.
 
+### Task 12.4 ✅ COMPLETE
+- **Objective:** Owner asked to reduce the padding around all hero eyebrows, "on both sides," using design judgment for the amount.
+- **Why this exists:** No element has its own literal `padding` — confirmed via grep before touching anything. The whitespace framing the eyebrow (and the rest of the hero content sitting in the same box) comes from the hero section's own horizontal padding: `.pg-hero` and `#hero` both used `var(--space-3xl)` (56px) left/right.
+- **Scope decision:** `--space-3xl` itself is shared by 26 other call sites sitewide (every major section's gutter — About, Work, Writing, Services, Contact, footer), so retuning the token directly would have changed spacing everywhere, not just hero. Overrode `.pg-hero`/`#hero`'s horizontal padding specifically instead, leaving the shared token and every other section untouched.
+- **Amount:** `var(--space-3xl)` (56px) → `var(--space-xl)` (40px) — a 29% reduction, using an existing token rather than inventing a new value. Landed here rather than a smaller trim because hero sections are the one place on the site meant to feel expansive/edge-forward rather than optimized for reading measure; 40px is still a comfortable margin, and it's the same value already used as the vertical rhythm elsewhere in the scale, not an arbitrary number.
+- **Files changed:** `assets/css/design.css` only (`.pg-hero`, `#hero`).
+- **Verification checklist:** Brace-balance (480/480); `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260721-1` run, full 62-page 200 sweep; live computed-style check on `about.html` (`.pg-hero`) and `index.html` (`#hero`) confirmed `padding-left`/`padding-right` both resolve to `40px`; confirmed mobile breakpoints (`1.75rem` on both) are separate literals, untouched by this change; visual screenshot of the homepage hero confirms content pulled closer to the viewport edges, nothing clipped or misaligned.
+- **Success criteria:** Hero horizontal padding reduced sitewide (every `.pg-hero` page + homepage); every other section's gutter unchanged.
+- **Rollback plan:** Two-line revert, single file.
+- **Estimated risk:** None realized — confirmed `.pg-hero-img`'s full-bleed background (`inset: 0`) doesn't depend on the parent's padding value before changing it.
+- **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-1`.
+
 ---
 
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
