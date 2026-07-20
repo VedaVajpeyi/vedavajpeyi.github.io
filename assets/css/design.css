@@ -944,7 +944,7 @@ body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
   position: relative;
   overflow: hidden;
 }
-.pg-hero-inner { max-width: 1180px; width: 100%; }
+.pg-hero-inner { max-width: 1180px; width: 100%; position: relative; z-index: 1; }
 .pg-hero-kicker {
   color: var(--accent);
   margin-bottom: var(--space-xl);
