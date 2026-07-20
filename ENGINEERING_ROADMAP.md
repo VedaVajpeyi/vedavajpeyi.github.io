@@ -520,7 +520,7 @@ Findings from a deep-dive review of the repo (docs, `.git` internals, branches),
 
 ---
 
-## Phase 9 — Typography role consolidation (in progress)
+## Phase 9 — Typography role consolidation ✅ COMPLETE
 
 Executes the remaining findings from this session's typography audit / Design System Specification v1.0 / best-practices review, now that the accessibility and duration-token pieces landed as Tasks 3.17, 3.18, and 4.5. This is the page-by-page visual-judgment pass the "Typography scale full enforcement" Deferred entry above was waiting for — not a mechanical sweep, each task below is one specific, independently-decided consolidation.
 
@@ -802,6 +802,22 @@ Executes the remaining findings from this session's typography audit / Design Sy
 
 ---
 
+## Phase 10 — Dead code audit (2026-07-19)
+
+### Task 10.1 ✅ COMPLETE
+- **Objective:** A comprehensive dead-code audit of the whole live surface (CSS selectors, custom properties, JS, image assets, orphaned HTML pages), owner-requested, not triggered by a specific symptom.
+- **Method:** Built a throwaway exact-token scan script (same shape as the "exact-token dead-class check" this repo already relies on) that extracts every class/id selector from all 6 live CSS files and checks each against the concatenated text of all 55 live HTML files plus both hand-written JS files — validated the script itself first by injecting a synthetic dead class and confirming it was caught. Separately checked every custom property (`--x`) definition for a `var(--x` reference anywhere in the CSS. Manually reviewed `page.js`/`home.js` for unreached functions and confirmed every DOM selector they query resolves against live markup. Diffed `assets/img/` file list against HTML/CSS/JS references. Diffed the live HTML file list against `sitemap.xml`.
+- **Findings:** `design.css`, `sociology-product.css`, `sociology-product-system.css`, `sxp-essays.css`, and `writing-redesign.css` had zero dead selectors and zero dead custom properties — consistent with the extensive prior cleanup (Phase 1, Tasks 3.16, 9.19, 9.20, 9.22). `work-scroll-morph.css` had two: a bare `.morph-close` selector (used in 4 places — a shared rule with `.morph-hero`, a standalone declaration, and two `@media` shared rules — but never applied as a class in `work/index.html`; the real close-section wrapper is `.work-close-strip`) and an unused `--morph-accent: 181, 146, 90;` custom property (defined once, never referenced via `var()`). No dead JS, no orphaned images, no orphaned/unlinked HTML pages, no sitemap/live-page mismatch.
+- **Note on prior mis-verification:** Task 3.4's write-up had rejected an external review's claim that `.morph-close` was orphaned, calling it "false — it's live in `work/index.html`." That check matched the *substring* `morph-close` (which is real and live via `.morph-close-grid`, `.morph-close-copy`, etc.) rather than the exact, bounded token `.morph-close` on its own — the substring match produced a false negative. This audit's word-boundary-bounded regex (validated against a synthetic injection) caught the distinction. Logged here rather than silently overwritten, per the roadmap's own revalidation principle.
+- **Files changed:** `assets/css/work-scroll-morph.css` only — removed `--morph-accent`, the bare `.morph-close` selector from all 4 locations (dropped from 2 shared-selector lists, deleted 2 standalone declaration blocks).
+- **Verification checklist:** Brace-balance before/after (37/37); re-ran the audit script post-edit, confirmed 0 candidates across all 6 CSS files; `sync-chrome.mjs` clean; full 54-page 200 sweep against a local static server; `work/index.html` loaded in-browser, console clean, hero renders correctly; computed-style read-back on `.work-close-strip`/`.morph-close-grid` (the section that would have been affected if `.morph-close` had actually been live) confirmed both are driven entirely by their own rules, unaffected by the removal.
+- **Success criteria:** Zero remaining dead CSS selectors/custom properties/JS/orphaned assets across the live surface; zero visual change (the removed rules were never applied to any element).
+- **Rollback plan:** Single-file revert.
+- **Estimated risk:** None — target selectors had zero HTML matches, confirmed via a validated script before deleting, then reconfirmed after.
+- **Status:** ✅ Complete. No shared-asset `?v=` bump needed — `work-scroll-morph.css` isn't in `bump-asset-version.mjs`'s tracked list (a small script gap already noted in Task 3.4's write-up, not fixed here — out of scope for a dead-code task).
+
+---
+
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
 
 - ~~Three different bullet-marker mechanisms.~~ **Resolved in Task 9.14.** `.prose ul`'s native bullet kept (legitimate content-type variation); `.sxp-list` and `.srv-num-aside`'s dots unified, including an incidental `--accent` → `--accent-on-light` fix on `.sxp-list` found along the way.
@@ -812,7 +828,7 @@ Executes the remaining findings from this session's typography audit / Design Sy
 - **Unify the two light/dark-variant mechanisms** (`.ph.dk`/`.lt`, `data-t`/`data-nav-light`). Works correctly today; unifying is a coherence improvement, not a bug fix. No urgency. *(Was three mechanisms; `.cursor.on-light` no longer exists as of Task 9.18's cursor removal.)*
 - ~~Dead CSS from Task 9.17's homepage simplification.~~ **Resolved in Task 9.19.**
 - **Legacy-named `assets/img/about-v21/notebook-notes/` folder.** `Agents.md` explicitly says don't rename casually. Only revisit as part of a broader, deliberate asset reorganization, never as a drive-by.
-- **Typography scale full enforcement** (the ~40% of `font-size` declarations bypassing `--type-*` tokens). Many are legitimate one-off heading `clamp()` curves; a real cleanup here needs page-by-page visual judgment, not a mechanical sweep. **Phase 9 below is that page-by-page judgment pass** — this entry stays here until Phase 9 completes, then gets resolved into it rather than left as a stale parallel note.
+- ~~Typography scale full enforcement.~~ **Resolved into Phase 9 (Tasks 9.1-9.22, now complete).** The ~40% of `font-size` declarations bypassing `--type-*` tokens turned out to be mostly legitimate one-off `clamp()` curves, confirmed individually rather than assumed — the page-by-page judgment pass this entry was waiting on found and fixed every real instance of same-role drift (eyebrows, card titles, Display Medium siblings, the eyebrow tracking bump) and explicitly confirmed the rest as intentional (Display Hero, `.contact-h2`'s bookend, the mobile hero clamps, `.services-row-title`'s distinct accordion role). What's left is trace-level only — see the 4 small unnamed-literal entries below, none large enough to justify a new token.
 - **`.services-more-copy`/`.sxp-axis-note`/`.sxp-chip`'s literal `0.82rem`.** Found while investigating Task 9.7 (Caption token, closed with no action — see that entry). None of the three are captions; the `0.82rem` just doesn't match any existing token (closest is `--type-body-sm` at `0.9rem`). Small, low-priority — three call sites, no drift between them to resolve, just an unnamed value.
 - ~~`.pg-hero`'s reveal-on-load elements missing `prefers-reduced-motion` coverage.~~ **Resolved in Task 9.12.** Turned out to be 5 fixes, not 6 — `.pg-h1` was never animated in the first place, no fix needed there.
 - **`.pg-back`'s font-size (`0.78rem`) vs. `.link-cta`/`.pg-nav a`/`.srv-num-link`'s (`0.8rem`).** Found while fact-checking an external analysis's nav/label claims (mostly rejected — see Task 9.21/9.22 write-ups for what didn't hold up). Back Link and Inline CTA are already two distinct, intentionally-catalogued roles (Task 9.11 confirmed Inline CTA's `0.8rem` is deliberate), so this may be a legitimate secondary-nav-vs-CTA distinction rather than drift. The gap is 0.32px — small enough that guessing wrong either way costs little, but real enough to note. Not acted on.
