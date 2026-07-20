@@ -63,6 +63,17 @@
   --space-3xl: 3.5rem;
   --space-4xl: 4rem;
   --space-5xl: 5rem;
+  /* Hero eyebrow + hero-shell tokens. These are the shared values used by
+     homepage hero kickers, page hero kickers, and the other top-of-page
+     hero wrappers that should now stay in sync. */
+  --eyebrow-gap: var(--space-md);
+  --eyebrow-rule-length: 32px;
+  --hero-shell-pad-top: calc(var(--nav-h) + var(--space-2xl));
+  --hero-shell-pad-x: var(--space-3xl);
+  --hero-shell-pad-bottom: var(--space-3xl);
+  --hero-shell-pad-top-mobile: calc(var(--nav-h) + var(--space-3xl));
+  --hero-shell-pad-x-mobile: 1.75rem;
+  --hero-shell-pad-bottom-mobile: var(--space-5xl);
   /* Global chrome stacking order, high to low. Values unchanged from what
      they replace -- this is a rename, not a re-layering. Scoped to global
      chrome only; a component's purely-local z-index (e.g. within its own
@@ -316,7 +327,7 @@ body.nav-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.26s; }
 #project .s-label,
 #services .s-label { color: var(--accent-on-light); }
 .s-label::after,
-.pg-hero-kicker::after { content: ''; width: 32px; height: 1px; background: var(--accent); flex-shrink: 0; }
+.pg-hero-kicker::after { content: ''; width: var(--eyebrow-rule-length); height: 1px; background: var(--accent); flex-shrink: 0; }
 .s-label-muted { color: var(--muted-d); }
 
 /* ═══════════════════════════════════════════════════════
@@ -343,7 +354,7 @@ body.ready .lw-inner { transform: translateY(0); }
    HOME HERO
 ═══════════════════════════════════════════════════════ */
 #hero { min-height: 100vh; background: var(--dark); display: flex; flex-direction: column; justify-content: center; padding: calc(var(--nav-h) + 6rem) var(--space-xl) 7rem; position: relative; }
-.hero-kicker { color: var(--muted-d); margin-bottom: var(--space-md); opacity: 0; transition: opacity 0.6s ease var(--duration-fast); }
+.hero-kicker { color: var(--muted-d); margin-bottom: var(--eyebrow-gap); opacity: 0; transition: opacity 0.6s ease var(--duration-fast); }
 body.ready .hero-kicker { opacity: 1; }
 .hero-h1 { font-family: var(--serif); font-size: var(--type-h1-page); font-weight: 900; line-height: 1.0; letter-spacing: -0.03em; max-width: 1080px; }
 .hero-h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
@@ -781,7 +792,7 @@ a.essay-feat-img { display: block; }
   color: var(--accent);
   margin-bottom: var(--space-lg);
 }
-.srv-close-kicker::after { content: ''; width: 32px; height: 1px; background: var(--accent); flex-shrink: 0; }
+.srv-close-kicker::after { content: ''; width: var(--eyebrow-rule-length); height: 1px; background: var(--accent); flex-shrink: 0; }
 .srv-close-title {
   font-family: var(--serif);
   font-weight: 900;
@@ -934,7 +945,7 @@ body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
 .pg-hero {
   min-height: 60vh;
   background: var(--dark);
-  padding: calc(var(--nav-h) + var(--space-2xl)) var(--space-3xl) var(--space-3xl);
+  padding: var(--hero-shell-pad-top) var(--hero-shell-pad-x) var(--hero-shell-pad-bottom);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -944,7 +955,7 @@ body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
 .pg-hero-inner { max-width: 1180px; width: 100%; position: relative; z-index: 1; }
 .pg-hero-kicker {
   color: var(--accent);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--eyebrow-gap);
   opacity: 0; transition: opacity var(--duration-slow) ease 0.3s;
 }
 body.pg-ready .pg-hero-kicker { opacity: 1; }
@@ -1410,7 +1421,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 
 /* SUB-PAGE RESPONSIVE */
 @media (max-width: 960px) {
-  .pg-hero { padding: calc(var(--nav-h) + var(--space-3xl)) 1.75rem var(--space-5xl); }
+  .pg-hero { padding: var(--hero-shell-pad-top-mobile) var(--hero-shell-pad-x-mobile) var(--hero-shell-pad-bottom-mobile); }
   .pg-h1 { font-size: clamp(2.5rem, 7.5vw, 3.75rem); }
   .pg-content { padding: var(--space-5xl) 1.75rem 6rem; }
   .srv-page-grid { grid-template-columns: 1fr; gap: var(--space-4xl); }

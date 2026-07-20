@@ -69,7 +69,7 @@
 
 .socx-guide-hero-panel-label::after {
   content: "";
-  width: 32px;
+  width: var(--eyebrow-rule-length);
   height: 1px;
   background: var(--accent);
 }
@@ -136,7 +136,7 @@
 
 .socx-guide-command-kicker::after {
   content: "";
-  width: 32px;
+  width: var(--eyebrow-rule-length);
   height: 1px;
   background: var(--accent);
 }

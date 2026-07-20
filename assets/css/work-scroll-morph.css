@@ -15,16 +15,10 @@
 .morph-hero {
   position: relative;
   overflow: clip;
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
-}
-
-.morph-hero {
   min-height: 60vh;
   display: flex;
   align-items: flex-end;
-  padding-top: calc(var(--nav-h) + 5rem);
-  padding-bottom: 6rem;
+  padding: var(--hero-shell-pad-top) var(--hero-shell-pad-x) var(--hero-shell-pad-bottom);
   background: transparent;
 }
 
@@ -71,7 +65,7 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--accent);
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--eyebrow-gap);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -79,7 +73,7 @@
 
 .morph-kicker::after {
   content: '';
-  width: 32px;
+  width: var(--eyebrow-rule-length);
   height: 1px;
   background: var(--accent);
   flex-shrink: 0;
@@ -170,15 +164,14 @@
 
 @media (max-width: 900px) {
   .morph-hero {
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
+    padding-inline: var(--hero-shell-pad-x-mobile);
   }
 }
 
 @media (max-width: 680px) {
   .morph-hero {
-    padding-top: calc(var(--nav-h) + 3.5rem);
-    padding-bottom: 5rem;
+    padding-top: var(--hero-shell-pad-top-mobile);
+    padding-bottom: var(--hero-shell-pad-bottom-mobile);
   }
 
   .morph-title .wp {
