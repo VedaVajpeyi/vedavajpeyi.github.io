@@ -21,7 +21,7 @@ body.wr-v1 {
   min-height: 60vh;
   padding: var(--hero-shell-pad-top) var(--hero-shell-pad-x) var(--hero-shell-pad-bottom);
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   background: var(--dark);
 }
 
@@ -86,7 +86,7 @@ body.wr-v1 {
   display: block;
   max-width: none;
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-size: var(--type-h1-page);
   font-weight: 900;
   line-height: 1.0;
   letter-spacing: -0.03em;
