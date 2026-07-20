@@ -903,7 +903,7 @@ a.essay-feat-img { display: block; }
    FOOTER
 ═══════════════════════════════════════════════════════ */
 footer { background: var(--dark-2); border-top: 1px solid var(--border-d); padding: var(--space-5xl) var(--space-3xl) var(--space-4xl); }
-.footer-rotating { overflow: hidden; height: 1.35em; margin-bottom: var(--space-5xl); font-family: var(--serif); font-size: var(--type-display-2); font-weight: 900; letter-spacing: -0.025em; line-height: 1; position: relative; }
+.footer-rotating { overflow: hidden; height: 1.35em; margin-bottom: var(--space-5xl); font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 900; letter-spacing: -0.025em; line-height: 1; position: relative; }
 .rot-slide { position: absolute; inset: 0; display: flex; align-items: center; white-space: nowrap; will-change: transform, opacity; }
 #rot-next { transform: translateY(100%); opacity: 0; }
 .rot-slide em { font-weight: 400; font-style: italic; color: var(--accent); margin-left: 0.35em; }
@@ -1406,7 +1406,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .services-more-copy { max-width: none; font-size: 0.84rem; }
   .contact-grid { grid-template-columns: 1fr; gap: var(--space-4xl); }
   .contact-h2 { font-size: clamp(3.5rem, 14vw, 5.5rem); }
-  .footer-rotating { font-size: clamp(2rem, 9vw, 4rem); }
+  .footer-rotating { font-size: clamp(1.3rem, 6vw, 2rem); }
   .footer-bar { flex-direction: column; gap: var(--space-md); text-align: center; }
   .footer-nav { justify-content: center; flex-wrap: wrap; }
 }
