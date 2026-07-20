@@ -952,6 +952,21 @@ Owner decided the homepage hero should match the site's established anchor-page 
 - **Estimated risk:** None realized — confirmed `.pg-hero-img`'s full-bleed background (`inset: 0`) doesn't depend on the parent's padding value before changing it.
 - **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-1`.
 
+### Task 12.5 ✅ COMPLETE — supersedes Task 12.4's `.pg-hero` value
+- **Objective:** Owner reported Task 12.4's reduction "can't tell much of a difference," and pointed to a specific reference file (`veda-services-page-preview-v10.html`, a local prototype outside this repo) to align padding/spacing around the hero eyebrow to exactly — not another guess.
+- **Why this exists:** Task 12.4 picked `var(--space-xl)` (40px) for `.pg-hero`'s horizontal padding via design judgment, with no reference to check it against. The prototype turned out to define a genuinely different, more specific spacing recipe for the whole padding box around the eyebrow — not just horizontal, and not the same number Task 12.4 picked.
+- **Values extracted from the prototype, applied exactly (no invented numbers):**
+  - `.pg-hero` padding: `calc(var(--nav-h) + 3rem) 3.5rem 3.5rem` — top clearance shrinks from `nav-h + var(--space-5xl)` (80px) to `nav-h + var(--space-2xl)` (48px); horizontal reverts from Task 12.4's `var(--space-xl)` (40px) back to `var(--space-3xl)` (56px) — the prototype's own reference value, which turned out to be the *original* pre-Task-12.4 number, not something new; bottom shrinks from a literal `6rem` (96px) to `var(--space-3xl)` (56px).
+  - `.pg-hero-kicker` margin-bottom: `var(--space-xl)` (40px) → `var(--space-md)` (24px) — the actual eyebrow-to-headline gap, which Task 12.4 never touched at all (it only changed the section's outer horizontal padding).
+  - All four values map exactly onto existing `--space-*` tokens — no literals introduced.
+- **Scope, deliberately narrow per "change nothing else":** Only `.pg-hero` and `.pg-hero-kicker` touched. `#hero` (homepage) was left as Task 12.4 set it — the reference prototype is a services-page file using `.pg-hero`, not the homepage's separate `#hero` rule, so there's no evidence from this reference about what `#hero` should be. `.pg-hero`'s own `960px` mobile breakpoint override (a separate rule, `1.75rem` horizontal) also left untouched — not shown or implied by this desktop-viewed reference.
+- **Files changed:** `assets/css/design.css` only (`.pg-hero`, `.pg-hero-kicker`).
+- **Verification checklist:** Brace-balance (480/480); `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260721-2` run, full 62-page 200 sweep; live computed-style check on `services/index.html` at 1400px confirmed all four values exactly match the prototype's: `padding-top` 110px (`62px nav-h + 48px`), `padding-left`/`padding-right` 56px, `padding-bottom` 56px, kicker `margin-bottom` 24px.
+- **Success criteria:** `.pg-hero`'s padding box and the eyebrow's own bottom margin byte-for-byte match the reference prototype; nothing else on the page changed.
+- **Rollback plan:** Two-rule revert, single file.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-2`.
+
 ---
 
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)

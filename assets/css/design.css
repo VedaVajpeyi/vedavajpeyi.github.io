@@ -934,7 +934,7 @@ body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
 .pg-hero {
   min-height: 60vh;
   background: var(--dark);
-  padding: calc(var(--nav-h) + var(--space-5xl)) var(--space-xl) 6rem;
+  padding: calc(var(--nav-h) + var(--space-2xl)) var(--space-3xl) var(--space-3xl);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -944,7 +944,7 @@ body.ready .hero-h1 .ch { opacity: 1; transform: translateY(0); }
 .pg-hero-inner { max-width: 1180px; width: 100%; position: relative; z-index: 1; }
 .pg-hero-kicker {
   color: var(--accent);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
   opacity: 0; transition: opacity var(--duration-slow) ease 0.3s;
 }
 body.pg-ready .pg-hero-kicker { opacity: 1; }
