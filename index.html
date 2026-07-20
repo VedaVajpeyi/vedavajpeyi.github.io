@@ -54,7 +54,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="/assets/js/vendor/lenis@1.1.14.min.js" integrity="sha384-O55L/6rhHr9CFvrxqv5luxOCcmVaBmETbZbJDP+Do8T0pztTACsFBD/IXCNkj7DV"></script>
 
-  <link rel="stylesheet" href="/assets/css/design.css?v=20260720-2">
+  <link rel="stylesheet" href="/assets/css/design.css?v=20260720-3">
 </head>
 <body class="homepage-refined">
 
@@ -116,24 +116,24 @@
     <span>Advisor</span>
   </div>
 
-  <div class="hero-top-mockup">
-    <h1 class="hero-h1 hero-h1-desktop">
-      <span class="lw"><span class="lw-inner">Product strategy</span></span>
-      <span class="lw"><span class="lw-inner d1">grounded in</span></span>
-      <span class="lw"><span class="lw-inner d2"><em>sociology.</em></span></span>
-    </h1>
+  <h1 class="hero-h1 hero-h1-desktop">
+    <span class="lw"><span class="lw-inner">Product strategy</span></span>
+    <span class="lw"><span class="lw-inner d1">grounded in</span></span>
+    <span class="lw"><span class="lw-inner d2"><em>sociology.</em></span></span>
+  </h1>
 
-    <h1 class="hero-h1 hero-h1-mobile" aria-label="Product strategy grounded in sociology.">
-      <span class="lw"><span class="lw-inner">Product</span></span>
-      <span class="lw"><span class="lw-inner d1">strategy</span></span>
-      <span class="lw"><span class="lw-inner d2">grounded in</span></span>
-      <span class="lw"><span class="lw-inner d3"><em>sociology.</em></span></span>
-    </h1>
+  <h1 class="hero-h1 hero-h1-mobile" aria-label="Product strategy grounded in sociology.">
+    <span class="lw"><span class="lw-inner">Product</span></span>
+    <span class="lw"><span class="lw-inner d1">strategy</span></span>
+    <span class="lw"><span class="lw-inner d2">grounded in</span></span>
+    <span class="lw"><span class="lw-inner d3"><em>sociology.</em></span></span>
+  </h1>
 
-    <p class="hero-sub hero-sub--mockup">
-      Most hard calls in product are behavioral questions in disguise: why people don't do what was designed for them, why teams misalign even when the logic is clear, why good strategies fail in execution. I help you see what's actually happening.
-    </p>
-  </div>
+  <p class="hero-sub">
+    Most hard calls in product are behavioral questions in disguise: why people don't do what was designed for them, why teams misalign even when the logic is clear, why good strategies fail in execution. I help you see what's actually happening.
+  </p>
+
+  <a href="/contact.html" class="cta-btn hero-cta">Start a conversation</a>
 
 </section>
 
@@ -542,8 +542,8 @@
   </div>
 </footer>
 
-<script src="/assets/js/page.js?v=20260720-2"></script>
-<script src="/assets/js/home.js?v=20260720-2"></script>
+<script src="/assets/js/page.js?v=20260720-3"></script>
+<script src="/assets/js/home.js?v=20260720-3"></script>
 <style>
   body.homepage-refined #hero {
     min-height: auto;
@@ -607,49 +607,34 @@
     margin: 0 0.92rem;
   }
 
-  body.homepage-refined .hero-top-mockup {
-    position: relative;
-    min-height: 30rem;
-    margin-bottom: 0.25rem;
-  }
-
   body.homepage-refined .s-label-mobile {
     display: none;
   }
 
-  body.homepage-refined .hero-top-mockup .hero-h1 {
-    margin-bottom: 0;
+  body.homepage-refined .hero-h1 {
     max-width: 1000px;
   }
 
-  body.homepage-refined .hero-sub--mockup {
-    position: absolute;
-    right: 0;
-    bottom: 7.6rem;
-    width: 27rem;
-    margin: 0;
-    color: rgba(126, 113, 98, 0.92);
+  body.homepage-refined .hero-sub {
+    margin-top: 2rem;
+  }
+
+  body.homepage-refined .hero-cta {
+    align-self: flex-start;
+    margin-top: var(--space-xl);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--duration-slow) ease 0.6s, transform var(--duration-slow) var(--ease) 0.6s, background 0.3s, transform 0.3s var(--ease-out);
+  }
+
+  body.ready.homepage-refined .hero-cta {
+    opacity: 1;
+    transform: none;
   }
 
   body.homepage-refined .hero-h1 .lw:last-child,
   body.homepage-refined .hero-h1 .lw:last-child em {
     white-space: nowrap;
-  }
-
-  body.homepage-refined .marquee-wrap {
-    padding: 0.85rem 0;
-  }
-
-  body.homepage-refined .marquee-track span {
-    font-size: 0.76rem;
-    font-weight: 500;
-    letter-spacing: 0.13em;
-    color: rgba(201, 160, 96, 0.9);
-  }
-
-  body.homepage-refined .marquee-track .dot {
-    color: rgba(201, 160, 96, 0.95);
-    font-size: 0.5rem;
   }
 
   body.homepage-refined .about-body p {
@@ -669,14 +654,6 @@
 
   body.homepage-refined .writing-top {
     margin-bottom: 4rem;
-  }
-
-  body.homepage-refined .work-sub,
-  body.homepage-refined .writing-intro {
-    font-size: 1rem;
-    line-height: 1.75;
-    max-width: 22rem;
-    color: rgba(144, 129, 110, 0.96);
   }
 
   body.homepage-refined .ci-desc,
@@ -1007,41 +984,16 @@
   }
 
 
-  @media (max-width: 1200px) {
-    body.homepage-refined .hero-top-mockup {
-      min-height: 26rem;
-    }
-
-    body.homepage-refined .hero-sub--mockup {
-      bottom: 6.2rem;
-      width: 23rem;
-    }
-  }
-
   @media (max-width: 900px) {
     body.homepage-refined #hero {
       padding-bottom: 4rem;
     }
 
-    body.homepage-refined .hero-top-mockup {
-      position: static;
-      margin-bottom: 1.25rem;
-    }
-
-    body.homepage-refined .hero-top-mockup .hero-h1 {
+    body.homepage-refined .hero-h1 {
       margin-bottom: 2rem;
       max-width: none;
     }
 
-    body.homepage-refined .hero-sub--mockup {
-      position: static;
-      width: 100%;
-      max-width: 460px;
-      margin: 0;
-    }
-
-    body.homepage-refined .work-sub,
-    body.homepage-refined .writing-intro,
     body.homepage-refined .services-intro {
       max-width: none;
     }
@@ -1222,19 +1174,9 @@
       white-space: nowrap;
     }
 
-    body.homepage-refined .hero-top-mockup {
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: clamp(4.15rem, 9.2vh, 5.85rem);
-      min-height: clamp(23.5rem, calc(84svh - 13rem), 30rem);
-      margin-bottom: 0;
+    body.homepage-refined .hero-h1 {
+      margin-bottom: clamp(3rem, 9.2vh, 4.5rem);
       max-width: none;
-    }
-
-    body.homepage-refined .hero-top-mockup .hero-h1 {
-      margin-bottom: 0;
       font-size: clamp(4.08rem, 17.9vw, 6.15rem);
       line-height: 0.86;
       letter-spacing: -0.067em;
@@ -1274,29 +1216,25 @@
       text-wrap: balance;
     }
 
-    body.homepage-refined .hero-h1 {
-      text-wrap: initial;
-    }
-
-    body.homepage-refined .hero-sub--mockup {
+    body.homepage-refined .hero-sub {
       max-width: 17.2rem;
       font-size: var(--mobile-support);
       line-height: 1.74;
       margin-top: 0;
       padding-top: 1.35rem;
       border-top: 1px solid rgba(181, 146, 90, 0.1);
-      color: rgba(138, 123, 106, 0.95);
+      color: var(--muted-d);
       text-wrap: pretty;
+    }
+
+    body.homepage-refined .hero-cta {
+      margin-top: 1.75rem;
     }
 
     body.homepage-refined .about-body p,
     body.homepage-refined .project-body p {
       font-size: var(--mobile-support);
       line-height: 1.74;
-    }
-
-    body.homepage-refined .marquee-wrap {
-      display: none;
     }
 
     body.homepage-refined .about-body p {
@@ -1348,21 +1286,11 @@
       margin-bottom: 2.3rem;
     }
 
-    body.homepage-refined .work-sub,
-    body.homepage-refined .writing-intro,
     body.homepage-refined .services-intro,
     body.homepage-refined .contact-sub {
       max-width: 20rem;
       font-size: var(--mobile-support);
       line-height: 1.72;
-    }
-
-    body.homepage-refined .work-sub {
-      text-align: left;
-    }
-
-    body.homepage-refined .work-stats {
-      display: none;
     }
 
     body.homepage-refined .ci {
@@ -1741,8 +1669,6 @@
       justify-content: center;
     }
 
-    body.homepage-refined .work-sub,
-    body.homepage-refined .writing-intro,
     body.homepage-refined .services-intro,
     body.homepage-refined .contact-sub,
     body.homepage-refined .ci-desc,
@@ -1790,12 +1716,12 @@
       margin: 0 0.32rem;
     }
 
-    body.homepage-refined .hero-top-mockup .hero-h1 {
+    body.homepage-refined .hero-h1 {
       font-size: clamp(3.82rem, 17.3vw, 5.42rem);
       line-height: 0.86;
     }
 
-    body.homepage-refined .hero-sub--mockup {
+    body.homepage-refined .hero-sub {
       max-width: 16.6rem;
       font-size: var(--mobile-support);
     }
@@ -1857,9 +1783,10 @@
       margin: 0 0.28rem;
     }
 
-    body.homepage-refined .hero-top-mockup .hero-h1 {
+    body.homepage-refined .hero-h1 {
       font-size: clamp(3.22rem, 15.7vw, 4.28rem);
       line-height: 0.87;
+      margin-bottom: clamp(2.75rem, 8.5vh, 4rem);
     }
 
     body.homepage-refined .footer-rotating {
@@ -1871,18 +1798,12 @@
       padding: 0 0.12rem;
     }
 
-    body.homepage-refined .hero-top-mockup {
-      gap: clamp(3.85rem, 8.5vh, 5rem);
-      min-height: clamp(20.75rem, calc(81svh - 12rem), 26rem);
-    }
-
-    body.homepage-refined .hero-sub--mockup {
+    body.homepage-refined .hero-sub {
       max-width: 15.35rem;
       padding-top: 1.35rem;
     }
 
     body.homepage-refined .mini-timeline,
-    body.homepage-refined .work-stats,
     body.homepage-refined .contact-link-row {
       grid-template-columns: 1fr;
     }
@@ -1946,7 +1867,7 @@
       }
 
       hero.style.removeProperty('font-size');
-      const availableWidth = hero.parentElement ? hero.parentElement.clientWidth : hero.clientWidth;
+      const availableWidth = hero.clientWidth;
       if (!availableWidth) return;
 
       const measureHero = createMeasureClone(availableWidth);

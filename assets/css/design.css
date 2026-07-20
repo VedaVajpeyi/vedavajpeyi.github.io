@@ -1492,6 +1492,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
      the static opacity/transform here, not touching `transition`, so the
      hover effects on these two stay intact under reduced motion. */
   .pg-hero-cta { opacity: 1; transform: none; }
+  .hero-cta { opacity: 1; transform: none; }
   .pg-tag { opacity: 1; transform: none; }
   body.pg-ready .pg-tag:nth-child(n) { transition-delay: 0s; }
 
