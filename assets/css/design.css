@@ -870,6 +870,8 @@ a.essay-feat-img { display: block; }
   align-items: flex-start;
   gap: 0.9rem;
 }
+.work-more,
+.writing-more { padding-top: var(--space-lg); }
 .services-more-copy {
   max-width: 28rem;
   font-size: 0.82rem;
