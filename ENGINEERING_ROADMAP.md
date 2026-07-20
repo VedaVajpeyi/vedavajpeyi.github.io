@@ -818,6 +818,68 @@ Executes the remaining findings from this session's typography audit / Design Sy
 
 ---
 
+## Phase 11 — Positioning-driven IA & CTA hierarchy (2026-07-20)
+
+Source: a separate conversation-based engagement (navigation audit → IA/conversion strategy → page-by-page clarity audit → self-critique pass → a brand-positioning decision → a consolidated 19-item recommendation roadmap, phased into batches). Not triggered by a code-level symptom — triggered by the owner asking for a content/IA-level review, then asking for the resulting recommendations to be implemented directly, with explicit instruction to do the low-risk items first and defer anything that would dramatically change the site's visual look and feel.
+
+**Scope discipline applied:** only the batch-1 (lowest-risk, no visual restructuring) items from that external roadmap were executed this round. Each finding was re-verified against current code before acting, per this document's standing principles — two didn't survive re-verification and were correctly not acted on (see below). Everything requiring new visual real estate, a homepage section restructure, a business-priority call, or a file download was left untouched and is logged as deferred, not silently dropped.
+
+### Task 11.1 ✅ COMPLETE
+- **Objective:** Fix `sociology-product.html`'s plain `<meta name="description">` — it read as a dense, list-like table of contents ("adoption before the click, social risk versus functional value, behavior as person plus culture plus system...") at 267 characters, while the page's own `og:description`/`twitter:description` already carried a sharper, shorter, already-approved rewrite ("A seven-model framework for the social mechanisms standard PM frameworks miss — norms, identity, structure, trust, and value flow.").
+- **Why this exists:** A genuine gap between what a cold search visitor is promised in the SERP snippet and what the page's own hero copy ("Product problems are social problems in technical clothes") actually delivers. This also happens to close a length outlier flagged and explicitly deferred in Task 3.6 ("18 pages over ~160 characters... 2 severe outliers: `index.html` at 246, `sociology-product.html` at 267") — that entry was deferred as an editorial-voice call, not a mechanical fix; reusing copy that already exists and was already chosen elsewhere on the same page resolves it without inventing new copy.
+- **Files changed:** `sociology-product.html` (one `<meta>` tag).
+- **Implementation:** Replaced the plain description with the existing `twitter:description` text verbatim — not new copy, a convergence of two descriptions of the same page that had drifted apart.
+- **Verification checklist:** `sync-chrome.mjs` clean; `linkinator` full-site sweep (81 links scanned, 0 broken); browser-loaded, computed `document.querySelector('meta[name="description"]').content` confirmed the new value is live; console clean.
+- **Success criteria:** Meta description matches the page's already-approved social-share copy; no length outlier.
+- **Rollback plan:** Single-line revert.
+- **Estimated risk:** None.
+- **Status:** ✅ Complete.
+
+### Task 11.2 ✅ COMPLETE
+- **Objective:** `projects/books-beds.html`'s closing CTA read "Get in touch →" — the only page-closing contact link on the site using that wording; every comparable page (About, all 5 case studies, most essays) uses "Let's talk →" for the same generic "go to Contact" action with no audience-specific reason to differ.
+- **Why this exists:** One of several wording variants for the same destination found in the original audit. Re-scoped narrowly before acting: audience-specific variants that exist for a real reason (Speaking's "Inquire about availability →", the two nav-CTA labels that point elsewhere entirely rather than to Contact) were deliberately left alone — only the one true unforced outlier was converged.
+- **Files changed:** `projects/books-beds.html` (one link's text).
+- **Verification checklist:** `sync-chrome.mjs` clean; `linkinator` sweep clean; browser-confirmed via `textContent` read-back that the link now reads "Let's talk →" and still resolves to `/contact.html`.
+- **Success criteria:** No unforced wording variant remains for the plain "go to Contact" action; every legitimately distinct CTA (Speaking, the Workshop page) untouched.
+- **Rollback plan:** Single-line revert.
+- **Estimated risk:** None.
+- **Status:** ✅ Complete.
+  - **A related original finding didn't survive re-verification, correctly not acted on:** the source audit claimed `services/sociology-product-workshop.html` had two competing CTA labels ("Book a workshop" in the hero, "Book the workshop" at the close). Direct grep against current code found only one instance of either string on the page today — the second either never existed as described or was already fixed by the time of this pass. No change made; logged here per this document's revalidation principle rather than silently dropped.
+
+### Task 11.3 ✅ COMPLETE (partial — 1 of 4 candidate pages had a genuine link available)
+- **Objective:** The source audit found Case Studies 3 and 5, and Essays 3 and 4, were the only entries in their templates with no forward related-content link (every sibling case study/essay has one). Add one only where a real thematic connection exists — the same audit's self-critique pass explicitly flagged that a manufactured link with no genuine connection reads as content-mill padding, which would work against the site's own positioning.
+- **Why this exists:** A confirmed structural gap (verified directly against the HTML, not assumed), scoped conservatively per the source roadmap's own risk note.
+- **Investigation before acting:** Checked all four candidates against the actual content of every other case study and essay, not just their tags.
+  - **Case Study 3** ("Making Existing Value Unmistakable" — users overwhelmed by capability, adoption failed until the value was unmistakable) genuinely connects to **Essay 5** ("Why Useful Products Still Fail" — its own dek: "why useful is not the same as adoptable"). Same underlying claim, different setting. Link added.
+  - **Case Study 5** (a Malaysian tax-regime regulatory pivot) has no essay or case study that actually engages its subject (the growth-strategy/public-policy-tagged essays are about adoption and education, not regulatory strategy). No link forced.
+  - **Essay 3** and **Essay 4** (a personal teaching narrative and a Davos reflection) sit topically apart from the rest of the sociology-x-product essay cluster — no other essay or case study genuinely engages either one's subject. No link forced.
+- **Files changed:** `work/case-study-3.html` (one sentence + inline link, appended to the existing closing paragraph, matching the exact pattern already used by Case Studies 1/2/4 — a reflective closing sentence followed by an inline "→" link).
+- **Verification checklist:** Paragraph tag-balance confirmed on the changed file; `sync-chrome.mjs` clean; `linkinator` sweep clean; browser-confirmed the new link's text and `href` resolve correctly; console clean.
+- **Success criteria:** The one genuine gap closed; the three non-genuine ones explicitly left as honest dead ends rather than papered over.
+- **Rollback plan:** Single-paragraph revert.
+- **Estimated risk:** None.
+- **Status:** ✅ Complete. Case Study 5, Essay 3, and Essay 4 remain open — see Deferred.
+
+### Task 11.4 ✅ COMPLETE
+- **Objective:** Essay pages carried zero on-page authorship context (no byline, no bio) beyond the persistent header logo naming "Veda Vajpeyi" with no explanation attached — a real gap for what the source audit identified as plausibly the site's most common cold-search entry point (essay titles are written far more specifically for search than the section-index pages).
+- **Why this exists:** A cold visitor who finishes an essay convinced by the argument currently has no in-page reason to trust its author, and no path to that credibility case short of noticing and clicking the header logo.
+- **Files changed:** All 23 `writing/essay-*.html` files (one paragraph each, mechanically inserted).
+- **Implementation:** Reused the existing `.prose-note.prose-note-spaced` class (already defined in `design.css` for the Case-Study-1 aside — small, muted, italic body text; no new CSS, no asset-version bump needed) rather than inventing a new visual treatment. Copy reuses the site's own established "Full story →" phrase (already the homepage About section's link text to the same destination) rather than new marketing language: *"Written by Veda Vajpeyi, a sociologist and product strategist, formerly at Amazon Alexa. Full story →"*, linking to `/about.html`. Inserted via a scripted substitution with a per-file assertion that the anchor point (`<div class="pg-nav">`) existed exactly once before editing — same transcription-risk-elimination approach this document has used since Task 4.1.
+- **Verification checklist:** Confirmed all 23 insertions landed (`grep -c` across all files summed to 23); paragraph tag-balance confirmed on 3 spot-checked files (essay-1, essay-10, essay-23); `sync-chrome.mjs` clean; `linkinator` full-site sweep (81 links, 0 broken); browser-loaded `essay-1.html`, console clean, computed-style read-back confirmed the byline renders at `14.4px`/italic/`opacity:0.7` (the intended quiet treatment, not competing with the essay content) and its link resolves to `/about.html`.
+- **Success criteria:** Every essay carries a one-line author-credibility signal; zero new CSS; visually quiet, doesn't compete with the essay's own content.
+- **Rollback plan:** Scripted removal of the one added paragraph across the 23 files (identical anchor string), or per-file revert.
+- **Estimated risk:** Low — additive only, reuses an existing style and an existing site phrase.
+- **Status:** ✅ Complete.
+
+### Deferred from this pass — not dropped, explicitly held back per owner instruction to prioritize low-risk work
+- **`index.html`'s "X"/"Substack" inert labels.** Re-verification found this more ambiguous than the source audit assumed: both are `aria-hidden="true"` and, per `design.css`'s `.contact-inline-extra` rule, `display: none` on desktop entirely — visible only at ≤600px viewports, alongside Instagram (also flagged `contact-inline-extra`). This reads as plausible deliberate forward-placeholder scaffolding (a preview of planned channels, deliberately hidden from the accessibility tree) rather than an accidental bug, and neither "delete" nor "link to a real account" can be decided without knowing whether those accounts exist or are planned. Per this document's principle 6 (confidence dropped, stop and record the uncertainty rather than proceed on the original assumption) — held for the owner's own call rather than guessed at.
+- **Case Study 5, Essay 3, Essay 4's missing forward links.** No genuine connection exists in the current content — see Task 11.3. Will resolve itself naturally if/when new content is published that actually engages either subject; not a standing task.
+- **Everything from the source roadmap's "Phase 3" batch** (give Sociology x Product a dedicated homepage section; demote Books & Beds to a brief mention; give the homepage hero a next-step cue; group the six services into Advisory vs. Coaching clusters; vary which services surface in secondary placements; strengthen the closing-CTA hierarchy on Work/Services/Field Guide/Workshop; consolidate the homepage's duplicate mailto CTA). Each of these restructures a page's visual layout or content weighting — exactly the category the owner asked to hold back this round. Full detail (reasoning, dependencies, sequencing) lives in that conversation's Implementation Roadmap artifact, not duplicated here; picking any of these up should start with re-verifying the finding against current code first, per this document's own standing practice, before executing from the artifact's original notes.
+- **Self-hosting hotlinked Unsplash/Wikimedia-adjacent images (the source roadmap's REC-17).** Requires downloading files from an external source — this document's own Phase 6 policy (and the owner's general standing instruction) requires the exact file/source/size named and confirmed before any download happens, not covered by a blanket "go ahead." Needs its own explicit ask.
+- **Social proof/testimonials, pricing signal, topic-tag keyword-cannibalization check (source roadmap REC-15/16/18).** Each depends on content, business judgment, or investigation the owner would need to weigh in on directly — not mechanical implementation work.
+
+---
+
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
 
 - ~~Three different bullet-marker mechanisms.~~ **Resolved in Task 9.14.** `.prose ul`'s native bullet kept (legitimate content-type variation); `.sxp-list` and `.srv-num-aside`'s dots unified, including an incidental `--accent` → `--accent-on-light` fix on `.sxp-list` found along the way.
