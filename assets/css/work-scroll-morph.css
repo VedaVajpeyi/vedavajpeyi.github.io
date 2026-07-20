@@ -1,5 +1,4 @@
 .work-scroll-morph-page {
-  --morph-accent: 181, 146, 90;
   background: var(--dark);
   transition: background-color 0.7s var(--ease-out);
 }
@@ -13,8 +12,7 @@
   width: 100%;
 }
 
-.morph-hero,
-.morph-close {
+.morph-hero {
   position: relative;
   overflow: clip;
   padding-left: 3.5rem;
@@ -127,12 +125,6 @@
   justify-content: center;
 }
 
-.morph-close {
-  padding-top: 6rem;
-  padding-bottom: 8rem;
-  background: transparent;
-}
-
 .morph-close-copy {
   max-width: 30rem;
 }
@@ -177,8 +169,7 @@
 }
 
 @media (max-width: 900px) {
-  .morph-hero,
-  .morph-close {
+  .morph-hero {
     padding-left: 1.75rem;
     padding-right: 1.75rem;
   }
@@ -187,11 +178,6 @@
 @media (max-width: 680px) {
   .morph-hero {
     padding-top: calc(var(--nav-h) + 3.5rem);
-    padding-bottom: 5rem;
-  }
-
-  .morph-close {
-    padding-top: 4.75rem;
     padding-bottom: 5rem;
   }
 
