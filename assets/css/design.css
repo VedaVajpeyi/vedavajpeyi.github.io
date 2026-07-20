@@ -348,7 +348,7 @@ body.ready .lw-inner { transform: translateY(0); }
 #hero { min-height: 100vh; background: var(--dark); display: flex; flex-direction: column; justify-content: center; padding: calc(var(--nav-h) + 6rem) var(--space-3xl) 7rem; position: relative; }
 .hero-kicker { color: var(--muted-d); margin-bottom: var(--space-xl); opacity: 0; transition: opacity 0.6s ease var(--duration-fast); }
 body.ready .hero-kicker { opacity: 1; }
-.hero-h1 { font-family: var(--serif); font-size: var(--type-display); font-weight: 900; line-height: 1.0; letter-spacing: -0.03em; max-width: 900px; margin-bottom: 4.5rem; }
+.hero-h1 { font-family: var(--serif); font-size: var(--type-h1-page); font-weight: 900; line-height: 1.0; letter-spacing: -0.03em; max-width: 1080px; }
 .hero-h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 .hero-sub,
 .services-intro,
@@ -358,7 +358,15 @@ body.ready .hero-kicker { opacity: 1; }
   font-weight: 300;
   line-height: 1.8;
 }
-.hero-sub { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--muted-d); max-width: 460px; }
+.hero-sub {
+  font-size: var(--type-body);
+  color: rgba(240, 235, 227, 0.8);
+  max-width: 42rem;
+  margin-top: var(--space-lg);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity var(--duration-slow) ease var(--duration-slow), transform var(--duration-slow) var(--ease) var(--duration-slow);
+}
+body.ready .hero-sub { opacity: 1; transform: none; }
 
 /* ═══════════════════════════════════════════════════════
    HOME ABOUT SECTION
@@ -1371,7 +1379,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   nav#nav { padding: 0 1.75rem; }
   .nav-links { gap: var(--space-md); }
   #hero { padding: calc(var(--nav-h) + var(--space-4xl)) 1.75rem 6rem; }
-  .hero-h1 { font-size: clamp(3.2rem, 10vw, 5.5rem); margin-bottom: var(--space-2xl); }
+  .hero-h1 { font-size: clamp(2.5rem, 10vw, 5rem); }
   #about, #work, #project, #writing, #services, #contact { padding: 6rem 1.75rem; }
   footer { padding: var(--space-4xl) 1.75rem var(--space-2xl); }
   .about-grid { grid-template-columns: 1fr; gap: var(--space-3xl); }
@@ -1487,6 +1495,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
      hover effects on these two stay intact under reduced motion. */
   .pg-hero-cta { opacity: 1; transform: none; }
   .hero-cta { opacity: 1; transform: none; }
+  .hero-sub { opacity: 1; transform: none; transition: none; }
   .pg-tag { opacity: 1; transform: none; }
   body.pg-ready .pg-tag:nth-child(n) { transition-delay: 0s; }
 
