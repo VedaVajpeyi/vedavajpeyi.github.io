@@ -902,12 +902,12 @@ a.essay-feat-img { display: block; }
 /* ═══════════════════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════════════════ */
-footer { background: var(--dark-2); border-top: 1px solid var(--border-d); padding: var(--space-5xl) var(--space-3xl) var(--space-4xl); }
-.footer-rotating { overflow: hidden; height: 1.35em; margin-bottom: var(--space-5xl); font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 900; letter-spacing: -0.025em; line-height: 1; position: relative; }
+footer { background: var(--dark-2); border-top: 1px solid var(--border-d); padding: var(--space-2xl) var(--space-3xl) var(--space-xl); }
+.footer-rotating { overflow: hidden; height: 1.35em; margin-bottom: var(--space-lg); font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1; position: relative; }
 .rot-slide { position: absolute; inset: 0; display: flex; align-items: center; white-space: nowrap; will-change: transform, opacity; }
 #rot-next { transform: translateY(100%); opacity: 0; }
 .rot-slide em { font-weight: 400; font-style: italic; color: var(--accent); margin-left: 0.35em; }
-.footer-bar { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-xl); border-top: 1px solid var(--border-d); }
+.footer-bar { display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; border-top: 1px solid var(--border-d); }
 .footer-name { font-family: var(--serif); font-size: 0.85rem; font-weight: 700; color: var(--muted-d); }
 .footer-nav { display: flex; gap: 1.45rem; list-style: none; flex-wrap: wrap; justify-content: center; }
 .footer-nav a { color: var(--muted-d); transition: color var(--duration-fast); }
@@ -1406,7 +1406,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .services-more-copy { max-width: none; font-size: 0.84rem; }
   .contact-grid { grid-template-columns: 1fr; gap: var(--space-4xl); }
   .contact-h2 { font-size: clamp(3.5rem, 14vw, 5.5rem); }
-  .footer-rotating { font-size: clamp(1.3rem, 6vw, 2rem); }
+  .footer-rotating { font-size: clamp(1.3rem, 6vw, 2rem); margin-bottom: 1.5rem; }
   .footer-bar { flex-direction: column; gap: var(--space-md); text-align: center; }
   .footer-nav { justify-content: center; flex-wrap: wrap; }
 }
