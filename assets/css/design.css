@@ -286,7 +286,6 @@ body.nav-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.26s; }
 .project-kicker,
 .essay-feat-kicker,
 .ei-tag,
-.newsletter-cta h3,
 .footer-nav a,
 .footer-yr,
 .list-item-meta,
@@ -569,10 +568,6 @@ a.essay-feat-img { display: block; }
 .ei:hover h3 { color: var(--accent); }
 .ei p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.8; }
 .ei-tag { display: inline-flex; align-items: center; color: var(--muted-d); white-space: nowrap; padding-top: 0.25rem; text-decoration: none; }
-.newsletter-cta { margin-top: var(--space-4xl); padding: var(--space-xl) var(--space-2xl); border: 1px solid var(--border-d); display: grid; grid-template-columns: 1fr auto; gap: var(--space-xl); align-items: center; }
-.newsletter-cta h3 { color: rgba(var(--accent-rgb),0.78); margin-bottom: 0.75rem; }
-.newsletter-cta p { font-size: var(--type-body-sm); color: var(--muted-d); line-height: 1.8; max-width: 520px; }
-.cta-btn-outline.newsletter-btn { padding: 0.85rem 1.75rem; white-space: nowrap; }
 
 /* ═══════════════════════════════════════════════════════
    HOME SERVICES
@@ -1392,7 +1387,6 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
   .project-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
   .writing-top { grid-template-columns: 1fr; gap: var(--space-md); }
   .essay-feat { grid-template-columns: 1fr; gap: var(--space-xl); }
-  .newsletter-cta { grid-template-columns: 1fr; gap: var(--space-md); padding: 2.25rem var(--space-lg); }
   .services-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
   .services-top { max-width: none; }
   .services-intro { margin-top: var(--space-md); }
