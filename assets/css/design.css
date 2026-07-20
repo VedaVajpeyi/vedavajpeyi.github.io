@@ -15,15 +15,19 @@
      darkened until it clears 4.5:1 (AA, normal text) against --light. Only
      applies to text color; borders/backgrounds keep using --accent-rgb. */
   --accent-on-light: #84683b;
-  /* muted-d/muted-l were 3.39:1 and 4.29:1 against their sections -- both
-     fail WCAG AA (4.5:1) for normal text. Values below are the same hue,
-     adjusted lightness only, minimally shifted until each clears 4.5:1. */
-  --muted-d: #847869;
-  --muted-l: #766b5f;
+  /* muted-d/muted-l were 3.39:1 and 4.29:1 against their sections, both
+     failing WCAG AA (4.5:1). A later pass fixed them to the bare 4.5:1
+     floor (#847869/#766b5f) -- correct but with almost no margin, thin
+     for body copy meant to be read continuously (hero sub, case-study
+     descriptions, essay text), not just glanced at. Values below are the
+     same hue, relightened/redarkened until each clears 7:1 (WCAG AAA,
+     normal text) instead of just scraping AA. */
+  --muted-d: #a59a8d;
+  --muted-l: #554d44;
   --text-d-rgb:  240,235,227;
   --accent-rgb:  181,146,90;
-  --muted-d-rgb: 132,120,105;
-  --muted-l-rgb: 118,107,95;
+  --muted-d-rgb: 165,154,141;
+  --muted-l-rgb: 85,77,68;
   --border-d: rgba(255,255,255,0.08);
   --border-l: rgba(0,0,0,0.10);
   --serif: 'Playfair Display', Georgia, serif;
