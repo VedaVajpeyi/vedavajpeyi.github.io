@@ -150,6 +150,18 @@
   --type-card-compact:  clamp(1.15rem, 2vw, 1.65rem);
   --type-body:    1.05rem;                       /* primary body copy */
   --type-body-sm: 0.9rem;                        /* supporting body copy */
+  /* "Card/list description on a dark background" (.ci-desc, .essay-feat p,
+     .ei p, .list-item p, .contact-note p) moved from --type-body-sm +
+     var(--muted-d) to --type-body + rgba(var(--text-d-rgb), 0.8) in Task
+     12.14, matching .pg-deck's own recipe exactly -- these are real
+     summary sentences, not captions, and the title above each already
+     carries the size/weight hierarchy signal, so dimming the description
+     further on top of that was redundant, not a legibility need (both
+     colors clear WCAG AAA on --dark, verified: muted-d 7.12:1, this
+     recipe 10.65:1). --type-body-sm itself is untouched and still correct
+     for genuinely secondary text (sidebar notes, captions, the Field
+     Guide's own system) -- only these five selectors changed, not the
+     shared token. */
   --type-meta:    0.6875rem;                     /* mono labels, kickers, nav, buttons -- 11px, the floor Material Design/Apple HIG both hold */
   /* Measure (max reading-line-width) for long-form body copy. 68ch sits
      inside the well-evidenced 45-75 character range (Bringhurst; NN/g),
@@ -578,7 +590,7 @@ a.essay-feat-img { display: block; }
 }
 .ci-h3 { margin-bottom: 1.25rem; transition: color 0.3s; } /* H3 exception: featured case study cards */
 .ci:hover .ci-h3 { color: var(--accent); }
-.ci-desc { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.75; max-width: 440px; }
+.ci-desc { font-size: var(--type-body); font-weight: 300; color: rgba(var(--text-d-rgb), 0.8); line-height: 1.75; max-width: 440px; }
 .ci-quote { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: rgba(var(--accent-rgb),0.7); line-height: 1.65; margin-top: 1.25rem; padding-left: var(--space-sm); border-left: 2px solid rgba(var(--accent-rgb),0.25); }
 .ci-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.35rem; color: var(--muted-d); opacity: 0.56; }
 .ci-image { grid-area: image; }
@@ -613,7 +625,7 @@ a.essay-feat-img { display: block; }
 .essay-feat-tag { color: inherit; text-decoration: none; }
 .essay-feat h3 { margin-bottom: 1.1rem; transition: color 0.3s; } /* H3 exception: featured essay card */
 .essay-feat:hover h3 { color: var(--accent); }
-.essay-feat p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.75; margin-bottom: var(--space-md); }
+.essay-feat p { font-size: var(--type-body); font-weight: 300; color: rgba(var(--text-d-rgb), 0.8); line-height: 1.75; margin-bottom: var(--space-md); }
 .essay-list { border-top: 1px solid var(--border-d); }
 .ei { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2xl); align-items: start; padding: 2.25rem 0; border-bottom: 1px solid var(--border-d); transition: padding-left var(--duration-slow) var(--ease-out); text-decoration: none; color: inherit; }
 @media (hover: none) { .ei { cursor: pointer; } }
@@ -625,7 +637,7 @@ a.essay-feat-img { display: block; }
 }
 .ei h3 { font-size: var(--type-card-compact); margin-bottom: 0.45rem; transition: color 0.3s; line-height: 1.2; letter-spacing: -0.01em; }
 .ei:hover h3 { color: var(--accent); }
-.ei p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.8; }
+.ei p { font-size: var(--type-body); font-weight: 300; color: rgba(var(--text-d-rgb), 0.8); line-height: 1.8; }
 .ei-tag { display: inline-flex; align-items: center; color: var(--muted-d); white-space: nowrap; padding-top: 0.25rem; text-decoration: none; }
 
 /* ═══════════════════════════════════════════════════════
@@ -1284,7 +1296,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .list-item-num { color: var(--accent); margin-bottom: 0.75rem; opacity: 0.45; }
 .list-item h2 { font-size: var(--type-card-featured); line-height: 1.2; margin-bottom: 0.6rem; transition: color 0.3s; letter-spacing: -0.01em; }
 .list-item:hover h2 { color: var(--accent); }
-.list-item p { font-size: var(--type-body-sm); color: var(--muted-d); line-height: 1.8; max-width: 560px; }
+.list-item p { font-size: var(--type-body); color: rgba(var(--text-d-rgb), 0.8); line-height: 1.8; max-width: 560px; }
 .list-item-meta { color: var(--muted-d); white-space: nowrap; padding-top: 0.35rem; text-align: right; line-height: 1.6; }
 
 /* ═══════════════════════════════════════════════════════
@@ -1396,7 +1408,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 .contact-service-arrow { color: var(--muted-d); transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease-out); }
 .contact-service-item:hover .contact-service-arrow { color: var(--accent); transform: translateX(var(--link-hover-shift)); }
 .contact-note { padding: 0 var(--space-3xl) 8rem; background: var(--dark); }
-.contact-note p { font-size: var(--type-body-sm); font-weight: 300; color: var(--muted-d); line-height: 1.8; max-width: 520px; }
+.contact-note p { font-size: var(--type-body); font-weight: 300; color: rgba(var(--text-d-rgb), 0.8); line-height: 1.8; max-width: 520px; }
 .contact-note-label { color: rgba(var(--accent-rgb),0.78); margin-bottom: 1.25rem; }
 
 /* ═══════════════════════════════════════════════════════
