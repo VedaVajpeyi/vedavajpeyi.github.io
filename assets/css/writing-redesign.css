@@ -155,7 +155,7 @@ body.pg-ready .wr-lede { opacity: 1; transform: none; }
 }
 
 .wr-section-head h2 {
-  font-family: "Newsreader", serif;
+  font-family: var(--serif);
   font-size: var(--type-h2);
   font-weight: 700;
   line-height: 1.15;

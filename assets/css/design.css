@@ -119,7 +119,7 @@
      Grep every consumer above before changing this value, and grep for a
      literal clamp() match afterward to confirm nothing was missed. */
   --type-h1-page:  clamp(2.8rem, 5.25vw, 5.25rem); /* .pg-h1, .hero-h1, .morph-title, .wr-title -- the shared "biggest heading" role. NOT .contact-h2 -- see --type-display-2 above. */
-  --type-h2:       clamp(1.4rem, 2.5vw, 2.2rem);  /* Section Title -- in-page content subheadings (.prose h2, .wr-section-head h2 with Newsreader kept as its own typeface) */
+  --type-h2:       clamp(1.4rem, 2.5vw, 2.2rem);  /* Section Title -- in-page content subheadings (.prose h2, .wr-section-head h2 -- the latter's font-family was moved to var(--serif) too in Task 12.12, matching this role fully; the rest of the Writing page's Newsreader/Manrope/IBM Plex Mono system is untouched, that's a separate, already-settled decision) */
   --type-h3:       clamp(1.15rem, 2vw, 1.55rem);  /* prose h3 */
   /* Closing Statement -- the big persuasive line at the very bottom of a
      page, right before its final CTA (Services' "Bring me the decision

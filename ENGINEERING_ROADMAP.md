@@ -1056,6 +1056,18 @@ Owner decided the homepage hero should match the site's established anchor-page 
 - **Estimated risk:** None realized.
 - **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-10`.
 
+### Task 12.12 ✅ COMPLETE
+- **Objective:** Owner corrected Task 12.11's scope — they hadn't asked for `.wr-section-head h2` to keep its Newsreader typeface, and want it matching `.prose h2` in every typography aspect (font, size, weight, line-height, letter-spacing), not just size. Explicitly *not* a request to reopen Task 3.8/3.9 (the Writing page's broader font/palette identity stays as the owner previously, explicitly decided) — scoped to this one selector only. Also asked to confirm whether any other page uses an alternate typeface the same way.
+- **Fix:** `.wr-section-head h2`'s `font-family` changed from `"Newsreader", serif` to `var(--serif)`. Combined with Task 12.11's earlier size/weight/line-height/letter-spacing work, it now matches `.prose h2` on every typography property. `color` (`var(--wr-ink)`) and `margin` deliberately left untouched — those are the page's own palette and its section container's already-working layout rhythm (`.wr-section-head` sets `margin-bottom: 1.75rem` on the parent), neither raised as part of this request.
+- **Confirmed: `writing/index.html` is the only page on the site using an alternate typeface.** Checked three ways: (1) which pages load `writing-redesign.css` at all — only `writing/index.html` (the 23 individual essay pages don't load it, so they render in the standard Playfair/Inter/Roboto Mono throughout); (2) every occurrence of "Newsreader"/"Manrope"/"IBM Plex Mono" sitewide, in any CSS or HTML file — all confined to `writing-redesign.css` and `writing/index.html` itself; (3) `writing/index.html`'s own `<head>` loads a second Google Fonts request (IBM Plex Mono/Manrope/Newsreader) alongside the standard one, unique to this page. The Sociology x Product and Field Guide sub-systems (`sociology-product.css`/`sociology-product-system.css`) use the core Playfair/Inter/Roboto Mono stack throughout — their distinctiveness is layout/decoration only, not typeface.
+- **Stale comment fixed:** `--type-h2`'s trailing comment, which had said `.wr-section-head h2` keeps Newsreader "as its own typeface" (Task 12.11's now-corrected assumption), updated to reflect the actual current state.
+- **Files changed:** `assets/css/writing-redesign.css` (`.wr-section-head h2`), `assets/css/design.css` (comment only).
+- **Verification checklist:** Brace-balance clean on both files; `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260721-11` run, full 62-page 200 sweep; live computed-style check confirmed `.wr-section-head h2` now renders `35px`, `"Playfair Display", Georgia, serif`, weight `700`, line-height `40.25px` (`35 × 1.15`), letter-spacing `-0.7px` (`35 × -0.02em`) — a complete match to `.prose h2`'s recipe on every property checked.
+- **Success criteria:** `.wr-section-head h2` fully matches Section Title; confirmed, not assumed, that no other page has a similar alternate-typeface situation needing the same review.
+- **Rollback plan:** Single-property revert, one file.
+- **Estimated risk:** None realized.
+- **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-11`.
+
 ---
 
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
