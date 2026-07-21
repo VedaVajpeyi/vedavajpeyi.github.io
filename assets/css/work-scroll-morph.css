@@ -124,7 +124,7 @@
 }
 
 .morph-close-title .wp {
-  font-size: clamp(2.4rem, 5vw, 4.9rem);
+  font-size: var(--type-close-statement);
   color: var(--text-l);
 }
 

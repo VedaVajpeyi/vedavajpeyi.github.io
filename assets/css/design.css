@@ -118,9 +118,21 @@
      .contact-h2 is NOT part of this list -- see --type-display-2 above.
      Grep every consumer above before changing this value, and grep for a
      literal clamp() match afterward to confirm nothing was missed. */
-  --type-h1-page:  clamp(2.8rem, 5.25vw, 5.25rem); /* .pg-h1, .hero-h1, .contact-h2, .morph-title, .wr-title -- the shared "biggest heading" role */
-  --type-h2:       clamp(1.4rem, 2.5vw, 2.2rem);  /* content headings */
+  --type-h1-page:  clamp(2.8rem, 5.25vw, 5.25rem); /* .pg-h1, .hero-h1, .morph-title, .wr-title -- the shared "biggest heading" role. NOT .contact-h2 -- see --type-display-2 above. */
+  --type-h2:       clamp(1.4rem, 2.5vw, 2.2rem);  /* Section Title -- in-page content subheadings (.prose h2, .wr-section-head h2 with Newsreader kept as its own typeface) */
   --type-h3:       clamp(1.15rem, 2vw, 1.55rem);  /* prose h3 */
+  /* Closing Statement -- the big persuasive line at the very bottom of a
+     page, right before its final CTA (Services' "Bring me the decision
+     you're stuck on.", Work's "I work on product questions where trust,
+     behavior, and growth are tightly coupled.", Writing's close section).
+     Found as 3 separate bespoke values (57.6px/64px/78.4px caps) with no
+     shared token at all -- Task 12.11. Value below is the middle of the
+     three, closest to a clean number, matching Task 4.4's "name it from
+     what already exists" convention rather than inventing a new one.
+     Shared recipe: weight 900, line-height 0.96, letter-spacing -0.04em.
+     Font-family stays per-page (var(--serif) or Newsreader), same as
+     Section Title above -- only size/weight/rhythm are shared. */
+  --type-close-statement: clamp(2.25rem, 4.2vw, 4rem);
   /* Card Title, two tiers (spotlight vs. compact list row) -- a real
      hierarchy distinction, not drift; see ENGINEERING_ROADMAP Task 9.5. */
   --type-card-featured: clamp(1.5rem, 2.5vw, 2.2rem);
@@ -816,9 +828,9 @@ a.essay-feat-img { display: block; }
 .srv-close-title {
   font-family: var(--serif);
   font-weight: 900;
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-size: var(--type-close-statement);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
   color: var(--text-d);
   margin-bottom: var(--space-md);
 }
