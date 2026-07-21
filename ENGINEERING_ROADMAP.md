@@ -1068,6 +1068,17 @@ Owner decided the homepage hero should match the site's established anchor-page 
 - **Estimated risk:** None realized.
 - **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-11`.
 
+### Task 12.13 ✅ COMPLETE
+- **Objective:** Owner proposed collapsing Section Title into Display Medium entirely (all `.prose h2`-role headings at 65.6px, matching `.about-h2`). Traced the actual motivation to one specific data point: they liked Writing's old, pre-unification heading size (53.6px) and were reacting to losing it, not to Section Title's role being wrong in principle. Given real content data before proposing anything — essays carry 4-10 Section Titles each (not the ~1-per-page count Display Medium has), some 50+ characters long — a full merge to 65.6px risked multi-line wraps stacking repeatedly on already-long pages and erasing the "leaving this page vs. staying on it" distinction the two roles exist to carry. Presented 3 sized-between candidates against the site's actual longest heading instead of arguing the point abstractly; owner picked the recommended option.
+- **Resolution:** `--type-h2` (Section Title) changed from `clamp(1.4rem, 2.5vw, 2.2rem)` (35.2px cap) to `clamp(2rem, 4vw, 3.35rem)` (53.6px cap) — Writing's exact former value, restored as the sitewide standard for the role instead of a page-specific exception. All 3 consumers (`.prose h2`, `.wr-section-head h2`, `.socx-use-intro h2`) inherit it automatically through the token, no per-selector changes needed.
+- **Accepted, not incidental:** headings over ~35 characters now wrap to 2 lines in the 760px prose column. Confirmed live on the three pages with the most Section Titles: About's 5 (all short, stay 1 line), essay-9's 5 (3 wrap to 2 lines), Sociology x Product's 6 (3 wrap to 2 lines) — matches exactly what the comparison predicted before shipping.
+- **Files changed:** `assets/css/design.css` only (token value + comment).
+- **Verification checklist:** Brace-balance clean; `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260721-12` run, full 62-page 200 sweep; live computed-style + line-count check on About, an essay, and Sociology x Product confirmed all 16 checked headings render at `53.6px` with the predicted wrap pattern; visual screenshot of Sociology x Product confirms clean rendering, nothing overlapping or clipped.
+- **Success criteria:** Section Title renders at one consistent, sitewide size matching what the owner actually wanted back; Work correctly excluded (no Section Titles there); Sociology x Product explicitly left for separate review once seen live, per owner's own note.
+- **Rollback plan:** Single-value revert, one file.
+- **Estimated risk:** None realized — wrap behavior matched the pre-verified comparison exactly, no surprises.
+- **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260721-12`.
+
 ---
 
 ## Deferred (real findings, not scheduled — revisit only when already touching that area)
