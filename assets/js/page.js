@@ -96,7 +96,7 @@ if (!document.getElementById('preloader')) {
     const active =
       href === path ||
       (href !== '/' && path.startsWith(href)) ||
-      (href === '/sociology-product.html' && path.startsWith('/sociology-product'));
+      (href === '/sociology-product/' && path.startsWith('/sociology-product'));
     if (active) a.setAttribute('aria-current', 'page');
   });
 })();
