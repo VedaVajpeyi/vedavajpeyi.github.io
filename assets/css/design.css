@@ -408,7 +408,7 @@ body.ready .lw-inner { transform: translateY(0); }
 /* ═══════════════════════════════════════════════════════
    HOME HERO
 ═══════════════════════════════════════════════════════ */
-#hero { min-height: 100vh; background: var(--dark); display: flex; flex-direction: column; justify-content: flex-start; padding: var(--hero-shell-pad-top) var(--hero-shell-pad-x) var(--space-4xl); position: relative; }
+#hero { min-height: 60vh; background: var(--dark); display: flex; flex-direction: column; justify-content: flex-start; padding: var(--hero-shell-pad-top) var(--hero-shell-pad-x) var(--hero-shell-pad-bottom); position: relative; }
 .hero-kicker { color: var(--muted-d); margin-bottom: var(--eyebrow-gap); opacity: 0; transition: opacity 0.6s ease var(--duration-fast); }
 body.ready .hero-kicker { opacity: 1; }
 .hero-h1 { font-family: var(--serif); font-size: var(--type-h1-page); font-weight: 900; line-height: 1.0; letter-spacing: -0.03em; max-width: 1080px; }
@@ -1441,7 +1441,7 @@ body.pg-ready .pg-tag:nth-child(5) { transition-delay: 0.87s; }
 @media (max-width: 960px) {
   nav#nav { padding: 0 1.75rem; }
   .nav-links { gap: var(--space-md); }
-  #hero { padding: var(--hero-shell-pad-top-mobile) var(--hero-shell-pad-x-mobile) calc(var(--hero-shell-pad-bottom-mobile) + var(--space-2xl)); }
+  #hero { padding: var(--hero-shell-pad-top-mobile) var(--hero-shell-pad-x-mobile) var(--hero-shell-pad-bottom-mobile); }
   .hero-h1 { font-size: clamp(2.5rem, 7.5vw, 3.75rem); }
   #about, #work, #project, #writing, #services, #contact { padding: 6rem 1.75rem; }
   footer { padding: var(--space-4xl) 1.75rem var(--space-2xl); }
