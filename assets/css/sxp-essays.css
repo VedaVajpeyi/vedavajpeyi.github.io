@@ -72,7 +72,7 @@
 .sxp-list li {
   position: relative;
   padding-left: 1rem;
-  font-size: 0.97rem;
+  font-size: var(--type-body-sm);
   line-height: 1.65;
   color: var(--body-l);
 }
@@ -117,7 +117,7 @@
 }
 
 .sxp-matrix-card p {
-  font-size: 0.92rem;
+  font-size: var(--type-body-sm);
   line-height: 1.6;
   color: var(--body-l);
 }
@@ -184,7 +184,7 @@
 }
 
 .sxp-note-card p {
-  font-size: 0.9rem;
+  font-size: var(--type-body-sm);
   line-height: 1.6;
   color: var(--body-l);
 }
@@ -216,7 +216,7 @@
 
 .sxp-stack-row p {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: var(--type-body-sm);
   line-height: 1.6;
   color: var(--body-l);
 }
@@ -251,7 +251,7 @@
 }
 
 .sxp-flow-card p {
-  font-size: 0.92rem;
+  font-size: var(--type-body-sm);
   line-height: 1.6;
   color: var(--body-l);
 }
@@ -291,9 +291,9 @@
   height: auto;
 }
 
-.sxp-network-note {
+.sxp-network-card .sxp-network-note {
   margin-top: 0.7rem;
-  font-size: 0.88rem;
+  font-size: var(--type-body-sm);
   line-height: 1.6;
   color: var(--body-l);
 }
