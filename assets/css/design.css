@@ -650,6 +650,65 @@ a.essay-feat-img { display: block; }
 .ei-tag { display: inline-flex; align-items: center; color: var(--muted-d); white-space: nowrap; padding-top: 0.25rem; text-decoration: none; }
 
 /* ═══════════════════════════════════════════════════════
+   HOME SOCIOLOGY X PRODUCT STRIP
+═══════════════════════════════════════════════════════ */
+#sxp-strip {
+  background: var(--light); color: var(--text-l);
+  padding: var(--section-pad-top-lg) var(--space-3xl) var(--section-pad-bottom);
+  border-top: 1px solid var(--border-l);
+  border-bottom: 1px solid var(--border-l);
+}
+.sxp-strip-inner { max-width: 1140px; margin: 0 auto; }
+.sxp-strip-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: var(--space-lg); margin-bottom: var(--space-2xl); flex-wrap: wrap;
+}
+.sxp-strip-kicker {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent-on-light);
+  display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem;
+}
+.sxp-strip-kicker::before { content: ''; width: 28px; height: 1px; background: var(--accent-on-light); }
+.sxp-strip-h2 {
+  font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.2; margin: 0; max-width: 30ch;
+}
+.sxp-strip-h2 em { font-style: italic; color: var(--accent-on-light); }
+.sxp-strip-dek { font-size: 0.95rem; line-height: 1.6; color: var(--muted-l); max-width: 34ch; margin: 0; }
+
+.sxp-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--border-l); border: 1px solid var(--border-l);
+  margin-bottom: var(--space-2xl);
+}
+.sxp-card {
+  background: var(--light); padding: var(--space-lg) var(--space-md) 1.9rem;
+  display: flex; flex-direction: column; gap: 0.9rem;
+  text-decoration: none; color: inherit;
+  transition: background 0.3s var(--ease-out);
+}
+.sxp-card:hover { background: var(--light-2); }
+.sxp-card-kicker { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-on-light); }
+.sxp-card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; line-height: 1.32; margin: 0; }
+.sxp-card p { font-size: 0.88rem; line-height: 1.58; color: var(--muted-l); margin: 0; }
+
+.sxp-strip-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-md); flex-wrap: wrap; padding-top: var(--space-lg); border-top: 1px solid var(--border-l);
+}
+.sxp-signal-list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; font-family: var(--mono); font-size: 0.78rem; color: var(--muted-l); }
+.sxp-signal-list span::before { content: '— '; color: var(--accent-on-light); }
+.sxp-strip-cta { white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .sxp-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  #sxp-strip { padding: var(--space-4xl) var(--space-md) var(--space-3xl); }
+  .sxp-strip-foot { flex-direction: column; align-items: flex-start; }
+}
+
+/* ═══════════════════════════════════════════════════════
    HOME SERVICES
 ═══════════════════════════════════════════════════════ */
 #services { background: var(--light); color: var(--text-l); padding: var(--section-pad-top-lg) var(--space-3xl) var(--section-pad-bottom); }
