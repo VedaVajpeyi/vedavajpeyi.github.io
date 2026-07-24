@@ -1117,12 +1117,45 @@ Owner decided the homepage hero should match the site's established anchor-page 
 - **Estimated risk:** None realized — both changes reduce or hold font-size (no wrap-risk increase), verified live at the affected breakpoints before logging.
 - **Status:** ✅ Complete. Commit pending. Shared asset `?v=` bumped to `20260724-3`.
 
-### Future workstreams (from Task 12.16's audit, not yet scoped or started)
+### Task 12.17 (Workstream A — Eyebrow standardization) ✅ COMPLETE
+- **Objective:** Owner approved running all four Task 12.16 workstreams, explicitly split as separately-scoped items rather than one bundled task. Workstream A: converge eyebrow/kicker/meta font-size and tracking literals onto `var(--type-meta)`.
+- **Findings:** `writing-redesign.css` had a same-shape bug to Task 12.16's dead-rule cascade fix: `.wr-path-num`/`.wr-lens-kicker`/`.wr-year-label`/`.wr-archive-meta` are grouped into a shared rule that correctly references `var(--type-meta)` (line 71-79), but each also has a later, more specific standalone rule with a hardcoded literal (`0.68`/`0.69`/`0.75`/`0.66rem`) that wins by source order — the token-referencing rule was silently dead for all four. Four more standalone selectors in the same file (`.wr-path-list span`, `.wr-mini-shelves a span`/`strong`, `.wr-close-link`) used their own near-miss literals (`0.68`-`0.76rem`) with inconsistent tracking (`0.1em` vs. the recipe's `0.12em`). `sociology-product-system.css` (`.socx-guide-command-tags span`, `.socx-guide-case-takeaway strong`) and `sxp-essays.css` (`.sxp-kicker`, `.sxp-stack-label`) had the same shape of drift (`0.64`/`0.7rem` + `0.1em` tracking).
+- **Resolution:** Converged all 12 instances onto `var(--type-meta)`; standardized tracking to `0.12em` where it diverged.
+- **Files changed:** `assets/css/writing-redesign.css`, `assets/css/sociology-product-system.css`, `assets/css/sxp-essays.css`.
+- **Verification checklist:** Brace-balance clean on all three files; `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260724-4`, full 56-page 200 sweep. Live computed-style check on Writing and Sociology x Product Field Guide confirmed all 12 selectors resolve to `11px`.
+- **Success criteria:** No eyebrow/kicker/meta label anywhere renders at a size other than the shared token.
+- **Rollback plan:** Independent single-property reverts across 3 files.
+- **Estimated risk:** None realized — all changes sub-1px.
+- **Status:** ✅ Complete. Commit `13d57f4`. Shared asset `?v=` bumped to `20260724-4`.
 
-- **Workstream A — Eyebrow standardization.** Converge kicker/label/meta font-size and tracking literals onto `var(--type-meta)` across `writing-redesign.css` (4 near-miss values: `0.69rem`, `0.68rem`, `0.76rem`, `0.74rem`), `sociology-product-system.css` (2 kickers at `0.64rem` with `0.1em` tracking vs. the recipe's `0.12em`), and `sxp-essays.css` (tag kickers at `0.7rem`).
-- **Workstream B — Body-copy hierarchy.** `sxp-essays.css` has six "essay card description" selectors at six different sizes (`0.97, 0.92, 0.9, 0.92, 0.92, 0.88rem`), none referencing `--type-body-sm` — the largest untokenized body-copy cluster found. Also scattered single-instance literals in `design.css`, `work-scroll-morph.css`, `sociology-product.css`, and `index.html`'s inline block.
-- **Workstream C — Card hierarchy.** `writing-redesign.css` card titles at four different literals (`1.48, 1.52, 1.46, 1.22rem`) and card-meta at five near-identical values (`0.68, 0.69, 0.69, 0.75, 0.66rem`) — needs a decision on whether these represent one role or an intentional two-tier system before converging.
-- **Workstream D — Hero hierarchy.** `sociology-product-system.css`'s hero-title-scale selector (`clamp(2.3rem, 5vw, 4rem)`, plus a `clamp(1.9rem, 10vw, 2.9rem)` mobile taper) doesn't match `--type-h1-page` or `--type-display-2` and isn't logged anywhere as an intentional exception — needs confirmation before either tokenizing or documenting as deliberate, alongside the already-settled Writing/Display hierarchy.
+### Task 12.18 (Workstream B — Body-copy hierarchy) ✅ COMPLETE
+- **Objective:** Converge the largest untokenized body-copy cluster found in Task 12.16's audit: six "essay card description" selectors in `sxp-essays.css` at six different sizes, none referencing `--type-body-sm`.
+- **Findings:** `.sxp-list li` (`0.97rem`), `.sxp-matrix-card p` (`0.92rem`), `.sxp-note-card p` (`0.9rem`), `.sxp-stack-row p` (`0.92rem`), `.sxp-flow-card p` (`0.92rem`), `.sxp-network-note` (`0.88rem`) all serve the same role — supporting text inside a small card/note. `.sxp-list li` and `.socx-signal-item` were previously logged in this file's own Deferred section as "not acted on" pending a reason to revisit; Workstream B's own scope ("body-copy hierarchy") is that reason, per the Deferred section's own stated trigger, so `.sxp-list li` was included (`.socx-signal-item` lives in a different file/component and was left for a future pass, not this one).
+- **A second, independent bug found while verifying live:** `.sxp-network-note`'s font-size had been dead regardless of its literal value — as a single-class selector (specificity 0,1,0) nested inside `.prose`, it always lost to `.prose p` (0,1,1) in the cascade, a pre-existing bug unrelated to the literal-to-token conversion itself.
+- **Resolution:** Converged all six onto `var(--type-body-sm)`. Fixed the specificity bug by scoping the selector to `.sxp-network-card .sxp-network-note` (0,2,0), which reliably outranks `.prose p`.
+- **Files changed:** `assets/css/sxp-essays.css`.
+- **Verification checklist:** Brace-balance clean; `sync-chrome.mjs` clean; `bump-asset-version.mjs` run twice (`20260724-5` for the literal-to-token conversion, `20260724-6` after the specificity fix), full 56-page 200 sweep both passes. Live computed-style check across `writing/essay-5,6,7,8,12.html` and `sociology-product/index.html` confirmed all six selectors resolve to `14.4px`.
+- **Success criteria:** All six card/note descriptions in this file share one token-driven size, including the one that had been silently overridden all along.
+- **Rollback plan:** Six independent single-property reverts, one selector-scoping revert.
+- **Estimated risk:** Low — largest jump was `+0.32px` (`0.88rem`→`0.9rem`); no wrap risk.
+- **Status:** ✅ Complete. Commit `57bc7fe`. Shared asset `?v=` bumped to `20260724-6`.
+
+### Task 12.19 (Workstream C — Card hierarchy) ✅ COMPLETE
+- **Objective:** Converge Writing-page card titles: four literals (`1.48, 1.52, 1.46, 1.22rem`) flagged in Task 12.16's audit as possible drift, pending a decision on whether they represent one role or an intentional two-tier system.
+- **Findings:** Card *metadata* (the five near-identical mono values in the same cluster) was already fully resolved by Task 12.17 (Workstream A) — no separate action needed. Of the four title literals: `.wr-path-card h3` (`1.48rem`) and `.wr-lens-card h3` (`1.52rem`) are the same role — a card title in the same spacious grid layout — with no evident reason for the gap. `.wr-lens-card-small h3` (`1.46rem`) is a deliberately named `-small` variant class (genuine two-tier system, confirmed by checking its one live usage in `writing/index.html`) — not drift. `.wr-archive-card strong` (`1.22rem`) is a distinct, dense archive-list-row title role, structurally different from the spacious grid cards (92px-tall rows vs. full cards) — not the same role, left alone.
+- **Resolution:** Converged `.wr-path-card h3`/`.wr-lens-card h3` to a shared literal `1.5rem` — a fixed value, not a fluid clamp token. Considered mapping to `--type-card-featured` (whose floor is `1.5rem`) but rejected it: that token grows to `2.2rem` at wide viewports, and real Lens Card `h3` content runs long enough (e.g. "What people actually do inside social, institutional, and designed systems.") that adopting the growing curve risked new multi-line wraps on an already-dense card grid — a materially different, riskier change than the sub-pixel convergences in this task, so kept as a static value instead.
+- **Files changed:** `assets/css/writing-redesign.css`.
+- **Verification checklist:** Brace-balance clean; `sync-chrome.mjs` clean; `bump-asset-version.mjs 20260724-7`, full 56-page 200 sweep. Live computed-style confirmed both selectors resolve to `24px`, `-small` variant correctly stays distinct at `23.36px`; line-count check across all path/lens cards on the live page confirmed the sub-1px shift introduced no new wraps.
+- **Success criteria:** The two same-role card titles share one size; the two genuinely distinct roles (`-small` variant, archive list row) correctly left alone.
+- **Rollback plan:** Two independent single-property reverts.
+- **Estimated risk:** None realized — sub-1px change, wrap pattern confirmed unchanged.
+- **Status:** ✅ Complete. Commit `aaf2c80`. Shared asset `?v=` bumped to `20260724-7`.
+
+### Task 12.20 (Workstream D — Hero hierarchy) ✅ INVESTIGATED, NO ACTION NEEDED
+- **Objective:** Task 12.16's audit flagged a `sociology-product-system.css` selector at `clamp(2.3rem, 5vw, 4rem)` (plus a `clamp(1.9rem, 10vw, 2.9rem)` mobile taper) as a possible untokenized "hero-title-scale" heading not matching `--type-h1-page` or `--type-display-2`.
+- **Finding:** The audit's sub-agent misidentified the selector's role. On inspection, it's `.socx-guide-command-band blockquote` — a large pull-quote component (`max-width: 18ch`, `text-wrap: balance`) inside the Field Guide page's "command band" feature, not a page hero. Confirmed the Field Guide page's actual hero is `<h1 class="pg-h1">Field Guide</h1>` (`sociology-product-field-guide/index.html:50`), which already correctly resolves through `var(--type-h1-page)`. The pull-quote's own bespoke clamp curve is the same category as the site's other confirmed one-off pull-quotes (`.ci-quote`, `.something-quote`, both `1.15rem`, noted in Task 12.16's audit as "no clear match, legitimate one-off") — just at a much larger, deliberately dramatic scale for this specific feature.
+- **Resolution:** None needed. No files changed.
+- **Status:** ✅ Investigated, closed as a non-issue. No commit, no version bump.
 
 ---
 
